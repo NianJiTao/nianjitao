@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+
+    <Brush x:Key="消息颜色">Blue</Brush>
+    <system:Double x:Key="消息字体大小">64</system:Double>
+    <system:Int32 x:Key="消息显示毫秒">500</system:Int32>
+
+
+
+
+
+</ResourceDictionary>

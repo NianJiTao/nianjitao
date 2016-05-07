@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>ctormk</Title>
+      <Author>Microsoft Corporation</Author>
+      <Description>构造函数的代码段</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>ctormk</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>classname</ID>
+          <ToolTip>模块名</ToolTip>
+          <Default>类</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[
+using Microsoft.Practices.Unity;
+using Prism.Regions;
+using 基本类.prism;
+
+      public class $classname$模块 : 模块基类
+    {
+        public $classname$模块(IUnityContainer container, IRegionManager regionRegistry)
+            : base(container, regionRegistry)
+        {
+        }
+        public override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+            人事部.RegisterType<$classname$.接口, $classname$.视图>();
+            人事部.RegisterType<主持接口<$classname$.接口>, $classname$.主持>();
+        }
+        public override void InitializeModule()
+        {
+            base.InitializeModule();
+        }
+        $end$
+    }
+    ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

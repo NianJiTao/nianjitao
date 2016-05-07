@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1657AA2F-8B5F-4CD3-AE02-B67FC1BFA2AC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NJT</RootNamespace>
+    <AssemblyName>NJT</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Common\Base24Encoding.cs" />
+    <Compile Include="Common\NLog日志.cs" />
+    <Compile Include="Common\sn.cs" />
+    <Compile Include="Common\Telerik主题.cs" />
+    <Compile Include="Common\ViewModel基类.cs" />
+    <Compile Include="Common\动态学习.cs" />
+    <Compile Include="Common\启动基类.cs" />
+    <Compile Include="Common\定时器1.cs" />
+    <Compile Include="Common\对话框.cs" />
+    <Compile Include="Common\新进程.cs" />
+    <Compile Include="Common\时间.cs" />
+    <Compile Include="Common\模块基类.cs" />
+    <Compile Include="Common\状态栏Data.cs" />
+    <Compile Include="Common\目录.cs" />
+    <Compile Include="Common\硬件信息.cs" />
+    <Compile Include="Common\缓存.cs" />
+    <Compile Include="Common\配置文件.cs" />
+    <Compile Include="Common\钥匙.cs" />
+    <Compile Include="Common\键盘_按键处理.cs" />
+    <Compile Include="Events\保存Event.cs" />
+    <Compile Include="Events\弹出倒计时Event.cs" />
+    <Compile Include="Events\弹出消息Event.cs" />
+    <Compile Include="Events\状态栏更新Event.cs" />
+    <Compile Include="Events\退出Event.cs" />
+    <Compile Include="Model\倒计时视图Model.cs" />
+    <Compile Include="Services\倒计时服务1.cs" />
+    <Compile Include="Services\消息服务1.cs" />
+    <Compile Include="ValueConverter\Bool取反.cs" />
+    <Compile Include="ValueConverter\Bool真显示.cs" />
+    <Compile Include="ValueConverter\Bool真隐藏.cs" />
+    <Compile Include="ValueConverter\Bool转换.cs" />
+    <Compile Include="ValueConverter\DoubleTo百分比.cs" />
+    <Compile Include="ValueConverter\ImageConverter.cs" />
+    <Compile Include="ValueConverter\NullToBool.cs" />
+    <Compile Include="ValueConverter\ToTimespan.cs" />
+    <Compile Include="ValueConverter\To文件大小.cs" />
+    <Compile Include="ValueConverter\颜色转换.cs" />
+    <Compile Include="ViewModels\倒计时窗口ViewModel.cs" />
+    <Compile Include="ViewModels\消息窗口ViewModel.cs" />
+    <Compile Include="Views\倒计时窗口.xaml.cs">
+      <DependentUpon>倒计时窗口.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\消息窗口.xaml.cs">
+      <DependentUpon>消息窗口.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="小冰.cs" />
+    <Compile Include="扩展\Enum扩展.cs" />
+    <Compile Include="扩展\克隆.cs" />
+    <Compile Include="扩展\加载ViewModel.cs" />
+    <Compile Include="扩展\字串转换.cs" />
+    <Compile Include="扩展\序列为空.cs" />
+    <Compile Include="扩展\快捷键提示.cs" />
+    <Compile Include="扩展\时间扩展.cs" />
+    <Compile Include="扩展\范围限制.cs" />
+    <Compile Include="扩展\集合扩展.cs" />
+    <Compile Include="接口\IID.cs" />
+    <Compile Include="接口\I位置.cs" />
+    <Compile Include="接口\I倒计时.cs" />
+    <Compile Include="接口\I倒计时服务.cs" />
+    <Compile Include="接口\I倒计时窗口.cs" />
+    <Compile Include="接口\I双击.cs" />
+    <Compile Include="接口\I名称.cs" />
+    <Compile Include="接口\I启动.cs" />
+    <Compile Include="接口\I启用.cs" />
+    <Compile Include="接口\I唯一编号.cs" />
+    <Compile Include="接口\I增删存Command.cs" />
+    <Compile Include="接口\I定时任务.cs" />
+    <Compile Include="接口\I定时器.cs" />
+    <Compile Include="接口\I按键处理.cs" />
+    <Compile Include="接口\I智能.cs" />
+    <Compile Include="接口\I泛型树枝.cs" />
+    <Compile Include="接口\I消息.cs" />
+    <Compile Include="接口\I消息服务.cs" />
+    <Compile Include="接口\I状态栏Data.cs" />
+    <Compile Include="接口\I界面配置.cs" />
+    <Compile Include="接口\I确定取消Command.cs" />
+    <Compile Include="接口\I范围.cs" />
+    <Compile Include="接口\I配置服务.cs" />
+    <Compile Include="接口\I键盘事件.cs" />
+    <Compile Include="接口\I顺序.cs" />
+    <Compile Include="设计模式\单例.cs" />
+    <Compile Include="转换.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\倒计时窗口.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\消息窗口.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="代码片段\cd菜单.snippet" />
+    <None Include="代码片段\ctordt数据.snippet" />
+    <None Include="代码片段\ctormk模块.snippet" />
+    <None Include="代码片段\ctoroc列表.snippet" />
+    <None Include="代码片段\ctoryw业务.snippet" />
+    <None Include="代码片段\ctorzc主持.snippet" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

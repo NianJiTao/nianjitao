@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>cd菜单</Title>
+			<Shortcut>cd</Shortcut>
+			<Description>构造菜单的代码段</Description>
+			<Author>Microsoft Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+        <Literal >
+          <ID>n1</ID>
+          <ToolTip>按钮名</ToolTip>
+          <Default>按钮</Default>
+        </Literal>
+        <Literal >
+          <ID>name</ID>
+          <ToolTip>菜单名</ToolTip>
+          <Default>菜单</Default>
+        </Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[private $n1$数据 $name$()
+        {
+            var r = new $n1$数据();
+            r.名称 = "$name$";
+            r.命令 = new DelegateCommand<object>(事件_$name$);
+            return r;
+        }
+
+        private void 事件_$name$(object cs)
+        {
+            发布状态(cs);
+        }
+        ]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

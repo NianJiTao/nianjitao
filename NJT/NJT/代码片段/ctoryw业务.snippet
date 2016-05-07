@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>ctoryw</Title>
+			<Shortcut>ctoryw</Shortcut>
+			<Description>构造业务类的代码段</Description>
+			<Author>Microsoft Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal >
+					<ID>a</ID>
+					<ToolTip>类名</ToolTip>
+					<Default>类</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[        
+using System.Windows.Data;
+using System.ComponentModel;
+
+    public interface 接口 : 接口基类    {    }
+    public class 业务 : 业务基类
+    {
+        public 业务()
+        {
+            按钮列表 = new List<按钮数据>();
+            按钮列表视图 = new ListCollectionView(按钮列表);
+            列表 = new List<int>();
+            列表视图 = new ListCollectionView(列表);
+        }
+        public List<按钮数据> 按钮列表 { get; set; }
+        public ICollectionView 按钮列表视图 { get; set; }
+        public List<int> 列表 { get; set; }
+        public ICollectionView 列表视图 { get; set; }
+        $end$
+    }
+           
+         
+     ]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

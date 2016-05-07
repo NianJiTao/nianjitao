@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>ctorzc</Title>
+			<Shortcut>ctorzc</Shortcut>
+			<Description>构造主持类的代码段</Description>
+			<Author>Microsoft Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal >
+					<ID>classname</ID>
+					<ToolTip>类名</ToolTip>
+				 
+					<Default>类</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[
+        
+using Microsoft.Practices.Prism.Events;
+using Microsoft.Practices.Unity;
+
+        public class  主持:主持基类<接口,业务>
+    {
+        IEventAggregator 新闻社;
+        IUnityContainer 人事部;
+        public 主持(接口 view, IEventAggregator 新闻社cs, IUnityContainer 人事部cs)
+            : base(view)
+        {
+            人事部 = 人事部cs;
+            新闻社 = 新闻社cs;
+            初始化();
+        }
+        
+        public override void 初始化()
+        {
+           $end$
+        }
+    } ]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

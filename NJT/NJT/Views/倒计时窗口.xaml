@@ -1,0 +1,41 @@
+﻿<Window x:Class="NJT.Views.倒计时窗口"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="倒计时"
+        AllowsTransparency="True"
+        Background="#01000000"
+        MouseDoubleClick="Window_MouseDoubleClick"
+        MouseDown="Window_MouseDown"
+        SizeToContent="WidthAndHeight"
+        Topmost="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Margin="10"
+                   FontSize="{DynamicResource 倒计时字体大小}"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource 倒计时颜色}"
+                   Text="{Binding Model.数字}" />
+        <Border Grid.Row="1"
+                Background="{DynamicResource 倒计时颜色}"
+                BorderThickness="1">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="{DynamicResource 倒计时标题字体大小}"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource 倒计时标题颜色}"
+                       Text="{Binding Model.标题}" />
+        </Border>
+    </Grid>
+</Window>
