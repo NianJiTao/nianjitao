@@ -8,16 +8,41 @@ using System.Threading.Tasks;
 
 namespace NJT.Common
 {
-    public class sn
+    public static class 注册
     {
-        public static bool 验证授权码_混合(string 公钥, string 机器码, string 注册码)
+        public static string 本机特征码 { get; private set; }
+
+
+        public static string[] 版权
+        {
+            get
+            {
+                return new[]
+                {
+                   
+                    "设计开发:年纪涛",
+                    "联系电话:13913140677",
+                    "联系QQ:925007694",
+                    "邮箱:nianjitao@outlook.com"
+                };
+            }
+        }
+
+
+        public static string 计算特征码()
+        {
+            本机特征码 = 硬件信息.特征码组合();
+            return 本机特征码;
+        }
+
+        public static bool 验证注册(string 公钥, string 特征码, string 注册码)
         {
             if (string.IsNullOrEmpty(注册码)) return false;
             if (注册码.Length < 15) return false;
             var 结果 = false;
             try
             {
-                var 日期字节 = Base24Encoding.解码(注册码.Substring(0, 14));
+                var 日期字节 = Base24Encoding.解码toByte(注册码.Substring(0, 14));
                 var 日期字串 = Encoding.UTF8.GetString(日期字节);
                 var 天数 = 0;
                 var 转换天数 = int.TryParse(日期字串, out 天数);
@@ -25,9 +50,9 @@ namespace NJT.Common
                 var 日期 = DateTime.MinValue.AddDays(天数);
                 if (DateTime.Today > 日期) return false;
                 var 读取内容 = 公钥;
-                var 签名源 = sn.源数据组合(机器码, 日期);
-                var 哈希 = sn.计算哈希码(签名源);
-                结果 = sn.授权验证(读取内容, 哈希, 注册码.Remove(0, 14));
+                var 签名源 = 源数据组合(特征码, 日期);
+                var 哈希 = 计算哈希码(签名源);
+                结果 = 授权验证(读取内容, 哈希, 注册码.Remove(0, 14));
             }
             catch (Exception)
             {
@@ -42,7 +67,7 @@ namespace NJT.Common
             try
             {
                 if (注册码.Length < 15) return DateTime.MinValue;
-                var 日期字节 = Base24Encoding.解码(注册码.Substring(0, 14));
+                var 日期字节 = Base24Encoding.解码toByte(注册码.Substring(0, 14));
                 var 日期字串 = Encoding.UTF8.GetString(日期字节);
                 var 天数 = 0;
                 var 转换天数 = int.TryParse(日期字串, out 天数);
@@ -61,7 +86,7 @@ namespace NJT.Common
         {
             try
             {
-                var t = new Base24Encoding().GetBytes(授权码);
+                var t = Base24Encoding.解码toByte(授权码);
                 var t2 = Convert.FromBase64String(哈希码);
                 var key = new RSACryptoServiceProvider();
                 key.FromXmlString(公钥);
@@ -115,7 +140,7 @@ namespace NJT.Common
                 //执行签名
                 EncryptedSignatureData = RSAFormatter.CreateSignature(HashbyteSignature);
                 //结果 = Convert.ToBase64String(EncryptedSignatureData); 
-                var 结果 = new Base24Encoding().GetString(EncryptedSignatureData);
+                var 结果 = Base24Encoding.编码toString(EncryptedSignatureData);
                 return 结果;
             }
             catch (Exception ee)
@@ -148,22 +173,6 @@ namespace NJT.Common
             var encryptedString = BitConverter.ToString(btSerialCode);
             encryptedString = encryptedString.Replace("-", "");
             return encryptedString;
-        }
-
-
-        public static string[] 版权
-        {
-            get
-            {
-                return new[]
-                {
-                    "版权所有:苏州众信",
-                    "设计开发:年纪涛",
-                    "联系电话:13913571321",
-                    "联系QQ:925007694",
-                    "邮箱:szkj2005@163.com",
-                };
-            }
         }
     }
 }

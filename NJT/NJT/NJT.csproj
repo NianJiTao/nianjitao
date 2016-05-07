@@ -5,11 +5,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1657AA2F-8B5F-4CD3-AE02-B67FC1BFA2AC}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NJT</RootNamespace>
     <AssemblyName>NJT</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -29,6 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,9 +50,63 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.SharedInterfaces, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.3\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Unity.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Unity.6.1.1\lib\net45\Prism.Unity.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.6.1.0\lib\net45\Prism.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,40 +116,48 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2015.3.1104.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="Common\Base24Encoding.cs" />
+    <Compile Include="Common\SNTP客户端.cs" />
+    <Compile Include="Common\角度计算.cs" />
+    <Compile Include="Common\Enum循环.cs" />
+    <Compile Include="Common\注册.cs" />
     <Compile Include="Common\NLog日志.cs" />
-    <Compile Include="Common\sn.cs" />
     <Compile Include="Common\Telerik主题.cs" />
     <Compile Include="Common\ViewModel基类.cs" />
     <Compile Include="Common\动态学习.cs" />
     <Compile Include="Common\启动基类.cs" />
     <Compile Include="Common\定时器1.cs" />
     <Compile Include="Common\对话框.cs" />
+    <Compile Include="Common\拼音.cs" />
     <Compile Include="Common\新进程.cs" />
     <Compile Include="Common\时间.cs" />
+    <Compile Include="Common\星期泛型.cs" />
     <Compile Include="Common\模块基类.cs" />
     <Compile Include="Common\状态栏Data.cs" />
     <Compile Include="Common\目录.cs" />
     <Compile Include="Common\硬件信息.cs" />
     <Compile Include="Common\缓存.cs" />
+    <Compile Include="Common\逆波兰计算.cs" />
     <Compile Include="Common\配置文件.cs" />
     <Compile Include="Common\钥匙.cs" />
     <Compile Include="Common\键盘_按键处理.cs" />
+    <Compile Include="Events\激活视图Event.cs" />
+    <Compile Include="Events\授权状态更新Event.cs" />
     <Compile Include="Events\保存Event.cs" />
     <Compile Include="Events\弹出倒计时Event.cs" />
     <Compile Include="Events\弹出消息Event.cs" />
     <Compile Include="Events\状态栏更新Event.cs" />
     <Compile Include="Events\退出Event.cs" />
+    <Compile Include="Find\LinqFind_定时任务.cs" />
+    <Compile Include="Model\授权配置.cs" />
     <Compile Include="Model\倒计时视图Model.cs" />
+    <Compile Include="Services\Class1.cs" />
     <Compile Include="Services\倒计时服务1.cs" />
     <Compile Include="Services\消息服务1.cs" />
     <Compile Include="ValueConverter\Bool取反.cs" />
@@ -107,13 +170,25 @@
     <Compile Include="ValueConverter\ToTimespan.cs" />
     <Compile Include="ValueConverter\To文件大小.cs" />
     <Compile Include="ValueConverter\颜色转换.cs" />
+    <Compile Include="ViewModels\主视图ViewModel.cs" />
     <Compile Include="ViewModels\倒计时窗口ViewModel.cs" />
+    <Compile Include="ViewModels\注册视图ViewModel.cs" />
     <Compile Include="ViewModels\消息窗口ViewModel.cs" />
+    <Compile Include="ViewModels\状态栏视图ViewModel.cs" />
+    <Compile Include="Views\主视图.xaml.cs">
+      <DependentUpon>主视图.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\倒计时窗口.xaml.cs">
       <DependentUpon>倒计时窗口.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\注册视图.xaml.cs">
+      <DependentUpon>注册视图.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\消息窗口.xaml.cs">
       <DependentUpon>消息窗口.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\状态栏视图.xaml.cs">
+      <DependentUpon>状态栏视图.xaml</DependentUpon>
     </Compile>
     <Compile Include="小冰.cs" />
     <Compile Include="扩展\Enum扩展.cs" />
@@ -125,6 +200,11 @@
     <Compile Include="扩展\时间扩展.cs" />
     <Compile Include="扩展\范围限制.cs" />
     <Compile Include="扩展\集合扩展.cs" />
+    <Compile Include="接口\I视图.cs" />
+    <Compile Include="接口\I授权配置ViewModel.cs" />
+    <Compile Include="接口\I键盘.cs" />
+    <Compile Include="接口\I授权服务.cs" />
+    <Compile Include="接口\I授权配置.cs" />
     <Compile Include="接口\IID.cs" />
     <Compile Include="接口\I位置.cs" />
     <Compile Include="接口\I倒计时.cs" />
@@ -148,29 +228,35 @@
     <Compile Include="接口\I确定取消Command.cs" />
     <Compile Include="接口\I范围.cs" />
     <Compile Include="接口\I配置服务.cs" />
-    <Compile Include="接口\I键盘事件.cs" />
     <Compile Include="接口\I顺序.cs" />
     <Compile Include="设计模式\单例.cs" />
     <Compile Include="转换.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="项目启动\A启动器.cs" />
+    <Compile Include="项目启动\B启动模块.cs" />
+    <Compile Include="项目启动\C系统初始化.cs" />
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="Views\主视图.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\倒计时窗口.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\注册视图.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\消息窗口.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\状态栏视图.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +277,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -204,10 +291,15 @@
     <None Include="代码片段\ctorzc主持.snippet" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Themes\" />
+    <Resource Include="Images\取消64.png" />
+    <Resource Include="Images\显示.ico" />
+    <Resource Include="Images\确定64.png" />
+    <Resource Include="Images\验证64.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

@@ -6,78 +6,77 @@ using System.Threading.Tasks;
 
 namespace NJT.Common
 {
-    public class Base24Encoding
+
+    public static class Base24Encoding
     {
-        private const string S_base24 = "BCDFGHJKMPQRTVWXY2346789";
+        private const string SBase24 = "BCDFGHJKMPQRTVWXY2346789";
 
-        public string GetString(byte[] bytes)
+        public static string 编码(string sIn)
         {
-            return 编码(bytes);
+            if (sIn == null)
+                return string.Empty;
+            var s2 = System.Text.Encoding.Default.GetBytes(sIn);
+            return Base24Encoding.编码toString(s2);
+        }
+
+        public static string 解码(string sIn)
+        {
+            if (sIn == null)
+                return string.Empty;
+            var s2 = Base24Encoding.解码toByte(sIn);
+            return System.Text.Encoding.Default.GetString(s2);
         }
 
 
-        public byte[] GetBytes(string text)
+        public static string 编码toString(byte[] sIn)
         {
-            byte[] r;
-            try
-            {
-                r = 解码(text);
-            }
-            catch (Exception)
-            {
-                return new byte[0];
-            }
-            return r;
-        }
+            if (sIn == null)
+                return string.Empty;
 
-        public static string 编码(byte[] sIn)
-        {
             var idx = 0;
             var inl = sIn.Length;
-            var sOut = new char[(inl * 2)];
+            var sOut = new char[inl * 2];
 
             for (idx = 0; idx < inl; idx++)
             {
-                byte n, n1, n2;
-                n = sIn[idx];
-                n1 = (byte)(n >> 4);
-                n2 = (byte)(n & 0x0f);
+                var n = sIn[idx];
+                var n1 = (byte)(n >> 4);
+                var n2 = (byte)(n & 0x0f);
 
-                sOut[2 * idx] = S_base24[n1];
-                sOut[2 * idx + 1] = S_base24[23 - n2];
+                sOut[2 * idx] = SBase24[n1];
+                sOut[2 * idx + 1] = SBase24[23 - n2];
             }
 
             return new string(sOut);
         }
 
-        public static byte[] 解码(string sIn)
+        public static byte[] 解码toByte(string sIn)
         {
+            if (sIn == null)
+                return new byte[0];
+
             var idx = 0;
             var inl = sIn.Length;
 
             if (inl % 2 == 1)
-                return null;
+                return new byte[0];
 
             var outl = inl / 2;
-            var sOut = new byte[(outl)];
+            var sOut = new byte[outl];
 
             for (idx = 0; idx < outl; idx++)
             {
-                char c1, c2;
-                byte loc1, loc2;
-                byte n1, n2, n;
+                var c1 = sIn[2 * idx];
+                var c2 = sIn[2 * idx + 1];
 
-                c1 = sIn[2 * idx];
-                c2 = sIn[2 * idx + 1];
+                var loc1 = (byte)SBase24.IndexOf(c1);
+                var loc2 = (byte)SBase24.IndexOf(c2);
 
-                loc1 = (byte)S_base24.IndexOf(c1); // strchr((char*)S_base24, c1);
-                loc2 = (byte)S_base24.IndexOf(c2); // strchr((char*)S_base24, c2);
-
-                n1 = loc1;
-                n2 = loc2;
+                var n1 = loc1;
+                var n2 = loc2;
                 n2 = (byte)(23 - n2);
 
-                n = (byte)((n1 << 4) | n2);
+                var n = (byte)((n1 << 4) | n2);
 
                 sOut[idx] = n;
             }
@@ -85,4 +84,5 @@ namespace NJT.Common
             return sOut;
         }
     }
+   
 }

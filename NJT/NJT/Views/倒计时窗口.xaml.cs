@@ -50,7 +50,7 @@ namespace NJT.Views
         public void 启动(I倒计时 倒计时)
         {
             业务2 = 小冰.人事部.Resolve<倒计时窗口ViewModel>();
-            业务2.Model = 倒计时;
+            业务2.参数 = 倒计时;
             业务2.倒计时结束 += 业务2_倒计时结束;
             业务2.启动();
             this.DataContext = 业务2;

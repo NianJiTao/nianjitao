@@ -25,7 +25,7 @@ namespace NJT.Common
                     var 私钥数据 = provider.ToXmlString(true);
                     var 公钥数据 = provider.ToXmlString(false);
                     全部.AppendLine(string.Format(@"public const string P{0} ={2}{1}{2};", k, 公钥数据, "\""));
-                    全部.AppendLine(string.Format(@"public const string H{0} ={2}{1}{2};", k, sn.计算Md5(公钥数据), "\""));
+                    全部.AppendLine(string.Format(@"public const string H{0} ={2}{1}{2};", k, 注册.计算Md5(公钥数据), "\""));
                     写入文件(私钥文件, 私钥数据);
                     写入文件(公钥文件, 公钥数据);
                 }
@@ -46,7 +46,7 @@ namespace NJT.Common
                 var sw = new StreamWriter(xmlFile);
                 sw.WriteLine(数据);
                 sw.Close();
-                xmlFile.Close();
+                //xmlFile.Close();
             }
             catch (Exception)
             {

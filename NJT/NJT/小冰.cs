@@ -14,14 +14,17 @@ using Microsoft.Practices.Unity;
 using NJT.Events;
 using NJT.接口;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 using NJT.Common;
 using Prism.Logging;
+using Prism.Unity;
 
 namespace NJT
 {
+
     /// <summary>
-    /// 程序常用静态方法类
+    ///     程序常用静态方法类
     /// </summary>
     public static class 小冰
     {
@@ -97,23 +100,45 @@ namespace NJT
         }
 
 
-        public static bool 激活视图(IRegion 区域1, string 视图名称)
+        public static bool 激活视图(IRegion 任务区, string 视图名称)
         {
-            var 视图1 = 区域1.GetView(视图名称);
+            var 视图1 = 任务区.GetView(视图名称);
             if (视图1 == null)
                 return false;
-            区域1.Activate(视图1);
+            任务区.Activate(视图1);
             return true;
         }
 
-        public static bool 导航到视图(IRegion 区域1, string 视图名称)
+        public static void 激活视图2<T>(IRegion 任务区, string 视图名称)
         {
-            var 视图1 = 区域1.GetView(视图名称);
-            if (视图1 == null)
-                return false;
-            区域1.NavigationService.RequestNavigate(视图名称);
-            return true;
+
+            var 新闻部 = 小冰.宣传部;
+            Debug.Assert(任务区 != null, "任务区 != null");
+            Debug.Assert(新闻部 != null, "宣传部 != null");
+
+            if (小冰.激活视图(任务区, 视图名称))
+            {
+                新闻部.GetEvent<激活视图Event>().Publish(new 名称1(视图名称));
+            }
+            else
+            {
+                var b = 小冰.人事部.IsTypeRegistered(typeof(T));
+                if (!b)
+                {
+                    小冰.Log.Log($"{typeof(T).Name}未注册类型.", Category.Exception, Priority.High);
+                    return;
+                }
+                var 视图2 = 小冰.人事部.Resolve<T>();
+                var load = 视图2 as IView;
+                if (load != null)
+                {
+                    ViewModelLocationProvider.AutoWireViewModelChanged(load);
+                }
+                任务区.Add(视图2, 视图名称);
+                任务区.Activate(视图2);
+            }
         }
+
 
         /// <summary>
         ///     检查 必备条件.
@@ -133,15 +158,20 @@ namespace NJT
 
         public static void 弹出消息(string 消息)
         {
-            宣传部.GetEvent<弹出消息Event>().
-                Publish(new 消息1 { 显示文字 = 消息 });
+            弹出消息(new 消息1 { 显示文字 = 消息 });
         }
-
-        //public static void 状态栏更新(string 类别, string 消息)
-        //{
-        //    宣传部.GetEvent<状态栏更新Event>()
-        //        .Publish(new 状态栏Data1(类别, 消息));
-        //}
+        public static void 弹出消息(I消息 消息)
+        {
+            Ui线程.Invoke(() =>
+            {
+                宣传部.GetEvent<弹出消息Event>().Publish(消息);
+            });
+        }
+        public static void 状态栏更新(string 类别, string 消息)
+        {
+            宣传部.GetEvent<状态栏更新Event>()
+                .Publish(new 状态栏Data1(类别, 消息));
+        }
 
         public static void 启动服务<T>(IUnityContainer 人事部cs, ILoggerFacade log) where T : I启动
         {
@@ -167,21 +197,13 @@ namespace NJT
             }
         }
 
-        public static void 加载视图<T>(string 位置) where T : IView
-        {
-            行政部.RegisterViewWithRegion(位置, () =>
-            {
-                var 视图2 = 人事部.Resolve<T>();
-                ViewModelLocationProvider.AutoWireViewModelChanged(视图2);
-                return 视图2;
-            });
-        }
 
-        //public static void 键盘Action(object dataContext, object sender, KeyEventArgs e)
-        //{
-        //    var key = dataContext as I键盘;
-        //    key?.键盘Command?.Execute(new Tuple<object, KeyEventArgs>(sender, e));
-        //}
+
+        public static void 键盘Action(object dataContext, object sender, KeyEventArgs e)
+        {
+            var key = dataContext as I键盘;
+            key?.键盘Command?.Execute(new Tuple<object, KeyEventArgs>(sender, e));
+        }
 
 
         public static T 定位指针<T>(IList<T> 数据列表, int 指针, bool 循环)
@@ -200,15 +222,19 @@ namespace NJT
 
         private static Mutex mutex; //建立字段.程序不退出,字段不回收.
 
-        public static void 多启动限制(string 唯一字符串, Action 执行方法)
+        public static bool 首次启动(string 唯一字符串)
         {
             bool createdNew;
-            mutex = new System.Threading.Mutex(true, 唯一字符串, out createdNew);
-            if (!createdNew)
-            {
-                执行方法();
-                System.Environment.Exit(0);
-            }
+            mutex = new Mutex(true, 唯一字符串, out createdNew);
+            return createdNew;
+
+        }
+
+
+        public static void 异步启动(Action 方法)
+        {
+            Task.Factory.StartNew(方法);
         }
     }
+     
 }

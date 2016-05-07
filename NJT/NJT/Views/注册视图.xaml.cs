@@ -12,15 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NJT.接口;
 
-namespace NJT
+namespace NJT.Views
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// 注册视图.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class 注册视图 : UserControl, I授权视图
     {
-        public MainWindow()
+        public 注册视图()
         {
             InitializeComponent();
         }

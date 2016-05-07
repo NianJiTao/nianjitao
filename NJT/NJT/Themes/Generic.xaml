@@ -7,8 +7,28 @@
     <system:Double x:Key="消息字体大小">64</system:Double>
     <system:Int32 x:Key="消息显示毫秒">500</system:Int32>
 
+    <system:String x:Key="标题">主窗口</system:String>
+    <Brush x:Key="警告颜色">Red</Brush>
+
+    <Brush x:Key="倒计时颜色">Red</Brush>
+    <system:Double x:Key="倒计时字体大小">256</system:Double>
+    <system:Int32 x:Key="倒计时显示秒">30</system:Int32>
+    <Brush x:Key="倒计时标题颜色">White</Brush>
+    <system:Double x:Key="倒计时标题字体大小">24</system:Double>
+
+    <system:String x:Key="Telerik.Windows.Controls.Key">商业授权</system:String>
+
+    <Style TargetType="{x:Type StatusBarItem}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="1,0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
 
 
-
+    <Style x:Key="任务栏标签Style" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="2,0" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+    </Style>
 
 </ResourceDictionary>

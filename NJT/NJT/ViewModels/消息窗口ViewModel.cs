@@ -34,7 +34,7 @@ namespace NJT.ViewModels
 
         public void 关闭()
         {
-            if (timer != null) timer.Stop();
+            timer?.Stop();
             if (窗口 != null)
             {
                 if (!Is关闭)

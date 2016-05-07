@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NJT.Common
 {
@@ -69,7 +70,7 @@ namespace NJT.Common
         }
     }
 
-
+    [Serializable]
     public class 有限对值<T, T2> : Dictionary<T, T2>
     {
         private int _长度 = 20;

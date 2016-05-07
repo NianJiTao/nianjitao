@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace NJT.扩展
 {
-    /// <summary>
-    /// Class 扩展方法.
-    /// </summary>
     public static partial class 扩展方法
     {
 
@@ -100,26 +98,49 @@ namespace NJT.扩展
         /// <returns>System.String.</returns>
         public static string To文件大小(this long 字节)
         {
-            return 文件大小(字节);
+            //return 文件大小2(字节, 单位);
+            return 文件大小3(字节);
         }
 
-        public static string 文件大小(long 字节)
+        public static string[] 单位 = new[] { "字节", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+
+
+        public static string 文件大小2(double 字节, string[] 单位2)
         {
-            float k = 字节 / 1024f;
-            var 单位 = " KB";
-            if (k < 1024)
-                return k.ToString("f2") + 单位;
-            k /= 1024;
-            单位 = " MB";
-            if (k < 1024)
-                return k.ToString("f2") + 单位;
-            k /= 1024;
-            单位 = " GB";
-            if (k < 1024)
-                return k.ToString("f2") + 单位;
-            k /= 1024;
-            单位 = " TB";
-            return k.ToString("f2") + 单位;
+            Debug.Assert(单位2.Length > 0, "单位不能为空");
+            var i = 0;
+            while (true)
+            {
+                if (i >= 单位2.Length)
+                {
+                    return 字节.ToString("f2") + " " + 单位2.Last();
+                }
+                if (字节 < 1024)
+                {
+                    return 字节.ToString("f2") + " " + 单位2[i];
+                }
+                字节 /= 1024;
+                i++;
+            }
+        }
+
+
+
+        public static string 文件大小3(long value)
+        {
+            if (value == 0) { return "0.0 字节"; }
+
+            var mag = (int)Math.Log(value, 1024);
+            var adjustedSize = (decimal)value / (1L << (mag * 10));
+
+            return $"{adjustedSize:n1} {单位[mag]}";
+        }
+
+
+
+        public static string To百分比(double 数值)
+        {
+            return 数值.ToString("p");
         }
     }
 }

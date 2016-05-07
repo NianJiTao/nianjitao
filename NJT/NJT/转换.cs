@@ -70,5 +70,30 @@ namespace NJT
         //    }
         //}
 
+
+
+        public static string ToHexString(byte[] bytes) // 0xae00cf => "AE00CF "
+        {
+            var hexString = string.Empty;
+            if (bytes != null)
+            {
+                var strB = new StringBuilder();
+                for (var i = 0; i < bytes.Length; i++)
+                {
+                    strB.Append(bytes[i].ToString("X2"));
+                }
+                hexString = strB.ToString();
+            }
+            return hexString;
+        }
+
+        public static byte[] HexToByte(string hexString)
+        {
+            var returnBytes = new byte[hexString.Length / 2];
+            for (var i = 0; i < returnBytes.Length; i++)
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            return returnBytes;
+        }
+
     }
 }
