@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
  
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 using Microsoft.Practices.Unity;
 using NJT.ViewModels;
 using NJT.接口;
@@ -23,7 +23,7 @@ namespace NJT.Views
     /// <summary>
     /// 倒计时窗口.xaml 的交互逻辑
     /// </summary>
-    public partial class 倒计时窗口 : Window, IView, I倒计时窗口
+    public partial class 倒计时窗口 : Window, I倒计时窗口
     {
 
         public 倒计时窗口()

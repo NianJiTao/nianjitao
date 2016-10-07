@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace NJT.接口
 {

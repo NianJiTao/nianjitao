@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace NJT.扩展
+namespace NJT.Ext
 {
     public static partial class 扩展方法
     {
@@ -22,42 +22,7 @@ namespace NJT.扩展
             12345.ToString("p"); //生成 1,234,500.00% 
         }
 
-
-        //
-        // 摘要: 
-        //     返回不具有扩展名的指定路径字符串的文件名。
-        //
-        // 参数: 
-        //   cs:
-        //     文件的路径。
-        //
-        // 返回结果: 
-        //     System.IO.Path.GetFileName(System.String) 返回的字符串，但不包括最后的句点 (.) 以及之后的所有字符。
-        //
-        // 异常: 
-        //   System.ArgumentException:
-        //     cs 包含 System.IO.Path.GetInvalidPathChars() 中已定义的一个或多个无效字符。
-        //     返回原数据.
-        public static string To文件名(this string cs)
-        {
-            string r;
-            try
-            {
-                r = System.IO.Path.GetFileNameWithoutExtension(cs);
-            }
-            catch (Exception)
-            {
-                r = cs;
-            }
-            return r;
-        }
-
-
-        public static string To串联字符串(this IEnumerable<string> lt)
-        {
-            return string.Join("", lt.ToArray());
-        }
-
+         
 
         /// <summary>
         /// "数值123" 可分离为 item1=数值, item2=123, item3=3

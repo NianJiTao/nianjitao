@@ -116,31 +116,34 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Base24Encoding.cs" />
-    <Compile Include="Common\SNTP客户端.cs" />
-    <Compile Include="Common\角度计算.cs" />
-    <Compile Include="Common\Enum循环.cs" />
-    <Compile Include="Common\注册.cs" />
-    <Compile Include="Common\NLog日志.cs" />
-    <Compile Include="Common\Telerik主题.cs" />
-    <Compile Include="Common\ViewModel基类.cs" />
-    <Compile Include="Common\动态学习.cs" />
-    <Compile Include="Common\启动基类.cs" />
-    <Compile Include="Common\定时器1.cs" />
-    <Compile Include="Common\对话框.cs" />
-    <Compile Include="Common\拼音.cs" />
-    <Compile Include="Common\新进程.cs" />
-    <Compile Include="Common\时间.cs" />
-    <Compile Include="Common\星期泛型.cs" />
-    <Compile Include="Common\模块基类.cs" />
-    <Compile Include="Common\状态栏Data.cs" />
-    <Compile Include="Common\目录.cs" />
-    <Compile Include="Common\硬件信息.cs" />
-    <Compile Include="Common\缓存.cs" />
-    <Compile Include="Common\逆波兰计算.cs" />
-    <Compile Include="Common\配置文件.cs" />
-    <Compile Include="Common\钥匙.cs" />
-    <Compile Include="Common\键盘_按键处理.cs" />
+    <Compile Include="Core\Base24Encoding.cs" />
+    <Compile Include="Core\SNTP客户端.cs" />
+    <Compile Include="Core\WeekConvert.cs" />
+    <Compile Include="Core\WeekInfo.cs" />
+    <Compile Include="Core\WeekSel.cs" />
+    <Compile Include="Core\角度计算.cs" />
+    <Compile Include="Core\Enum循环.cs" />
+    <Compile Include="Core\注册.cs" />
+    <Compile Include="Core\NLog日志.cs" />
+    <Compile Include="Core\Telerik主题.cs" />
+    <Compile Include="Core\ViewModel基类.cs" />
+    <Compile Include="Core\动态学习.cs" />
+    <Compile Include="Core\启动基类.cs" />
+    <Compile Include="Core\定时器1.cs" />
+    <Compile Include="Core\对话框.cs" />
+    <Compile Include="Core\拼音.cs" />
+    <Compile Include="Core\新进程.cs" />
+    <Compile Include="Core\时间.cs" />
+    <Compile Include="Core\星期泛型.cs" />
+    <Compile Include="Core\模块基类.cs" />
+    <Compile Include="Core\状态栏Data.cs" />
+    <Compile Include="Core\目录.cs" />
+    <Compile Include="Core\硬件信息.cs" />
+    <Compile Include="Core\缓存.cs" />
+    <Compile Include="Core\逆波兰计算.cs" />
+    <Compile Include="Core\配置文件.cs" />
+    <Compile Include="Core\钥匙.cs" />
+    <Compile Include="Core\键盘_按键处理.cs" />
     <Compile Include="Events\激活视图Event.cs" />
     <Compile Include="Events\授权状态更新Event.cs" />
     <Compile Include="Events\保存Event.cs" />
@@ -185,12 +188,11 @@
       <DependentUpon>状态栏视图.xaml</DependentUpon>
     </Compile>
     <Compile Include="小冰.cs" />
+    <Compile Include="扩展\计算耗时.cs" />
     <Compile Include="扩展\Enum扩展.cs" />
     <Compile Include="扩展\克隆.cs" />
-    <Compile Include="扩展\加载ViewModel.cs" />
     <Compile Include="扩展\字串转换.cs" />
     <Compile Include="扩展\序列为空.cs" />
-    <Compile Include="扩展\快捷键提示.cs" />
     <Compile Include="扩展\时间扩展.cs" />
     <Compile Include="扩展\范围限制.cs" />
     <Compile Include="扩展\集合扩展.cs" />
@@ -224,7 +226,7 @@
     <Compile Include="接口\I配置服务.cs" />
     <Compile Include="接口\I顺序.cs" />
     <Compile Include="热键.cs" />
-    <Compile Include="设计模式\单例.cs" />
+    <Compile Include="扩展\单例.cs" />
     <Compile Include="转换.cs" />
     <Compile Include="项目启动\A启动器.cs" />
     <Compile Include="项目启动\B启动模块.cs" />
@@ -308,6 +310,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="设计模式\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

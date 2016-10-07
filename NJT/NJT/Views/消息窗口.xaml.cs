@@ -1,12 +1,12 @@
 ﻿using System.Windows;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace NJT.Views
 {
     /// <summary>
     /// 消息窗口.xaml 的交互逻辑
     /// </summary>
-    public partial class 消息窗口 : IView
+    public partial class 消息窗口
     {
         public 消息窗口()
         {

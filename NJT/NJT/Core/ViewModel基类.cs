@@ -1,6 +1,6 @@
 ﻿using NJT;
 using Prism.Logging;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 using Prism.Events;
 using Prism.Regions;
 using Microsoft.Practices.Unity;

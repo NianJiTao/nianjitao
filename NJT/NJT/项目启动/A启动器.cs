@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using NJT.Common;
@@ -31,7 +31,7 @@ namespace NJT.项目启动
         {
             base.InitializeShell();
             Application.Current.MainWindow = (Window)Shell;
-            (Shell as IView)?.LoadViewModel();
+            //(Shell as IView)?.LoadViewModel();
             Application.Current.MainWindow.Show();
         }
 

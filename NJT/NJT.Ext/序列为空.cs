@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace NJT.扩展
+namespace NJT.Ext
 {
 
 

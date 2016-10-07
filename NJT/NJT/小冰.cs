@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 using Prism.Events;
 using Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
@@ -129,11 +129,11 @@ namespace NJT
                     return;
                 }
                 var 视图2 = 小冰.人事部.Resolve<T>();
-                var load = 视图2 as IView;
-                if (load != null)
-                {
-                    ViewModelLocationProvider.AutoWireViewModelChanged(load);
-                }
+                //var load = 视图2 as IView;
+                //if (load != null)
+                //{
+                //    ViewModelLocationProvider.AutoWireViewModelChanged(load);
+                //}
                 任务区.Add(视图2, 视图名称);
                 任务区.Activate(视图2);
             }
