@@ -1,0 +1,90 @@
+﻿<Page x:Class="年纪涛.简介.Views.汉堡导航Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:年纪涛.简介.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:mvvm="using:Prism.Windows.Mvvm"
+      mvvm:ViewModelLocator.AutoWireViewModel="True"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="HamburgerMenuItem" x:DataType="controls:HamburgerMenuGlyphItem">
+            <Grid Width="150" Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <SymbolIcon Grid.Column="0"
+                            Margin="10"
+                            VerticalAlignment="Center"
+                            Symbol="{x:Bind Glyph}" />
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Text="{x:Bind Label}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HamburgerMenuImageItem" x:DataType="controls:HamburgerMenuGlyphItem">
+            <Grid Width="150" Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Margin="10"
+                       Source="{Binding Glyph}"
+                       Stretch="UniformToFill" />
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Text="{x:Bind Label}" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <controls:HamburgerMenu x:Name="HamburgerMenu"
+                                DisplayMode="CompactOverlay"
+                                HamburgerWidth="48"
+                                IsPaneOpen="{x:Bind VM.Data.Is左侧打开, Mode=TwoWay}"
+                                ItemClick="{x:Bind VM.Data.HamburgerMenu_OnItemClick}"
+                                ItemTemplate="{StaticResource HamburgerMenuItem}"
+                                OpenPaneLength="150"
+                                OptionsItemClick="{x:Bind VM.Data.HamburgerMenu_OnOptionsItemClick}"
+                                OptionsItemTemplate="{StaticResource HamburgerMenuItem}"
+                                PaneBackground="{ThemeResource ListBoxBackgroundThemeBrush}">
+            <controls:HamburgerMenu.ItemsSource>
+                <controls:HamburgerMenuItemCollection>
+                    <controls:HamburgerMenuGlyphItem Glyph="Home"
+                                                     Label="简介"
+                                                     Tag="个人信息"
+                                                     TargetPageType="local:个人信息Page"
+                                                     ToolTipService.ToolTip="简介" />
+                    <controls:HamburgerMenuGlyphItem Glyph="List"
+                                                     Label="技能"
+                                                     Tag="技能"
+                                                     TargetPageType="local:技能Page"
+                                                     ToolTipService.ToolTip="技能" />
+                    <controls:HamburgerMenuGlyphItem Glyph="Favorite"
+                                                     Label="爱好"
+                                                     Tag="爱好"
+                                                     TargetPageType="local:爱好Page"
+                                                     ToolTipService.ToolTip="爱好" />
+                    <controls:HamburgerMenuGlyphItem Glyph="ContactInfo"
+                                                     Label="联系"
+                                                     Tag="联系"
+                                                     TargetPageType="local:联系Page"
+                                                     ToolTipService.ToolTip="联系" />
+                </controls:HamburgerMenuItemCollection>
+            </controls:HamburgerMenu.ItemsSource>
+            <controls:HamburgerMenu.OptionsItemsSource>
+                <controls:HamburgerMenuItemCollection>
+                    <controls:HamburgerMenuGlyphItem Glyph="Setting"
+                                                     Label="设置"
+                                                     Tag="设置"
+                                                     TargetPageType="local:设置Page"
+                                                     ToolTipService.ToolTip="设置" />
+                </controls:HamburgerMenuItemCollection>
+            </controls:HamburgerMenu.OptionsItemsSource>
+        </controls:HamburgerMenu>
+    </Grid>
+</Page>

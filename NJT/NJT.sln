@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJTTests", "NJTTests\NJTTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJT.Ext", "NJT.Ext\NJT.Ext.csproj", "{748E3F91-1106-49A4-B670-5E2E8D694C40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "年纪涛.简介", "年纪涛.简介\年纪涛.简介.csproj", "{170786C1-8FDB-4192-9B48-067930BD69CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,26 @@ Global
 		{748E3F91-1106-49A4-B670-5E2E8D694C40}.Release|x64.Build.0 = Release|Any CPU
 		{748E3F91-1106-49A4-B670-5E2E8D694C40}.Release|x86.ActiveCfg = Release|Any CPU
 		{748E3F91-1106-49A4-B670-5E2E8D694C40}.Release|x86.Build.0 = Release|Any CPU
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|ARM.ActiveCfg = Debug|ARM
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|ARM.Build.0 = Debug|ARM
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|ARM.Deploy.0 = Debug|ARM
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|x64.ActiveCfg = Debug|x64
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|x64.Build.0 = Debug|x64
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|x64.Deploy.0 = Debug|x64
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|x86.ActiveCfg = Debug|x86
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|x86.Build.0 = Debug|x86
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Debug|x86.Deploy.0 = Debug|x86
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|Any CPU.ActiveCfg = Release|x86
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|ARM.ActiveCfg = Release|ARM
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|ARM.Build.0 = Release|ARM
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|ARM.Deploy.0 = Release|ARM
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|x64.ActiveCfg = Release|x64
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|x64.Build.0 = Release|x64
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|x64.Deploy.0 = Release|x64
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|x86.ActiveCfg = Release|x86
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|x86.Build.0 = Release|x86
+		{170786C1-8FDB-4192-9B48-067930BD69CE}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
