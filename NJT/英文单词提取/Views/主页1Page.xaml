@@ -1,0 +1,46 @@
+﻿<Page x:Class="英文单词提取.Views.主页1Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:英文单词提取.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:mvvm="using:Prism.Windows.Mvvm"
+      mvvm:ViewModelLocator.AutoWireViewModel="True"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Button Width="80"
+                    Height="50"
+                    Command="{x:Bind VM.Data.提取Command}"
+                    CommandParameter="{x:Bind VM.Data.原文, Mode=TwoWay}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="提取单词" />
+                </StackPanel>
+            </Button>
+
+            <CheckBox VerticalAlignment="Center" Margin="10,5"
+                      Content="排除熟词本"
+                      IsChecked="{x:Bind VM.Data.排除熟词本, Mode=TwoWay}" />
+        </StackPanel>
+        <TextBox Name="TextBox"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="5"
+                 Text="{x:Bind VM.Data.原文, Mode=TwoWay}"
+                 TextWrapping="Wrap" />
+    </Grid>
+
+</Page>

@@ -1,0 +1,75 @@
+﻿<Page x:Class="英文单词提取.Views.提取结果1Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:英文单词提取"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:mvvm="using:Prism.Windows.Mvvm"
+      mvvm:ViewModelLocator.AutoWireViewModel="True"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+
+
+            <Button Width="80"
+                    Height="50"
+                    Margin="5,2"
+                    Command="{x:Bind VM.Data.字母排序Command}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="字母排序" />
+                </StackPanel>
+            </Button>
+            <Button Width="80"
+                    Height="50"
+                    Margin="5,2"
+                    Command="{x:Bind VM.Data.长度排序Command}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="长度排序" />
+                </StackPanel>
+            </Button>
+            <Button Width="80"
+                    Height="50"
+                    Margin="5,2"
+                    Command="{x:Bind VM.Data.频率排序Command}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="频率排序" />
+                </StackPanel>
+            </Button>
+
+            <CheckBox VerticalAlignment="Center"
+                      Content="显示长度"
+                      IsChecked="{x:Bind VM.Data.显示长度, Mode=TwoWay}" />
+            <CheckBox VerticalAlignment="Center"
+                      Content="显示频率"
+                      IsChecked="{x:Bind VM.Data.显示频率, Mode=TwoWay}" />
+
+        </StackPanel>
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   VerticalAlignment="Bottom"
+                   Text="提取后的单词:" />
+
+        <TextBox Name="TextBox"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Margin="5"
+                 Text="{x:Bind VM.Data.提取结果, Mode=OneWay}"
+                 TextWrapping="Wrap" />
+    </Grid>
+
+</Page>

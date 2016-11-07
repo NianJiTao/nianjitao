@@ -1,0 +1,16 @@
+﻿<windows:PrismUnityApplication x:Class="英文单词提取.App"
+                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                               xmlns:local="using:英文单词提取"
+                               xmlns:windows="using:Prism.Unity.Windows"
+                               RequestedTheme="Light">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</windows:PrismUnityApplication>
+
