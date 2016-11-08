@@ -36,6 +36,6 @@ east, west, home is best. 金窝银窝，不如自己的草窝。 ";
          
 
         public static 配置 配置1 { get; set; } = new 配置();
-
+        public static string 公式 { get; set; } = "[a-zA-Z]{2,}";
     }
 }

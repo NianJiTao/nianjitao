@@ -34,7 +34,7 @@ namespace 英文单词提取.ViewModels
         private void 刷新Action(object obj)
         {
 
-            var find = Find.分析单词(熟词本);
+            var find = Find.分析单词(熟词本,运行时.公式);
 
             运行时.单用户.熟词本.Clear();
             foreach (var item in find)

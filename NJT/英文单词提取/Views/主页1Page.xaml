@@ -1,12 +1,17 @@
 ﻿<Page x:Class="英文单词提取.Views.主页1Page"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ValueConverter="using:英文单词提取.ValueConverter"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:英文单词提取.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:mvvm="using:Prism.Windows.Mvvm"
       mvvm:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d">
+
+    <Page.Resources>
+        <ValueConverter:BoolTo取反Converter x:Key="BoolTo取反Converter" />
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
@@ -31,11 +36,21 @@
                 </StackPanel>
             </Button>
 
-            <CheckBox VerticalAlignment="Center" Margin="10,5"
+            <CheckBox Margin="10,5"
+                      VerticalAlignment="Center"
                       Content="排除熟词本"
                       IsChecked="{x:Bind VM.Data.排除熟词本, Mode=TwoWay}" />
+
+
+            <CheckBox x:Name="CheckBox自定义"
+                      Margin="10,5"
+                      VerticalAlignment="Center"
+                      Content="自定义公式"
+                      IsChecked="False" />
+
+            <TextBox IsReadOnly="{Binding IsChecked, Converter={StaticResource BoolTo取反Converter}, ElementName=CheckBox自定义}" Text="{x:Bind VM.Data.公式, Mode=TwoWay}" Width="150" VerticalAlignment="Center"/>
         </StackPanel>
-        <TextBox Name="TextBox"
+        <TextBox x:Name="TextBox"
                  Grid.Row="2"
                  Grid.Column="1"
                  Margin="5"

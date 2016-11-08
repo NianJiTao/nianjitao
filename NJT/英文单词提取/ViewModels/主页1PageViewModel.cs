@@ -21,6 +21,7 @@ namespace 英文单词提取.ViewModels
 
         private bool? _排除熟词本 = true;
         private string _原文;
+        private string _公式 = "[a-zA-Z]{2,}";
         //private readonly IEventAggregator _eventAggregator;
 
 
@@ -37,13 +38,21 @@ namespace 英文单词提取.ViewModels
             set { SetProperty(ref _排除熟词本, value); }
         }
 
-
+ 
         public string 原文
         {
             get { return _原文; }
             set { SetProperty(ref _原文, value); }
         }
-
+        public string 公式
+        {
+            get { return _公式; }
+            set
+            {
+                SetProperty(ref _公式, value);
+                运行时.公式 = 公式;
+            }
+        }
 
         public ICommand 提取Command { get; set; }
 
@@ -69,7 +78,7 @@ namespace 英文单词提取.ViewModels
             运行时.原文 = 原文;
             var ss = 运行时.单用户.熟词本;
 
-            var find = Find.分析单词(原文);
+            var find = Find.分析单词(原文, 公式);
 
             var find3 = from x in find
                 where !ss.Contains(x.名称)
