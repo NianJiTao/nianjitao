@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NJT.Common
+﻿namespace NJT.Core
 {
-
     public static class Base24Encoding
     {
         private const string SBase24 = "BCDFGHJKMPQRTVWXY2346789";
@@ -84,5 +77,4 @@ namespace NJT.Common
             return sOut;
         }
     }
-   
 }

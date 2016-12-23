@@ -107,5 +107,27 @@ namespace NJT.Ext
             }
         }
 
+
+        public static IList<T> GetList<T>(this Array obj)
+        {
+            if (obj == null)
+                return new List<T>();
+            var r2 = obj.Cast<T>().ToList();
+            return r2;
+        }
+        public static void to定长<T>(this List<T> r, int 长度)
+        {
+            if (r == null || r.Count == 0 || 长度 <  0)
+            {
+                return;
+            }
+            var 最大值 = r.Count;
+            if (最大值> 长度)
+            {
+                r.RemoveRange(长度,最大值-长度);
+            }
+          
+        }
+
     }
 }

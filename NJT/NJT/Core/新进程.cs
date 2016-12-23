@@ -44,7 +44,6 @@ namespace NJT.Common
             进程1.Start();
         }
 
-
         public static void cmd(string dos命令)
         {
             var process = new Process

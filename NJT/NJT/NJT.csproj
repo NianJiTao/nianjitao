@@ -116,7 +116,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Base24Encoding.cs" />
     <Compile Include="Core\SNTP客户端.cs" />
     <Compile Include="Core\WeekConvert.cs" />
     <Compile Include="Core\WeekInfo.cs" />

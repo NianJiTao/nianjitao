@@ -10,6 +10,8 @@ namespace NJT.Ext
 
         public static bool Is空<T>(this IEnumerable<T> list)
         {
+            if (list == null)
+                return true;
             return !list.Any();
         }
 

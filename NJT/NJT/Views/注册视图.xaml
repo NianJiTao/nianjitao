@@ -7,7 +7,6 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              xmlns:viewModels="clr-namespace:NJT.ViewModels"
-             d:DataContext="{d:DesignInstance Type={x:Type viewModels:注册视图ViewModel}}"
              d:DesignHeight="500"
              d:DesignWidth="800"
              FontSize="21.333"

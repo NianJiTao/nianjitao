@@ -10,6 +10,7 @@ namespace NJT.Ext
         {
             return dt.ToString("HH:mm:ss");
         }
+
         public static string To星期(this DateTime 时间)
         {
             return 时间.ToString("dddd");
@@ -21,5 +22,49 @@ namespace NJT.Ext
         }
 
 
+        /// <summary>
+        /// 整数秒转换到时间.
+        /// </summary>
+        /// <param name="ss">The string.</param>
+        /// <returns>TimeSpan.</returns>
+        public static TimeSpan ToTimeSpan(this int ss)
+        {
+            return new TimeSpan(0, 0, 0, ss);
+        }
+        /// <summary>
+        /// yyyyMMdd 格式可转换.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>TimeSpan.</returns>
+        public static DateTime ToDateTime14(this string str)
+        {
+            if (str.Length != 14)
+            {
+                return DateTime.MinValue;
+            }
+            var y = str.Substring(0, 4).ToInt();
+            var M = str.Substring(4, 2).ToInt();
+            var d = str.Substring(6, 2).ToInt();
+            var h = str.Substring(8, 2).ToInt();
+            var m = str.Substring(10, 2).ToInt();
+            var s = str.Substring(12, 2).ToInt();
+            return new DateTime(y, M, d, h, m, s);
+        }
+        /// <summary>
+        /// 对象转换成时间. UTC时间,本地时间需加.ToLocalTime()
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// 
+        public static DateTime GetDateTime(this object obj)
+        {
+            if (obj == null)
+                return DateTime.MinValue;
+            DateTime dt;
+            var b = DateTime.TryParse(obj.ToString(), out dt);
+            return b ? dt : DateTime.MinValue;
+        }
+
+     
     }
 }

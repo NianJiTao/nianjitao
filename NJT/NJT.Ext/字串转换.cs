@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 
 namespace NJT.Ext
 {
@@ -22,7 +23,7 @@ namespace NJT.Ext
             12345.ToString("p"); //生成 1,234,500.00% 
         }
 
-         
+
 
         /// <summary>
         /// "数值123" 可分离为 item1=数值, item2=123, item3=3
@@ -63,10 +64,10 @@ namespace NJT.Ext
         /// <returns>System.String.</returns>
         public static string To文件大小(this long 字节)
         {
-            var 对数 = (字节 <= 0) ? 0: (int)Math.Log(字节, 1024);
+            var 对数 = (字节 <= 0) ? 0 : (int)Math.Log(字节, 1024);
             if (对数 > 9)
             {
-                return  "超大";
+                return "超大";
             }
             var 大小 = (decimal)字节 / (1L << (对数 * 10));
             return $"{大小:n1} {单位[对数]}";
@@ -77,6 +78,67 @@ namespace NJT.Ext
         public static string To百分比(double 数值)
         {
             return 数值.ToString("p");
+        }
+
+
+        /// <summary>
+        /// 字符串转int32,错误转为0;
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static int ToInt(this object str)
+        {
+            if (str == null)
+                return 0;
+            var n = 0;
+            var m = int.TryParse(str.ToString().Trim(), out n);
+            return m ? n : 0;
+        }
+
+
+
+        public static string To目录合并(this string 目录1, string 目录2)
+        {
+            return System.IO.Path.Combine(目录1, 目录2);
+        }
+
+        public static string Get首字母(this string 汉字串)
+        {
+            return 拼音.首字母(汉字串); 
+        }
+
+        /// <summary>
+        /// // 0xae00cf => "AE00CF "
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static string ToHexString(this byte[] bytes) 
+        {
+            var hexString = string.Empty;
+            if (bytes != null)
+            {
+                var strB = new StringBuilder();
+                for (var i = 0; i < bytes.Length; i++)
+                {
+                    strB.Append(bytes[i].ToString("X2"));
+                }
+                hexString = strB.ToString();
+            }
+            return hexString;
+        }
+
+        public static byte[] HexToByte(this string hexString)
+        {
+            var returnBytes = new byte[hexString.Length / 2];
+            for (var i = 0; i < returnBytes.Length; i++)
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            return returnBytes;
+        }
+
+
+        public static string ToJoin(this IEnumerable<string> lt ,string 分隔符="")
+        {
+            return string.Join(分隔符, lt );
         }
     }
 }
