@@ -33,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\NJT.Core.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -40,6 +41,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,6 +55,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="EData.cs" />
+    <Compile Include="DbSet.cs" />
+    <Compile Include="I树枝.cs" />
+    <Compile Include="注册.cs" />
+    <Compile Include="钥匙.cs" />
+    <Compile Include="I硬件信息.cs" />
+    <Compile Include="合计值范围.cs" />
+    <Compile Include="单数值范围.cs" />
+    <Compile Include="RunFunc.cs" />
+    <Compile Include="I授权配置.cs" />
+    <Compile Include="I标识Data.cs" />
     <Compile Include="SqlServer.cs" />
     <Compile Include="常量.cs" />
     <Compile Include="I缓存表.cs" />
@@ -83,7 +96,6 @@
     </Compile>
     <Compile Include="TimeHelper.cs" />
     <Compile Include="位置.cs" />
-    <Compile Include="序列化 - 复制.cs" />
     <Compile Include="运行结果.cs" />
     <Compile Include="序列化.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

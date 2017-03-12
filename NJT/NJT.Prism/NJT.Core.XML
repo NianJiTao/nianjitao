@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NJT.Core</name>
+    </assembly>
+    <members>
+        <member name="P:NJT.Core.I标识Data`1.标签">
+            <summary>
+            显示的标签
+            </summary>
+            <value>The 标签.</value>
+        </member>
+        <member name="P:NJT.Core.I标识Data`1.显示">
+            <summary>
+            是否显示
+            </summary>
+            <value><c>true</c> if 显示; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:NJT.Core.I身份证">
+            <summary>
+                Interface 包含有唯一Guid的接口
+            </summary>
+        </member>
+        <member name="T:NJT.Core.定长哈希`1">
+            <summary>
+                Class 哈希.有限长度
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:NJT.Core.I智能.学习">
+            <summary>
+                学习:技能名称 和 技能
+                技能可以是属性,方法,动态对象.
+            </summary>
+            <value>The 学习.</value>
+        </member>
+        <member name="P:NJT.Core.I智能.使用">
+            <summary>
+                根据名称查找技能,找不到返回null
+            </summary>
+            <value>The 使用.</value>
+        </member>
+        <member name="T:NJT.Core.智能1">
+            <summary>
+                Class 智能. 可以扩展类的功能.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NJT.Core.I日志.Info(System.String)">
+            <summary>
+                正常记录信息.
+            </summary>
+            <param name="信息"></param>
+        </member>
+        <member name="M:NJT.Core.I日志.Debug(System.String)">
+            <summary>
+                记录调试需要的信息.
+            </summary>
+            <param name="信息"></param>
+        </member>
+        <member name="M:NJT.Core.I日志.Error(System.String)">
+            <summary>
+                记录出错信息
+            </summary>
+            <param name="信息"></param>
+        </member>
+        <member name="M:NJT.Core.I配置服务`1.读取">
+            <summary>
+                读取 默认的系统配置.
+                路径为 程序目录下 "配置.xml"
+                为全局单例.
+            </summary>
+            <returns>T.</returns>
+        </member>
+        <member name="M:NJT.Core.I配置服务`1.写入">
+            <summary>
+                写入 默认的系统配置.
+                路径为 程序目录下 "配置.xml"
+            </summary>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:NJT.Core.Properties.Resources">
+            <summary>
+              强类型资源类，用于查找本地化字符串等。
+            </summary>
+        </member>
+        <member name="P:NJT.Core.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:NJT.Core.Properties.Resources.Culture">
+            <summary>
+              覆盖当前线程的 CurrentUICulture 属性
+              使用此强类型的资源类的资源查找。
+            </summary>
+        </member>
+        <member name="F:NJT.Core.位置.上">
+            上
+            左  中  右
+            下
+        </member>
+        <member name="F:NJT.Core.位置.九宫1">
+            1 2 3
+            4 5 6
+            7 8 9
+        </member>
+        <member name="T:NJT.Core.运行结果">
+            <summary>
+                表示方法运行的结果.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果.IsTrue">
+            <summary>
+                执行是否成功.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果.ErrorMess">
+            <summary>
+                执行错误时的信息.
+            </summary>
+        </member>
+        <member name="T:NJT.Core.运行结果`1">
+            <summary>
+                表示方法运行的结果.T为携带数据
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果`1.IsTrue">
+            <summary>
+                执行是否成功.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果`1.ErrorMess">
+            <summary>
+                执行错误时的信息.
+            </summary>
+        </member>
+        <member name="M:NJT.Core.序列化.写入``1(``0,System.String)">
+            <summary>
+                在当前程序目录下写入名为"配置"的XML文件
+            </summary>
+        </member>
+        <member name="M:NJT.Core.序列化.读出``1(System.String)">
+            <summary>
+                读出当前目录下名为"配置"的文件
+            </summary>
+        </member>
+        <member name="M:NJT.Core.序列化.To二进制(System.Object)">
+            <summary>
+                序列化
+            </summary>
+            <param name="data">要序列化的对象</param>
+            <returns>返回存放序列化后的数据缓冲区</returns>
+        </member>
+        <member name="M:NJT.Core.序列化.From二进制(System.Byte[])">
+            <summary>
+                反序列化
+            </summary>
+            <param name="data">数据缓冲区</param>
+            <returns>对象</returns>
+        </member>
+    </members>
+</doc>

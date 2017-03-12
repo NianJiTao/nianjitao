@@ -95,6 +95,15 @@ namespace NJT.Ext
             return m ? n : 0;
         }
 
+        /// <summary>
+        /// 返回对象的字符串表示,如果为空返回 string.Empty
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>System.String.</returns>
+        public static string ToString2(this object str)
+        {
+            return str?.ToString() ?? string.Empty;
+        }
 
 
         public static string To目录合并(this string 目录1, string 目录2)
@@ -139,6 +148,37 @@ namespace NJT.Ext
         public static string ToJoin(this IEnumerable<string> lt ,string 分隔符="")
         {
             return string.Join(分隔符, lt );
+        }
+
+
+        public static void CreatDir(this string fileName)
+        {
+            var dir = System.IO.Path.GetDirectoryName(fileName);
+            if (string.IsNullOrEmpty(dir))
+            {
+                return;
+            }
+            if (System.IO.Directory.Exists(dir))
+            {
+                return;
+            }
+            try
+            {
+                System.IO.Directory.CreateDirectory(dir);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+
+        public static string[] ToSpilt(this string text, string 分割符 = ";")
+        {
+            var r = new string[0];
+            if (!string.IsNullOrEmpty(text))
+                r = text.Split(分割符.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            return r;
         }
     }
 }

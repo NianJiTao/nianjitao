@@ -38,17 +38,29 @@ namespace NJT.Ext
         /// <returns>TimeSpan.</returns>
         public static DateTime ToDateTime14(this string str)
         {
+            try
+            {
+                return ToDateTime14_2(str);
+            }
+            catch (Exception)
+            {
+                return DateTime.MinValue;
+            }
+        }
+
+        private static DateTime ToDateTime14_2(this string str)
+        {
             if (str.Length != 14)
             {
                 return DateTime.MinValue;
             }
-            var y = str.Substring(0, 4).ToInt();
-            var M = str.Substring(4, 2).ToInt();
-            var d = str.Substring(6, 2).ToInt();
-            var h = str.Substring(8, 2).ToInt();
-            var m = str.Substring(10, 2).ToInt();
-            var s = str.Substring(12, 2).ToInt();
-            return new DateTime(y, M, d, h, m, s);
+            var y = str.Substring(0, 4).ToInt().范围限制(1, 9999);
+            var MM = str.Substring(4, 2).ToInt().范围限制(1, 12);
+            var dd = str.Substring(6, 2).ToInt().范围限制(1, 31);
+            var h = str.Substring(8, 2).ToInt().范围限制(0, 23);
+            var m = str.Substring(10, 2).ToInt().范围限制(0, 59);
+            var s = str.Substring(12, 2).ToInt().范围限制(0, 59);
+            return new DateTime(y, MM, dd, h, m, s);
         }
         /// <summary>
         /// 对象转换成时间. UTC时间,本地时间需加.ToLocalTime()
