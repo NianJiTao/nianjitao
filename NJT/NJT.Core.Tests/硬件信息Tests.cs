@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NJT.Core;
 using System;
 using System.Collections.Generic;
@@ -8,47 +8,37 @@ using System.Threading.Tasks;
 
 namespace NJT.Core.Tests
 {
+    [TestClass()]
     public class 硬件信息Tests
     {
-        private I硬件信息 info;
-        public 硬件信息Tests()
-        {
-            info = new 硬件信息();
-        }
-        [Fact()]
-        public void GetCpuTest()
-        {
-            var r = info.GetCpu();
-            Assert.True(r.Count > 0);
-            Assert.False(string.IsNullOrEmpty(r.FirstOrDefault()));
-        }
-        [Fact()]
-        public void Get主板Test()
-        {
-            var r = info.Get主板();
-            Assert.True(r.Count > 0);
-            Assert.False(string.IsNullOrEmpty(r.FirstOrDefault()));
-        }
-
-        [Fact()]
-        public void Get硬盘Test()
-        {
-            var r = info.Get硬盘();
-            Assert.True(r.Count > 0);
-            Assert.False(string.IsNullOrEmpty(r.FirstOrDefault()));
-        }
-        [Fact()]
+        [TestMethod()]
         public void Get网卡Test()
         {
-            var r = info.Get网卡() ;
-            Assert.True(r.Count > 0);
-            Assert.False(string.IsNullOrEmpty(r.FirstOrDefault()));
+            Assert.IsTrue(new 硬件信息().Get网卡().Count > 0);
         }
-        [Fact()]
+
+        [TestMethod()]
+        public void GetCpuTest()
+        {
+            Assert.IsTrue(new 硬件信息().GetCpu().Count > 0);
+        }
+
+        [TestMethod()]
+        public void Get主板Test()
+        {
+            Assert.IsTrue(new 硬件信息().Get主板().Count > 0);
+        }
+
+        [TestMethod()]
+        public void Get硬盘Test()
+        {
+            Assert.IsTrue(new 硬件信息().Get硬盘().Count > 0);
+        }
+
+        [TestMethod()]
         public void Get特征码Test()
         {
-            var r = info.Get特征码();
-            Assert.False(string.IsNullOrEmpty(r));
+            Assert.IsFalse(string.IsNullOrEmpty(new 硬件信息().Get特征码()));
         }
     }
 }

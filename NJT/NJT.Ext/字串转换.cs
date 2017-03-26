@@ -26,8 +26,8 @@ namespace NJT.Ext
 
 
         /// <summary>
-        /// "数值123" 可分离为 item1=数值, item2=123, item3=3
-        /// "数值05" 可分离为 item1=数值, item2=5, item3=2
+        /// "abc123" 可分离为 item1=abc, item2=123, item3=3
+        /// "abc05" 可分离为 item1=bac, item2=5, item3=2
         /// 返回:字串,数字,数字位数.
         /// </summary>
         /// <param name="str">The STR.</param>

@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using NJT.Core;
 
 namespace NJT.Prism
 {
+
+    public interface IView弹出消息 : IView
+    {
+        I弹出消息 消息 { set; }
+    }
     public interface I弹出消息
     {
         string 显示文字 { get; set; }

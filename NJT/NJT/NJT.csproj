@@ -160,11 +160,9 @@
     <Compile Include="ValueConverter\Bool真显示.cs" />
     <Compile Include="ValueConverter\Bool真隐藏.cs" />
     <Compile Include="ValueConverter\Bool转换.cs" />
-    <Compile Include="ValueConverter\DoubleTo百分比.cs" />
     <Compile Include="ValueConverter\ImageConverter.cs" />
     <Compile Include="ValueConverter\NullToBool.cs" />
     <Compile Include="ValueConverter\ToTimespan.cs" />
-    <Compile Include="ValueConverter\To文件大小.cs" />
     <Compile Include="ValueConverter\颜色转换.cs" />
     <Compile Include="ViewModels\主视图ViewModel.cs" />
     <Compile Include="ViewModels\倒计时窗口ViewModel.cs" />

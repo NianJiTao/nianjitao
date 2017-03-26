@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="授权信息.cs" />
+    <Compile Include="逆波兰.cs" />
     <Compile Include="EData.cs" />
     <Compile Include="DbSet.cs" />
     <Compile Include="I树枝.cs" />

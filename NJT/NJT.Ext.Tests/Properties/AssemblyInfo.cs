@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NJT.Ext.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,14 +20,14 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("c5952c2e-4350-440d-ac9e-496cc93009cc")]
+[assembly: Guid("2aa052c7-2c55-4d00-b754-39773e995e48")]
 
-// Version information for an assembly consists of the following four values:
+// 程序集的版本信息由下列四个值组成: 
 //
 //      主版本
-//      次版本 
+//      次版本
 //      生成号
-//      修订
+//      修订号
 //
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
