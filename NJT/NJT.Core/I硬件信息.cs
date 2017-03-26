@@ -68,6 +68,7 @@ namespace NJT.Core
                 var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
                 var mo2 = searcher.Get().OfType<ManagementObject>().ToList();
                 var sel = from cs in mo2
+                          where  cs?["SerialNumber"] != null
                           select cs["SerialNumber"].ToString().Trim();
                 return sel.ToList();
 

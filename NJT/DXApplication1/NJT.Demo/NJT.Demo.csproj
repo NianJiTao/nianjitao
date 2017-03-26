@@ -36,11 +36,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Xpf.Core.v16.1" />
-    <Reference Include="DevExpress.Data.v16.1" />
-    <Reference Include="DevExpress.Printing.v16.1.Core" />
-    <Reference Include="DevExpress.Mvvm.v16.1" />
-    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v16.1" />
+    <Reference Include="DevExpress.Xpf.Core.v16.2" />
+    <Reference Include="DevExpress.Data.v16.2" />
+    <Reference Include="DevExpress.Printing.v16.2.Core" />
+    <Reference Include="DevExpress.Mvvm.v16.2" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v16.2" />
     <Reference Include="NJT.Demo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
