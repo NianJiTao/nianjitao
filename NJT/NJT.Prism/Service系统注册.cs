@@ -33,6 +33,7 @@ namespace NJT.Prism
         }
         private void Init授权监测()
         {
+            EventAggregator宣传部?.GetEvent<Event验证授权>().Subscribe(验证授权, true);
             _授权监测Timer = new DispatcherTimer();
             _授权监测Timer.Interval = 常量.M10分;
             _授权监测Timer.Tick += 授权监测TimerTick;

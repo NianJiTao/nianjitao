@@ -1,12 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace NJT.Core
 
 {
-    public static class 序列化
+    public  static partial class 序列化
     {
         /// <summary>
         ///     在当前程序目录下写入名为"配置"的XML文件
@@ -20,7 +21,7 @@ namespace NJT.Core
             };
             return 写入base(要写入的数据, 文件名, seria);
         }
-
+      
 
 
         /// <summary>
@@ -96,6 +97,9 @@ namespace NJT.Core
 
         private static 运行结果 写入base<T>(T 要写入的数据, string 文件名, Action<Stream, object> 序列化方法)
         {
+
+            if (string.IsNullOrEmpty(文件名))
+                return new 运行结果(false, "文件名为空");
             try
             {
                 var 数据流 = new FileStream(文件名, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);

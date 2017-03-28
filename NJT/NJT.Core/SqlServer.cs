@@ -4,17 +4,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace NJT.Core
 {
     public class SqlServer
     {
 
-        public string 名称 { get; set; } = "主数据库";
+        public string 名称 { get; set; } = "数据库";
 
         public string 服务器 { get; set; } = ".";
 
-        public string 数据库名 { get; set; } = "audio";
+        public string 数据库名 { get; set; } = "Db2018";
 
         public string 用户名 { get; set; } = "sa";
 
@@ -26,8 +27,10 @@ namespace NJT.Core
 
         public bool Is启用 { get; set; } = true;
 
+        [XmlIgnore]
         public bool Is正常 { get; set; } = true;
 
+        [XmlIgnore]
         public bool 测试中 { get; set; }
 
 

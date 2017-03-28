@@ -113,7 +113,7 @@ namespace NJT.Ext
 
         public static string Get首字母(this string 汉字串)
         {
-            return 拼音.首字母(汉字串); 
+            return 拼音.首字母(汉字串);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace NJT.Ext
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
-        public static string ToHexString(this byte[] bytes) 
+        public static string ToHexString(this byte[] bytes)
         {
             var hexString = string.Empty;
             if (bytes != null)
@@ -145,31 +145,49 @@ namespace NJT.Ext
         }
 
 
-        public static string ToJoin(this IEnumerable<string> lt ,string 分隔符="")
+        public static string ToJoin(this IEnumerable<string> lt, string 分隔符 = "")
         {
-            return string.Join(分隔符, lt );
+            return string.Join(分隔符, lt);
         }
+        //        public static  (int add, int multiply) Add_Multiply(int int1, int int2)
+        //11     => (int1 + int2, int1* int2); 
 
-
-        public static void CreatDir(this string fileName)
+        /// <summary>
+        /// item1:是否建立成功,
+        /// item2:错误信息.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static Tuple<bool, string> CreatDir(this string fileName)
         {
-            var dir = System.IO.Path.GetDirectoryName(fileName);
-            if (string.IsNullOrEmpty(dir))
+            if (string.IsNullOrEmpty(fileName))
             {
-                return;
+                return new Tuple<bool, string>(false, "文件名为空");
             }
+            string dir = string.Empty;
+            try
+            {
+                dir = System.IO.Path.GetDirectoryName(fileName);
+            }
+            catch (Exception e)
+            {
+                return new Tuple<bool, string>(false, e.Message);
+            }
+
             if (System.IO.Directory.Exists(dir))
             {
-                return;
+                return new Tuple<bool, string>(true, "目录已经存在");
             }
             try
             {
                 System.IO.Directory.CreateDirectory(dir);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return;
+                return new Tuple<bool, string>(false, e.Message);
             }
+            return new Tuple<bool, string>(true, string.Empty);
+
         }
 
 

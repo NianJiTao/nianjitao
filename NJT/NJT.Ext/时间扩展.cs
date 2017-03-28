@@ -10,7 +10,15 @@ namespace NJT.Ext
         {
             return dt.ToString("HH:mm:ss");
         }
-
+        /// <summary>
+        /// 用_分割,长度共19;
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static string To年月日时分秒(this DateTime dt)
+        {
+            return dt.ToString("yyyy_MM_dd_HH_mm_ss");
+        }
         public static string To星期(this DateTime 时间)
         {
             return 时间.ToString("dddd");

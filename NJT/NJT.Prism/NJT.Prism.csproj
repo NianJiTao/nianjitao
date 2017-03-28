@@ -80,6 +80,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="序列化2.cs" />
     <Compile Include="UiHelper.cs" />
     <Compile Include="扩展.cs" />
     <Compile Include="Service系统注册.cs" />
@@ -118,15 +119,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="NJT.Convert.XML" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="NJT.Ext.XML" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="NJT.Core.XML" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NJT.Convert\NJT.Convert.csproj">
