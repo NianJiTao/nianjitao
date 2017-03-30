@@ -55,17 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="I日志记录.cs" />
+    <Compile Include="星期转换.cs" />
+    <Compile Include="I星期信息.cs" />
+    <Compile Include="I选中.cs" />
+    <Compile Include="定时器.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="授权信息.cs" />
     <Compile Include="逆波兰.cs" />
     <Compile Include="EData.cs" />
-    <Compile Include="DbSet.cs" />
     <Compile Include="I树枝.cs" />
     <Compile Include="注册.cs" />
     <Compile Include="钥匙.cs" />
     <Compile Include="I硬件信息.cs" />
-    <Compile Include="合计值范围.cs" />
-    <Compile Include="单数值范围.cs" />
+    <Compile Include="多数值限制.cs" />
+    <Compile Include="单数值限制.cs" />
     <Compile Include="RunFunc.cs" />
     <Compile Include="I授权配置.cs" />
     <Compile Include="I标识Data.cs" />

@@ -29,7 +29,7 @@ namespace NJT.Core
             }
             catch (Exception exc)
             {
-                return new 运行结果<T>(istrue: false) { ErrorMess = exc.Message };
+                return new 运行结果<T>(istrue: false) { ErrorMess = exc.Message};
             }
         }
     }

@@ -7,14 +7,14 @@ using System.Xml.Serialization;
 
 namespace NJT.Core
 {
-    public class 单数值范围
+    public class 单数值限制
     {
-        public 单数值范围()
+        public 单数值限制()
         {
 
         }
 
-        public 单数值范围(string 名称1, double 最大值1)
+        public 单数值限制(string 名称1, double 最大值1)
         {
             名称 = 名称1;
             最大值 = 最大值1;

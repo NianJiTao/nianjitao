@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace NJT.Core
 {
-    public class 合计值范围
+    public class 多数值限制
     {
 
         [XmlAttribute]

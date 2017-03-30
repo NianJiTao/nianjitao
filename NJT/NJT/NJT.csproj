@@ -130,7 +130,6 @@
     <Compile Include="Core\启动基类.cs" />
     <Compile Include="Core\定时器1.cs" />
     <Compile Include="Core\对话框.cs" />
-    <Compile Include="Core\拼音.cs" />
     <Compile Include="Core\新进程.cs" />
     <Compile Include="Core\时间.cs" />
     <Compile Include="Core\星期泛型.cs" />
@@ -142,7 +141,6 @@
     <Compile Include="Core\逆波兰计算.cs" />
     <Compile Include="Core\配置文件.cs" />
     <Compile Include="Core\钥匙.cs" />
-    <Compile Include="Core\键盘_按键处理.cs" />
     <Compile Include="Events\激活视图Event.cs" />
     <Compile Include="Events\授权状态更新Event.cs" />
     <Compile Include="Events\保存Event.cs" />
