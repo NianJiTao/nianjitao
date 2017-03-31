@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace NJT.Ext
@@ -17,7 +18,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static string To年月日时分秒(this DateTime dt)
         {
-            return dt.ToString("yyyy_MM_dd_HH_mm_ss");
+            return dt.ToString("yyyy-MM-ddTHH_mm_ss");
         }
         public static string To星期(this DateTime 时间)
         {
@@ -40,7 +41,7 @@ namespace NJT.Ext
             return new TimeSpan(0, 0, 0, ss);
         }
         /// <summary>
-        /// yyyyMMdd 格式可转换.
+        /// yyyyMMddHHmmss 格式可转换.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns>TimeSpan.</returns>
@@ -48,7 +49,9 @@ namespace NJT.Ext
         {
             try
             {
-                return ToDateTime14_2(str);
+                var dt = DateTime.ParseExact(str, "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+                return dt;
+                //return ToDateTime14_2(str);
             }
             catch (Exception)
             {
@@ -56,20 +59,39 @@ namespace NJT.Ext
             }
         }
 
-        private static DateTime ToDateTime14_2(this string str)
+        /// <summary>
+        /// yyyyMMdd 格式可转换.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static DateTime ToDateTime8(this string str)
         {
-            if (str.Length != 14)
+            try
+            {
+                var dt = DateTime.ParseExact(str, "yyyyMMdd", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+                return dt;
+            }
+            catch (Exception)
             {
                 return DateTime.MinValue;
             }
-            var y = str.Substring(0, 4).ToInt().范围限制(1, 9999);
-            var MM = str.Substring(4, 2).ToInt().范围限制(1, 12);
-            var dd = str.Substring(6, 2).ToInt().范围限制(1, 31);
-            var h = str.Substring(8, 2).ToInt().范围限制(0, 23);
-            var m = str.Substring(10, 2).ToInt().范围限制(0, 59);
-            var s = str.Substring(12, 2).ToInt().范围限制(0, 59);
-            return new DateTime(y, MM, dd, h, m, s);
         }
+
+       
+        //private static DateTime ToDateTime14_2(this string str)
+        //{
+        //    if (str.Length != 14)
+        //    {
+        //        return DateTime.MinValue;
+        //    }
+        //    var y = str.Substring(0, 4).ToInt().范围限制(1, 9999);
+        //    var MM = str.Substring(4, 2).ToInt().范围限制(1, 12);
+        //    var dd = str.Substring(6, 2).ToInt().范围限制(1, 31);
+        //    var h = str.Substring(8, 2).ToInt().范围限制(0, 23);
+        //    var m = str.Substring(10, 2).ToInt().范围限制(0, 59);
+        //    var s = str.Substring(12, 2).ToInt().范围限制(0, 59);
+        //    return new DateTime(y, MM, dd, h, m, s);
+        //}
         /// <summary>
         /// 对象转换成时间. UTC时间,本地时间需加.ToLocalTime()
         /// </summary>

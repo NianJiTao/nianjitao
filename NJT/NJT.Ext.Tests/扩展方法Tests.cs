@@ -2,6 +2,7 @@
 using NJT.Ext;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,9 @@ namespace NJT.Ext.Tests
         public void To分离数值Test()
         {
             var t1 = "abc123".To分离数值();
-            Assert.AreEqual("abc",t1.Item1);
+            Assert.AreEqual("abc", t1.Item1);
             Assert.AreEqual(123, t1.Item2);
-            Assert.AreEqual(3,t1.Item3);
+            Assert.AreEqual(3, t1.Item3);
         }
 
         [TestMethod()]
@@ -45,9 +46,9 @@ namespace NJT.Ext.Tests
         [TestMethod()]
         public void ToIntTest()
         {
-            Assert.AreEqual(123,"123".ToInt());
-            Assert.AreEqual(0,"a".ToInt());
-            Assert.AreEqual(0,"1.1".ToInt());
+            Assert.AreEqual(123, "123".ToInt());
+            Assert.AreEqual(0, "a".ToInt());
+            Assert.AreEqual(0, "1.1".ToInt());
         }
 
         [TestMethod()]
@@ -111,6 +112,29 @@ namespace NJT.Ext.Tests
             r.AddRange(new int[] { 4, 5, 6, 7, 8 });
             r.to定长(0);
             Assert.AreEqual(0, r.Count);
+        }
+
+        [TestMethod()]
+        public void To年月日时分秒Test()
+        {
+            var dt = DateTime.Now;
+            var str =dt.To年月日时分秒().Replace("_",":");  //替换后可逆转为时间
+            var str1 = dt.ToString("s");
+            Assert.AreEqual(str, str1);
+            DateTime.TryParse(str, out DateTime dt2);
+            Assert.AreEqual(dt.ToString(),dt2.ToString());
+        }
+
+        [TestMethod()]
+        public void From年月日Test()
+        {
+            var str = "2017-03-30";
+            Assert.AreEqual(true, DateTime.TryParse(str, out DateTime dt2));
+
+            str = "20171231";
+           var a= DateTime.ParseExact(str, "yyyyMMdd", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+           var b= DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+           var c= DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.None);
         }
     }
 }

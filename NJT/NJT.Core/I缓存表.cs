@@ -10,11 +10,11 @@ namespace NJT.Core
     {
         int Id { get; set; }
 
-        string 功能 { get; set; }
+        string 类别 { get; set; }
 
-        string 键 { get; set; }
+        string 名称 { get; set; }
 
-        string 值 { get; set; }
+        object 值 { get; set; }
 
         DateTime 更新时间 { get; set; }
 

@@ -32,6 +32,9 @@ namespace NJT.Core
 
     }
 
+    /// <summary>
+    /// 简易版,不带数据变化自动通知
+    /// </summary>
     public class 标识Data1 : I标识Data
     {
         public string 标识 { get; set; } = "操作";

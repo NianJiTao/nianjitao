@@ -7,7 +7,6 @@
         /// 左  中  右
         /// 下
         public static string 上 = "上";
-
         public static string 下 = "下";
         public static string 左 = "左";
         public static string 中 = "中";
@@ -17,7 +16,6 @@
         /// 4 5 6
         /// 7 8 9
         public static string 九宫1 = "九宫1";
-
         public static string 九宫2 = "九宫2";
         public static string 九宫3 = "九宫3";
         public static string 九宫4 = "九宫4";

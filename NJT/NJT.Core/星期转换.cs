@@ -37,11 +37,7 @@ namespace NJT.Core
             var k2 = (Math.Abs(k) + 7) % 7;
             return 星期显示组[k2].中文;
         }
-        //public static string ToWeek中文(DayOfWeek k)
-        //{
-        //    return 星期显示组[(int)k].中文;
-        //    //return System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(k);
-        //}
+      
        
 
         /// <summary>
@@ -55,7 +51,7 @@ namespace NJT.Core
             return r?.数字 ?? 1;
         }
 
-         
+
         ///// <summary>
         ///// 如今天为周三,k=4,返回明天日期,k=2 返回下周二日期.k=3,返回今天日期
         ///// </summary>
@@ -68,7 +64,11 @@ namespace NJT.Core
         //    return DateTime.Today.AddDays(d);
         //}
 
-       
+        //public static string ToWeek中文(DayOfWeek k)
+        //{
+        //    return 星期显示组[(int)k].中文;
+        //    //return System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(k);
+        //}
 
     }
 }

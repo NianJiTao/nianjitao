@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace NJT.Core
 {
+
+    /// <summary>
+    /// 泛型 数据和名称的组合.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class EData<T>
     {
         public EData(T data, string name)

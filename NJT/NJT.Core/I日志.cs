@@ -27,6 +27,10 @@
         void Error(string 信息);
     }
 
+
+    /// <summary>
+    /// 空日志实现
+    /// </summary>
     public class Log1 : I日志
     {
         public void Info(string 信息)

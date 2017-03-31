@@ -19,10 +19,9 @@ namespace NJT.Core
     {
         public 身份证1()
         {
-            身份证 = Guid.NewGuid();
             名称 = 身份证.ToString();
         }
-        public Guid 身份证 { get; set; }
+        public Guid 身份证 { get; set; } =Guid.NewGuid();
         public string 名称 { get; set; }
     }
 }

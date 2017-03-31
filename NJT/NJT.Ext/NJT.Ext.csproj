@@ -40,7 +40,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="单例.cs" />
     <Compile Include="字串转换.cs" />
-    <Compile Include="方法扩展.cs" />
     <Compile Include="序列为空.cs" />
     <Compile Include="拼音.cs" />
     <Compile Include="时间扩展.cs" />

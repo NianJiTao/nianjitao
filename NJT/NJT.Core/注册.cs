@@ -28,11 +28,11 @@ namespace NJT.Core
             }
         }
 
-        private static I硬件信息 硬件 = new 硬件信息();
+        private static I硬件信息 _硬件 = new 硬件信息();
 
         public static string 计算特征码()
         {
-            本机特征码 = 硬件.Get特征码();
+            本机特征码 = _硬件.Get特征码();
             return 本机特征码;
         }
 
