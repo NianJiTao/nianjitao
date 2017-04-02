@@ -26,10 +26,10 @@ namespace NJT.Core
         public static bool 允许试用 => DateTime.Now - 启动时间 < 常量.H2小时;
         public static bool 半年试用 => DateTime.Now > new DateTime(2021, 4, 25)
             && DateTime.Now < new DateTime(2021, 10, 1);
+        public static bool 授权 { get; set; } = true;
 
         public static bool 功能限制 => !授权 && !允许试用 && !半年试用;
 
-        public static bool 授权 { get; set; } = true;
 
         #endregion
 

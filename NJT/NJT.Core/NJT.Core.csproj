@@ -66,7 +66,6 @@
     <Compile Include="EData.cs" />
     <Compile Include="I树枝.cs" />
     <Compile Include="注册.cs" />
-    <Compile Include="钥匙.cs" />
     <Compile Include="I硬件信息.cs" />
     <Compile Include="多数值限制.cs" />
     <Compile Include="单数值限制.cs" />
@@ -101,7 +100,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TimeHelper.cs" />
     <Compile Include="位置.cs" />
     <Compile Include="运行结果.cs" />
     <Compile Include="序列化.cs" />

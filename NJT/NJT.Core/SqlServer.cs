@@ -1,31 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 using System.Xml.Serialization;
 
 namespace NJT.Core
 {
     public class SqlServer
     {
-
+        [XmlAttribute]
         public string 名称 { get; set; } = "数据库";
 
+        [XmlAttribute]
         public string 服务器 { get; set; } = ".";
 
+        [XmlAttribute]
         public string 数据库名 { get; set; } = "Db2018";
 
+        [XmlAttribute]
         public string 用户名 { get; set; } = "sa";
 
+        [XmlAttribute]
         public string 密码 { get; set; } = "12345";
 
+        [XmlAttribute]
+        public bool Is启用 { get; set; } = true;
+
+        [XmlAttribute]
         public int 优先级 { get; set; }
 
-        public string Sql格式 { get; set; } = @"Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3};Connect Timeout=2";
+        public string Sql格式 { get; set; } =
+            @"Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3};Connect Timeout=2"
+            ;
 
-        public bool Is启用 { get; set; } = true;
 
         [XmlIgnore]
         public bool Is正常 { get; set; } = true;
@@ -38,6 +42,7 @@ namespace NJT.Core
         {
             return string.Format(Sql格式, 服务器, 数据库名, 用户名, 密码);
         }
+
         public bool 验证(object obj)
         {
             SqlConnection sql1 = null;

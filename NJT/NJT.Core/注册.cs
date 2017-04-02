@@ -43,17 +43,11 @@ namespace NJT.Core
             var 结果 = false;
             try
             {
-                var 日期字节 = Base24Encoding.解码toByte(注册码.Substring(0, 14));
-                var 日期字串 = Encoding.UTF8.GetString(日期字节);
-                var 天数 = 0;
-                var 转换天数 = int.TryParse(日期字串, out 天数);
-                if (!转换天数) return false;
-                var 日期 = DateTime.MinValue.AddDays(天数);
+                var 日期 = 提取日期(注册码);
                 if (DateTime.Today > 日期) return false;
-                var 读取内容 = 公钥;
                 var 签名源 = 源数据组合(特征码, 日期);
                 var 哈希 = Get哈希码(签名源);
-                结果 = 授权验证(读取内容, 哈希, 注册码.Remove(0, 14));
+                结果 = 授权验证(公钥, 哈希, 注册码.Remove(0, 14));
             }
             catch (Exception)
             {
@@ -70,8 +64,7 @@ namespace NJT.Core
                 if (注册码.Length < 15) return DateTime.MinValue;
                 var 日期字节 = Base24Encoding.解码toByte(注册码.Substring(0, 14));
                 var 日期字串 = Encoding.UTF8.GetString(日期字节);
-                var 天数 = 0;
-                var 转换天数 = int.TryParse(日期字串, out 天数);
+                var 转换天数 = int.TryParse(日期字串, out int 天数);
                 if (!转换天数) return DateTime.MinValue;
                 var 日期 = DateTime.MinValue.AddDays(天数);
                 return 日期;
@@ -120,10 +113,9 @@ namespace NJT.Core
 
         public static string Get哈希码(string 源数据)
         {
-            var algorithm = HashAlgorithm.Create("SHA1");
             var bytes = Encoding.GetEncoding("GB2312").GetBytes(源数据);
-            var inArray = algorithm.ComputeHash(bytes);
-            return Convert.ToBase64String(inArray);
+            var inArray = HashAlgorithm.Create("SHA1")?.ComputeHash(bytes);
+            return Convert.ToBase64String(inArray??new byte[]{30});
         }
 
 
@@ -131,17 +123,14 @@ namespace NJT.Core
         {
             try
             {
-                byte[] HashbyteSignature;
-                byte[] EncryptedSignatureData;
-                HashbyteSignature = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(源数据));
-                var RSA = new RSACryptoServiceProvider();
-                RSA.FromXmlString(私钥);
-                var RSAFormatter = new RSAPKCS1SignatureFormatter(RSA);
-                RSAFormatter.SetHashAlgorithm("SHA1");
+                var hashbyteSignature = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(源数据));
+                var rsa = new RSACryptoServiceProvider();
+                rsa.FromXmlString(私钥);
+                var rsaFormatter = new RSAPKCS1SignatureFormatter(rsa);
+                rsaFormatter.SetHashAlgorithm("SHA1");
                 //执行签名
-                EncryptedSignatureData = RSAFormatter.CreateSignature(HashbyteSignature);
-                //结果 = Convert.ToBase64String(EncryptedSignatureData); 
-                var 结果 = Base24Encoding.编码toString(EncryptedSignatureData);
+                var encryptedSignatureData = rsaFormatter.CreateSignature(hashbyteSignature);
+                var 结果 = Base24Encoding.编码toString(encryptedSignatureData);
                 return 结果;
             }
             catch (Exception ee)
