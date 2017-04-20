@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using NJT.Core;
@@ -31,16 +28,18 @@ namespace NJT.Prism
                 _授权监测Timer?.Stop();
             }
         }
+
         private void Init授权监测()
         {
             EventAggregator宣传部?.GetEvent<Event验证授权>().Subscribe(验证授权, true);
-            _授权监测Timer = new DispatcherTimer()
+            _授权监测Timer = new DispatcherTimer
             {
                 Interval = 常量.M10分
             };
             _授权监测Timer.Tick += 授权监测TimerTick;
             _授权监测Timer.Start();
         }
+
         private void 授权监测TimerTick(object sender, EventArgs e)
         {
             验证授权();
@@ -52,7 +51,7 @@ namespace NJT.Prism
                 return;
             _is验证中 = true;
             Task.Factory.StartNew(() =>
-            注册.验证注册(授权信息.公钥2018, 注册.计算特征码(), 授权信息.注册码))
+                    注册.验证注册(授权信息.公钥2018, 注册.计算特征码(), 授权信息.注册码))
                 .ContinueWith(x =>
                 {
                     _is验证中 = false;
