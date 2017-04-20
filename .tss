@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\IView.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\F1.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\NJT.Core.csproj</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Prism\NJT.Prism.csproj</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

@@ -34,6 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\NJT.Core.XML</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -55,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="ISql监测配置.cs" />
+    <Compile Include="F1.cs" />
     <Compile Include="I日志记录.cs" />
     <Compile Include="星期转换.cs" />
     <Compile Include="I星期信息.cs" />

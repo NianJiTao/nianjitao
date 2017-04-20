@@ -34,7 +34,6 @@ namespace NJT.Core
     /// <summary>
     ///     Class 智能. 可以扩展类的功能.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class 智能1 : I智能
     {
         public 智能1(dynamic 宿主cs)

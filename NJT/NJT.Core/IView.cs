@@ -33,4 +33,9 @@ namespace NJT.Core
     public interface IView主视图 : IView { }
 
     public interface IView关于 : IView { }
+
+
+    public interface IView系统设置 : IView { }
+    public interface IView系统注册 : IView { }
+    public interface IView时钟 : IView { }
 }

@@ -84,8 +84,8 @@ namespace NJT.Ext.Tests
         public void ToJoinTest()
         {
             var r = new List<string>() { "a", "b" };
-            Assert.AreEqual("ab", r.ToJoin());
-            Assert.AreEqual("a-b", r.ToJoin("-"));
+            Assert.AreEqual("ab", r.To串联());
+            Assert.AreEqual("a-b", r.To串联("-"));
         }
 
         [TestMethod()]

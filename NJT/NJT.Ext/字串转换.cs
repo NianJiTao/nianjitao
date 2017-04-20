@@ -90,8 +90,7 @@ namespace NJT.Ext
         {
             if (str == null)
                 return 0;
-            var n = 0;
-            var m = int.TryParse(str.ToString().Trim(), out n);
+            var m = int.TryParse(str.ToString().Trim(), out int n);
             return m ? n : 0;
         }
 
@@ -144,8 +143,13 @@ namespace NJT.Ext
             return returnBytes;
         }
 
-
-        public static string ToJoin(this IEnumerable<string> lt, string 分隔符 = "")
+        /// <summary>
+        /// 串联string
+        /// </summary>
+        /// <param name="lt"></param>
+        /// <param name="分隔符"></param>
+        /// <returns></returns>
+        public static string To串联(this IEnumerable<string> lt, string 分隔符 = "")
         {
             return string.Join(分隔符, lt);
         }
@@ -164,7 +168,7 @@ namespace NJT.Ext
             {
                 return new Tuple<bool, string>(false, "文件名为空");
             }
-            string dir = string.Empty;
+            var dir = string.Empty;
             try
             {
                 dir = System.IO.Path.GetDirectoryName(fileName);
@@ -191,7 +195,7 @@ namespace NJT.Ext
         }
 
 
-        public static string[] ToSpilt(this string text, string 分割符 = ";")
+        public static string[] To分割(this string text, string 分割符 = ";")
         {
             var r = new string[0];
             if (!string.IsNullOrEmpty(text))
