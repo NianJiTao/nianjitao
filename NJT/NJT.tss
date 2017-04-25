@@ -2,25 +2,7 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>NJT.Prism</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT\packages.config</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>NJT</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>NJT.Convert</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Convert\Properties\AssemblyInfo.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Prism\Service系统注册.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Prism\EventAll.cs</string>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\F1.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

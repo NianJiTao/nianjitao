@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace NJT.Convert
 {
-    public class BoolToValueConverter<T> : IValueConverter
+    public class BoolToValue<T> : IValueConverter
     {
         public T FalseValue { get; set; }
         public T TrueValue { get; set; }
@@ -26,7 +26,7 @@ namespace NJT.Convert
         }
     }
 
-    public class BoolToValueConverter : BoolToValueConverter<object>
+    public class BoolToValue : BoolToValue<object>
     {
 
     }

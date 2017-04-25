@@ -136,5 +136,13 @@ namespace NJT.Ext.Tests
            var b= DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
            var c= DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.None);
         }
+
+
+        [TestMethod()]
+        public void  长度修正Test()
+        {
+            Assert.AreEqual("abc ", "abc".长度修正(4));
+            Assert.AreEqual("ab", "abc".长度修正(2));
+        }
     }
 }

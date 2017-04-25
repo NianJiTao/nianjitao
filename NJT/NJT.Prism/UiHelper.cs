@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using Microsoft.Practices.ServiceLocation;
@@ -17,6 +14,7 @@ namespace NJT.Prism
 {
     public static class UiHelper
     {
+        private static Dispatcher _ui线程;
         private static I日志 Log => RunUnity.Log;
         private static IUnityContainer Container人事部 => RunUnity.Container人事部;
         private static IEventAggregator EventAggregator宣传部 => RunUnity.EventAggregator宣传部;
@@ -25,40 +23,33 @@ namespace NJT.Prism
 
         public static Window Win => Application.Current.MainWindow;
 
+        public static Dispatcher UiDispatcher线程
+        {
+            get => _ui线程 ?? (_ui线程 = Application.Current.MainWindow.Dispatcher);
+            set => _ui线程 = value;
+        }
+
+        public static string 当前目录 => AppDomain.CurrentDomain.BaseDirectory;
+
+        private static IServiceLocator Locator => ServiceLocator.Current;
+        public static object 导出表格 { get; set; }
+
         public static void 更新资源(object key, object 内容)
         {
             var res = Application.Current.Resources;
             if (res.Contains(key))
-            {
                 res.Remove(key);
-            }
             res.Add(key, 内容);
-        }
-
-
-        private static Dispatcher _ui线程;
-
-        public static Dispatcher UiDispatcher线程
-        {
-            get { return _ui线程 ?? (_ui线程 = Application.Current.MainWindow.Dispatcher); }
-            set { _ui线程 = value; }
         }
 
         public static void RunAtUi(Action 方法, bool 异步)
         {
             if (异步)
-            {
                 UiDispatcher线程.InvokeAsync(() =>
-                        RunFunc.TryRun(方法));
-            }
+                    RunFunc.TryRun(方法));
             else
-            {
                 UiDispatcher线程.Invoke(() => RunFunc.TryRun(方法));
-            }
-
         }
-
-        public static string 当前目录 => AppDomain.CurrentDomain.BaseDirectory;
 
 
         public static string Get文件名(string 配置文件)
@@ -69,48 +60,20 @@ namespace NJT.Prism
             return run.IsTrue ? run.Data : path2;
         }
 
-        #region 启动服务
-
-        public static void 启动服务<T>() where T : I启动
-        {
-            启动服务<T>(Container人事部, Log);
-        }
-
-        public static void 启动服务<T>(IUnityContainer 人事部cs) where T : I启动
-        {
-            启动服务<T>(人事部cs, Log);
-        }
-
-        public static void 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
-        {
-            Debug.Assert(人事部cs != null, "UnityContainer != null");
-            var 解析 = 人事部cs.Resolve<T>();
-            if (解析 != null)
-            {
-                解析.启动();
-            }
-            else
-            {
-                log?.Error($"{nameof(T)}解析失败");
-            }
-        }
-
-        #endregion
-
-
 
         public static void 弹出窗口<T>()
         {
             var win = GetWin<IView弹出窗口>();
             if (win == null)
-                return; var view = Locator.GetInstance<T>();
+                return;
+            var view = Locator.GetInstance<T>();
             win.DataContext = view;
             win.ShowDialog();
         }
 
         /// <summary>
-        /// point 弹出窗口大小.
-        /// top 是否置顶.
+        ///     point 弹出窗口大小.
+        ///     top 是否置顶.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="xy"></param>
@@ -145,9 +108,6 @@ namespace NJT.Prism
                 win.Show();
         }
 
-        static IServiceLocator Locator => ServiceLocator.Current;
-        public static object 导出表格 { get; set; }
-
         public static Window GetWin<T>()
         {
             Debug.Assert(null != Locator, "解析器不能为空,请先初始化");
@@ -160,8 +120,32 @@ namespace NJT.Prism
             var win = Locator.GetInstance<T>();
             var win2 = win as Window;
             return win2;
-
         }
+
+        #region 启动服务
+
+        public static void 启动服务<T>() where T : I启动
+        {
+            启动服务<T>(Container人事部, Log);
+        }
+
+        public static void 启动服务<T>(IUnityContainer 人事部cs) where T : I启动
+        {
+            启动服务<T>(人事部cs, Log);
+        }
+
+        public static void 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
+        {
+            Debug.Assert(人事部cs != null, "UnityContainer != null");
+            var 解析 = 人事部cs.Resolve<T>();
+            if (解析 != null)
+                解析.启动();
+            else
+                log?.Error($"{nameof(T)}解析失败");
+        }
+
+        #endregion
+
         #region 激活视图
 
         public static 运行结果<object> 激活视图(IRegion 地区, string 视图名称)
@@ -170,11 +154,11 @@ namespace NJT.Prism
             if (视图1 == null)
                 return new 运行结果<object>(false, $"{视图名称}_未找到");
             地区.Activate(视图1);
-            return new 运行结果<object>(true) { Data = 视图1 };
+            return new 运行结果<object>(true) {Data = 视图1};
         }
 
         /// <summary>
-        /// 在区域位置上,激活视图T,视图名称为唯一定位字符串
+        ///     在区域位置上,激活视图T,视图名称为唯一定位字符串
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="区域位置">The 区域位置.</param>
@@ -182,10 +166,11 @@ namespace NJT.Prism
         public static void 激活视图T2<T>(string 区域位置, string 视图名称)
         {
             Log?.Info($"激活{视图名称}");
-            var 地区 = UiHelper.查找地区(RegionManager行政部, 区域位置);
+            var 地区 = 查找地区(RegionManager行政部, 区域位置);
             if (地区 != null)
-                UiHelper.激活视图T<T>(地区, 视图名称);
+                激活视图T<T>(地区, 视图名称);
         }
+
         public static void 激活视图T<T>(IRegion 地区, string 视图名称, string 接口名称 = "")
         {
             Debug.Assert(地区 != null, "地区 != null");
@@ -193,16 +178,13 @@ namespace NJT.Prism
 
             var 激活信息 = 激活视图(地区, 视图名称);
             if (激活信息.IsTrue)
-            {
                 EventAggregator宣传部.GetEvent<Event激活视图>().Publish(视图名称);
-            }
             else
-            {
                 try
                 {
-                    T 视图2 = string.IsNullOrEmpty(接口名称)
-                   ? Container人事部.Resolve<T>()
-                   : Container人事部.Resolve<T>(接口名称);
+                    var 视图2 = string.IsNullOrEmpty(接口名称)
+                        ? Container人事部.Resolve<T>()
+                        : Container人事部.Resolve<T>(接口名称);
 
                     地区.Add(视图2, 视图名称);
                     地区.Activate(视图2);
@@ -211,11 +193,10 @@ namespace NJT.Prism
                 {
                     Log?.Error($"解析类型出错:{exc.Message}");
                 }
-
-            }
         }
+
         /// <summary>
-        /// 根据区域名称,直接注册或者激活T类型
+        ///     根据区域名称,直接注册或者激活T类型
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="视图位置"></param>
@@ -235,6 +216,7 @@ namespace NJT.Prism
             地区.Deactivate(视图1);
             return true;
         }
+
         public static object 查找视图(IRegion 地区, string 视图名称)
         {
             return 地区.GetView(视图名称);
@@ -249,7 +231,5 @@ namespace NJT.Prism
         }
 
         #endregion
-
-
     }
 }

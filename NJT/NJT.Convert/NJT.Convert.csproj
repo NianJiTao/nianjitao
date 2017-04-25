@@ -55,10 +55,11 @@
     <Compile Include="Bool假显示.cs" />
     <Compile Include="Bool真显示.cs" />
     <Compile Include="Bool转换.cs" />
-    <Compile Include="BoolToValueConverter.cs" />
+    <Compile Include="BoolToValue.cs" />
+    <Compile Include="验证数字范围.cs" />
     <Compile Include="转换.cs" />
-    <Compile Include="Valid字符串为空.cs" />
-    <Compile Include="list可展开.cs" />
+    <Compile Include="验证字符串为空.cs" />
+    <Compile Include="列表可展开.cs" />
     <Compile Include="DoubleTo百分比.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

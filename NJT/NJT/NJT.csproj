@@ -146,7 +146,6 @@
     <Compile Include="Find\LinqFind_定时任务.cs" />
     <Compile Include="Model\授权配置.cs" />
     <Compile Include="Model\倒计时视图Model.cs" />
-    <Compile Include="Services\Class1.cs" />
     <Compile Include="Services\倒计时服务1.cs" />
     <Compile Include="Services\消息服务1.cs" />
     <Compile Include="ValueConverter\Bool取反.cs" />
@@ -301,9 +300,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="设计模式\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

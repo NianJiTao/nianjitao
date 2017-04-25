@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace NJT.Convert
 {
-    public class Bool取反 : BoolToValueConverter<bool>
+    public class Bool取反 : BoolToValue<bool>
     {
         public Bool取反()
         {

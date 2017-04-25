@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace NJT.Convert
 {
-    public class Bool假显示 : BoolToValueConverter<Visibility>
+    public class Bool假显示 : BoolToValue<Visibility>
     {
         public Bool假显示()
         {

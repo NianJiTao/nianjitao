@@ -7,12 +7,17 @@ namespace NJT.Ext
 {
     public static partial class 扩展方法
     {
+        /// <summary>
+        /// HH:mm:ss
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public static string To时分秒(this DateTime dt)
         {
             return dt.ToString("HH:mm:ss");
         }
         /// <summary>
-        /// 用_分割,长度共19;
+        ///  长度共19; yyyy-MM-ddTHH_mm_ss
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -20,14 +25,35 @@ namespace NJT.Ext
         {
             return dt.ToString("yyyy-MM-ddTHH_mm_ss");
         }
+
+        /// <summary>
+        /// dddd
+        /// </summary>
+        /// <param name="时间"></param>
+        /// <returns></returns>
         public static string To星期(this DateTime 时间)
         {
             return 时间.ToString("dddd");
         }
 
-        public static TimeSpan To整秒(this TimeSpan 时间)
+        /// <summary>
+        /// 去掉秒数小数点后面.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static TimeSpan To整秒(this TimeSpan obj)
         {
-            return 时间 - TimeSpan.FromMilliseconds(时间.Milliseconds);
+            return TimeSpan.FromSeconds((int)obj.TotalSeconds);
+        }
+
+        /// <summary>
+        /// 去掉秒数小数点后面.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static DateTime To整秒(this DateTime obj)
+        {
+            return new DateTime(obj.Year, obj.Month, obj.Day, obj.Hour, obj.Minute, obj.Second);
         }
 
 
@@ -78,20 +104,7 @@ namespace NJT.Ext
         }
 
        
-        //private static DateTime ToDateTime14_2(this string str)
-        //{
-        //    if (str.Length != 14)
-        //    {
-        //        return DateTime.MinValue;
-        //    }
-        //    var y = str.Substring(0, 4).ToInt().范围限制(1, 9999);
-        //    var MM = str.Substring(4, 2).ToInt().范围限制(1, 12);
-        //    var dd = str.Substring(6, 2).ToInt().范围限制(1, 31);
-        //    var h = str.Substring(8, 2).ToInt().范围限制(0, 23);
-        //    var m = str.Substring(10, 2).ToInt().范围限制(0, 59);
-        //    var s = str.Substring(12, 2).ToInt().范围限制(0, 59);
-        //    return new DateTime(y, MM, dd, h, m, s);
-        //}
+        
         /// <summary>
         /// 对象转换成时间. UTC时间,本地时间需加.ToLocalTime()
         /// </summary>
@@ -102,8 +115,7 @@ namespace NJT.Ext
         {
             if (obj == null)
                 return DateTime.MinValue;
-            DateTime dt;
-            var b = DateTime.TryParse(obj.ToString(), out dt);
+            var b = DateTime.TryParse(obj.ToString(), out DateTime dt);
             return b ? dt : DateTime.MinValue;
         }
 

@@ -202,5 +202,37 @@ namespace NJT.Ext
                 r = text.Split(分割符.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             return r;
         }
+
+
+        /// <summary>
+        /// 不区分大小写,相比较.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool 等于(this string a, string b)
+        {
+            return (string.Equals(a, b, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+
+        /// <summary>
+        /// 太长截取,太短右边补空格
+        /// </summary>
+        /// <param name="字串"></param>
+        /// <param name="长度"></param>
+        /// <returns></returns>
+        public static string 长度修正(this string 字串, int 长度)
+        {
+            if (字串.Length > 长度)
+            {
+                return 字串.Remove(长度);
+            }
+            if (字串.Length < 长度)
+            {
+                return 字串.PadRight(长度, ' ');
+            }
+            return 字串;
+        }
     }
 }

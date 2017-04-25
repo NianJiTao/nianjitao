@@ -19,7 +19,7 @@ namespace NJT.Convert
             if (value is double)
             {
                 var 大小 = (double)value;
-                return 大小.ToString("p1");
+                return 大小.ToString("p");
             }
             else
             {
