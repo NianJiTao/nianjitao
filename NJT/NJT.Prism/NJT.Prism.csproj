@@ -82,6 +82,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetCommand.cs" />
     <Compile Include="序列化2.cs" />
     <Compile Include="UiHelper.cs" />
     <Compile Include="扩展.cs" />

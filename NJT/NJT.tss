@@ -2,7 +2,13 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\F1.cs</string>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Prism\GetCommand.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\SqlServer.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\ISql监测配置.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

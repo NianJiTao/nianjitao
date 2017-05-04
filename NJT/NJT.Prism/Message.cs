@@ -23,7 +23,6 @@ namespace NJT.Prism
         /// <summary>
         ///     快速发布状态栏通知消息 ,并根据类别传送
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="消息内容">The 消息内容.</param>
         /// <param name="类别">The 类别.</param>
         public static void SendMess(string 消息内容, string 类别)

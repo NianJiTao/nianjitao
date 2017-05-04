@@ -64,5 +64,34 @@ namespace NJT.Prism
 
 
         public static bool IsRunTime { get; set; } = false;
+
+
+        /// <summary>
+        /// 尝试用名称解析相关类型,失败返回 default(T);
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static T Get<T>(string name)
+        {
+            var set1 = RunUnity.Container人事部.TryResolve2<T>(name);
+            if (!set1.IsTrue)
+            {
+                RunUnity.Log.Error($"未用名称[{name}]注册类型[{nameof(T)}]");
+                return default(T);
+            }
+            return set1.Data;
+        }
+
+        public static T Get<T>()
+        {
+            var set1 = RunUnity.Container人事部.TryResolve2<T>();
+            if (!set1.IsTrue)
+            {
+                RunUnity.Log.Error($"未注册类型[{nameof(T)}]");
+                return default(T);
+            }
+            return set1.Data;
+        }
     }
 }

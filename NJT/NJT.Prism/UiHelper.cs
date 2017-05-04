@@ -72,11 +72,11 @@ namespace NJT.Prism
         }
 
         /// <summary>
-        ///     point 弹出窗口大小.
-        ///     top 是否置顶.
+        ///     point 弹出窗口大小.    top 是否置顶.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="xy"></param>
+        /// <param name="xy">  弹出窗口大小.</param>
+        /// <param name="top">  是否置顶.</param>
         public static void 弹出窗口<T>(Point xy, bool top = true)
         {
             var win = GetWin<IView弹出窗口>();
