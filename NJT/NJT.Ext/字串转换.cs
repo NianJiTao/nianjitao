@@ -217,12 +217,13 @@ namespace NJT.Ext
 
 
         /// <summary>
-        /// 太长截取,太短右边补空格
+        /// 太长截取,太短右边补填充,默认补空格
         /// </summary>
         /// <param name="字串"></param>
         /// <param name="长度"></param>
+        /// <param name="填充"></param>
         /// <returns></returns>
-        public static string 长度修正(this string 字串, int 长度)
+        public static string 长度修正(this string 字串, int 长度,char 填充=' ')
         {
             if (字串.Length > 长度)
             {
@@ -230,7 +231,7 @@ namespace NJT.Ext
             }
             if (字串.Length < 长度)
             {
-                return 字串.PadRight(长度, ' ');
+                return 字串.PadRight(长度, 填充);
             }
             return 字串;
         }
