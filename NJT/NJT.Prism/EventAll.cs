@@ -54,7 +54,9 @@ namespace NJT.Prism
     public class Event验证授权 : PubSubEvent
     {
     }
-
+    public class Event验证授权结果 : PubSubEvent<bool>
+    {
+    }
     public class Event发布授权配置 : PubSubEvent<I授权配置>
     {
     }

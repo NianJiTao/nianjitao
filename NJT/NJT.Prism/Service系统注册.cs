@@ -9,6 +9,9 @@ namespace NJT.Prism
     {
         private bool _is验证中;
         private DispatcherTimer _授权监测Timer;
+        public TimeSpan 验证间隔 { get; set; } = 常量.M30分;
+        public TimeSpan 记录日志间隔 { get; set; } = 常量.D1天;
+        public bool 记录日志 { get; set; } = true;
 
         public override void 启动()
         {
@@ -34,7 +37,7 @@ namespace NJT.Prism
             EventAggregator宣传部?.GetEvent<Event验证授权>().Subscribe(验证授权, true);
             _授权监测Timer = new DispatcherTimer
             {
-                Interval = 常量.M10分
+                Interval = 验证间隔
             };
             _授权监测Timer.Tick += 授权监测TimerTick;
             _授权监测Timer.Start();
@@ -63,8 +66,16 @@ namespace NJT.Prism
         {
             授权信息.授权 = result;
             var str = result ? "已授权" : "未授权";
-            Message.SendMess(str, "授权");
-            Log.Info($"软件:{str}");
+            if (result == false)
+            {
+                Message.SendMess(str, "授权");
+                if (记录日志)
+                {
+                    Log.Info($"软件:{str}");
+                }
+            }
+
+            EventAggregator宣传部.GetEvent<Event验证授权结果>().Publish(result);
         }
     }
 }

@@ -25,7 +25,12 @@ namespace NJT.Core
 
         public static DispatcherTimer 循环运行(int 间隔毫秒, Action 启动方法)
         {
-            return 循环运行(间隔毫秒, 启动方法, Guid.NewGuid().ToString());
+            return 循环运行(TimeSpan.FromMilliseconds(间隔毫秒), 启动方法 );
+        }
+
+        public static DispatcherTimer 循环运行(TimeSpan 间隔, Action 启动方法)
+        {
+            return 循环运行(间隔, 启动方法, Guid.NewGuid().ToString());
         }
 
         public static DispatcherTimer Find定时器(string 计时器名称)
@@ -46,10 +51,12 @@ namespace NJT.Core
 
         public static DispatcherTimer 循环运行(int 间隔毫秒, Action 启动方法, string 计时器名称)
         {
-            var timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(间隔毫秒)
-            };
+            return 循环运行(TimeSpan.FromMilliseconds(间隔毫秒), 启动方法, 计时器名称);
+        }
+
+        public static DispatcherTimer 循环运行(TimeSpan 间隔, Action 启动方法, string 计时器名称)
+        {
+            var timer = new DispatcherTimer {Interval = 间隔};
             if (定时列表.ContainsKey(计时器名称) == false)
             {
                 定时列表.Add(计时器名称, timer);

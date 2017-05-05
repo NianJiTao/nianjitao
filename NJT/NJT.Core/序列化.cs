@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace NJT.Core
 
 {
-    public  static partial class 序列化
+    public static partial class 序列化
     {
         /// <summary>
         ///     在当前程序目录下写入名为"配置"的XML文件
@@ -21,7 +23,6 @@ namespace NJT.Core
             };
             return 写入base(要写入的数据, 文件名, seria);
         }
-      
 
 
         /// <summary>
@@ -97,7 +98,6 @@ namespace NJT.Core
 
         private static 运行结果 写入base<T>(T 要写入的数据, string 文件名, Action<Stream, object> 序列化方法)
         {
-
             if (string.IsNullOrEmpty(文件名))
                 return new 运行结果(false, "文件名为空");
             try
@@ -131,7 +131,7 @@ namespace NJT.Core
             try
             {
                 var data = 反序列化方法.Invoke(stream);
-                数据 = (T)data;
+                数据 = (T) data;
             }
             catch (Exception exc)
             {
@@ -141,7 +141,82 @@ namespace NJT.Core
             {
                 stream.Close();
             }
-            return new 运行结果<T>(true) { Data = 数据 };
+            return new 运行结果<T>(true) {Data = 数据};
+        }
+
+
+        public static async Task<运行结果> 合并txt(IList<string> 文件列表, string 目标文件名)
+        {
+            bool 合并成功;
+            var sw = new StreamWriter(目标文件名);
+            try
+            {
+                foreach (var item in 文件列表)
+                {
+                    var sr = new StreamReader(item, Encoding.Default);
+                    await sw.WriteAsync(await sr.ReadToEndAsync());
+                }
+                合并成功 = true;
+            }
+            catch (Exception)
+            {
+                合并成功 = false;
+            }
+            finally
+            {
+                sw?.Close();
+            }
+            return new 运行结果(合并成功);
+        }
+
+        public static async Task<运行结果> 写入txt(string 文件名, string 内容)
+        {
+            return await 写入txt(文件名, 内容, false);
+        }
+
+        public static async Task<运行结果> 追加txt(string 文件名, string 内容)
+        {
+            return await 写入txt(文件名, 内容, true);
+        }
+
+        private static async Task<运行结果> 写入txt(string 文件名, string 内容, bool 追加)
+        {
+            if (string.IsNullOrEmpty(文件名))
+                return new 运行结果(false, "文件名为空");
+            try
+            {
+                var myWriter = new StreamWriter(文件名, 追加, Encoding.Default);
+                await myWriter.WriteAsync(内容);
+                myWriter.Close();
+                return new 运行结果(true);
+            }
+            catch (Exception ee)
+            {
+                return new 运行结果(false, ee.Message);
+            }
+        }
+
+
+        public static async Task<运行结果<string>> 读出txt(string 文件名)
+        {
+            string 结果;
+            if (string.IsNullOrEmpty(文件名))
+                return new 运行结果<string>(false, "文件名为空");
+            StreamReader myReader = null;
+            try
+            {
+                myReader = new StreamReader(文件名, Encoding.Default);
+                结果 = await myReader.ReadToEndAsync();
+            }
+            catch (Exception ee)
+            {
+                return new 运行结果<string>(false, ee.Message);
+            }
+            finally
+            {
+                myReader?.Close();
+            }
+            return new 运行结果<string>(true) {Data = 结果};
         }
     }
 }
