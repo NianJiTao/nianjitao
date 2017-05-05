@@ -32,7 +32,6 @@ namespace NJT.Prism
         public static string 当前目录 => AppDomain.CurrentDomain.BaseDirectory;
 
         private static IServiceLocator Locator => ServiceLocator.Current;
-        public static object 导出表格 { get; set; }
 
         public static void 更新资源(object key, object 内容)
         {

@@ -234,5 +234,81 @@ namespace NJT.Ext
             }
             return 字串;
         }
+         
+
+        /// <summary>
+        /// 在后面填充的字节 空格 32
+        /// </summary>
+        /// <param name="字串"></param>
+        /// <param name="长度"></param>
+        /// <param name="填充">在后面填充的字节空格 32</param>
+        /// <returns></returns>
+        public static byte[] 长度修正(this byte[] 字串, int 长度, byte 填充 = 32)
+        {
+            if (字串.Length > 长度)
+            {
+                return 字串.Take(长度).ToArray();
+            }
+            if (字串.Length < 长度)
+            {
+                var b2 = new byte[长度 - 字串.Length];
+                for (var i = 0; i < b2.Length; i++)
+                {
+                    b2[i] = 填充;
+                }
+                var r = 字串.Concat(b2);
+                return r.ToArray();
+            }
+            return 字串;
+        }
+
+        /// <summary>
+        /// 在前面填充的字节 0 (ascii-48)
+        /// </summary>
+        /// <param name="字串"></param>
+        /// <param name="长度"></param>
+        /// <param name="填充"></param>
+        /// <returns></returns>
+        public static byte[] 数字长度修正(this byte[] 字串, int 长度, byte 填充 = 48)
+        {
+            if (字串.Length > 长度)
+            {
+                return 字串.Take(长度).ToArray();
+            }
+            if (字串.Length < 长度)
+            {
+                var b2 = new byte[长度 - 字串.Length];
+                for (var i = 0; i < b2.Length; i++)
+                {
+                    b2[i] = 填充;
+                }
+                var r = b2.Concat(字串);
+                return r.ToArray();
+            }
+            return 字串;
+        }
+        /// <summary>
+        /// 短:左边补0,如:-03,0006 ,长截取.
+        /// </summary>
+        /// <param name="字串"></param>
+        /// <param name="长度"></param>
+        /// <returns></returns>
+        public static string 数字长度修正(this string 字串, int 长度)
+        {
+            if (字串.Length > 长度)
+            {
+                return 字串.Remove(长度);
+            }
+            if (字串.Length < 长度)
+            {
+                if (字串.StartsWith("-"))
+                {
+                    return "-" + 字串.Remove(0, 1).PadLeft(长度, '0').Remove(0, 1);
+                }
+                return 字串.PadLeft(长度, '0');
+            }
+            return 字串;
+        }
+
     }
 }
