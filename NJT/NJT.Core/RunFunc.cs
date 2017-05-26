@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NJT.Core
 {
-    public class RunFunc
+    public static class RunFunc
     {
         public static 运行结果 TryRun(Action 方法)
         {
@@ -29,7 +29,34 @@ namespace NJT.Core
             }
             catch (Exception exc)
             {
-                return new 运行结果<T>(istrue: false) { ErrorMess = exc.Message};
+                return new 运行结果<T>(istrue: false) { ErrorMess = exc.Message };
+            }
+        }
+
+
+        public static async Task<运行结果> TryRunAsync(Func<Task> 方法)
+        {
+            try
+            {
+                await 方法();
+                return new 运行结果(istrue: true);
+            }
+            catch (Exception exc)
+            {
+                return new 运行结果(istrue: false) { ErrorMess = exc.Message };
+            }
+        }
+
+        public static async Task<运行结果<T>> TryRunAsync<T>(Func<Task<T>> 方法)
+        {
+            try
+            {
+                var r = await 方法();
+                return new 运行结果<T>(istrue: true) { Data = r };
+            }
+            catch (Exception exc)
+            {
+                return new 运行结果<T>(istrue: false) { ErrorMess = exc.Message };
             }
         }
     }

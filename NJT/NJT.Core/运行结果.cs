@@ -4,7 +4,7 @@
     /// <summary>
     ///     表示方法运行的结果.
     /// </summary>
-    public class 运行结果
+    public class 运行结果: I运行结果
     {
         public 运行结果(bool istrue)
         {
@@ -35,13 +35,12 @@
     /// <summary>
     ///     表示方法运行的结果.T为携带数据
     /// </summary>
-    public class 运行结果<T>
+    public class 运行结果<T>: I运行结果
     {
         public 运行结果(bool istrue)
         {
             IsTrue = istrue;
         }
-
 
         public 运行结果(bool istrue, string errorMessage)
         {
@@ -49,12 +48,10 @@
             ErrorMess = errorMessage;
         }
 
-
         /// <summary>
         ///     执行是否成功.
         /// </summary>
         public bool IsTrue { get; set; } = true;
-
 
         /// <summary>
         ///     执行错误时的信息.
