@@ -1,0 +1,14 @@
+﻿<dx:DXWindow
+    x:Class="NJT.UI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:views="clr-namespace:NJT.UI.Views"
+    Title="主窗口"
+    Width="525"
+    Height="350">
+    <Grid>
+        <views:View通知1 />
+    </Grid>
+</dx:DXWindow>

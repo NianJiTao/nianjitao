@@ -1,0 +1,32 @@
+﻿<UserControl
+    x:Class="NJT.UI.Views.View通知显示1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:NJT.UI.ViewModels"
+    Width="380"
+    Height="120"
+    Background="{Binding 背景}"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <viewModels:View通知显示1ViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Text="{Binding 标题}" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding 内容}" />
+    </Grid>
+</UserControl>
