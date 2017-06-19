@@ -2,22 +2,28 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>d:\源码\nianpc2017\git\nianjitao\njt\njt.core\定时器.cs</string>
+      <string>NJT.Ui</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\源码\nianpc2017\git\nianjitao\njt\njt\core\对话框.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\源码\nianpc2017\git\nianjitao\njt\njt\core\目录.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\源码\nianpc2017\git\nianjitao\njt\njt.ext\字串转换.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\源码\nianpc2017\git\nianjitao\njt\njt.prism\getcommand.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\源码\nianpc2017\git\nianjitao\njt\njt.prism\eventall.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\源码\nianpc2017\git\nianjitao\njt\njt.prism\service系统注册.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>d:\源码\nianpc2017\git\nianjitao\njt\njt.prism\message.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
       <string>d:\源码\nianpc2017\git\nianjitao\njt\njt.prism\uihelper.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\RunFunc.cs</string>
+      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\NJT.Core\F1.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
