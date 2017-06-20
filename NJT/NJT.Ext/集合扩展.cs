@@ -115,7 +115,7 @@ namespace NJT.Ext
             var r2 = obj.Cast<T>().ToList();
             return r2;
         }
-        public static void to定长<T>(this List<T> r, int 长度)
+        public static void To定长<T>(this List<T> r, int 长度)
         {
             if (r == null || r.Count == 0 || 长度 <  0)
             {
@@ -126,8 +126,19 @@ namespace NJT.Ext
             {
                 r.RemoveRange(长度,最大值-长度);
             }
-          
         }
-
+        public static void AddAndMax<T>(this IList<T> list, T item, int max = 100)
+        {
+            if (list.Count < max)
+            {
+                list.Add(item);
+                return;
+            }
+            if (list.Count > 0)
+            {
+                list.RemoveAt(0);
+            }
+            list.Add(item);
+        }
     }
 }

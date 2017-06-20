@@ -56,7 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="三态文本.cs" />
+    <Compile Include="I服务管理.cs" />
+    <Compile Include="I按钮显示.cs" />
+    <Compile Include="计次触发器.cs" />
+    <Compile Include="值变化.cs" />
     <Compile Include="命令行参数.cs" />
+    <Compile Include="目录文件.cs" />
     <Compile Include="超频检测.cs" />
     <Compile Include="ISql监测配置.cs" />
     <Compile Include="F1.cs" />

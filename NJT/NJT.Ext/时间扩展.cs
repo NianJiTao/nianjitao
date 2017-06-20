@@ -16,6 +16,7 @@ namespace NJT.Ext
         {
             return dt.ToString("HH:mm:ss");
         }
+
         /// <summary>
         ///  长度共19; yyyy-MM-ddTHH_mm_ss
         /// </summary>
@@ -43,7 +44,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static TimeSpan To整秒(this TimeSpan obj)
         {
-            return TimeSpan.FromSeconds((int)obj.TotalSeconds);
+            return TimeSpan.FromSeconds((int) obj.TotalSeconds);
         }
 
         /// <summary>
@@ -66,18 +67,18 @@ namespace NJT.Ext
         {
             return new TimeSpan(0, 0, 0, ss);
         }
+
         /// <summary>
         /// yyyyMMddHHmmss 格式可转换.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns>TimeSpan.</returns>
-        public static DateTime ToDateTime14(this string str)
+        public static DateTime GetDateTime14(this string str)
         {
             try
             {
-                var dt = DateTime.ParseExact(str, "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+                var dt = str.GetDateTime("yyyyMMddHHmmss");
                 return dt;
-                //return ToDateTime14_2(str);
             }
             catch (Exception)
             {
@@ -90,11 +91,11 @@ namespace NJT.Ext
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static DateTime ToDateTime8(this string str)
+        public static DateTime GetDateTime8(this string str)
         {
             try
             {
-                var dt = DateTime.ParseExact(str, "yyyyMMdd", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+                var dt = str.GetDateTime("yyyyMMdd");
                 return dt;
             }
             catch (Exception)
@@ -103,8 +104,12 @@ namespace NJT.Ext
             }
         }
 
-       
-        
+        public static DateTime GetDateTime(this string 字符串, string 日期格式)
+        {
+            var r = DateTime.ParseExact(字符串, 日期格式, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+            return r;
+        }
+
         /// <summary>
         /// 对象转换成时间. UTC时间,本地时间需加.ToLocalTime()
         /// </summary>
@@ -118,7 +123,5 @@ namespace NJT.Ext
             var b = DateTime.TryParse(obj.ToString(), out DateTime dt);
             return b ? dt : DateTime.MinValue;
         }
-
-     
     }
 }

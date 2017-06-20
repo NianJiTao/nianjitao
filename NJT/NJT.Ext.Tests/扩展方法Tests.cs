@@ -102,15 +102,15 @@ namespace NJT.Ext.Tests
         public void to定长Test()
         {
             var r = new List<int>() { 1, 2, 3 };
-            r.to定长(2);
+            r.To定长(2);
             Assert.AreEqual(2, r.Count);
 
             r.Clear();
-            r.to定长(2);
+            r.To定长(2);
             Assert.AreEqual(0, r.Count);
 
             r.AddRange(new int[] { 4, 5, 6, 7, 8 });
-            r.to定长(0);
+            r.To定长(0);
             Assert.AreEqual(0, r.Count);
         }
 
