@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -58,7 +59,6 @@ namespace NJT.Prism
             var run = RunFunc.TryRun(() => Path.Combine(path1, path2));
             return run.IsTrue ? run.Data : path2;
         }
-
 
         public static void 弹出窗口<T>()
         {
@@ -123,24 +123,33 @@ namespace NJT.Prism
 
         #region 启动服务
 
-        public static void 启动服务<T>() where T : I启动
+        public static T 启动服务<T>() where T : I启动
         {
-            启动服务<T>(Container人事部, Log);
+            return 启动服务<T>(Container人事部, Log);
         }
 
-        public static void 启动服务<T>(IUnityContainer 人事部cs) where T : I启动
+        public static T 启动服务<T>(IUnityContainer 人事部cs) where T : I启动
         {
-            启动服务<T>(人事部cs, Log);
+            return 启动服务<T>(人事部cs, Log);
         }
 
-        public static void 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
+        public static List<object> 服务列表 = new List<object>();
+
+        public static T 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
         {
             Debug.Assert(人事部cs != null, "UnityContainer != null");
             var 解析 = 人事部cs.Resolve<T>();
             if (解析 != null)
+            {
+                服务列表.Add(解析);
                 解析.启动();
+                return 解析;
+            }
             else
+            {
                 log?.Error($"{nameof(T)}解析失败");
+                return default(T);
+            }
         }
 
         #endregion

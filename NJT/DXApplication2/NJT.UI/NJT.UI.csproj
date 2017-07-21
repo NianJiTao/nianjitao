@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="选中状态.cs" />
     <Compile Include="runset.cs" />
     <Compile Include="Views\View通知显示1.xaml.cs">
       <DependentUpon>View通知显示1.xaml</DependentUpon>

@@ -2,10 +2,7 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\DXApplication2\NJT.UI\扩展.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\NianPc2017\Git\nianjitao\NJT\DXApplication2\NJT.UI\GetCommandDev.cs</string>
+      <string>源代码管理器 - 未连接</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
