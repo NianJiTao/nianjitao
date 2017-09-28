@@ -1,7 +1,8 @@
-﻿<windows:PrismUnityApplication x:Class="年纪涛.简介.App"
-                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                               xmlns:local="using:年纪涛.简介"
-                               xmlns:windows="using:Prism.Unity.Windows"
-                               RequestedTheme="Light" />
+﻿<windows:PrismUnityApplication
+    x:Class="年纪涛.简介.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:年纪涛.简介"
+    xmlns:windows="using:Prism.Unity.Windows"
+    RequestedTheme="Light" />
 

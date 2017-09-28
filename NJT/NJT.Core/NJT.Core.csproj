@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="I配置读写.cs" />
+    <Compile Include="Sms通知.cs" />
+    <Compile Include="数值限制表.cs" />
     <Compile Include="三态文本.cs" />
     <Compile Include="I服务管理.cs" />
     <Compile Include="I按钮显示.cs" />
@@ -79,8 +82,7 @@
     <Compile Include="I树枝.cs" />
     <Compile Include="注册.cs" />
     <Compile Include="I硬件信息.cs" />
-    <Compile Include="多数值限制.cs" />
-    <Compile Include="单数值限制.cs" />
+    <Compile Include="数值限制.cs" />
     <Compile Include="RunFunc.cs" />
     <Compile Include="I授权配置.cs" />
     <Compile Include="I标识Data.cs" />

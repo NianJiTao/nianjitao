@@ -146,8 +146,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="年纪涛.简介_StoreKey.pfx" />
-    <None Include="年纪涛.简介_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\微信名片.png" />
