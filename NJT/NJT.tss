@@ -2,7 +2,10 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>源代码管理器 - 未连接</string>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\BindableBase2.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\源码\pc2018\git\nianjitao\njt\njt.core\runfunc.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

@@ -37,7 +37,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="I按钮显示.cs" />
     <Compile Include="字典扩展.cs" />
+    <Compile Include="Type扩展.cs" />
     <Compile Include="小数位限制.cs" />
     <Compile Include="Enum扩展.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +51,12 @@
     <Compile Include="范围限制.cs" />
     <Compile Include="计算耗时.cs" />
     <Compile Include="集合扩展.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NJT.Core\NJT.Core.csproj">
+      <Project>{0e4dcda7-38d4-4e70-8ad1-9ba2875861e7}</Project>
+      <Name>NJT.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
