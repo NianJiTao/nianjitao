@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using Microsoft.Practices.Unity;
 using NJT.Core;
 using Prism.Events;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJT", "NJT\NJT.csproj", "{1657AA2F-8B5F-4CD3-AE02-B67FC1BFA2AC}"
 EndProject
@@ -287,5 +287,8 @@ Global
 		{74553B3E-92EC-4308-A887-A76D5F55F6F5} = {3333D550-BDBD-41AB-936D-3D59D72244C5}
 		{ADC36E4E-9487-46A3-938D-84AC5039B7A1} = {3333D550-BDBD-41AB-936D-3D59D72244C5}
 		{2AA052C7-2C55-4D00-B754-39773E995E48} = {3333D550-BDBD-41AB-936D-3D59D72244C5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DE4EB72-BBBC-4268-8496-FC1EFEBBC686}
 	EndGlobalSection
 EndGlobal

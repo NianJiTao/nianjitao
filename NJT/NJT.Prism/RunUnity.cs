@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.ServiceLocation;
+﻿using CommonServiceLocator;
 using Microsoft.Practices.Unity;
 using NJT.Core;
 using Prism.Events;
