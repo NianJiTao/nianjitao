@@ -15,7 +15,7 @@ using NJT.接口;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
-using CommonServiceLocator;
+using Microsoft.Practices.ServiceLocation;
 using NJT.Common;
 using Prism.Logging;
 using Prism.Unity;

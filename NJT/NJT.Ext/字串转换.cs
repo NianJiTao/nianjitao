@@ -93,7 +93,16 @@ namespace NJT.Ext
             var m = int.TryParse(str.ToString().Trim(), out int n);
             return m ? n : 0;
         }
-
+        public static float ToFloat(this string obj)
+        {
+            var f = 0f;
+            if (string.IsNullOrEmpty(obj))
+            {
+                return f;
+            }
+            float.TryParse(obj, out f);
+            return f;
+        }
         /// <summary>
         /// 返回对象的字符串表示,如果为空返回 string.Empty
         /// </summary>

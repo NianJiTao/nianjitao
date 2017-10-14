@@ -13,6 +13,8 @@ namespace NJT.Core
 
         运行结果<T> 读取(string 文件名);
 
+        T 读取(string 文件名, Func<T> 默认值);
+
         运行结果 写入(T 配置);
 
         运行结果 写入(T 配置, string 文件名);
@@ -31,6 +33,13 @@ namespace NJT.Core
         public 运行结果<T> 读取(string 配置文件名x)
         {
             return 序列化.读出<T>(配置文件名x);
+        }
+
+        public T 读取(string 文件名, Func<T> 默认值)
+        {
+            var read = 读取(文件名);
+            var r = read.IsTrue ? read.Data : 默认值();
+            return r;
         }
 
         public 运行结果<T> 读取()

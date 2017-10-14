@@ -1,4 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace NJT.Core
@@ -26,10 +28,21 @@ namespace NJT.Core
         [XmlAttribute]
         public int 优先级 { get; set; }
 
+
+
+        /// <summary>
+        /// 如果true, 直接使用连接字符串.
+        /// </summary>
+        [XmlAttribute]
+        public bool Is系统账户登录 { get; set; }
+
         public string Sql格式 { get; set; } =
             @"Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3};Connect Timeout=2"
             ;
 
+        public string 连接字符串 { get; set; } =
+            @"data source=.;initial catalog=Db2018;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"
+            ;
 
         [XmlIgnore]
         public bool Is正常 { get; set; } = true;
@@ -37,28 +50,49 @@ namespace NJT.Core
         [XmlIgnore]
         public bool 测试中 { get; set; }
 
+        [XmlIgnore]
+        public bool Is可读写 => Is启用 && Is正常;
 
         public string GetSqlConn()
         {
             return string.Format(Sql格式, 服务器, 数据库名, 用户名, 密码);
         }
-
+        /// <summary>
+        /// 建议使用验证2
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public bool 验证(object obj)
         {
-            SqlConnection sql1 = null;
+            return 验证2().IsTrue;
+        }
+
+        public async Task<运行结果> 验证Async()
+        {
+            var r = await Task.Run(() => 验证2());
+            return r;
+        }
+
+        public 运行结果 验证2()
+        {
+            if (测试中)
+            {
+                return new 运行结果(true);
+            }
             测试中 = true;
             try
             {
-                sql1 = new SqlConnection(GetSqlConn());
+                var constr = Is系统账户登录 ? 连接字符串 : GetSqlConn();
+                var sql1 = new SqlConnection(constr);
                 sql1.Open();
                 sql1.Close();
                 Is正常 = true;
-                return true;
+                return new 运行结果(true);
             }
-            catch
+            catch (Exception e)
             {
                 Is正常 = false;
-                return false;
+                return new 运行结果(false, e.Message); ;
             }
             finally
             {
