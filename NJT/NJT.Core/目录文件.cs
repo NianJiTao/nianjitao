@@ -19,7 +19,7 @@ namespace NJT.Core
         /// <returns>List{System.String}.</returns>
         public static List<string> 所有目录(string 根目录, int 搜索层)
         {
-            var r = new List<string>();
+            var r = new List<string>(){ 根目录 };
             if (string.IsNullOrEmpty(根目录) || Directory.Exists(根目录) == false)
             {
                 return r;
