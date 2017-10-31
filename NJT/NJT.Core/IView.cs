@@ -23,12 +23,23 @@ namespace NJT.Core
 
     public interface IView导航栏 : IView { }
 
-    public interface IView弹出窗口 : IView { }
+    public interface IView弹出窗口 : IView
+    {
 
-    public interface IView主窗口 : IView { }
+        bool Is自动关闭 { get; set; }
+
+        void Show();
+        void ShowDialog();
+
+    }
+
+    public interface IView主窗口 : IView
+    {
+        void Show();
+        void ShowDialog();
+    }
     public interface IView日志 : IView { }
 
-  
 
     public interface IView主视图 : IView { }
 

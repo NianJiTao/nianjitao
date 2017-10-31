@@ -51,6 +51,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ToTimeSpan.cs" />
+    <Compile Include="长日期显示.cs" />
     <Compile Include="Bool取反.cs" />
     <Compile Include="Bool假显示.cs" />
     <Compile Include="Bool真显示.cs" />

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace NJT.ValueConverter
+namespace NJT.Convert
 {
     /// <summary>
     ///  秒单位:double
@@ -11,6 +15,10 @@ namespace NJT.ValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value==null)
+            {
+                return TimeSpan.Zero;
+            }
             var 时长2 = double.TryParse(value.ToString(), out var 时长);
             var r = TimeSpan.FromSeconds(时长);
             return r;
