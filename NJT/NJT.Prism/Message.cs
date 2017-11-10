@@ -1,7 +1,7 @@
 ﻿using System;
-using Microsoft.Practices.Unity;
 using NJT.Core;
 using Prism.Events;
+using Unity;
 
 namespace NJT.Prism
 {

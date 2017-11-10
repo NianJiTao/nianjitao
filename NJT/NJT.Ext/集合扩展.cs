@@ -16,7 +16,6 @@ namespace NJT.Ext
 
         public static T 移除<T>(this IList<T> list, T sel)
         {
-            Debug.Assert(list != null, "列表不能为空");
             if (Equals(sel, null))
             {
                 return default(T);
@@ -28,8 +27,6 @@ namespace NJT.Ext
 
         public static T 移除<T>(this IList<T> list, IList<T> sel)
         {
-            Debug.Assert(list != null, "列表不能为空");
-            Debug.Assert(sel != null, "列表不能为空");
             var k = list.IndexOf(sel.FirstOrDefault());
             foreach (var item in sel)
             {
@@ -107,7 +104,12 @@ namespace NJT.Ext
             }
         }
 
-
+        /// <summary>
+        /// 转换为 List 泛型
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static IList<T> GetList<T>(this Array obj)
         {
             if (obj == null)
@@ -127,6 +129,14 @@ namespace NJT.Ext
                 r.RemoveRange(长度,最大值-长度);
             }
         }
+
+        /// <summary>
+        /// 调用add,如果超过最大长度,移除首位.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="item"></param>
+        /// <param name="max"></param>
         public static void AddAndMax<T>(this IList<T> list, T item, int max = 100)
         {
             if (list.Count < max)
@@ -139,6 +149,23 @@ namespace NJT.Ext
                 list.RemoveAt(0);
             }
             list.Add(item);
+        }
+
+
+        /// <summary>
+        /// 遍历列表并执行方法,返回列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="执行方法"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> ForEachDo<T>(this IEnumerable<T> obj, Action<T> 执行方法)
+        {
+            foreach (var item in obj)
+            {
+                执行方法(item);
+            }
+            return obj;
         }
     }
 }

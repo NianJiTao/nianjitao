@@ -1,7 +1,7 @@
 ﻿using Prism.Modularity;
 using Prism.Regions;
-using Microsoft.Practices.Unity;
- 
+using Unity;
+
 
 namespace NJT.Common
 {

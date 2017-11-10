@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.Practices.Unity;
 using NJT.Common;
 using NJT.Events;
 using NJT.接口;
 using Prism.Events;
 using Prism.Logging;
 using Prism.Regions;
+using Unity;
 
 namespace NJT.项目启动
 {

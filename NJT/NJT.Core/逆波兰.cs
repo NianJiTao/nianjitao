@@ -56,16 +56,16 @@ namespace NJT.Core
 
                     if (sk.Count > 0) /**************************/
                     {
-                        y = (double) sk.Pop();
+                        y = (double)sk.Pop();
                     }
                     else
                     {
-                        sk.Push(0);
+                        sk.Push(0d);
                         break;
                     }
                     if (sk.Count > 0)
                     {
-                        x = (double) sk.Pop();
+                        x = (double)sk.Pop();
                     }
                     else
                     {
@@ -98,15 +98,24 @@ namespace NJT.Core
                 }
                 else if (c == '!') //单目取反.)  
                 {
-                    sk.Push(-(double) sk.Pop());
+                    sk.Push(-(double)sk.Pop());
                 }
             }
             if (sk.Count > 1)
                 return new 运行结果<double>(false, "运算没有完成.");
             if (sk.Count == 0)
                 return new 运行结果<double>(false, "结果丢失.");
+            var r = sk.Pop();
+            //return new 运行结果<double>(true) { Data = Convert.ToDouble(r) };
 
-            return new 运行结果<double>(true) {Data = (double) sk.Pop()};
+            if (r is double d)
+            {
+                return new 运行结果<double>(true) { Data = d };
+            }
+            else
+            {
+                return new 运行结果<double>(false, "结果不是数值") { Data = Convert.ToDouble(r) };
+            }
         }
 
         /// <summary>

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Practices.Unity;
 using NJT.Core;
 using Prism.Mvvm;
+using Unity;
 
 namespace NJT.Prism
 {
     public static partial class 扩展
     {
+        //public static I日志 Log(this BindableBase vmBase)
+        //{
+        //    return RunUnity.Log;
+        //}
 
         /// <summary>
         /// 注册View 调用什么vm类型,vm使用IUnityContainer解析

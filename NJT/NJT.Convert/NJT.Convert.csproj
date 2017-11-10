@@ -59,7 +59,6 @@
     <Compile Include="Bool转换.cs" />
     <Compile Include="BoolToValue.cs" />
     <Compile Include="验证数字范围.cs" />
-    <Compile Include="转换.cs" />
     <Compile Include="验证字符串为空.cs" />
     <Compile Include="列表可展开.cs" />
     <Compile Include="DoubleTo百分比.cs" />

@@ -1,8 +1,8 @@
-﻿using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
+﻿using CommonServiceLocator;
 using NJT.Core;
 using Prism.Events;
 using Prism.Regions;
+using Unity;
 
 namespace NJT.Prism
 {

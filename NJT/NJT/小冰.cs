@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Events;
 using Prism.Regions;
-using Microsoft.Practices.Unity;
 using NJT.Events;
 using NJT.接口;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using NJT.Common;
 using Prism.Logging;
-using Prism.Unity;
+using Unity;
 
 namespace NJT
 {
@@ -122,7 +121,7 @@ namespace NJT
             }
             else
             {
-                var b = 小冰.人事部.IsTypeRegistered(typeof(T));
+                var b = 小冰.人事部.IsRegistered(typeof(T));
                 if (!b)
                 {
                     小冰.Log.Log($"{typeof(T).Name}未注册类型.", Category.Exception, Priority.High);

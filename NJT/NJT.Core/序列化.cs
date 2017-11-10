@@ -121,7 +121,6 @@ namespace NJT.Core
             }
         }
 
-
         private static 运行结果<T> 读出base<T>(string 文件名, Func<Stream, object> 反序列化方法)
         {
             if (!File.Exists(文件名))
@@ -143,7 +142,6 @@ namespace NJT.Core
             }
             return new 运行结果<T>(true) {Data = 数据};
         }
-
 
         public static async Task<运行结果> 合并txt(IList<string> 文件列表, string 目标文件名)
         {
@@ -195,7 +193,6 @@ namespace NJT.Core
                 return new 运行结果(false, ee.Message);
             }
         }
-
 
         public static async Task<运行结果<string>> 读出txt(string 文件名)
         {

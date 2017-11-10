@@ -1,11 +1,11 @@
 ﻿using Prism.Events;
 using Prism.Regions;
-using Microsoft.Practices.Unity;
 using NJT.Common;
 using NJT.Events;
 using NJT.ViewModels;
 using NJT.Views;
 using NJT.接口;
+using Unity;
 
 namespace NJT.Services
 {

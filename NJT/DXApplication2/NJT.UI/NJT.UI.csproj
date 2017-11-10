@@ -61,6 +61,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="对话框.cs" />
+    <Compile Include="DX主窗口1.xaml.cs">
+      <DependentUpon>DX主窗口1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DX弹出1.xaml.cs">
+      <DependentUpon>DX弹出1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="扩展 - 隐藏按钮.cs" />
     <Compile Include="选中状态.cs" />
     <Compile Include="runset.cs" />
     <Compile Include="Views\View通知显示1.xaml.cs">
@@ -75,6 +83,14 @@
       <DependentUpon>View通知1.xaml</DependentUpon>
     </Compile>
     <Compile Include="通知配置.cs" />
+    <Page Include="DX主窗口1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DX弹出1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +141,10 @@
     <ProjectReference Include="..\..\NJT.Core\NJT.Core.csproj">
       <Project>{0e4dcda7-38d4-4e70-8ad1-9ba2875861e7}</Project>
       <Name>NJT.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NJT.Prism\NJT.Prism.csproj">
+      <Project>{d0994ffb-a311-4a97-b027-7e75dcc83726}</Project>
+      <Name>NJT.Prism</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

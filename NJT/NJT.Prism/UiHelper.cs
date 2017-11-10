@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
+using CommonServiceLocator;
 using NJT.Core;
 using Prism.Events;
 using Prism.Regions;
+using Unity;
 
 namespace NJT.Prism
 {

@@ -3,7 +3,7 @@ using NJT.Events;
 using NJT.接口;
 using Prism.Events;
 using Prism.Regions;
-using Microsoft.Practices.Unity;
+using Unity;
 
 namespace NJT.Services
 {

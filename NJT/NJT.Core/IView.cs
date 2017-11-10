@@ -25,11 +25,11 @@ namespace NJT.Core
 
     public interface IView弹出窗口 : IView
     {
-
         bool Is自动关闭 { get; set; }
-
+        int 自动关闭秒数 { get; set; }
+        string Title { get; set; }
         void Show();
-        void ShowDialog();
+        bool? ShowDialog();
 
     }
 

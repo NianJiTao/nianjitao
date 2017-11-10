@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Xml.Serialization;
-using Microsoft.Practices.Unity;
 using NJT.Core;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using Unity;
 
 namespace NJT.Prism
 {

@@ -3,8 +3,8 @@ using Prism.Logging;
 using Prism.Mvvm;
 using Prism.Events;
 using Prism.Regions;
-using Microsoft.Practices.Unity;
- 
+using Unity;
+
 
 namespace NJT.Common
 {

@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="I图表值.cs" />
     <Compile Include="时钟配置.cs" />
     <Compile Include="属性值转换.cs" />
     <Compile Include="I配置读写.cs" />

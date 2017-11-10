@@ -5,14 +5,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-using Microsoft.Practices.ObjectBuilder2;
 
 namespace NJT.Common
 {
     public static class 时间
     {
         public static List<DispatcherTimer> 定时列表 = new List<DispatcherTimer>();
-         
+
         public static void 刷新当前时间(Action<string> 显示时间, TimeSpan 刷新间隔, string 时间格式)
         {
             var 时间计时器 = new DispatcherTimer { Interval = 刷新间隔 };
@@ -45,12 +44,14 @@ namespace NJT.Common
         }
         public static void 关闭所有()
         {
-            定时列表.Where(x => x != null)
-                .ForEach(x => x.Stop());
+            foreach (var x in 定时列表)
+            {
+                x.Stop();
+            }
             定时列表.Clear();
         }
 
-         
+
 
         public static string 更改时间(DateTime 新时间)
         {
@@ -96,7 +97,7 @@ namespace NJT.Common
         }
     }
 
-    
+
 
     [StructLayout(LayoutKind.Sequential)]
     public struct SystemTime

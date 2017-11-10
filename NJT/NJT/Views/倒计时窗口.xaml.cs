@@ -13,10 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
  
-using Prism.Mvvm;
-using Microsoft.Practices.Unity;
 using NJT.ViewModels;
 using NJT.接口;
+using Unity;
 
 namespace NJT.Views
 {

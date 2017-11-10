@@ -4,16 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Prism.Mvvm;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
 using NJT.Common;
 using NJT.Services;
-using NJT.扩展;
 using NJT.接口;
 using Prism.Logging;
 using Prism.Modularity;
 using Prism.Unity;
+using Unity.Lifetime;
 
 namespace NJT.项目启动
 {

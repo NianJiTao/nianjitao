@@ -1,8 +1,8 @@
 ﻿using Prism.Logging;
 using Prism.Events;
 using Prism.Regions;
-using Microsoft.Practices.Unity;
 using NJT.接口;
+using Unity;
 
 namespace NJT.Common
 {
