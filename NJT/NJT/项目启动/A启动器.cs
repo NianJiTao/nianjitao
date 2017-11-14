@@ -49,11 +49,11 @@ namespace NJT.项目启动
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
-            Container.RegisterType<ILoggerFacade, NLog日志>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<ILoggerFacade, NLog日志>(new ContainerControlledLifetimeManager());
 
             //Container.RegisterType<I系统配置服务, 系统配置服务1>(new ContainerControlledLifetimeManager());
 
-            Container.RegisterType<I消息服务, 消息服务1>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<I消息服务, 消息服务1>(new ContainerControlledLifetimeManager());
         }
     }
 }

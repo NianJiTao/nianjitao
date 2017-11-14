@@ -2,22 +2,16 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>NJT.Core</string>
+      <string>d:\源码\pc2018\git\nianjitao\njt\dxapplication2\njt.ui\dx弹出1.xaml.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Convert\转换.cs</string>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\DXApplication2\NJT.UI\对话框.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Convert\Bool取反.cs</string>
+      <string>NuGet - 解决方案</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT\ValueConverter\ImageConverter.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT\ValueConverter\ToTimespan.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Convert\ToTimeSpan.cs</string>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\RunUnity.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

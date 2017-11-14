@@ -23,7 +23,7 @@ namespace NJT.Prism
             {
                 if (_人事部 == null)
                 {
-                    var run = RunFunc.TryRun(() =>
+                    var run = RunFunc.TryRun<IUnityContainer>(() =>
                         ServiceLocator.Current.GetInstance<IUnityContainer>());
                     _人事部 = run.IsTrue ? run.Data : new UnityContainer();
                 }
