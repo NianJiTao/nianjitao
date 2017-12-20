@@ -7,6 +7,29 @@ namespace NJT.Ext
 {
     public static partial class 扩展方法
     {
+
+
+        /// <summary>
+        /// 如果条件符合,则执行方法 , 如果过滤方法为空,将直接执行方法.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="执行方法"></param>
+        /// <returns></returns>
+        public static T IfDo<T>(this T obj, Func<T, T> 执行方法, Func<T, bool> 过滤方法)
+        {
+            if (null == 过滤方法)
+            {
+                return 执行方法(obj);
+            }
+            if (过滤方法(obj))
+            {
+                return 执行方法(obj);
+            }
+            return obj;
+        }
+
+
         public static T 选择<T>(this IList<T> list, int k)
         {
             if (k < 0) return list.FirstOrDefault();

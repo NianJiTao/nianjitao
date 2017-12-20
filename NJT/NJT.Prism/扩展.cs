@@ -28,21 +28,21 @@ namespace NJT.Prism
         }
 
 
-        /// <summary>
-        ///  通过名称解析出T,使用data前检查istrue; 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="container">The container.</param>
-        /// <param name="name">The name.</param>
-        /// <returns>T.</returns>
-        public static 运行结果<T> TryResolve2<T>(this IUnityContainer container, string name)
-        {
-            return RunFunc.TryRun(() => container.Resolve<T>(name));
-        }
+        ///// <summary>
+        /////  通过名称解析出T,使用data前检查istrue; 
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="container">The container.</param>
+        ///// <param name="name">The name.</param>
+        ///// <returns>T.</returns>
+        //public static 运行结果<T> TryResolve2<T>(this IUnityContainer container, string name)
+        //{
+        //    return RunFunc.TryRun(() => container.Resolve<T>(name));
+        //}
 
-        public static 运行结果<T> TryResolve2<T>(this IUnityContainer container)
-        {
-            return RunFunc.TryRun(() => container.Resolve<T>());
-        }
+        //public static 运行结果<T> TryResolve2<T>(this IUnityContainer container)
+        //{
+        //    return RunFunc.TryRun(() => container.Resolve<T>());
+        //}
     }
 }

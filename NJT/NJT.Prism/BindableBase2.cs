@@ -11,7 +11,6 @@ namespace NJT.Prism
     public class BindableBase2 : BindableBase, I身份证
     {
         private string _名称 = string.Empty;
-        public bool IsRunTime => RunUnity.IsRunTime;
 
         /// <summary>
         ///     存放视图对象,以方便调用.

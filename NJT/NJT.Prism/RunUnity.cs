@@ -2,6 +2,7 @@
 using NJT.Core;
 using Prism.Events;
 using Prism.Regions;
+using Prism.Unity;
 using Unity;
 
 namespace NJT.Prism
@@ -9,7 +10,6 @@ namespace NJT.Prism
     public static class RunUnity
     {
         private static IUnityContainer _人事部;
-
 
         private static IEventAggregator _宣传部;
 
@@ -63,8 +63,6 @@ namespace NJT.Prism
         }
 
 
-        public static bool IsRunTime { get; set; } = false;
-
 
         /// <summary>
         /// 尝试用名称解析相关类型,失败返回 default(T);
@@ -75,23 +73,45 @@ namespace NJT.Prism
         public static T Get<T>(string name)
         {
             var set1 = RunUnity.Container人事部.TryResolve2<T>(name);
-            if (!set1.IsTrue)
+            if (set1==null)
             {
                 RunUnity.Log.Error($"未用名称[{name}]注册类型[{nameof(T)}]");
                 return default(T);
             }
-            return set1.Data;
+            return set1;
         }
 
         public static T Get<T>()
         {
-            var set1 = RunUnity.Container人事部.TryResolve2<T>();
-            if (!set1.IsTrue)
+            var set1 = RunUnity.Container人事部.TryResolve <T>();
+            if (set1 == null)
             {
                 RunUnity.Log.Error($"未注册类型[{nameof(T)}]");
                 return default(T);
             }
-            return set1.Data;
+            return set1;
         }
+
+        /// <summary>
+        ///  通过名称解析出T,如果未注册,返回默认值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="container">The container.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>T.</returns>
+        public static T TryResolve2<T>(this IUnityContainer container, string name)
+        {
+            if (container == null)
+                return default(T);
+
+            if (string.IsNullOrEmpty(name))
+                return container.TryResolve<T>();
+
+            if (!container.IsRegistered<T>(name))
+                return default(T);
+
+            return container.Resolve<T>(name);
+        }
+        
     }
 }

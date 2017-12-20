@@ -4,35 +4,22 @@ using Prism.Events;
 namespace NJT.Prism
 {
     /// <summary>
-    /// 收到此事件.就打开关于视图.
-    /// </summary>
-    public class Event关于 : PubSubEvent
-    {
-    }
-    /// <summary>
     /// 收到此事件.就打开日志视图.或者日志目录
     /// </summary>
     public class Event查看日志 : PubSubEvent
     {
     }
-    /// <summary>
-    /// 收到此事件.就打开帮助视图.或者帮助文件
-    /// </summary>
-    public class Event帮助 : PubSubEvent
-    {
-    }
+
 
     public class Event保存配置 : PubSubEvent
     {
     }
 
-    public class Event配置更新 : PubSubEvent
-    {
-    }
 
     public class Event退出 : PubSubEvent
     {
     }
+
     /// <summary>
     /// 收到此事件.就打开系统设置视图.
     /// </summary>
@@ -40,12 +27,6 @@ namespace NJT.Prism
     {
     }
 
-    /// <summary>
-    /// 收到此事件.就打开注册视图.
-    /// </summary>
-    public class Event系统注册 : PubSubEvent
-    {
-    }
 
     public class Event读取注册码 : PubSubEvent
     {
@@ -54,9 +35,11 @@ namespace NJT.Prism
     public class Event验证授权 : PubSubEvent
     {
     }
+
     public class Event验证授权结果 : PubSubEvent<bool>
     {
     }
+
     public class Event发布授权配置 : PubSubEvent<I授权配置>
     {
     }
@@ -64,19 +47,14 @@ namespace NJT.Prism
     public class Event保存授权配置 : PubSubEvent<I授权配置>
     {
     }
+
     /// <summary>
     /// 参数为返回的次数
     /// </summary>
-    public class Event返回视图 : PubSubEvent<int>
-    {
-    }  
-
-    /// <summary>
-    ///     参数为要更改的语言名称.如 zh-cn ; en-us
-    /// </summary>
-    public class Event更改语言 : PubSubEvent<string>
+    public class Event返回 : PubSubEvent<int>
     {
     }
+
 
     public class Event弹出消息 : PubSubEvent<I弹出消息>
     {
@@ -86,11 +64,6 @@ namespace NJT.Prism
     /// 参数为唯一视图名称
     /// </summary>
     public class Event激活视图 : PubSubEvent<string>
-    {
-    }  
-
-
-    public class Event状态栏更新 : PubSubEvent<I标识Data>
     {
     }
 
@@ -147,9 +120,7 @@ namespace NJT.Prism
     {
     }
 
-    public class Event主题更新 : PubSubEvent<string>
-    {
-    }
+
     /// <summary>
     ///     参数为tableView名称, 需要可以通过Container解析出来DataViewBase
     /// </summary>
@@ -171,19 +142,30 @@ namespace NJT.Prism
     {
     }
 
-    public class Event双击时钟 : PubSubEvent
+    public class Event双击时钟 : PubSubEvent<object>
     {
     }
 
-    public class EventSql连接测试 : PubSubEvent { }
-    public class EventSql连接状态查询 : PubSubEvent { }
-    public class Event日志记录 : PubSubEvent<I日志记录> { }
+    public class Event双击关于 : PubSubEvent<object>
+    {
+    }
+
+    public class EventSql连接测试 : PubSubEvent
+    {
+    }
+
+    public class EventSql连接状态查询 : PubSubEvent
+    {
+    }
+
+    public class Event日志记录 : PubSubEvent<I日志记录>
+    {
+    }
 
     /// <summary>
     /// 收到此事件.立即清理过期数据
     /// </summary>
-    public class Event过期数据清理 : PubSubEvent { }
-
-     
-
+    public class Event过期数据清理 : PubSubEvent
+    {
+    }
 }

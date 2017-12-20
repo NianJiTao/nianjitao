@@ -36,7 +36,7 @@ namespace NJT.Core
     public interface IView主窗口 : IView
     {
         void Show();
-        void ShowDialog();
+        bool? ShowDialog();
     }
     public interface IView日志 : IView { }
 

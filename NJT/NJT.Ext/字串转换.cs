@@ -320,5 +320,44 @@ namespace NJT.Ext
             return 字串;
         }
 
+
+
+        /// <summary>
+        /// 如果是double,直接返回,否则尝试转为double,
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static double ToDouble2(this object obj)
+        {
+            if (obj == null)
+                return 0d;
+            if (obj is double d1)
+                return d1;
+            var b = double.TryParse(obj.ToString(), out var r);
+            return b ? r : 0d;
+        }
+
+        public static double ToDouble(this string obj)
+        {
+            if (string.IsNullOrEmpty(obj))
+                return 0d;
+            var b = double.TryParse(obj, out var r);
+            return b ? r : 0d;
+        }
+
+        /// <summary>
+        /// 对象如果是时间,直接返回,否则转字串,再尝试转时间.错误返回最小时间
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static DateTime ToDateTime(this object obj)
+        {
+            if (obj == null)
+                return DateTime.MinValue;
+            if (obj is DateTime dt)
+                return dt;
+            var b = DateTime.TryParse(obj.ToString(), out var dt2);
+            return b ? dt2 : DateTime.MinValue;
+        }
     }
 }

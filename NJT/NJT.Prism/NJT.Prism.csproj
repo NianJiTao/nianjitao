@@ -37,6 +37,7 @@
     <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.3.0\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Mvvm.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
     </Reference>
@@ -90,6 +91,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Event打开.cs" />
+    <Compile Include="Event更新.cs" />
+    <Compile Include="ViewModelBase3.cs" />
+    <Compile Include="扩展-dev.cs" />
+    <Compile Include="GetCommandDev.cs" />
     <Compile Include="消息助手.cs" />
     <Compile Include="GetCommand.cs" />
     <Compile Include="UiHelper.cs" />

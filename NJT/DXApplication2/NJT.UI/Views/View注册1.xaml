@@ -1,0 +1,160 @@
+﻿<UserControl
+    x:Class="NJT.UI.Views.View注册1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ViewModels="clr-namespace:NJT.UI.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <system:Double x:Key="图标高">24</system:Double>
+        <system:Double x:Key="按钮高">40</system:Double>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <ViewModels:View注册1ViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="70*" MaxWidth="600" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="客户名称:"
+            TextWrapping="Wrap" />
+
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Height="30"
+            Margin="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Text="{Binding 客户名称}"
+            TextWrapping="Wrap" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="硬件码:"
+            TextWrapping="Wrap" />
+
+
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Height="30"
+            Margin="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            IsReadOnly="True"
+            Text="{Binding 硬件码}"
+            TextWrapping="Wrap" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="注册码:"
+            TextWrapping="Wrap" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Height="240"
+            Margin="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Text="{Binding 注册码, Mode=TwoWay}"
+            TextWrapping="Wrap" />
+
+        <StackPanel
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="0,0,10,10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Label
+                Content="{Binding 验证结果}"
+                FontSize="24"
+                Foreground="Red" />
+            <dx:SimpleButton
+                Height="{DynamicResource 按钮高}"
+                MinWidth="120"
+                Margin="15,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Command="{Binding 验证Command}"
+                IsDefault="True">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Width="{DynamicResource 图标高}"
+                        Height="{DynamicResource 图标高}"
+                        Source="/XCG.Images;component/Images/刷新_32.png" />
+                    <TextBlock
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        Text="验证" />
+                </StackPanel>
+            </dx:SimpleButton>
+            <dx:SimpleButton
+                Height="{DynamicResource 按钮高}"
+                MinWidth="120"
+                Margin="15,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Command="{Binding 确定Command}"
+                IsDefault="True">
+                <StackPanel Orientation="Horizontal">
+
+                    <Image
+                        Width="{DynamicResource 图标高}"
+                        Height="{DynamicResource 图标高}"
+                        Source="/XCG.Images;component/Images/确定_32.png" />
+                    <TextBlock
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        Text="保存" />
+                </StackPanel>
+            </dx:SimpleButton>
+            <dx:SimpleButton
+                Height="{DynamicResource 按钮高}"
+                MinWidth="120"
+                Margin="15,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Command="{Binding 取消Command}"
+                IsCancel="True">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Width="{DynamicResource 图标高}"
+                        Height="{DynamicResource 图标高}"
+                        Source="/XCG.Images;component/Images/取消_32.png" />
+
+                    <TextBlock
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        Text="取消" />
+                </StackPanel>
+            </dx:SimpleButton>
+        </StackPanel>
+    </Grid>
+</UserControl>

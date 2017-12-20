@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="NJT.UI.Views.View时钟1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:NJT.UI.ViewModels"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <viewModels:View时钟1ViewModel />
+    </UserControl.DataContext>
+
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand Command="{Binding 双击Command}" EventName="MouseDoubleClick" />
+    </dxmvvm:Interaction.Behaviors>
+
+    <Grid Background="{Binding Model.背景颜色}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontFamily="{Binding Model.时间字体}"
+            FontSize="{Binding Model.时间字体大小}"
+            Foreground="{Binding Model.时间颜色}"
+            Text="{Binding 当前时间}"
+            Visibility="{Binding Model.显示时间, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="{Binding Model.日期字体大小}"
+            Foreground="{Binding Model.日期颜色}"
+            Text="{Binding 当前日期}"
+            Visibility="{Binding Model.显示日期, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="{Binding Model.星期字体大小}"
+            Foreground="{Binding Model.星期颜色}"
+            Text="{Binding 当前星期}"
+            Visibility="{Binding Model.显示星期, Converter={StaticResource BooleanToVisibilityConverter}}" />
+    </Grid>
+</UserControl>

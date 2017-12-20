@@ -1,8 +1,8 @@
-﻿<Application x:Class="NJT.Demo.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml" Startup="OnAppStartup_UpdateThemeName">
-    <Application.Resources>
-         
-    </Application.Resources>
+﻿<Application
+    x:Class="NJT.Demo.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Startup="OnAppStartup_UpdateThemeName"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources />
 </Application>
