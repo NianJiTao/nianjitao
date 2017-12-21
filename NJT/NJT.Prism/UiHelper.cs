@@ -9,6 +9,7 @@ using CommonServiceLocator;
 using NJT.Core;
 using Prism.Events;
 using Prism.Regions;
+using Prism.Unity;
 using Unity;
 
 namespace NJT.Prism
@@ -61,14 +62,14 @@ namespace NJT.Prism
             return run.IsTrue ? run.Data : path2;
         }
 
+        #region 弹出窗口
+
         public static void 弹出窗口<T>()
         {
-            var win = GetWin<IView弹出窗口>();
-            if (win == null)
+            if (!(Container人事部.TryResolve<IView弹出窗口>() is Window win))
                 return;
-            var view = Locator.GetInstance<T>();
-            win.DataContext = view;
-            win.ShowDialog();
+            var view = Container人事部.TryResolve<T>();
+            弹出窗口(win, view, true);
         }
 
         /// <summary>
@@ -79,50 +80,36 @@ namespace NJT.Prism
         /// <param name="top">  是否置顶.</param>
         public static void 弹出窗口<T>(Point xy, bool top = true)
         {
-            var win = GetWin<IView弹出窗口>();
-            if (win == null)
-                return;
-            var view = Locator.GetInstance<T>();
-            win.DataContext = view;
-
-            win.Width = xy.X;
-            win.Height = xy.Y;
-            if (top)
-                win.ShowDialog();
-            else
-                win.Show();
+            var view = Container人事部.TryResolve<T>();
+            弹出窗口(view, xy, top);
         }
 
 
         public static void 弹出窗口(object view, Point xy, bool top = true)
         {
-            var win = GetWin<IView弹出窗口>();
-            if (win == null)
+            if (!(Container人事部.TryResolve<IView弹出窗口>() is Window win))
                 return;
-            win.DataContext = view;
             win.Width = xy.X;
             win.Height = xy.Y;
+            弹出窗口(win, view, top);
+        }
+
+        public static void 弹出窗口(Window win, object vm, bool top = true)
+        {
+            if (null == win)
+                return;
+            win.DataContext = vm;
             if (top)
                 win.ShowDialog();
             else
                 win.Show();
         }
 
-        public static Window GetWin<T>()
-        {
-            if (null == Locator)
-            {
-                Log?.Error("解析器为空");
-                return null;
-            }
-            var win = Locator.GetInstance<T>();
-            var win2 = win as Window;
-            return win2;
-        }
+        #endregion
+
 
         #region 启动服务
 
-        
         public static List<object> 服务列表 = new List<object>();
 
         public static T 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
@@ -143,7 +130,5 @@ namespace NJT.Prism
         }
 
         #endregion
-
-    
     }
 }

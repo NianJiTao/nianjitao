@@ -110,7 +110,6 @@
     <Compile Include="树.cs" />
     <Compile Include="Nlog2.cs" />
     <Compile Include="BindableBase2.cs" />
-    <Compile Include="Message.cs" />
     <Compile Include="StartBase.cs" />
     <Compile Include="RunUnity.cs" />
   </ItemGroup>

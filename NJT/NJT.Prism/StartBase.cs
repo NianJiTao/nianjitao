@@ -7,10 +7,10 @@ using NJT.Core;
 
 namespace NJT.Prism
 {
-    public class StartBase : BindableBase2, I启动
+    public class StartBase : ViewModelBase3, I启动
     {
-
         public bool Is启动 { get; protected set; }
+        public Guid 身份证 { get; set; } = Guid.NewGuid();
 
         public virtual void 启动()
         {

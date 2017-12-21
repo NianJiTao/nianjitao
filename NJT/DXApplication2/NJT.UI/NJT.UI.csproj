@@ -102,7 +102,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="视图助手.cs" />
     <Compile Include="ViewModels\View日志1ViewModel.cs" />
     <Compile Include="ViewModels\View注册1ViewModel.cs" />
     <Compile Include="Views\View日志1.xaml.cs">
@@ -111,7 +110,6 @@
     <Compile Include="Views\View注册1.xaml.cs">
       <DependentUpon>View注册1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="消息.cs" />
     <Compile Include="ViewModels\View时钟1ViewModel.cs" />
     <Compile Include="ViewModels\关于ViewModel1.cs" />
     <Compile Include="ViewModels\状态栏ViewModel1.cs" />
@@ -139,8 +137,6 @@
     </Compile>
     <Compile Include="ViewModels\View通知显示1ViewModel.cs" />
     <Compile Include="显示模版.cs" />
-    <Compile Include="GetCommandDev.cs" />
-    <Compile Include="扩展.cs" />
     <Compile Include="ViewModels\View通知1ViewModel.cs" />
     <Compile Include="Views\View通知1.xaml.cs">
       <DependentUpon>View通知1.xaml</DependentUpon>
@@ -154,14 +150,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="Views\View主视图1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

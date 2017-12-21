@@ -15,6 +15,10 @@ namespace NJT.UI
        
         public static void 隐藏按钮Action(this IEnumerable<IBarItem> barItems, string[] 隐藏按钮组)
         {
+            if (隐藏按钮组 == null || 隐藏按钮组.Any() == false || 隐藏按钮组.Any() == false)
+            {
+                return;
+            }
             barItems.OfType<BarItem>()
                 .Where(x => 隐藏按钮组.Contains(x.Content.ToString()))
                 .ForEach(x => x.IsVisible = false);

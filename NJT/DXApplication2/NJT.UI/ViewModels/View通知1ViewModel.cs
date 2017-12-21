@@ -7,6 +7,7 @@ using System.Windows.Media.Imaging;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using DevExpress.Mvvm.UI;
+using NJT.Prism;
 
 namespace NJT.UI.ViewModels
 {

@@ -11,11 +11,6 @@ namespace NJT.Prism
 {
     public static partial class 扩展
     {
-        //public static I日志 Log(this BindableBase vmBase)
-        //{
-        //    return RunUnity.Log;
-        //}
-
         /// <summary>
         /// 注册View 调用什么vm类型,vm使用IUnityContainer解析
         /// </summary>
@@ -26,23 +21,5 @@ namespace NJT.Prism
         {
             ViewModelLocationProvider.Register<TView>(() => container.Resolve<TViewModel>());
         }
-
-
-        ///// <summary>
-        /////  通过名称解析出T,使用data前检查istrue; 
-        ///// </summary>
-        ///// <typeparam name="T"></typeparam>
-        ///// <param name="container">The container.</param>
-        ///// <param name="name">The name.</param>
-        ///// <returns>T.</returns>
-        //public static 运行结果<T> TryResolve2<T>(this IUnityContainer container, string name)
-        //{
-        //    return RunFunc.TryRun(() => container.Resolve<T>(name));
-        //}
-
-        //public static 运行结果<T> TryResolve2<T>(this IUnityContainer container)
-        //{
-        //    return RunFunc.TryRun(() => container.Resolve<T>());
-        //}
     }
 }
