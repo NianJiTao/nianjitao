@@ -6,7 +6,6 @@
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
-    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:NJT.UI.ViewModels"
     d:DesignHeight="300"
@@ -16,7 +15,7 @@
         <viewModels:View日志1ViewModel />
     </UserControl.DataContext>
     <Grid>
-        <dx:GroupFrame Header="记录">
+        <dx:GroupFrame Header="{Binding 标题}">
             <Grid>
                 <dxg:GridControl ItemsSource="{Binding ListData}">
                     <dxg:GridControl.ContextMenu>

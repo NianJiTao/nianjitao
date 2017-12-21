@@ -9,15 +9,9 @@ namespace NJT.Core
 {
     public class 新进程
     {
-        public static void 运行(string 命令)
+        public static 运行结果 运行(string 命令)
         {
-            try
-            {
-                运行2(命令);
-            }
-            catch (Exception)
-            {
-            }
+            return RunFunc.TryRun(() => 运行2(命令));
         }
 
         private static void 运行2(string 命令)
@@ -29,6 +23,7 @@ namespace NJT.Core
             {
                 return;
             }
+
             var a = s.IndexOf(" ", System.StringComparison.Ordinal);
             if (a < 0)
             {
@@ -40,7 +35,7 @@ namespace NJT.Core
                 参数 = s.Remove(0, a);
             }
 
-            var 进程1 = new Process { StartInfo = { FileName = 程序, Arguments = 参数 } };
+            var 进程1 = new Process {StartInfo = {FileName = 程序, Arguments = 参数}};
             进程1.Start();
         }
 

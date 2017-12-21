@@ -11,11 +11,11 @@ namespace NJT.UI.ViewModels
 {
     public class View日志1ViewModel : ViewModelBase3
     {
-
         private int _maxLenth = 100;
 
         public View日志1ViewModel()
         {
+            标题 = "记录";
             if (IsInDesignMode) return;
             if (Container人事部.IsRegistered<int>("日志记录保留长度"))
                 ClearLenth = Container人事部.Resolve<int>("日志记录保留长度");
@@ -25,6 +25,11 @@ namespace NJT.UI.ViewModels
 
         public IDelegateCommand 清空Command => this.GetCom(nameof(清空Command), 清空Action);
 
+        public string 标题
+        {
+            get { return GetProperty(() => 标题); }
+            set { SetProperty(() => 标题, value); }
+        }
 
         private int ClearLenth
         {

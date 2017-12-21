@@ -9,6 +9,22 @@ namespace NJT.Core
 {
     public class 目录文件
     {
+        public static void 打开文件(string fileName)
+        {
+            if (string.IsNullOrEmpty(fileName))
+                return;
+            if (File.Exists(fileName)) 新进程.运行(fileName);
+        }
+
+
+        public static void 打开目录(string dir)
+        {
+            if (string.IsNullOrEmpty(dir))
+                return;
+            if (Directory.Exists(dir)) 新进程.运行(dir);
+        }
+
+
         /// <summary>
         /// 所有子目录s the specified 根目录.
         /// 0层为搜索本目录下面的.
@@ -19,11 +35,12 @@ namespace NJT.Core
         /// <returns>List{System.String}.</returns>
         public static List<string> 所有目录(string 根目录, int 搜索层)
         {
-            var r = new List<string>(){ 根目录 };
+            var r = new List<string>() {根目录};
             if (string.IsNullOrEmpty(根目录) || Directory.Exists(根目录) == false)
             {
                 return r;
             }
+
             if (搜索层 < 0)
                 return r;
             try
@@ -39,6 +56,7 @@ namespace NJT.Core
             {
                 // ignored
             }
+
             return r;
         }
 
@@ -73,21 +91,25 @@ namespace NJT.Core
                 {
                     文件列表 = new string[] { };
                 }
+
                 if (!文件列表.Any())
                 {
                     continue;
                 }
+
                 if (!扩展名cs.Any())
                 {
                     result.AddRange(文件列表);
                     continue;
                 }
+
                 var f = from cs in 文件列表
                     from cs1 in 扩展名cs
                     where cs.EndsWith(cs1, StringComparison.CurrentCultureIgnoreCase)
                     select cs;
                 result.AddRange(f);
             }
+
             return result;
         }
     }
