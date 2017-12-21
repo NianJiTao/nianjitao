@@ -11,9 +11,11 @@ namespace NJT.Prism
     public class Event更新状态栏 : PubSubEvent<I标识Data>
     {
     }
+
     public class Event更新状态栏2 : PubSubEvent<string>
     {
     }
+
     public class Event更新主题 : PubSubEvent<string>
     {
     }

@@ -91,13 +91,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="视图助手.cs" />
+    <Compile Include="授权助手.cs" />
+    <Compile Include="状态栏Data.cs" />
     <Compile Include="Event打开.cs" />
     <Compile Include="Event更新.cs" />
     <Compile Include="ViewModelBase3.cs" />
     <Compile Include="扩展-dev.cs" />
     <Compile Include="GetCommandDev.cs" />
-    <Compile Include="消息助手.cs" />
+    <Compile Include="消息.cs" />
     <Compile Include="GetCommand.cs" />
     <Compile Include="UiHelper.cs" />
     <Compile Include="扩展.cs" />
@@ -105,7 +107,6 @@
     <Compile Include="I弹出消息.cs" />
     <Compile Include="EventAll.cs" />
     <Compile Include="NLog日志.cs" />
-    <Compile Include="状态栏Data2.cs" />
     <Compile Include="树.cs" />
     <Compile Include="Nlog2.cs" />
     <Compile Include="BindableBase2.cs" />

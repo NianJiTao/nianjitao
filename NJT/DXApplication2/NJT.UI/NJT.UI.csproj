@@ -102,6 +102,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="视图助手.cs" />
     <Compile Include="ViewModels\View日志1ViewModel.cs" />
     <Compile Include="ViewModels\View注册1ViewModel.cs" />
     <Compile Include="Views\View日志1.xaml.cs">

@@ -40,5 +40,17 @@
         public static string 表6 = "表6";
         public static string 表7 = "表7";
         public static string 表8 = "表8";
+
+
+        public static class View
+        {
+            public static string 状态栏视图 = "StatusbarView";
+            public static string 菜单视图 = "MenuView";
+            public static string 关于视图 = "InfoView";
+            public static string 日志视图 = "LogView";
+            public static string 设置视图 = "SetView";
+            public static string 系统设置视图 = "SystemsetupView";
+            public static string 系统注册视图 = "SystemregistryView";
+        }
     }
 }

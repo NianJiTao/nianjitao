@@ -68,7 +68,7 @@ namespace NJT.Prism
             var str = result ? "已授权" : "未授权";
             if (result == false)
             {
-                Message.SendMess(str, "授权");
+                消息.更新状态栏(str, "授权");
                 if (记录日志)
                 {
                     Log.Info($"软件:{str}");
