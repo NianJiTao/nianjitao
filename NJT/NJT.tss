@@ -2,28 +2,7 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\SqlServer.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\三态文本.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\注册.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\Service系统注册.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\StartBase.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\ViewModelBase3.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\UiHelper.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\视图助手.cs</string>
+      <string>NuGet - 解决方案</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
