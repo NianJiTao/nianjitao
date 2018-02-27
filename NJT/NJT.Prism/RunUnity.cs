@@ -19,16 +19,7 @@ namespace NJT.Prism
 
         public static IUnityContainer Container人事部
         {
-            get
-            {
-                if (_人事部 == null)
-                {
-                    var run = RunFunc.TryRun<IUnityContainer>(() =>
-                        ServiceLocator.Current.GetInstance<IUnityContainer>());
-                    _人事部 = run.IsTrue ? run.Data : new UnityContainer();
-                }
-                return _人事部;
-            }
+            get => _人事部;
             set => _人事部 = value;
         }
 
@@ -39,7 +30,7 @@ namespace NJT.Prism
                 if (_宣传部 == null)
                 {
                     var run = RunFunc.TryRun(() =>
-                        ServiceLocator.Current.GetInstance<IEventAggregator>());
+                        Container人事部.Resolve<IEventAggregator>());
                     _宣传部 = run.IsTrue ? run.Data : new EventAggregator();
                 }
                 return _宣传部;
@@ -54,7 +45,7 @@ namespace NJT.Prism
                 if (_行政部 == null)
                 {
                     var run = RunFunc.TryRun(() =>
-                        ServiceLocator.Current.GetInstance<IRegionManager>());
+                        Container人事部.Resolve<IRegionManager>());
                     _行政部 = run.IsTrue ? run.Data : new RegionManager();
                 }
                 return _行政部;

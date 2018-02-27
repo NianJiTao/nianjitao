@@ -40,7 +40,7 @@ namespace NJT
 
         public static IUnityContainer 人事部
         {
-            get { return _人事部 ?? (_人事部 = ServiceLocator.Current.GetInstance<IUnityContainer>()); }
+            get { return _人事部; }
             set { _人事部 = value; }
         }
 

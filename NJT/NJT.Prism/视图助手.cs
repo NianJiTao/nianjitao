@@ -55,27 +55,7 @@ namespace NJT.Prism
             RegionManager行政部.RequestNavigate(位置.下, 位置.View.状态栏视图);
             RegionManager行政部.RequestNavigate(位置.上, 位置.View.菜单视图);
         }
-
-        //public static void 应用界面配置(界面配置 界面)
-        //{
-        //    var win = UiHelper.Win;
-        //    if (win == null)
-        //    {
-        //        return;
-        //    }
-
-        //    win.Title = 界面.标题;
-        //    if (界面.Is最大化)
-        //    {
-        //        win.WindowState = WindowState.Maximized;
-        //    }
-        //    else
-        //    {
-        //        win.Width = 界面.主界面宽度;
-        //        win.Height = 界面.主界面高度;
-        //    }
-
-        //}
+         
 
 
         public static void 导航到(string 视图名称x, string 区域 = "中")
@@ -83,7 +63,11 @@ namespace NJT.Prism
             RunUnity.Log.Info($"导航到:{视图名称x}");
             RegionManager行政部.RequestNavigate(区域, 视图名称x);
         }
-
+        public static void 导航到(string 视图名称x, string 区域, Action<NavigationResult> 回调方法, NavigationParameters 参数)
+        {
+            RunUnity.Log.Info($"导航到:{视图名称x}");
+            RegionManager行政部.RequestNavigate(区域, 视图名称x, 回调方法, 参数);
+        }
         public static void ShowError(Exception eException)
         {
             if (_errorShow) return;
