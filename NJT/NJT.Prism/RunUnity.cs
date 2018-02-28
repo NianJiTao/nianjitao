@@ -103,6 +103,26 @@ namespace NJT.Prism
 
             return container.Resolve<T>(name);
         }
-        
+        /// <summary>
+        /// 如果未注册,返回:默认返回值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="container"></param>
+        /// <param name="name"></param>
+        /// <param name="默认返回值"></param>
+        /// <returns></returns>
+        public static T TryResolve2<T>(this IUnityContainer container, string name, T 默认返回值)
+        {
+            if (container == null)
+                return 默认返回值;
+
+            if (string.IsNullOrEmpty(name))
+                return 默认返回值;
+
+            if (!container.IsRegistered<T>(name))
+                return 默认返回值;
+
+            return container.Resolve<T>(name);
+        }
     }
 }

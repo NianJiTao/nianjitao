@@ -56,6 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="数据服务器.cs" />
+    <Compile Include="StrName.cs" />
+    <Compile Include="I弹出消息.cs" />
+    <Compile Include="PidController.cs" />
     <Compile Include="I图表值.cs" />
     <Compile Include="时钟配置.cs" />
     <Compile Include="属性值转换.cs" />

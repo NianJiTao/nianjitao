@@ -4,7 +4,7 @@ using NJT.Prism;
 
 namespace NJT.UI.ViewModels
 {
-    public class  关于1ViewModel : ViewModelBase3
+    public class 关于1ViewModel : ViewModelBase3
     {
         public 关于1ViewModel()
         {
@@ -12,11 +12,14 @@ namespace NJT.UI.ViewModels
             程序名 = "通用程序2018";
             技术支持 = @"年纪涛 13913140677 NianJiTao@OutLook.com";
         }
+
         public IDelegateCommand 双击Command => this.GetCom(nameof(双击Command), 双击Action);
+
         private void 双击Action(object obj)
         {
             EventAggregator宣传部.GetEvent<Event双击关于>().Publish(obj);
         }
+
         public string 技术支持
         {
             get { return GetProperty(() => 技术支持); }

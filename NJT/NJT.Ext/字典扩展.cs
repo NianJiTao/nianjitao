@@ -6,6 +6,8 @@ namespace NJT.Ext
 {
     public static partial class 扩展方法
     {
+        private static object 更新字典标识 = "更新字典标识";
+
         /// <summary>
         /// 向字典添加新值,如果存在就更新值
         /// </summary>
@@ -14,16 +16,17 @@ namespace NJT.Ext
         /// <param name="value"></param>
         public static void 更新<TKey, TValue>(this IDictionary<TKey, TValue> obj, TKey key, TValue value)
         {
-            if (obj.ContainsKey(key))
+            lock (更新字典标识)
             {
-                obj[key] = value;
-            }
-            else
-            {
-                obj.Add(key, value);
+                if (obj.ContainsKey(key))
+                {
+                    obj[key] = value;
+                }
+                else
+                {
+                    obj.Add(key, value);
+                }
             }
         }
-
     }
-
 }

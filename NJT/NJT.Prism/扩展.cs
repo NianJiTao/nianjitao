@@ -21,5 +21,7 @@ namespace NJT.Prism
         {
             ViewModelLocationProvider.Register<TView>(() => container.Resolve<TViewModel>());
         }
+
+     
     }
 }

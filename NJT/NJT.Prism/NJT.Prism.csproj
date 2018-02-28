@@ -104,7 +104,6 @@
     <Compile Include="UiHelper.cs" />
     <Compile Include="扩展.cs" />
     <Compile Include="Service系统注册.cs" />
-    <Compile Include="I弹出消息.cs" />
     <Compile Include="EventAll.cs" />
     <Compile Include="NLog日志.cs" />
     <Compile Include="树.cs" />
