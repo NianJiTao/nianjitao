@@ -11,6 +11,147 @@ namespace NJT.Ext
 
 
         /// <summary>
+        /// 如果是float 转为float,否则tostring,tofloat
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static float ToFloat2(this object b)
+        {
+            if (b is float f)
+            {
+                return f;
+            }
+
+            return b.ToString2().ToFloat();
+        }
+
+        /// <summary>
+        /// 验证字串是否为true,或者1,
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool ToBool(this string b)
+        {
+            if (string.Equals("True", b, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return true;
+            }
+
+            if (string.Equals("1", b, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// 验证长度,再返回,长度不够返回空字串.
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="index"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        public static string Remove2(this string b, int index, int len)
+        {
+            if (string.IsNullOrEmpty(b))
+            {
+                return string.Empty;
+            }
+
+            if (b.Length > (index + len))
+            {
+                return b.Remove(index, len);
+            }
+
+            return string.Empty;
+        }
+
+
+        /// <summary>
+        /// byte转换为BCD码  
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static byte ConvertToBCD(this byte b)
+        {
+            //高四位    
+            var b1 = (byte)(b / 10);
+            //低四位    
+            var b2 = (byte)(b % 10);
+            return (byte)((b1 << 4) | b2);
+        }
+
+        /// <summary>
+        /// 解析BCD结构的字节为十进制
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static byte ConvertBCDToInt(this byte b)
+        {
+            //高四位    
+            var b1 = (byte)((b >> 4) & 0xF);
+            //低四位    
+            var b2 = (byte)(b & 0xF);
+
+            return (byte)(b1 * 10 + b2);
+        }
+        /// <summary>
+        /// 返回字串内指定长度,如果长度不够,返回原字串全长.
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="index"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        public static string Substring2(this string b, int index, int len)
+        {
+            if (string.IsNullOrEmpty(b))
+            {
+                return string.Empty;
+            }
+
+            if (b.Length > (index + len))
+            {
+                return b.Substring(index, len);
+            }
+
+            return b;
+        }
+
+        /// <summary>
+        ///  返回  i.ToString().PadLeft(len, '0'); 如1->001
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="长度"></param>
+        /// <returns></returns>
+        public static string ToString00N(this int i, int 长度 = 3)
+        {
+            return i.ToString().PadLeft(长度, '0');
+        }
+
+        public static string Remove非文件名字符(this string obj)
+        {
+            if (string.IsNullOrEmpty(obj)) return obj;
+            var 非法字符 = System.IO.Path.GetInvalidFileNameChars();
+            return obj.Remove字符(非法字符);
+        }
+
+        public static string Remove非目录字符(this string obj)
+        {
+            if (string.IsNullOrEmpty(obj)) return obj;
+            var 非法字符 = System.IO.Path.GetInvalidPathChars();
+            return obj.Remove字符(非法字符);
+        }
+
+        public static string Remove字符(this string obj, char[] 排除表)
+        {
+            if (string.IsNullOrEmpty(obj)) return obj;
+            var byte2 = obj.ToCharArray().Where(x => !排除表.Contains(x)).ToArray();
+            var r = new string(byte2);
+            return r;
+        }
+
+        /// <summary>
         /// 字串格式化示例
         /// </summary>
         static void 格式化()

@@ -190,5 +190,34 @@ namespace NJT.Ext
             }
             return obj;
         }
+
+
+        /// <summary>
+        /// 返回查找到的索引,找不到返回-1;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static int IndexOf2<T>(this IEnumerable<T> source, Predicate<T> predicate)
+        {
+            int num = 0;
+            foreach (T obj in source)
+            {
+                if (predicate(obj))
+                    return num;
+                ++num;
+            }
+
+            return -1;
+        }
+
+
+        public static T NotNullDo<T>(this T 目标, Action<T> act)
+        {
+            if (目标 != null)
+                act(目标);
+            return 目标;
+        }
     }
 }
