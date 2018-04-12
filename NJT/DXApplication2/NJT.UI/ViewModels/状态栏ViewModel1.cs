@@ -6,15 +6,15 @@ using NJT.Prism;
 
 namespace NJT.UI.ViewModels
 {
-    public class 状态栏ViewModel : ViewModelBase3 
+    public class 状态栏ViewModel : ViewModelBase3
     {
         public 状态栏ViewModel()
         {
             UseWin8NotificationsIfAvailable = false;
 
-            授权 = new 状态栏Data2 { 标识 = StrName.状态栏.授权, 标签 = "授权:", 数据 = "未知" };
-            用户 = new 状态栏Data2 { 标识 = StrName.状态栏.用户, 标签 = "用户:", 数据 = "未知" };
-            提示 = new 状态栏Data2 { 标识 = StrName.状态栏.提示, 标签 = "提示:", 数据 = "初始化" };
+            授权 = new 状态栏Data2 {标识 = "授权", 标签 = "授权:", 数据 = "未知"};
+            用户 = new 状态栏Data2 {标识 = "用户", 标签 = "用户:", 数据 = "未知"};
+            提示 = new 状态栏Data2 {标识 = "提示", 标签 = "提示:", 数据 = "初始化"};
 
             DataList.Add(授权.标识, 授权);
             DataList.Add(用户.标识, 用户);
@@ -77,10 +77,9 @@ namespace NJT.UI.ViewModels
             if (!DataList.ContainsKey(obj.标识))
                 return;
             var dataStr = obj.数据;
-            if (StrName.状态栏.提示 == obj.标识)
+            if ("提示" == obj.标识)
                 dataStr = DateTime.Now + " " + dataStr;
             DataList[obj.标识].数据 = dataStr;
-             
         }
     }
 }

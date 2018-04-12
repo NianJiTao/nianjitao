@@ -14,31 +14,43 @@ namespace NJT.Core.Tests
         [TestMethod()]
         public void Get网卡Test()
         {
-            Assert.IsTrue(new 硬件信息().Get网卡().Count > 0);
+            var r = new 硬件信息().Get网卡();
+            Assert.IsTrue(r.Count > 0);
+            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
+            Assert.AreEqual("", r2);
         }
 
         [TestMethod()]
         public void GetCpuTest()
         {
-            Assert.IsTrue(new 硬件信息().GetCpu().Count > 0);
+            var r = new 硬件信息().GetCpu();
+            Assert.IsTrue(r.Count > 0);
+            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
+            Assert.AreEqual("", r2);
         }
 
         [TestMethod()]
         public void Get主板Test()
         {
-            Assert.IsTrue(new 硬件信息().Get主板().Count > 0);
+            var r = new 硬件信息().Get主板();
+            Assert.IsTrue(r.Count > 0);
+            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
+            Assert.AreEqual("", r2);
         }
 
         [TestMethod()]
         public void Get硬盘Test()
         {
-            Assert.IsTrue(new 硬件信息().Get硬盘().Count > 0);
+            var r = new 硬件信息().Get硬盘();
+            Assert.IsTrue(r.Count > 0);
+            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
+            Assert.AreEqual("", r2);
         }
 
         [TestMethod()]
         public void Get特征码Test()
         {
-            Assert.IsFalse(string.IsNullOrEmpty(new 硬件信息().Get特征码()));
+            Assert.AreEqual("X4DPB8VMKQXT", (new 硬件信息().Get特征码()));
         }
     }
 }
