@@ -24,7 +24,7 @@ namespace NJT.Ext.Tests
         [TestMethod()]
         public void To文件大小Test()
         {
-            var r = (long)Math.Pow(2, 20);
+            var r = (long) Math.Pow(2, 20);
             Assert.AreEqual("1.0 MB", r.To文件大小());
 
             r = int.MaxValue;
@@ -83,7 +83,7 @@ namespace NJT.Ext.Tests
         [TestMethod()]
         public void ToJoinTest()
         {
-            var r = new List<string>() { "a", "b" };
+            var r = new List<string>() {"a", "b"};
             Assert.AreEqual("ab", r.To串联());
             Assert.AreEqual("a-b", r.To串联("-"));
         }
@@ -101,7 +101,7 @@ namespace NJT.Ext.Tests
         [TestMethod()]
         public void to定长Test()
         {
-            var r = new List<int>() { 1, 2, 3 };
+            var r = new List<int>() {1, 2, 3};
             r.To定长(2);
             Assert.AreEqual(2, r.Count);
 
@@ -109,7 +109,7 @@ namespace NJT.Ext.Tests
             r.To定长(2);
             Assert.AreEqual(0, r.Count);
 
-            r.AddRange(new int[] { 4, 5, 6, 7, 8 });
+            r.AddRange(new int[] {4, 5, 6, 7, 8});
             r.To定长(0);
             Assert.AreEqual(0, r.Count);
         }
@@ -118,11 +118,11 @@ namespace NJT.Ext.Tests
         public void To年月日时分秒Test()
         {
             var dt = DateTime.Now;
-            var str =dt.To年月日时分秒().Replace("_",":");  //替换后可逆转为时间
+            var str = dt.To年月日时分秒().Replace("_", ":"); //替换后可逆转为时间
             var str1 = dt.ToString("s");
             Assert.AreEqual(str, str1);
             DateTime.TryParse(str, out DateTime dt2);
-            Assert.AreEqual(dt.ToString(),dt2.ToString());
+            Assert.AreEqual(dt.ToString(), dt2.ToString());
         }
 
         [TestMethod()]
@@ -132,14 +132,16 @@ namespace NJT.Ext.Tests
             Assert.AreEqual(true, DateTime.TryParse(str, out DateTime dt2));
 
             str = "20171231";
-           var a= DateTime.ParseExact(str, "yyyyMMdd", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
-           var b= DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
-           var c= DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture, DateTimeStyles.None);
+            var a = DateTime.ParseExact(str, "yyyyMMdd", CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
+            var b = DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture,
+                DateTimeStyles.AllowWhiteSpaces);
+            var c = DateTime.ParseExact("20171231121212", "yyyyMMddHHmmss", CultureInfo.CurrentCulture,
+                DateTimeStyles.None);
         }
 
 
         [TestMethod()]
-        public void  长度修正Test()
+        public void 长度修正Test()
         {
             Assert.AreEqual("abc ", "abc".长度修正(4));
             Assert.AreEqual("ab", "abc".长度修正(2));
