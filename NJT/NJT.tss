@@ -2,10 +2,10 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\I弹出消息.cs</string>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT\Views\主视图.xaml</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\I授权配置.cs</string>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\注册.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

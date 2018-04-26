@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 
 namespace NJT.Ext
 {
     public static partial class 扩展方法
     {
 
+ 
 
         /// <summary>
         /// 如果条件符合,则执行方法 , 如果过滤方法为空,将直接执行方法.
@@ -218,6 +220,27 @@ namespace NJT.Ext
             if (目标 != null)
                 act(目标);
             return 目标;
+        }
+
+
+        /// <summary>
+        /// 返回字节组的字符串形式,用utf8解码
+        /// </summary>
+        /// <param name="字节组"></param>
+        /// <returns></returns>
+        public static string GetString(this byte[] 字节组)
+        {
+            if (字节组 == null || !字节组.Any())
+            {
+                return string.Empty;
+            }
+
+            var m = 字节组.Where(x => x > 0).ToArray();
+            if (!m.Any())
+            {
+                return string.Empty;
+            }
+            return Encoding.UTF8.GetString(m);
         }
     }
 }

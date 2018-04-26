@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using NJT.Core;
 
 namespace NJT.Ext
 {
@@ -122,6 +123,18 @@ namespace NJT.Ext
                 return DateTime.MinValue;
             var b = DateTime.TryParse(obj.ToString(), out DateTime dt);
             return b ? dt : DateTime.MinValue;
+        }
+
+        private static readonly Lazy<日期顺序号> Lazy日期顺序号 =new Lazy<日期顺序号>();
+
+        /// <summary>
+        /// 返回当前日期的顺序号,递增1
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int Get顺序号(this DateTime obj)
+        {
+            return Lazy日期顺序号.Value.Get记录号(obj);
         }
     }
 }

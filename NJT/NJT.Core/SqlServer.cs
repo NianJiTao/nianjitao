@@ -77,7 +77,7 @@ namespace NJT.Core
         {
             if (测试中)
             {
-                return new 运行结果(true);
+                return new 运行结果(false, "测试中");
             }
             测试中 = true;
             try

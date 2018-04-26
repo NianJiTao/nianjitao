@@ -42,8 +42,8 @@ namespace NJT.项目启动
         {
             base.ConfigureModuleCatalog();
             小冰.Set默认解析器();
-            var moduleCatalog = (ModuleCatalog)ModuleCatalog;
-            moduleCatalog.AddModule(typeof(启动模块));
+            //var moduleCatalog = (ModuleCatalog)ModuleCatalog;
+            //moduleCatalog.AddModule(typeof(启动模块));
         }
 
         protected override void ConfigureContainer()

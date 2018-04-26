@@ -71,12 +71,7 @@
     <Compile Include="转换Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NJT\NJT.csproj">
-      <Project>{1657AA2F-8B5F-4CD3-AE02-B67FC1BFA2AC}</Project>
-      <Name>NJT</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
