@@ -43,18 +43,18 @@
     <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Unity.5.8.6\lib\net46\CommonServiceLocator.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.CodeView.v17.2" />
-    <Reference Include="DevExpress.Xpf.Core.v17.2" />
-    <Reference Include="DevExpress.Data.v17.2" />
-    <Reference Include="DevExpress.Office.v17.2.Core" />
-    <Reference Include="DevExpress.RichEdit.v17.2.Core" />
-    <Reference Include="DevExpress.RichEdit.v17.2.Export" />
-    <Reference Include="DevExpress.Printing.v17.2.Core" />
-    <Reference Include="DevExpress.Mvvm.v17.2" />
-    <Reference Include="DevExpress.Xpf.Printing.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Grid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Grid.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v17.2" />
+    <Reference Include="DevExpress.Xpf.CodeView.v18.1" />
+    <Reference Include="DevExpress.Xpf.Core.v18.1" />
+    <Reference Include="DevExpress.Data.v18.1" />
+    <Reference Include="DevExpress.Office.v18.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Export" />
+    <Reference Include="DevExpress.Printing.v18.1.Core" />
+    <Reference Include="DevExpress.Mvvm.v18.1" />
+    <Reference Include="DevExpress.Xpf.Printing.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v18.1" />
     <Reference Include="Prism, Version=7.1.0.123, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.7.1.0.123-pre\lib\net45\Prism.dll</HintPath>
     </Reference>

@@ -14,5 +14,4 @@ namespace NJT.Ext
                 .ToList();
         }
     }
-
 }

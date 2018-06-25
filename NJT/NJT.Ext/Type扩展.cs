@@ -9,7 +9,6 @@ namespace NJT.Ext
 {
     public static partial class 扩展方法
     {
-
         public static IList<object> Get静态属性(this Type typex)
         {
             var r = typex.GetProperties(BindingFlags.Public | BindingFlags.Static)
@@ -25,17 +24,32 @@ namespace NJT.Ext
         }
 
 
-        public static T 反射克隆值<T>(this T 目标, T 源, IList<string> 排除属性名 = null)
+        /// <summary>
+        /// 可给接口或者类型的属性赋值.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="目标"></param>
+        /// <param name="源"></param>
+        /// <param name="排除属性名"></param>
+        /// <returns></returns>
+        public static T 反射克隆值<T>(this T 目标, T 源, IList<string> 排除属性名 = null) where T : class
         {
             if (源 == null || 目标 == null)
                 return 目标;
-            var listProp = typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .Where(x => x.CanRead && x.CanWrite).ToList();
+
+            var 接口属性List = typeof(T).GetInterfaces()
+                .SelectMany(x => x.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+                .Where(x => x.CanRead && x.CanWrite);
+
+            var 实例属性List = typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                .Where(x => x.CanRead && x.CanWrite).Concat(接口属性List).ToList();
+
             var is排除 = 排除属性名 != null && 排除属性名.Any();
-            var listProp2 = is排除 ? listProp.Where(x => !排除属性名.Contains(x.Name)).ToList() : listProp;
-            //var pname = listProp2.Select(x => x.Name).ToList();
-            foreach (var p in listProp2)
+            var 过滤后List = is排除 ? 实例属性List.Where(x => !排除属性名.Contains(x.Name)).ToList() : 实例属性List;
+
+            foreach (var p in 过滤后List)
                 p.SetValue(目标, p.GetValue(源));
+
             return 目标;
         }
     }

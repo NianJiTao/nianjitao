@@ -500,5 +500,25 @@ namespace NJT.Ext
             var b = DateTime.TryParse(obj.ToString(), out var dt2);
             return b ? dt2 : DateTime.MinValue;
         }
+
+
+        /// <summary>
+        /// 返回是否相等,不区分大小写, true和1相等.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool 等于OrBool(this string a, string b)
+        {
+            var r = a.等于(b);
+            if (r)
+                return true;
+
+            if (a.ToBool() && b.ToBool())
+                return true;
+
+            return false;
+        }
+
     }
 }

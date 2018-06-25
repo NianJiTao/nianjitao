@@ -242,5 +242,29 @@ namespace NJT.Ext
             }
             return Encoding.UTF8.GetString(m);
         }
+
+        public static List<T> GetList<T>(this int 数量) where T : new()
+        {
+            var list2 = Enumerable.Range(0, 数量)
+                .Select(i => new T())
+                .ToList();
+            return list2;
+        }
+
+        /// <summary>
+        /// 把数组分成几组,每组一样数量.如果源数据不够长,组内容可能为空.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="源"></param>
+        /// <param name="组数"></param>
+        /// <param name="每组数量"></param>
+        /// <returns></returns>
+        public static List<List<T>> 分组<T>(this IEnumerable<T> 源, int 组数, int 每组数量)
+        {
+            var list2 = Enumerable.Range(0, 组数)
+                .Select(i => 源.Skip(每组数量 * i).Take(每组数量).ToList())
+                .ToList();
+            return list2;
+        }
     }
 }

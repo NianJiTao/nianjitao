@@ -5,10 +5,8 @@ using NJT.Core;
 
 namespace NJT.Ext
 {
-
     public static partial class 扩展
     {
-
         public static void 更新显示(this I按钮显示 按钮表, string 隐藏按钮字串)
         {
             var 隐藏按钮组 = 隐藏按钮字串.To分割(",+;")
@@ -17,6 +15,7 @@ namespace NJT.Ext
 
             更新显示(按钮表, 隐藏按钮组);
         }
+
         public static void 更新显示(this I按钮显示 按钮表, string[] 隐藏按钮字串)
         {
             var t = 按钮表.GetType();
@@ -31,5 +30,4 @@ namespace NJT.Ext
             }
         }
     }
-
 }
