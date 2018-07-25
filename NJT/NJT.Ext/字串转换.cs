@@ -260,6 +260,22 @@ namespace NJT.Ext
             return System.IO.Path.Combine(目录1, 目录2);
         }
 
+        public static string To合并文件名(this string dir2, string 文件名x)
+        {
+            var 文件名 = 文件名x.Remove非文件名字符();
+            try
+            {
+                var n2 = System.IO.Path.Combine(dir2, 文件名);
+                文件名 = n2;
+            }
+            catch (Exception)
+            {
+                return dir2;
+            }
+
+            return 文件名;
+        }
+
         public static string Get首字母(this string 汉字串)
         {
             return 拼音.首字母(汉字串);

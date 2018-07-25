@@ -11,6 +11,9 @@ namespace NJT.Core
 {
     public static partial class 序列化
     {
+        public static Encoding 编码 = Encoding.Default;
+
+
         /// <summary>
         ///     在当前程序目录下写入名为"配置"的XML文件
         /// </summary>
@@ -140,6 +143,7 @@ namespace NJT.Core
             {
                 stream.Close();
             }
+
             return new 运行结果<T>(true) {Data = 数据};
         }
 
@@ -151,9 +155,10 @@ namespace NJT.Core
             {
                 foreach (var item in 文件列表)
                 {
-                    var sr = new StreamReader(item, Encoding.Default);
+                    var sr = new StreamReader(item, 编码);
                     await sw.WriteAsync(await sr.ReadToEndAsync());
                 }
+
                 合并成功 = true;
             }
             catch (Exception)
@@ -164,6 +169,7 @@ namespace NJT.Core
             {
                 sw?.Close();
             }
+
             return new 运行结果(合并成功);
         }
 
@@ -183,7 +189,7 @@ namespace NJT.Core
                 return new 运行结果(false, "文件名为空");
             try
             {
-                var myWriter = new StreamWriter(文件名, 追加, Encoding.Default);
+                var myWriter = new StreamWriter(文件名, 追加, 编码);
                 await myWriter.WriteAsync(内容);
                 myWriter.Close();
                 return new 运行结果(true);
@@ -202,7 +208,7 @@ namespace NJT.Core
             StreamReader myReader = null;
             try
             {
-                myReader = new StreamReader(文件名, Encoding.Default);
+                myReader = new StreamReader(文件名, 编码);
                 结果 = await myReader.ReadToEndAsync();
             }
             catch (Exception ee)
@@ -213,7 +219,24 @@ namespace NJT.Core
             {
                 myReader?.Close();
             }
+
             return new 运行结果<string>(true) {Data = 结果};
+        }
+
+        public static async Task<运行结果> 插入首行txt(string 文件名, string h4)
+        {
+            if (string.IsNullOrEmpty(文件名))
+                return new 运行结果(false, "文件名为空");
+
+            var r = await 序列化.读出txt(文件名);
+            if (r.IsTrue == false)
+            {
+                return new 运行结果(false, r.ErrorMess);
+            }
+            var 内容 = h4 + r.Data;
+
+            return await 写入txt(文件名, 内容, false);
+        
         }
     }
 }
