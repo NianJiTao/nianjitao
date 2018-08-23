@@ -26,15 +26,15 @@ namespace NJT.Prism
             {
                 var win = Container人事部.TryResolve<T>();
                 var shell = win as Window;
-                shell.Do(x => UiHelper.UiDispatcher线程 = x.Dispatcher);
-                shell.Do(x =>
+                if (shell != null)
                 {
-                    x.Closed += (s, e) =>
+                    UiHelper.UiDispatcher线程 = shell.Dispatcher;
+                    shell.Closed += (s, e) =>
                     {
                         RunUnity.Log.Info("程序关闭,通知各单位退出.");
                         EventAggregator宣传部.GetEvent<Event退出>().Publish();
                     };
-                });
+                }
                 return shell;
             }
             catch (Exception e)
@@ -55,7 +55,6 @@ namespace NJT.Prism
             RegionManager行政部.RequestNavigate(位置.下, 位置.View.状态栏视图);
             RegionManager行政部.RequestNavigate(位置.上, 位置.View.菜单视图);
         }
-         
 
 
         public static void 导航到(string 视图名称x, string 区域 = "中")
@@ -63,11 +62,13 @@ namespace NJT.Prism
             RunUnity.Log.Info($"导航到:{视图名称x}");
             RegionManager行政部.RequestNavigate(区域, 视图名称x);
         }
+
         public static void 导航到(string 视图名称x, string 区域, Action<NavigationResult> 回调方法, NavigationParameters 参数)
         {
             RunUnity.Log.Info($"导航到:{视图名称x}");
             RegionManager行政部.RequestNavigate(区域, 视图名称x, 回调方法, 参数);
         }
+
         public static void ShowError(Exception eException)
         {
             if (_errorShow) return;

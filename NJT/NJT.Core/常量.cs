@@ -41,5 +41,6 @@ namespace NJT.Core
         public static readonly DateTime T2022年1001 = new DateTime(2020, 10, 1);
         public static readonly DateTime T2030年 = new DateTime(2030, 1, 1);
         public static readonly DateTime T2050年 = new DateTime(2050, 1, 1);
+        public static readonly DateTime T3000年 = new DateTime(3000, 1, 1);
     }
 }

@@ -1,0 +1,29 @@
+﻿<dx:ThemedWindow
+    x:Class="NJT.UI.DX弹出消息1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Title="消息"
+    Width="525"
+    Height="350"
+    AllowsTransparency="True"
+    Background="#01000000"
+    MouseDoubleClick="DX弹出消息1_OnMouseDoubleClick"
+    SizeToContent="WidthAndHeight"
+    Topmost="True"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None">
+
+    <Window.Resources />
+    <Grid>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DataContext="{Binding .}"
+            FontSize="{Binding 字体大小}"
+            Foreground="{Binding 字体颜色}"
+            Text="{Binding 显示文字}" />
+
+    </Grid>
+
+</dx:ThemedWindow>

@@ -35,7 +35,7 @@
     /// <summary>
     ///     表示方法运行的结果.T为携带数据
     /// </summary>
-    public class 运行结果<T>: I运行结果
+    public class 运行结果<T>: I运行结果<T>
     {
         public 运行结果(bool istrue)
         {

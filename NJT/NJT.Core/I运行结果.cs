@@ -1,4 +1,6 @@
-﻿namespace NJT.Core
+﻿using System.Runtime.InteropServices;
+
+namespace NJT.Core
 {
     /// <summary>
     ///     表示方法运行的结果.
@@ -14,5 +16,10 @@
         ///     执行错误时的信息.
         /// </summary>
         string ErrorMess { get; set; }
+    }
+
+    public interface I运行结果<T> : I运行结果
+    {
+        T Data { get; set; }
     }
 }

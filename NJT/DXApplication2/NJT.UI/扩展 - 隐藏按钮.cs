@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using DevExpress.Mvvm;
-using DevExpress.Mvvm.Native;
 using DevExpress.Xpf.Bars;
 using NJT.Ext;
 using NJT.Prism;
+using Unity.Interception.Utilities;
 
 namespace NJT.UI
 {
@@ -45,7 +44,6 @@ namespace NJT.UI
             {
                 return;
             }
-
             barItems.OfType<BarItem>()
                 .Where(x => 隐藏按钮组.Contains(x.Content.ToString()))
                 .ForEach(x => x.IsVisible = false);

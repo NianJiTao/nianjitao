@@ -10,7 +10,6 @@ namespace NJT.Prism
 {
     public class NLog日志 : I日志
     {
-
         private static Logger Log2 => Log4.Value;
 
         private static readonly Lazy<Logger> Log4 = new Lazy<Logger>(LogManager.GetCurrentClassLogger);

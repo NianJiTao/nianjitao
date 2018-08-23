@@ -27,7 +27,7 @@ namespace NJT.Prism
 
         public static Dispatcher UiDispatcher线程
         {
-            get => _ui线程 ?? (_ui线程 = Application.Current.MainWindow.Dispatcher);
+            get => _ui线程 ?? (_ui线程 = Application.Current.MainWindow?.Dispatcher);
             set => _ui线程 = value;
         }
 

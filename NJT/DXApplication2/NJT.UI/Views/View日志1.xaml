@@ -15,9 +15,9 @@
         <viewModels:View日志1ViewModel />
     </UserControl.DataContext>
     <Grid>
-        <dx:GroupFrame Header="{Binding 标题}">
+        <GroupBox Header="记录">
             <Grid>
-                <dxg:GridControl ItemsSource="{Binding ListData}">
+                <dxg:GridControl ItemsSource="{Binding 列表}">
                     <dxg:GridControl.ContextMenu>
                         <ContextMenu>
                             <MenuItem Command="{Binding 清空Command}" Header="清空" />
@@ -69,6 +69,6 @@
                     </StackPanel>
                 </dx:SimpleButton>
             </Grid>
-        </dx:GroupFrame>
+        </GroupBox>
     </Grid>
 </UserControl>
