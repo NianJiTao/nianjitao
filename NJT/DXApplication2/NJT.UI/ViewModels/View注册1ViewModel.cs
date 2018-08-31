@@ -127,7 +127,7 @@ namespace NJT.UI.ViewModels
         {
             客户名称 = _历史客户名称;
             注册码 = _历史注册码;
-            EventAggregator宣传部.GetEvent<Event返回>().Publish(1);
+            EventAggregator宣传部.GetEvent<Event视图返回>().Publish(1);
         }
 
         private void 保存Action()

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展方法
+    public static partial class 扩展 
     {
         private static object 更新字典标识 = "更新字典标识";
 

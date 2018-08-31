@@ -51,12 +51,15 @@ namespace NJT.Prism
     /// <summary>
     /// 参数为返回的次数
     /// </summary>
-    public class Event返回 : PubSubEvent<int>
+    public class Event视图返回 : PubSubEvent<int>
     {
     }
 
-
     public class Event弹出消息 : PubSubEvent<I弹出消息>
+    {
+    }
+
+    public class Event弹出警告 : PubSubEvent<I弹出消息>
     {
     }
 
@@ -99,9 +102,6 @@ namespace NJT.Prism
     {
     }
 
-    public class Event选择树 : PubSubEvent<树>
-    {
-    }
 
     /// <summary>
     ///     参数为文本内容
@@ -145,7 +145,9 @@ namespace NJT.Prism
     public class Event双击时钟 : PubSubEvent<object>
     {
     }
-
+    //public class Event双击状态栏 : PubSubEvent<object>
+    //{
+    //}
     public class Event双击关于 : PubSubEvent<object>
     {
     }

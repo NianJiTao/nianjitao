@@ -8,7 +8,6 @@ using Prism.Events;
 
 namespace NJT.Prism
 {
-
     public static class 消息
     {
         private static IEventAggregator EventAggregator宣传部 => RunUnity.EventAggregator宣传部;
@@ -43,9 +42,27 @@ namespace NJT.Prism
             EventAggregator宣传部.GetEvent<EventSms通知>().Publish(new Sms通知(标题, 消息内容));
         }
 
+        /// <summary>
+        /// 右下角Sms
+        /// </summary>
+        /// <param name="消息内容"></param>
+        public static void Sms(string 消息内容)
+        {
+            EventAggregator宣传部.GetEvent<EventSms通知2>().Publish(消息内容);
+        }
 
         /// <summary>
-        /// 调用 Log.Info
+        /// 右下角Sms
+        /// </summary>
+        /// <param name="消息内容"></param>
+        /// <param name="标题"></param>
+        public static void Sms(string 消息内容, string 标题)
+        {
+            EventAggregator宣传部.GetEvent<EventSms通知>().Publish(new Sms通知(标题, 消息内容));
+        }
+
+        /// <summary>
+        /// 更新状态栏并调用 Log.Info
         /// </summary>
         /// <param name="info"></param>
         public static void 通知并记录(string info)
@@ -55,7 +72,7 @@ namespace NJT.Prism
         }
 
         /// <summary>
-        /// 调用 Log.Error
+        /// 更新状态栏并调用 Log.Error
         /// </summary>
         /// <param name="info"></param>
         public static void 通知并记录错误(string info)
@@ -65,15 +82,13 @@ namespace NJT.Prism
         }
 
         /// <summary>
-        /// 调用 Log.Debug
+        /// 更新状态栏并调用 Log.Debug
         /// </summary>
         /// <param name="info"></param>
         public static void 通知并记录调试(string info)
         {
             更新状态栏(info);
             Log1.Debug(info);
-        }   
+        }
     }
-    
-
 }

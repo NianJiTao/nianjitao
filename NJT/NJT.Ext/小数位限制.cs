@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展方法
+    public static partial class 扩展 
     {
 
         /// <summary>
@@ -42,7 +42,25 @@ namespace NJT.Ext
             return (decimal)Math.Round(obj, len);
         }
 
+        /// <summary>
+        /// 0~1转为0-100,四舍五入;
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int ToProgressVal(this double obj)
+        {
+            return (int)(Math.Round(obj.范围限制(0, 1), 2) * 100);
+        }
 
-       
+        /// <summary>
+        /// 0~1转为0-100,四舍五入;
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int ToProgressVal(this float obj)
+        {
+            return (int)(Math.Round(obj.范围限制(0, 1), 2) * 100);
+        }
+
     }
 }

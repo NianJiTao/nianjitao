@@ -37,10 +37,10 @@ namespace NJT.Ext.Tests
         [TestMethod()]
         public void To百分比Test()
         {
-            Assert.AreEqual("13.14%", 扩展方法.To百分比(0.1314d));
-            Assert.AreEqual("12.00%", 扩展方法.To百分比(0.12d));
-            Assert.AreEqual("100.00%", 扩展方法.To百分比(1d));
-            Assert.AreEqual("0.00%", 扩展方法.To百分比(0d));
+            Assert.AreEqual("13.14%", 0.1314d.To百分比());
+            Assert.AreEqual("12.00%", 0.12d.To百分比());
+            Assert.AreEqual("100.00%", 1d.To百分比());
+            Assert.AreEqual("0.00%", 0d.To百分比());
         }
 
         [TestMethod()]

@@ -109,6 +109,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RunFunc2.cs" />
     <Compile Include="视图助手.cs" />
     <Compile Include="授权助手.cs" />
     <Compile Include="状态栏Data.cs" />

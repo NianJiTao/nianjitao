@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展方法
+    public static partial class 扩展 
     {
         public static IList<object> Get静态属性(this Type typex)
         {

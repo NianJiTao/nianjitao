@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展方法
+    public static partial class 扩展
     {
         public static List<T> To列表<T>() where T : struct
         {

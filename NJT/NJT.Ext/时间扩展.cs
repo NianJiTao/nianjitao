@@ -6,7 +6,7 @@ using NJT.Core;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展方法
+    public static partial class 扩展
     {
         /// <summary>
         /// HH:mm:ss
@@ -59,73 +59,7 @@ namespace NJT.Ext
         }
 
 
-        /// <summary>
-        /// 整数秒转换到时间.
-        /// </summary>
-        /// <param name="ss">The string.</param>
-        /// <returns>TimeSpan.</returns>
-        public static TimeSpan ToTimeSpan(this int ss)
-        {
-            return new TimeSpan(0, 0, 0, ss);
-        }
-
-        /// <summary>
-        /// yyyyMMddHHmmss 格式可转换.
-        /// </summary>
-        /// <param name="str">The string.</param>
-        /// <returns>TimeSpan.</returns>
-        public static DateTime GetDateTime14(this string str)
-        {
-            try
-            {
-                var dt = str.GetDateTime("yyyyMMddHHmmss");
-                return dt;
-            }
-            catch (Exception)
-            {
-                return DateTime.MinValue;
-            }
-        }
-
-        /// <summary>
-        /// yyyyMMdd 格式可转换.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static DateTime GetDateTime8(this string str)
-        {
-            try
-            {
-                var dt = str.GetDateTime("yyyyMMdd");
-                return dt;
-            }
-            catch (Exception)
-            {
-                return DateTime.MinValue;
-            }
-        }
-
-        public static DateTime GetDateTime(this string 字符串, string 日期格式)
-        {
-            var r = DateTime.ParseExact(字符串, 日期格式, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
-            return r;
-        }
-
-        /// <summary>
-        /// 对象转换成时间. UTC时间,本地时间需加.ToLocalTime()
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        /// 
-        public static DateTime GetDateTime(this object obj)
-        {
-            if (obj == null)
-                return DateTime.MinValue;
-            var b = DateTime.TryParse(obj.ToString(), out DateTime dt);
-            return b ? dt : DateTime.MinValue;
-        }
-
-        private static readonly Lazy<日期顺序号> Lazy日期顺序号 =new Lazy<日期顺序号>();
+        private static readonly Lazy<日期顺序号> Lazy日期顺序号 = new Lazy<日期顺序号>();
 
         /// <summary>
         /// 返回当前日期的顺序号,递增1
@@ -135,6 +69,12 @@ namespace NJT.Ext
         public static int Get顺序号(this DateTime obj)
         {
             return Lazy日期顺序号.Value.Get记录号(obj);
+        }
+
+
+        public static TimeSpan To求和(this IEnumerable<TimeSpan> 时间列表)
+        {
+            return 时间列表.Aggregate(TimeSpan.Zero, (current, item) => current + item);
         }
     }
 }

@@ -6,32 +6,8 @@ using System.Text;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展方法
+    public static partial class 扩展
     {
-
- 
-
-        /// <summary>
-        /// 如果条件符合,则执行方法 , 如果过滤方法为空,将直接执行方法.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="执行方法"></param>
-        /// <returns></returns>
-        public static T IfDo<T>(this T obj, Func<T, T> 执行方法, Func<T, bool> 过滤方法)
-        {
-            if (null == 过滤方法)
-            {
-                return 执行方法(obj);
-            }
-            if (过滤方法(obj))
-            {
-                return 执行方法(obj);
-            }
-            return obj;
-        }
-
-
         public static T 选择<T>(this IList<T> list, int k)
         {
             if (k < 0) return list.FirstOrDefault();
@@ -45,6 +21,7 @@ namespace NJT.Ext
             {
                 return default(T);
             }
+
             var k = list.IndexOf(sel);
             list.Remove(sel);
             return list.选择(k);
@@ -57,6 +34,7 @@ namespace NJT.Ext
             {
                 list.Remove(item);
             }
+
             return list.选择(k);
         }
 
@@ -88,10 +66,10 @@ namespace NJT.Ext
             }
             catch (Exception)
             {
-                return false; ;
+                return false;
+                ;
             }
         }
-
 
 
         public static IList<T> 随机选取<T>(this IList<T> r, int 数量)
@@ -110,6 +88,7 @@ namespace NJT.Ext
                 l.Add(r[m]);
                 数量--;
             }
+
             return l;
         }
 
@@ -129,29 +108,17 @@ namespace NJT.Ext
             }
         }
 
-        /// <summary>
-        /// 转换为 List 泛型
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static IList<T> GetList<T>(this Array obj)
-        {
-            if (obj == null)
-                return new List<T>();
-            var r2 = obj.Cast<T>().ToList();
-            return r2;
-        }
         public static void To定长<T>(this List<T> r, int 长度)
         {
-            if (r == null || r.Count == 0 || 长度 <  0)
+            if (r == null || r.Count == 0 || 长度 < 0)
             {
                 return;
             }
+
             var 最大值 = r.Count;
-            if (最大值> 长度)
+            if (最大值 > 长度)
             {
-                r.RemoveRange(长度,最大值-长度);
+                r.RemoveRange(长度, 最大值 - 长度);
             }
         }
 
@@ -169,10 +136,12 @@ namespace NJT.Ext
                 list.Add(item);
                 return;
             }
+
             if (list.Count > 0)
             {
                 list.RemoveAt(0);
             }
+
             list.Add(item);
         }
 
@@ -190,6 +159,7 @@ namespace NJT.Ext
             {
                 执行方法(item);
             }
+
             return obj;
         }
 
@@ -215,41 +185,6 @@ namespace NJT.Ext
         }
 
 
-        public static T NotNullDo<T>(this T 目标, Action<T> act)
-        {
-            if (目标 != null)
-                act(目标);
-            return 目标;
-        }
-
-
-        /// <summary>
-        /// 返回字节组的字符串形式,用utf8解码
-        /// </summary>
-        /// <param name="字节组"></param>
-        /// <returns></returns>
-        public static string GetString(this byte[] 字节组)
-        {
-            if (字节组 == null || !字节组.Any())
-            {
-                return string.Empty;
-            }
-
-            var m = 字节组.Where(x => x > 0).ToArray();
-            if (!m.Any())
-            {
-                return string.Empty;
-            }
-            return Encoding.UTF8.GetString(m);
-        }
-
-        public static List<T> GetList<T>(this int 数量) where T : new()
-        {
-            var list2 = Enumerable.Range(0, 数量)
-                .Select(i => new T())
-                .ToList();
-            return list2;
-        }
 
         /// <summary>
         /// 把数组分成几组,每组一样数量.如果源数据不够长,组内容可能为空.
@@ -265,6 +200,25 @@ namespace NJT.Ext
                 .Select(i => 源.Skip(每组数量 * i).Take(每组数量).ToList())
                 .ToList();
             return list2;
+        }
+
+
+        /// <summary>
+        /// 串联string
+        /// </summary>
+        /// <param name="lt"></param>
+        /// <param name="分隔符"></param>
+        /// <returns></returns>
+        public static string To串联(this IEnumerable<string> lt, string 分隔符 = "")
+        {
+            return string.Join(分隔符, lt);
+        }
+
+        public static bool Is空<T>(this IEnumerable<T> list)
+        {
+            if (list == null)
+                return true;
+            return !list.Any();
         }
     }
 }
