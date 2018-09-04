@@ -175,5 +175,21 @@ namespace NJT.Prism
         {
             return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
         }
+
+        /// <summary>
+        /// 读取已经注册的值,如有方法,就运行
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="值名称"></param>
+        /// <param name="action1"></param>
+        /// <returns></returns>
+        public static I运行结果<T> 读取配置值<T>(string 值名称, Action<T> action1)
+        {
+            if (Container人事部 == null) return new 运行结果<T>(false, "解析器为空");
+            if (!Container人事部.IsRegistered<T>(值名称)) return new 运行结果<T>(false, "值名称未注册");
+            var r1 = Container人事部.Resolve<T>(值名称);
+            action1?.Invoke(r1);
+            return new 运行结果<T>(true) { Data = r1 };
+        }
     }
 }

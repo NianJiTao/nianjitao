@@ -40,9 +40,9 @@ namespace NJT.UI
 
         public static Process 查找运行进程()
         {
-            Process current = Process.GetCurrentProcess();
-            Process[] processes = Process.GetProcessesByName(current.ProcessName);
-            foreach (Process process in processes)
+            var current = Process.GetCurrentProcess();
+            var processes = Process.GetProcessesByName(current.ProcessName);
+            foreach (var process in processes)
             {
                 if (process.Id != current.Id)
                 {

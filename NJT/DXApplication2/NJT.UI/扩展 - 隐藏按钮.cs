@@ -22,15 +22,12 @@ namespace NJT.UI
         {
             var 隐藏按钮 = 隐藏;
             if (string.IsNullOrEmpty(隐藏按钮))
-            {
                 隐藏按钮 = RunUnity.Container人事部.TryResolve2<string>("隐藏按钮", string.Empty);
-            }
 
-            if (!string.IsNullOrEmpty(隐藏按钮))
-            {
-                var 隐藏按钮组 = 隐藏按钮.To分割(",+;");
-                barItems.隐藏按钮(隐藏按钮组);
-            }
+            if (string.IsNullOrEmpty(隐藏按钮))
+                return;
+            var 隐藏按钮组 = 隐藏按钮.To分割(",+;");
+            barItems.隐藏按钮(隐藏按钮组);
         }
 
         /// <summary>
@@ -40,12 +37,12 @@ namespace NJT.UI
         /// <param name="隐藏按钮组"></param>
         public static void 隐藏按钮(this IEnumerable<IBarItem> barItems, string[] 隐藏按钮组)
         {
-            if (隐藏按钮组 == null || 隐藏按钮组.Any() == false || 隐藏按钮组.Any() == false)
+            if (barItems.Is空()  || 隐藏按钮组.Is空()  )
             {
                 return;
             }
             barItems.OfType<BarItem>()
-                .Where(x => 隐藏按钮组.Contains(x.Content.ToString()))
+                .Where(x => 隐藏按钮组.Contains(x.Content.ToString2()))
                 .ForEach(x => x.IsVisible = false);
 
             barItems.OfType<BarSubItem>()

@@ -88,6 +88,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static string ToString00N(this int i, int 长度 = 3)
         {
+            长度 = 长度.范围限制(0, 127);
             return i.ToString().PadLeft(长度, '0');
         }
 
