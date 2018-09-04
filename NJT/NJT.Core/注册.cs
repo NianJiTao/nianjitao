@@ -158,6 +158,8 @@ namespace NJT.Core
 
         public static string GetMd5(string initString)
         {
+            if (string.IsNullOrEmpty(initString))
+                return string.Empty;
             var md5 = new MD5CryptoServiceProvider();
             var btSerialCode = md5.ComputeHash(Encoding.Default.GetBytes(initString));
             var encryptedString = BitConverter.ToString(btSerialCode);

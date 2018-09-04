@@ -56,13 +56,9 @@ namespace NJT.Ext
             {
                 return string.Empty;
             }
-
-            if (b.Length > (index + len))
-            {
-                return b.Remove(index, len);
-            }
-
-            return string.Empty;
+            index = index.范围限制(0, short.MaxValue);
+            len = len.范围限制(0, short.MaxValue);
+            return b.Length > (index + len) ? b.Remove(index, len) : string.Empty;
         }
 
 
@@ -79,13 +75,9 @@ namespace NJT.Ext
             {
                 return string.Empty;
             }
-
-            if (b.Length > (index + len))
-            {
-                return b.Substring(index, len);
-            }
-
-            return b;
+            index = index.范围限制(0, short.MaxValue);
+            len = len.范围限制(0, short.MaxValue);
+            return b.Length <= (index + len) ? b : b.Substring(index, len);
         }
 
         /// <summary>
@@ -116,6 +108,7 @@ namespace NJT.Ext
         public static string Remove字符(this string obj, char[] 排除表)
         {
             if (string.IsNullOrEmpty(obj)) return obj;
+            if (排除表==null ) return obj;
             var byte2 = obj.ToCharArray().Where(x => !排除表.Contains(x)).ToArray();
             var r = new string(byte2);
             return r;
@@ -191,6 +184,11 @@ namespace NJT.Ext
 
         public static string To合并文件名(this string dir2, string 文件名x)
         {
+            if (string.IsNullOrEmpty(文件名x))
+                文件名x = string.Empty;
+
+            if (string.IsNullOrEmpty(dir2))
+                dir2 = string.Empty;
             var 文件名 = 文件名x.Remove非文件名字符();
             try
             {
@@ -213,9 +211,13 @@ namespace NJT.Ext
 
         public static byte[] HexToByte(this string hexString)
         {
+            if (string.IsNullOrEmpty(hexString))
+            {
+                return new byte[0];
+            }
             var returnBytes = new byte[hexString.Length / 2];
             for (var i = 0; i < returnBytes.Length; i++)
-                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);  //未验证是否有效数字
             return returnBytes;
         }
 
@@ -263,6 +265,10 @@ namespace NJT.Ext
 
         public static string[] To分割(this string text, string 分割符 = ";")
         {
+            if (string.IsNullOrEmpty(分割符))
+            {
+                分割符 = ";";
+            }
             var r = new string[0];
             if (!string.IsNullOrEmpty(text))
                 r = text.Split(分割符.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -291,6 +297,13 @@ namespace NJT.Ext
         /// <returns></returns>
         public static string 长度修正(this string 字串, int 长度, char 填充 = ' ')
         {
+            长度 = 长度.范围限制(0, byte.MaxValue);
+            if (字串 == null)
+            {
+                return string.Empty.PadRight(长度, 填充);
+            }
+
+
             if (字串.Length > 长度)
             {
                 return 字串.Remove(长度);
@@ -313,6 +326,12 @@ namespace NJT.Ext
         /// <returns></returns>
         public static string 数字长度修正(this string 字串, int 长度)
         {
+            长度 = 长度.范围限制(0, byte.MaxValue);
+            if (字串 == null)
+            {
+                return string.Empty.PadLeft(长度,  '0');
+            }
+
             if (字串.Length > 长度)
             {
                 return 字串.Remove(长度);
@@ -349,6 +368,10 @@ namespace NJT.Ext
         /// <returns></returns>
         public static bool 等于OrBool(this string a, string b)
         {
+            if (a==null || b==null)
+            {
+                return false;
+            }
             var r = a.等于(b);
             if (r)
                 return true;
@@ -398,6 +421,10 @@ namespace NJT.Ext
 
         public static DateTime GetDateTime(this string 字符串, string 日期格式)
         {
+            if (string.IsNullOrWhiteSpace(字符串) || string.IsNullOrEmpty(日期格式))
+            {
+                return DateTime.MinValue;
+            }
             var r = DateTime.ParseExact(字符串, 日期格式, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
             return r;
         }

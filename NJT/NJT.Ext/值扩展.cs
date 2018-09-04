@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static System.Int16;
 
 namespace NJT.Ext
 {
@@ -91,6 +92,12 @@ namespace NJT.Ext
         /// <returns></returns>
         public static byte[] 长度修正(this byte[] 字串, int 长度, byte 填充 = 32)
         {
+            长度 = 长度.范围限制(0, byte.MaxValue);
+            if (字串 == null)
+            {
+                return Enumerable.Repeat(填充, 长度).ToArray();
+            }
+
             if (字串.Length > 长度)
             {
                 return 字串.Take(长度).ToArray();
@@ -98,13 +105,7 @@ namespace NJT.Ext
 
             if (字串.Length < 长度)
             {
-                var b2 = new byte[长度 - 字串.Length];
-                for (var i = 0; i < b2.Length; i++)
-                {
-                    b2[i] = 填充;
-                }
-
-                var r = 字串.Concat(b2);
+                var r = 字串.Concat(Enumerable.Repeat(填充, 长度 - 字串.Length));
                 return r.ToArray();
             }
 
@@ -120,6 +121,11 @@ namespace NJT.Ext
         /// <returns></returns>
         public static byte[] 数字长度修正(this byte[] 字串, int 长度, byte 填充 = 48)
         {
+            长度 = 长度.范围限制(0, byte.MaxValue);
+            if (字串==null)
+            {
+                return Enumerable.Repeat(填充, 长度).ToArray();
+            }
             if (字串.Length > 长度)
             {
                 return 字串.Take(长度).ToArray();
@@ -127,13 +133,7 @@ namespace NJT.Ext
 
             if (字串.Length < 长度)
             {
-                var b2 = new byte[长度 - 字串.Length];
-                for (var i = 0; i < b2.Length; i++)
-                {
-                    b2[i] = 填充;
-                }
-
-                var r = b2.Concat(字串);
+                var r = Enumerable.Repeat(填充, 长度 - 字串.Length).Concat(字串);
                 return r.ToArray();
             }
 
@@ -152,6 +152,15 @@ namespace NJT.Ext
 
         public static List<T> GetList<T>(this int 数量) where T : new()
         {
+            if (数量<=0)
+            {
+                return new List<T>();
+            }
+
+            if (数量>MaxValue )
+            {
+                数量 = MaxValue;
+            }
             var list2 = Enumerable.Range(0, 数量)
                 .Select(i => new T())
                 .ToList();

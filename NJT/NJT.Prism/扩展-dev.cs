@@ -40,7 +40,7 @@ namespace NJT.Prism
 
         private static GetCommandDev FindGetCommand(BindableBase vmBase)
         {
-            var hash = vmBase.GetHashCode();
+            var hash = vmBase?.GetHashCode() ?? string.Empty.GetHashCode();
             GetCommandDev com;
             if (List.ContainsKey(hash))
             {

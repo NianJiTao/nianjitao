@@ -16,6 +16,7 @@
         {
             IsTrue = istrue;
             ErrorMess = errorMessage;
+            Message = errorMessage;
         }
 
 
@@ -29,6 +30,7 @@
         ///     执行错误时的信息.
         /// </summary>
         public string ErrorMess { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
     }
 
 
@@ -46,6 +48,7 @@
         {
             IsTrue = istrue;
             ErrorMess = errorMessage;
+            Message = errorMessage;
         }
 
         /// <summary>
@@ -58,6 +61,7 @@
         /// </summary>
         public string ErrorMess { get; set; } = string.Empty;
 
+        public string Message { get; set; } = string.Empty;
 
         public T Data { get; set; } = default(T);
     }

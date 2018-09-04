@@ -22,7 +22,7 @@ namespace NJT.Prism
         protected I日志 Log => RunUnity.Log;
 
 
-        public string 名称
+        public virtual string 名称
         {
             get { return GetProperty(() => 名称); }
             set { SetProperty(() => 名称, value); }

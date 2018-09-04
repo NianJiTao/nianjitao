@@ -15,6 +15,10 @@ namespace NJT.Core
         /// <returns></returns>
         public static 运行结果<double> 计算(string s)
         {
+            if (string.IsNullOrEmpty(s))
+            {
+                return new 运行结果<double>(false){Data = 0d};
+            }
             var 二目运算符 = "^*/+-";
             var S = 逆波兰表达式转换(s);
             var tmp = "";
@@ -98,7 +102,8 @@ namespace NJT.Core
                 }
                 else if (c == '!') //单目取反.)  
                 {
-                    sk.Push(-(double)sk.Pop());
+                    if (sk.Count > 0)
+                        sk.Push(-(double)sk.Pop());
                 }
             }
             if (sk.Count > 1)
@@ -126,6 +131,10 @@ namespace NJT.Core
         /// <returns></returns>
         private static string 逆波兰表达式转换(string s)
         {
+            if (string.IsNullOrEmpty(s))
+            {
+                return string.Empty;
+            }
             var 运算符 = "()!^%.*/+-";
             StringBuilder sb;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,19 @@ namespace NJT.Ext
     {
         public static T 选择<T>(this IList<T> list, int k)
         {
+            if (list==null)
+            {
+                return default(T);
+            }
             if (k < 0) return list.FirstOrDefault();
-            if (list.Count > k) return list[k];
-            return list.LastOrDefault();
+            k = k.范围限制(0, list.Count);
+            return list[k];
+          
         }
 
-        public static T 移除<T>(this IList<T> list, T sel)
+        public static T 移除<T>(this List<T> list, T sel)
         {
-            if (Equals(sel, null))
+            if (Equals(sel, null) || list==null)
             {
                 return default(T);
             }
@@ -27,8 +33,13 @@ namespace NJT.Ext
             return list.选择(k);
         }
 
-        public static T 移除<T>(this IList<T> list, IList<T> sel)
+        public static T 移除<T>(this List<T> list, IList<T> sel)
         {
+            if (Equals(sel, null) || list == null)
+            {
+                return default(T);
+            }
+
             var k = list.IndexOf(sel.FirstOrDefault());
             foreach (var item in sel)
             {
@@ -52,6 +63,10 @@ namespace NJT.Ext
 
         public static bool 交换<T>(this IList<T> list, int 原id, int 新id)
         {
+            if (list==null)
+            {
+                return false;
+            }
             if (原id >= list.Count || 新id >= list.Count || 原id < 0 || 新id < 0 || 原id == 新id)
             {
                 return false;
@@ -129,8 +144,31 @@ namespace NJT.Ext
         /// <param name="list"></param>
         /// <param name="item"></param>
         /// <param name="max"></param>
-        public static void AddAndMax<T>(this IList<T> list, T item, int max = 100)
+        public static void AddAndMax<T>(this List<T> list, T item, int max = 100)
         {
+            if (list==null)
+            {
+                return;
+            }
+            if (list.Count < max)
+            {
+                list.Add(item);
+                return;
+            }
+
+            if (list.Count > 0)
+            {
+                list.RemoveAt(0);
+            }
+
+            list.Add(item);
+        }
+        public static void AddAndMax<T>(this Collection<T> list, T item, int max = 100)
+        {
+            if (list == null)
+            {
+                return;
+            }
             if (list.Count < max)
             {
                 list.Add(item);
@@ -145,7 +183,6 @@ namespace NJT.Ext
             list.Add(item);
         }
 
-
         /// <summary>
         /// 遍历列表并执行方法,返回列表
         /// </summary>
@@ -155,9 +192,13 @@ namespace NJT.Ext
         /// <returns></returns>
         public static IEnumerable<T> ForEachDo<T>(this IEnumerable<T> obj, Action<T> 执行方法)
         {
+            if (obj==null)
+            {
+                return new List<T>();
+            }
             foreach (var item in obj)
             {
-                执行方法(item);
+                执行方法?.Invoke(item);
             }
 
             return obj;
@@ -173,8 +214,13 @@ namespace NJT.Ext
         /// <returns></returns>
         public static int IndexOf2<T>(this IEnumerable<T> source, Predicate<T> predicate)
         {
-            int num = 0;
-            foreach (T obj in source)
+            if (source == null || predicate == null)
+            {
+                return -1;
+            }
+    
+            var num = 0;
+            foreach (var obj in source)
             {
                 if (predicate(obj))
                     return num;
@@ -196,6 +242,12 @@ namespace NJT.Ext
         /// <returns></returns>
         public static List<List<T>> 分组<T>(this IEnumerable<T> 源, int 组数, int 每组数量)
         {
+            if (源==null)
+            {
+                return new List<List<T>>();
+            }
+            组数 = 组数.范围限制(0, short.MaxValue);
+            每组数量 = 每组数量.范围限制(0, short.MaxValue);
             var list2 = Enumerable.Range(0, 组数)
                 .Select(i => 源.Skip(每组数量 * i).Take(每组数量).ToList())
                 .ToList();
@@ -211,6 +263,15 @@ namespace NJT.Ext
         /// <returns></returns>
         public static string To串联(this IEnumerable<string> lt, string 分隔符 = "")
         {
+            if (lt == null)
+            {
+                return string.Empty;
+            }
+            if (string.IsNullOrEmpty(分隔符))
+            {
+                分隔符 = string.Empty;
+            }
+          
             return string.Join(分隔符, lt);
         }
 

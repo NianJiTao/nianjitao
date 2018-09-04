@@ -2,7 +2,7 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Prism\状态栏Data.cs</string>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\DXApplication2\NJT.UI\启动管理.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

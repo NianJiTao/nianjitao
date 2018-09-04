@@ -11,28 +11,31 @@ namespace NJT.Prism
     {
         public 状态栏Data2(string 数据cs, string 标识cs)
         {
-            标识 = 标识cs;
-            数据 = 数据cs;
+            标识 = 标识cs ??string.Empty;
+            数据 = 数据cs ??string.Empty;
             显示 = true;
         }
 
         public 状态栏Data2(string 数据cs)
         {
             标识 = "提示";
-            数据 = 数据cs;
+            数据 = 数据cs ?? string.Empty;
             显示 = true;
         }
 
 
         public 状态栏Data2()
         {
+            标识 = "提示";
+            数据 = string.Empty; 
+            显示 = true;
         }
 
         /// <summary>
         ///     用来区分数据大类别
         /// </summary>
         /// <value>The 标识.</value>
-        public string 标识 { get; set; }
+        public string 标识 { get; set; }=string.Empty;
 
         public string 数据
         {

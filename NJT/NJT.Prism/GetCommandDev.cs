@@ -17,6 +17,8 @@ namespace NJT.Prism
 
         public IDelegateCommand Get(string name, Action action)
         {
+            if (string.IsNullOrEmpty(name)) return null;
+            if (action==null) return null;
             if (ListD.ContainsKey(name))
             {
                 return ListD[name];
@@ -27,6 +29,9 @@ namespace NJT.Prism
         }
         public IDelegateCommand Get(string name, Action action, Func<bool> 可执行)
         {
+            if (string.IsNullOrEmpty(name))
+                return null;
+            if (action==null) return null;
             if (ListD.ContainsKey(name))
             {
                 return ListD[name];
@@ -37,6 +42,9 @@ namespace NJT.Prism
         }
         public IDelegateCommand Get(string name, Action<object> action)
         {
+            if (string.IsNullOrEmpty(name))
+                return null;
+            if (action==null) return null;
             if (ListD.ContainsKey(name))
             {
                 return (ListD[name]);
@@ -48,6 +56,9 @@ namespace NJT.Prism
 
         public IDelegateCommand GetF(string name, Func<IDelegateCommand> action)
         {
+            if (string.IsNullOrEmpty(name))
+                return null;
+            if (action==null) return null;
             if (ListD.ContainsKey(name))
             {
                 return ListD[name];

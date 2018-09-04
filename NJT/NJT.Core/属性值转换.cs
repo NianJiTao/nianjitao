@@ -9,36 +9,42 @@ namespace NJT.Core
 {
     public class 属性值转换
     {
-        public static void 属性转换<T>(Func<T, T> 属性设置方法, Func<string, Tuple<bool, T>> 值转换方法, string value)
+        public static void 属性转换<T>(Func<T, T> 属性设置方法, Func<string,  I运行结果 <  T>> 值转换方法, string value)
         {
             var k = 值转换方法(value);
-            if (k.Item1)
+            if (k.IsTrue)
             {
-                属性设置方法.Invoke(k.Item2);
+                属性设置方法.Invoke(k.Data);
             }
         }
 
-        public static Tuple<bool, TimeSpan> 时间转换(string value)
+        public static I运行结果<TimeSpan>  时间转换(string value)
         {
-            TimeSpan r;
-            var k = (TimeSpan.TryParse(value, out r));
-            return new Tuple<bool, TimeSpan>(k, r);
+            var k = (TimeSpan.TryParse(value, out var r));
+            return new 运行结果<TimeSpan>(k){Data = r};  
         }
 
-        public static Tuple<bool, DateTime> 日期转换(string value)
+        public static I运行结果<DateTime>    日期转换(string value)
         {
-            DateTime r;
-            var k = (DateTime.TryParse(value, out r));
-            return new Tuple<bool, DateTime>(k, r);
+            var k = (DateTime.TryParse(value, out var r));
+            return new 运行结果<DateTime>(k){Data = r};  
         }
 
-        public static Tuple<bool, SolidColorBrush> 颜色转换(string value)
+        public static I运行结果<SolidColorBrush>   颜色转换(string value)
         {
-            var convertFromString = ColorConverter.ConvertFromString(value);
-            var k = (convertFromString == null);
-            if (k) return new Tuple<bool, SolidColorBrush>(false, null);
+            object convertFromString=null;
+            try
+            {
+                  convertFromString = ColorConverter.ConvertFromString(value);
+            }
+            catch (Exception e)
+            {
+            return new 运行结果<SolidColorBrush>(false,e.Message) {Data = Brushes.Black };  
+            }
+
+            if (convertFromString == null)  return new 运行结果<SolidColorBrush>(false) { Data = Brushes.Black };
             var r = new SolidColorBrush((Color)convertFromString);
-            return new Tuple<bool, SolidColorBrush>(true, r);
+            return  new 运行结果<SolidColorBrush>(true) { Data =r };     
         }
 
         //示例

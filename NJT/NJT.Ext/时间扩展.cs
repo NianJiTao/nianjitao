@@ -74,6 +74,8 @@ namespace NJT.Ext
 
         public static TimeSpan To求和(this IEnumerable<TimeSpan> 时间列表)
         {
+            if (时间列表 == null)
+                return TimeSpan.Zero;
             return 时间列表.Aggregate(TimeSpan.Zero, (current, item) => current + item);
         }
     }

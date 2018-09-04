@@ -27,7 +27,7 @@ namespace NJT.Prism
 
         public static Dispatcher UiDispatcher线程
         {
-            get => _ui线程 ?? (_ui线程 = Application.Current.MainWindow?.Dispatcher);
+            get => _ui线程 ?? (_ui线程 = Win?.Dispatcher);
             set => _ui线程 = value;
         }
 
@@ -37,6 +37,8 @@ namespace NJT.Prism
 
         public static void 更新资源(object key, object 内容)
         {
+            if (key == null)
+                return;
             var res = Application.Current.Resources;
             if (res.Contains(key))
                 res.Remove(key);
@@ -112,23 +114,85 @@ namespace NJT.Prism
 
         public static List<object> 服务列表 = new List<object>();
 
-        public static T 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
+        public static I运行结果<T> 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
         {
-            Debug.Assert(人事部cs != null, "UnityContainer != null");
-            var 解析 = 人事部cs.Resolve<T>();
+            if (人事部cs==null)
+            {
+                return new 运行结果<T>(false,"解析器为空");
+            }
+            var 解析 = 人事部cs.TryResolve<T>();
             if (解析 != null)
             {
                 服务列表.Add(解析);
                 解析.启动();
-                return 解析;
+                return new 运行结果<T>(false){Data = 解析 };  
             }
             else
             {
-                log?.Error($"{nameof(T)}解析失败");
-                return default(T);
+                var info = $"{nameof(T)}解析失败";
+                log?.Error(info);
+                return new 运行结果<T>(false, info);
             }
         }
 
         #endregion
+
+
+        public static I运行结果<T> 启动服务<T>() where T : I启动
+        {
+            return UiHelper.启动服务<T>(Container人事部, RunUnity.Log);
+        }
+
+        public static I运行结果<T> 启动服务<T>(string 名称) where T : I启动
+        {
+            if (Container人事部 == null)
+            {
+                return new 运行结果<T>(false,"解析器为空");
+            }
+            if (string.IsNullOrEmpty(名称))
+            {
+                return UiHelper.启动服务<T>(Container人事部, RunUnity.Log);
+            }
+
+            if (Container人事部.IsRegistered<T>(名称) == false)
+            {
+                return new 运行结果<T>(false);
+ 
+            }
+
+            var 解析 = Container人事部.Resolve<T>(名称);
+            if (解析 != null)
+            {
+                UiHelper.服务列表.Add(解析);
+                解析.启动();
+                return new 运行结果<T>(true){Data = 解析 };
+            }
+
+                return new 运行结果<T>(false);
+        }
+
+
+        public static bool? 打开弹出窗口<T>(string 标题)
+        {
+            var 弹出 = Container人事部?.TryResolve<IView弹出窗口>();
+            if (!(弹出 is Window t))
+                return false;
+            t.SizeToContent = SizeToContent.WidthAndHeight;
+            t.WindowStyle = WindowStyle.ToolWindow;
+            var win2 = Container人事部.TryResolve<T>();
+            if (win2 == null)
+                return false;
+            弹出.DataContext = win2;
+            t.Title = 标题;
+            return t.ShowDialog();
+        }
+
+
+        public static 配置读写<T> Get配置读写<T>(string 配置目录)
+        {
+            var fileName = Path.Combine(UiHelper.Get文件名(配置目录), typeof(T).Name + ".config");
+            var r = new 配置读写<T>(fileName);
+            return r;
+        }
     }
 }

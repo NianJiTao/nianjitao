@@ -11,6 +11,8 @@ namespace NJT.Ext
     {
         public static IList<object> Get静态属性(this Type typex)
         {
+            if (typex == null)
+                return new List<object>();
             var r = typex.GetProperties(BindingFlags.Public | BindingFlags.Static)
                 .Select(x => x.GetValue(null)).ToList();
             return r;
@@ -18,6 +20,8 @@ namespace NJT.Ext
 
         public static IList<object> Get静态字段(this Type typex)
         {
+            if (typex == null)
+                return new List<object>();
             var r = typex.GetFields(BindingFlags.Public | BindingFlags.Static)
                 .Select(x => x.GetValue(null)).ToList();
             return r;

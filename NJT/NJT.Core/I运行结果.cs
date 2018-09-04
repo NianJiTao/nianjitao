@@ -16,6 +16,8 @@ namespace NJT.Core
         ///     执行错误时的信息.
         /// </summary>
         string ErrorMess { get; set; }
+
+        string Message { get; set; }
     }
 
     public interface I运行结果<T> : I运行结果

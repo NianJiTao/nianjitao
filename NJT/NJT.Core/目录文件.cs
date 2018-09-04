@@ -112,5 +112,47 @@ namespace NJT.Core
 
             return result;
         }
+
+
+        public static I运行结果 检查并建立目录(string dir)
+        {
+            if (string.IsNullOrEmpty(dir))
+            {
+                return new 运行结果(false, "目录为空");
+            }
+
+            try
+            {
+                if (System.IO.Directory.Exists(dir))
+                    return new 运行结果(true);
+
+                System.IO.Directory.CreateDirectory(dir);
+                if (System.IO.Directory.Exists(dir))
+                    return new 运行结果(true);
+
+                return new 运行结果(false, "目录不存在");
+            }
+            catch (Exception e)
+            {
+                return new 运行结果(false, e.Message);
+            }
+        }
+
+        public static I运行结果 目录存在(string dir)
+        {
+            if (string.IsNullOrEmpty(dir))
+            {
+                return new 运行结果(false, "目录为空");
+            }
+
+            try
+            {
+                return System.IO.Directory.Exists(dir) ? new 运行结果(true) : new 运行结果(false, "目录不存在");
+            }
+            catch (Exception e)
+            {
+                return new 运行结果(false, e.Message);
+            }
+        }
     }
 }

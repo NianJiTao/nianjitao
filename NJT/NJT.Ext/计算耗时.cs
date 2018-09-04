@@ -19,7 +19,7 @@ namespace NJT.Ext
         {
             var sw = new Stopwatch();
             sw.Start();
-            方法();
+            方法?.Invoke();
             sw.Stop();
             return sw.ElapsedMilliseconds;
         }

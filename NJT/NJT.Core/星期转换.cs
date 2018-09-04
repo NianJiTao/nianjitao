@@ -34,7 +34,11 @@ namespace NJT.Core
         /// <returns>System.String.</returns>
         public static string ToWeek中文(int k)
         {
-            var k2 = (Math.Abs(k) + 7) % 7;
+            if (k<-65000 || k>65000)
+            {
+                return 星期显示组[0].中文;
+            }
+            var k2 = (Math.Abs( k) + 7) % 7;
             return 星期显示组[k2].中文;
         }
       

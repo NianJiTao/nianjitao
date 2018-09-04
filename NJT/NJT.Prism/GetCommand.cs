@@ -19,6 +19,7 @@ namespace NJT.Prism
 
         public ICommand GetI(string name, Action action)
         {
+            if (string.IsNullOrEmpty(name)) return null;
             if (!_listI.ContainsKey(name))
             {
                 var c = new DelegateCommand(action);
@@ -32,6 +33,7 @@ namespace NJT.Prism
         }
         public DelegateCommand Get(string name, Action action)
         {
+            if (string.IsNullOrEmpty(name)) return null;
             if (!List.ContainsKey(name))
             {
                 var c = new DelegateCommand(action);
@@ -46,6 +48,7 @@ namespace NJT.Prism
 
         public DelegateCommand<object> Get(string name, Action<object> action)
         {
+            if (string.IsNullOrEmpty(name)) return null;
             if (!_listT.ContainsKey(name))
             {
                 var c = new DelegateCommand<object>(action);

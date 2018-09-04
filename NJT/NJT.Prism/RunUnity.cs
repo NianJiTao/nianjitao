@@ -1,6 +1,9 @@
-﻿using CommonServiceLocator;
+﻿using System;
+using CommonServiceLocator;
 using NJT.Core;
 using Prism.Events;
+using Prism.Ioc;
+using Prism.Logging;
 using Prism.Regions;
 using Prism.Unity;
 using Unity;
@@ -16,6 +19,13 @@ namespace NJT.Prism
         private static IRegionManager _行政部;
 
         public static I日志 Log { get; set; } = new NLog日志();
+
+        public static ILoggerFacade CreateLogger()
+        {
+            return new Nlog2(Log);
+        }
+
+        public static IContainerRegistry Registry { get; set; }
 
         public static IUnityContainer Container人事部
         {
@@ -82,6 +92,14 @@ namespace NJT.Prism
             }
             return set1;
         }
+        public static T TryResolveReturnNull<T>(this IUnityContainer container) where T : class
+        {
+            if (container == null)
+                return null;
+            if (!container.IsRegistered<T>())
+                return null;
+            return container.Resolve<T>();
+        }
 
         /// <summary>
         ///  通过名称解析出T,如果未注册,返回默认值
@@ -123,6 +141,39 @@ namespace NJT.Prism
                 return 默认返回值;
 
             return container.Resolve<T>(name);
+        }
+
+        /// <summary>
+        /// 先尝试解析名称,再尝试解析不带名称.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="container"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static T TryResolve3<T>(this IUnityContainer container, string name)
+        {
+            if (container == null)
+                return default(T);
+
+            if (string.IsNullOrEmpty(name))
+                return container.TryResolve<T>();
+
+            if (!container.IsRegistered<T>(name))
+                return container.TryResolve<T>();
+
+            return container.Resolve<T>(name);
+        }
+
+
+        /// <summary>
+        ///  return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="名称"></param>
+        /// <returns></returns>
+        public static Lazy<T> GetLazy延迟解析<T>(string 名称)
+        {
+            return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
         }
     }
 }

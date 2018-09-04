@@ -17,7 +17,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static double 小数位(this double obj, int len = 3)
         {
-            return Math.Round(obj, len);
+            return Math.Round(obj, len.范围限制(0, 15));
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static float 小数位(this float obj, int len = 3)
         {
-            return (float)Math.Round(obj, len);
+            return (float)Math.Round(obj, len.范围限制(0, 15));
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static decimal 小数位(this decimal obj, int len = 3)
         {
-            return (decimal)Math.Round(obj, len);
+            return Math.Round(obj, len.范围限制(0, 15));
         }
 
         /// <summary>

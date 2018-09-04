@@ -22,6 +22,10 @@ namespace NJT.Core
         /// <returns></returns>
         public static bool Is超频(string 事件名, TimeSpan 最短间隔)
         {
+            if (string.IsNullOrEmpty(事件名))
+            {
+                return true;
+            }
             if (历史.ContainsKey(事件名))
             {
                 if (DateTime.Now - 历史[事件名] > 最短间隔)

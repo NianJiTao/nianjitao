@@ -13,6 +13,11 @@ namespace NJT.Core
 
         public static void 延时运行(int 延时毫秒, Action 启动方法)
         {
+            if (延时毫秒 <= 0 || 延时毫秒 >= 36000000 || 启动方法 == null)
+            {
+                return;
+            }
+
             var time延时 = new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 延时毫秒)};
             time延时.Tick += (o, e) =>
             {
@@ -25,11 +30,21 @@ namespace NJT.Core
 
         public static DispatcherTimer 循环运行(int 间隔毫秒, Action 启动方法)
         {
-            return 循环运行(TimeSpan.FromMilliseconds(间隔毫秒), 启动方法 );
+            if (间隔毫秒 <= 0 || 间隔毫秒 >= 36000000 || 启动方法 == null)
+            {
+                return null;
+            }
+
+            return 循环运行(TimeSpan.FromMilliseconds(间隔毫秒), 启动方法);
         }
 
         public static DispatcherTimer 循环运行(TimeSpan 间隔, Action 启动方法)
         {
+            if (间隔 <= TimeSpan.Zero || 间隔 >= TimeSpan.FromDays(30) || 启动方法 == null)
+            {
+                return null;
+            }
+
             return 循环运行(间隔, 启动方法, Guid.NewGuid().ToString());
         }
 
@@ -54,8 +69,17 @@ namespace NJT.Core
             return 循环运行(TimeSpan.FromMilliseconds(间隔毫秒), 启动方法, 计时器名称);
         }
 
-        public static DispatcherTimer 循环运行(TimeSpan 间隔, Action 启动方法, string 计时器名称)
+        public static DispatcherTimer 循环运行(TimeSpan 间隔, Action 启动方法, string 计时器名称x)
         {
+            var 计时器名称 = 计时器名称x;
+            if (string.IsNullOrEmpty(计时器名称x))
+            {
+                计时器名称 = Guid.NewGuid().ToString();
+            }
+            if (间隔 <= TimeSpan.Zero || 间隔 >= TimeSpan.FromDays(30) || 启动方法 == null)
+            {
+                return null;
+            }
             var timer = new DispatcherTimer {Interval = 间隔};
             if (定时列表.ContainsKey(计时器名称) == false)
             {
@@ -66,6 +90,7 @@ namespace NJT.Core
                 定时列表[计时器名称].Stop();
                 定时列表[计时器名称] = timer;
             }
+
             timer.Tick += (o, e) => { 启动方法(); };
             timer.Start();
             return timer;
@@ -78,6 +103,7 @@ namespace NJT.Core
             {
                 timer.Value.Stop();
             }
+
             定时列表.Clear();
         }
     }

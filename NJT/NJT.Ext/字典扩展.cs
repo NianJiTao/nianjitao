@@ -16,6 +16,11 @@ namespace NJT.Ext
         /// <param name="value"></param>
         public static void 更新<TKey, TValue>(this IDictionary<TKey, TValue> obj, TKey key, TValue value)
         {
+            if (obj==null || key == null)
+            {
+                return;
+            }
+           
             lock (更新字典标识)
             {
                 if (obj.ContainsKey(key))
