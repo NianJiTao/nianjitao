@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace NJT.Ext
@@ -123,11 +124,11 @@ namespace NJT.Ext
             }
         }
 
-        public static void To定长<T>(this List<T> r, int 长度)
+        public static List<T> To定长<T>(this List<T> r, int 长度)
         {
-            if (r == null || r.Count == 0 || 长度 < 0)
+            if (r .Is空() || 长度 < 0)
             {
-                return;
+                return r;
             }
 
             var 最大值 = r.Count;
@@ -135,6 +136,8 @@ namespace NJT.Ext
             {
                 r.RemoveRange(长度, 最大值 - 长度);
             }
+
+            return r;
         }
 
         /// <summary>

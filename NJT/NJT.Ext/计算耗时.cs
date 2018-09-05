@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展 
+    public static partial class 扩展
     {
 
         /// <summary>

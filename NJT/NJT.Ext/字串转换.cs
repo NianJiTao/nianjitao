@@ -131,7 +131,6 @@ namespace NJT.Ext
 
         /// <summary>
         /// "abc123" 可分离为 item1=abc, item2=123, item3=3
-        /// "abc05" 可分离为 item1=bac, item2=5, item3=2
         /// 返回:字串,数字,数字位数.
         /// </summary>
         /// <param name="str">The STR.</param>
@@ -141,12 +140,11 @@ namespace NJT.Ext
             if (string.IsNullOrEmpty(str))
                 return new Tuple<string, int, int>(str, 0, 0);
 
-            int r2;
             var c = 0;
             var 数字 = 0;
             for (var i = 1; i < str.Length + 1; i++)
             {
-                if (int.TryParse(str.Substring(str.Length - i, i), out r2))
+                if (int.TryParse(str.Substring(str.Length - i, i), out var r2))
                 {
                     c = i;
                     数字 = r2;
