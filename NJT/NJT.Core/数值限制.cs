@@ -7,7 +7,6 @@ using System.Xml.Serialization;
 
 namespace NJT.Core
 {
-     
     public interface I数值限制
     {
         string 组 { get; set; }
@@ -32,31 +31,17 @@ namespace NJT.Core
             this.最大值 = 最大值1;
             this.最小值 = 最小值1;
         }
+
         /// <summary>
         /// 合金工艺名称
         /// </summary>
         [XmlAttribute]
         public string 组 { get; set; } = string.Empty;
 
-        [XmlAttribute]
-        public string 名称 { get; set; } = string.Empty;
+        [XmlAttribute] public string 名称 { get; set; } = string.Empty;
 
-        [XmlAttribute]
-        public double 最小值 { get; set; }
+        [XmlAttribute] public double 最小值 { get; set; }
 
-        [XmlAttribute]
-        public double 最大值 { get; set; } = 1.0;
-
-
-     
-    }
-
-    public class 数值限制1 : I数值限制
-    {
-        public string 组 { get; set; }
-        public string 名称 { get; set; }
-        public double 最小值 { get; set; }
-        public double 最大值 { get; set; }
-
+        [XmlAttribute] public double 最大值 { get; set; } = 1.0;
     }
 }

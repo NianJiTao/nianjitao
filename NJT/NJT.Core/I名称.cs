@@ -18,6 +18,7 @@ namespace NJT.Core
         public 名称1()
         {
         }
+
         public 名称1(string 名称cs)
         {
             this.名称 = 名称cs;

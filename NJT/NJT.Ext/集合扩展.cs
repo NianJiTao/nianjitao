@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using NJT.Core;
 
 namespace NJT.Ext
 {
@@ -283,6 +284,44 @@ namespace NJT.Ext
             if (list == null)
                 return true;
             return !list.Any();
+        }
+
+
+        public static ObservableCollection<T> ToObservabler<T>(this IEnumerable<T> list2)
+        {
+            var r = new ObservableCollection<T>();
+            if (list2 != null)
+                foreach (var k in list2)
+                    r.Add(k);
+
+            return r;
+        }
+
+        /// <summary>
+        /// 如果true,返回data的列表,否则返回空列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static ObservableCollection<T> ToObservabler<T>(this I运行结果<IList<T>> obj)
+        {
+            return obj.IsTrue ? obj.Data.ToObservabler() : new ObservableCollection<T>();
+        }
+
+        public static ObservableCollection<T> ToObservabler<T>(this I运行结果<IEnumerable<T>> obj)
+        {
+            return obj.IsTrue ? obj.Data.ToObservabler() : new ObservableCollection<T>();
+        }
+
+        public static void 更新列表<T>(this ICollection<T> obj, IEnumerable<T> list2)
+        {
+            if (obj == null)
+                return;
+            obj.Clear();
+            if (list2.Is空())
+                return;
+            foreach (var item in list2)
+                obj.Add(item);
         }
     }
 }

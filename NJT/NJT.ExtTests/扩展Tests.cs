@@ -13,7 +13,9 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ToFloat2Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(2f, "2".ToFloat2());
+            Assert.Equal(2.2f, "2.2".ToFloat2());
+            Assert.Equal(2f, ((object) 2f).ToFloat2());
         }
 
         [Fact()]
@@ -33,7 +35,9 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ToDouble2Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(2d, "2".ToDouble2());
+            Assert.Equal(2.2d, "2.2".ToDouble2());
+            Assert.Equal(2d, ((object) 2d).ToDouble2());
         }
 
         [Fact()]
@@ -42,11 +46,6 @@ namespace NJT.Ext.Tests
             Assert.True(false, "This test needs an implementation");
         }
 
-        [Fact()]
-        public void ToFloat2Test1()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
 
         [Fact()]
         public void ToIntTest1()
@@ -60,11 +59,6 @@ namespace NJT.Ext.Tests
             Assert.True(false, "This test needs an implementation");
         }
 
-        [Fact()]
-        public void ToDouble2Test1()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
 
         [Fact()]
         public void ToDateTimeTest1()
@@ -84,11 +78,6 @@ namespace NJT.Ext.Tests
             Assert.True(false, "This test needs an implementation");
         }
 
-        [Fact()]
-        public void 反射克隆值Test()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
 
         [Fact()]
         public void NotNullDoTest()
@@ -99,7 +88,9 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void GetListTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Array r = new int[] {1, 2};
+            r.GetList<int>();
+            Assert.Equal(2, r.GetList<int>().Count);
         }
 
         [Fact()]
@@ -329,15 +320,14 @@ namespace NJT.Ext.Tests
         {
             Assert.Equal("ab  ", "ab".长度修正(4));
             Assert.Equal("ab", "abc".长度修正(2));
-            Assert.Equal("   ", ((string)null).长度修正(3));
-
+            Assert.Equal("   ", ((string) null).长度修正(3));
         }
 
         [Fact()]
         public void 数字长度修正Test()
         {
             Assert.Equal("001", "1".数字长度修正(3));
-            Assert.Equal("000", ((string)null).数字长度修正(3));
+            Assert.Equal("000", ((string) null).数字长度修正(3));
         }
 
         [Fact()]
@@ -443,7 +433,7 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void HexToByteTest()
         {
-            Assert.Equal(new byte[] { 21 }, "15".HexToByte());
+            Assert.Equal(new byte[] {21}, "15".HexToByte());
         }
 
         [Fact()]
@@ -467,22 +457,29 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void 等于Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.True("a".等于("A"));
+            Assert.True("".等于(""));
+            Assert.False("a".等于(""));
         }
 
-      
 
-      
         [Fact()]
         public void ToDoubleTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(2d, "2".ToDouble());
+            Assert.Equal(2.2d, "2.2".ToDouble());
+            Assert.Equal(0d, "0".ToDouble());
+            Assert.Equal(0d, "a".ToDouble());
         }
 
         [Fact()]
         public void 等于OrBoolTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.True("true".等于OrBool("1"));
+            Assert.True("1".等于OrBool("1"));
+            Assert.True("a".等于OrBool("a"));
+            Assert.False("false".等于OrBool("1"));
+            Assert.False("false".等于OrBool(""));
         }
 
         [Fact()]
@@ -507,6 +504,15 @@ namespace NJT.Ext.Tests
         public void 更新Test()
         {
             Assert.True(false, "This test needs an implementation");
+        }
+
+        [Fact()]
+        public void Get时间差Test()
+        {
+            Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(null, null));
+            Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(DateTime.Today, null));
+            Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(DateTime.Today, DateTime.Today));
+            Assert.Equal(TimeSpan.FromHours(1), 扩展.Get时间差(DateTime.Today, DateTime.Today.AddHours(1)));
         }
     }
 }

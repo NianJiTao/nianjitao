@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace NJT.Ext
 {
@@ -55,6 +56,30 @@ namespace NJT.Ext
                 p.SetValue(目标, p.GetValue(源));
 
             return 目标;
+        }
+
+
+        /// <summary>
+        /// 从对象里面反射获取命令属性
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static List<PropertyInfo> GetCommandList(this object obj)
+        {
+            if (obj == null) return new List<PropertyInfo>();
+            var r = obj.GetType().GetProperties().ToList();
+            var r2 = r.Where(x => x.CanRead && (typeof(ICommand).IsAssignableFrom(x.PropertyType))).ToList();
+            return r2;
+        }
+
+        /// <summary>
+        /// 返回 命令名称,值,列表
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static List<Tuple<string, object>> GetCommandValueList(this object obj)
+        {
+            return obj.GetCommandList().Select(x => new Tuple<string, object>(x.Name, x.GetValue(obj))).ToList();
         }
     }
 }

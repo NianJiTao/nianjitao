@@ -39,7 +39,6 @@
   <ItemGroup>
     <Compile Include="值扩展.cs" />
     <Compile Include="object扩展.cs" />
-    <Compile Include="I按钮显示.cs" />
     <Compile Include="字典扩展.cs" />
     <Compile Include="Type扩展.cs" />
     <Compile Include="小数位限制.cs" />

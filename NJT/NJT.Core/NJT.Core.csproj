@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="I名称值.cs" />
     <Compile Include="查表.cs" />
     <Compile Include="I列表.cs" />
     <Compile Include="IId.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="数值限制表.cs" />
     <Compile Include="三态文本.cs" />
     <Compile Include="I服务管理.cs" />
-    <Compile Include="I按钮显示.cs" />
     <Compile Include="计次触发器.cs" />
     <Compile Include="值变化.cs" />
     <Compile Include="命令行参数.cs" />

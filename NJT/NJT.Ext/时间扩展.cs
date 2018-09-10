@@ -78,5 +78,14 @@ namespace NJT.Ext
                 return TimeSpan.Zero;
             return 时间列表.Aggregate(TimeSpan.Zero, (current, item) => current + item);
         }
+
+        public static TimeSpan Get时间差(this DateTime? 开始, DateTime? 结束)
+        {
+            if (开始 == null || 结束 == null || 结束 < 开始)
+                return TimeSpan.Zero;
+
+            var r = ((DateTime)结束 - (DateTime)开始);
+            return r;
+        }
     }
 }
