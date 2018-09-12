@@ -2,25 +2,10 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\常量.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\数值限制.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\数值限制表.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\值变化.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\SqlServer.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Core\数据服务器.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
       <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Ext\Type扩展.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Ext\字串转换.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

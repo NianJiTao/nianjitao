@@ -37,6 +37,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="反射.cs" />
     <Compile Include="值扩展.cs" />
     <Compile Include="object扩展.cs" />
     <Compile Include="字典扩展.cs" />

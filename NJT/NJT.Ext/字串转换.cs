@@ -427,5 +427,19 @@ namespace NJT.Ext
             var r = DateTime.ParseExact(字符串, 日期格式, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
             return r;
         }
+
+
+        public static string 更换扩展名(this string 源, string 新扩展名)
+        {
+            if (string.IsNullOrEmpty(源))
+                return 源;
+
+            var index = 源.LastIndexOf(".", StringComparison.Ordinal);
+            if (index < 0)
+                return 源;
+            if (!新扩展名.StartsWith(".")) 新扩展名 = "." + 新扩展名;
+
+            return 源.Substring(0, index) + 新扩展名;
+        }
     }
 }

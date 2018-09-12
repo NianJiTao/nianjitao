@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展 
+    public static partial class 扩展
     {
-
         /// <summary>
         /// 小数位3位后四舍五入
         /// </summary>
@@ -28,7 +27,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static float 小数位(this float obj, int len = 3)
         {
-            return (float)Math.Round(obj, len.范围限制(0, 15));
+            return (float) Math.Round(obj, len.范围限制(0, 15));
         }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static int ToProgressVal(this double obj)
         {
-            return (int)(Math.Round(obj.范围限制(0, 1), 2) * 100);
+            return Convert.ToInt32((Math.Round(obj.范围限制(0, 1), 2) * 100));
         }
 
         /// <summary>
@@ -59,8 +58,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static int ToProgressVal(this float obj)
         {
-            return (int)(Math.Round(obj.范围限制(0, 1), 2) * 100);
+            return Convert.ToInt32((Math.Round(obj.范围限制(0, 1), 2) * 100));
         }
-
     }
 }

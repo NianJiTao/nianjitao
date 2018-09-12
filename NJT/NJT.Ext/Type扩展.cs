@@ -81,5 +81,19 @@ namespace NJT.Ext
         {
             return obj.GetCommandList().Select(x => new Tuple<string, object>(x.Name, x.GetValue(obj))).ToList();
         }
+
+
+        /// <summary>
+        /// 从对象里面反射获取属性,并去除排除属性
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static List<PropertyInfo> GetPropertiesList(this object obj, params string[] 排除)
+        {
+            if (obj == null) return new List<PropertyInfo>();
+            var r = obj.GetType().GetProperties().ToList();
+            var r2 = r.Where(x => x.CanRead && !排除.Contains(x.Name)).ToList();
+            return r2;
+        }
     }
 }

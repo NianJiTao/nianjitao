@@ -20,7 +20,7 @@ namespace NJT.Core
         public string 用户名 { get; set; } = "sa";
 
         [XmlAttribute]
-        public string 密码 { get; set; } = "12345";
+        public string 密码 { get; set; } = "123456";
 
         [XmlAttribute]
         public bool Is启用 { get; set; } = true;

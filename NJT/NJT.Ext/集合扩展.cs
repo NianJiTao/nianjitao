@@ -13,19 +13,26 @@ namespace NJT.Ext
     {
         public static T 选择<T>(this IList<T> list, int k)
         {
-            if (list==null)
+            if (list == null)
             {
                 return default(T);
             }
+
             if (k < 0) return list.FirstOrDefault();
-            k = k.范围限制(0, list.Count);
+            k = k.范围限制(0, list.Count-1);
             return list[k];
-          
         }
 
+        /// <summary>
+        /// 移除后,返回原有序号位的对象.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="sel"></param>
+        /// <returns></returns>
         public static T 移除<T>(this List<T> list, T sel)
         {
-            if (Equals(sel, null) || list==null)
+            if (Equals(sel, null) || list == null)
             {
                 return default(T);
             }
@@ -65,10 +72,11 @@ namespace NJT.Ext
 
         public static bool 交换<T>(this IList<T> list, int 原id, int 新id)
         {
-            if (list==null)
+            if (list == null)
             {
                 return false;
             }
+
             if (原id >= list.Count || 新id >= list.Count || 原id < 0 || 新id < 0 || 原id == 新id)
             {
                 return false;
@@ -127,7 +135,7 @@ namespace NJT.Ext
 
         public static List<T> To定长<T>(this List<T> r, int 长度)
         {
-            if (r .Is空() || 长度 < 0)
+            if (r.Is空() || 长度 < 0)
             {
                 return r;
             }
@@ -150,10 +158,11 @@ namespace NJT.Ext
         /// <param name="max"></param>
         public static void AddAndMax<T>(this List<T> list, T item, int max = 100)
         {
-            if (list==null)
+            if (list == null)
             {
                 return;
             }
+
             if (list.Count < max)
             {
                 list.Add(item);
@@ -167,12 +176,14 @@ namespace NJT.Ext
 
             list.Add(item);
         }
+
         public static void AddAndMax<T>(this Collection<T> list, T item, int max = 100)
         {
             if (list == null)
             {
                 return;
             }
+
             if (list.Count < max)
             {
                 list.Add(item);
@@ -196,10 +207,11 @@ namespace NJT.Ext
         /// <returns></returns>
         public static IEnumerable<T> ForEachDo<T>(this IEnumerable<T> obj, Action<T> 执行方法)
         {
-            if (obj==null)
+            if (obj == null)
             {
                 return new List<T>();
             }
+
             foreach (var item in obj)
             {
                 执行方法?.Invoke(item);
@@ -222,7 +234,7 @@ namespace NJT.Ext
             {
                 return -1;
             }
-    
+
             var num = 0;
             foreach (var obj in source)
             {
@@ -235,7 +247,6 @@ namespace NJT.Ext
         }
 
 
-
         /// <summary>
         /// 把数组分成几组,每组一样数量.如果源数据不够长,组内容可能为空.
         /// </summary>
@@ -246,10 +257,11 @@ namespace NJT.Ext
         /// <returns></returns>
         public static List<List<T>> 分组<T>(this IEnumerable<T> 源, int 组数, int 每组数量)
         {
-            if (源==null)
+            if (源 == null)
             {
                 return new List<List<T>>();
             }
+
             组数 = 组数.范围限制(0, short.MaxValue);
             每组数量 = 每组数量.范围限制(0, short.MaxValue);
             var list2 = Enumerable.Range(0, 组数)
@@ -271,11 +283,12 @@ namespace NJT.Ext
             {
                 return string.Empty;
             }
+
             if (string.IsNullOrEmpty(分隔符))
             {
                 分隔符 = string.Empty;
             }
-          
+
             return string.Join(分隔符, lt);
         }
 
@@ -322,6 +335,24 @@ namespace NJT.Ext
                 return;
             foreach (var item in list2)
                 obj.Add(item);
+        }
+
+
+        public static T FindItem<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
+        {
+            if (string.IsNullOrEmpty(名称))
+            {
+                return default(T);
+            }
+
+            var find = 列表.FirstOrDefault(x => x.名称.等于(名称));
+            return find;
+        }
+
+        public static object FindValue<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
+        {
+            var find = 列表.FindItem(名称);
+            return find?.值;
         }
     }
 }

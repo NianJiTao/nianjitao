@@ -23,13 +23,14 @@ namespace NJT.Ext.Tests
         {
             Assert.Equal(123, "123".ToInt());
             Assert.Equal(0, "a".ToInt());
-            Assert.Equal(1, "1.1".ToInt());
+            Assert.Equal(0, "1.1".ToInt());
         }
 
         [Fact()]
         public void ToString2Test()
         {
             Assert.Equal(string.Empty, ((object) null).ToString2());
+            Assert.Equal("a", ("a").ToString2());
         }
 
         [Fact()]
@@ -42,19 +43,6 @@ namespace NJT.Ext.Tests
 
         [Fact()]
         public void ToDateTimeTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-
-        [Fact()]
-        public void ToIntTest1()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void ToString2Test1()
         {
             Assert.True(false, "This test needs an implementation");
         }
@@ -102,56 +90,53 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void 范围限制Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(1, 0.范围限制(1, 10));
+            Assert.Equal(10, 100.范围限制(1, 10));
+            Assert.Equal(0d, (-0.3d).范围限制(0, 1));
+            Assert.Equal(1d, 2.3d.范围限制(0, 1));
         }
 
         [Fact()]
         public void 选择Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(2, Enumerable.Range(1, 10).ToList().选择(1));
+            Assert.Equal(1, Enumerable.Range(1, 10).ToList().选择(-1));
+            Assert.Equal(10, Enumerable.Range(1, 10).ToList().选择(11));
         }
 
         [Fact()]
         public void 移除Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("c", new List<string>() {"a", "b", "c"}.移除("b"));
+            Assert.Equal("b", new List<string>() {"a", "b", "c"}.移除("a"));
+            Assert.Equal("b", new List<string>() {"a", "b", "c"}.移除("c"));
         }
 
-        [Fact()]
-        public void 移除Test1()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
 
         [Fact()]
         public void 上移Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = Enumerable.Range(1, 2).ToList();
+            Assert.True(r.上移(1));
+            Assert.Equal(2, r[0]);
         }
 
         [Fact()]
         public void 下移Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = Enumerable.Range(1, 2).ToList();
+            Assert.True(r.下移(0));
+            Assert.Equal(2, r[0]);
         }
 
         [Fact()]
         public void 交换Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = Enumerable.Range(1, 2).ToList();
+            Assert.True(r.交换(0, 1));
+            Assert.Equal(2, r[0]);
         }
 
-        [Fact()]
-        public void 随机选取Test()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void 洗牌Test()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
 
         [Fact()]
         public void To定长Test()
@@ -202,7 +187,9 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void Is空Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = new List<string>() {"a"};
+            Assert.False(r.Is空());
+            Assert.True(new List<string>().Is空());
         }
 
         [Fact()]
@@ -251,34 +238,40 @@ namespace NJT.Ext.Tests
         }
 
         [Fact()]
-        public void 小数位Test()
+        public void 小数位_float_Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(1.235f, (1.23456f).小数位());
+            Assert.Equal(1.2f, (1.23456f).小数位(1));
+            Assert.Equal(1f, (1.23456f).小数位(0));
         }
 
         [Fact()]
-        public void 小数位Test1()
+        public void 小数位_double_Test1()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(1.235d, (1.23456).小数位());
+            Assert.Equal(1.2d, (1.23456).小数位(1));
+            Assert.Equal(1d, (1.23456).小数位(0));
+        }
+
+
+        [Fact()]
+        public void ToProgressVal_double_Test()
+        {
+            Assert.Equal(57, 0.566d.ToProgressVal());
+            Assert.Equal(56, 0.56d.ToProgressVal());
+            Assert.Equal(0, (-0.1d).ToProgressVal());
+            Assert.Equal(100, (1.1d).ToProgressVal());
         }
 
         [Fact()]
-        public void 小数位Test2()
+        public void ToProgressVal_float_Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(56, 0.56f.ToProgressVal());
+            Assert.Equal(57, 0.566f.ToProgressVal());
+            Assert.Equal(0, (-0.1f).ToProgressVal());
+            Assert.Equal(100, (1.1f).ToProgressVal());
         }
 
-        [Fact()]
-        public void ToProgressValTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void ToProgressValTest1()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
 
         [Fact()]
         public void ConvertToBCDTest()
@@ -336,11 +329,6 @@ namespace NJT.Ext.Tests
             Assert.True(false, "This test needs an implementation");
         }
 
-        [Fact()]
-        public void GetListTest1()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
 
         [Fact()]
         public void GetStringTest()
@@ -375,7 +363,9 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ToString00NTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("002", 2.ToString00N(3));
+            Assert.Equal("02", 2.ToString00N(2));
+            Assert.Equal("2", 2.ToString00N(0));
         }
 
         [Fact()]
@@ -408,7 +398,9 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ToFloatTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(1.1f, "1.1".ToFloat());
+            Assert.Equal(1f, "1".ToFloat());
+ 
         }
 
         [Fact()]
@@ -513,6 +505,16 @@ namespace NJT.Ext.Tests
             Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(DateTime.Today, null));
             Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(DateTime.Today, DateTime.Today));
             Assert.Equal(TimeSpan.FromHours(1), 扩展.Get时间差(DateTime.Today, DateTime.Today.AddHours(1)));
+        }
+
+        [Fact()]
+        public void 更换扩展名Test()
+        {
+            Assert.Equal("d:\\a.pdf", "d:\\a.xlsx".更换扩展名(".pdf"));
+            Assert.Equal("d:\\a.pdf", "d:\\a.xlsx".更换扩展名("pdf"));
+            Assert.Equal("a.pdf", "a.dat".更换扩展名(".pdf"));
+            Assert.Equal("a.pdf", "a.b".更换扩展名(".pdf"));
+            Assert.Equal("a.pdf", "a.xlsx".更换扩展名(".pdf"));
         }
     }
 }
