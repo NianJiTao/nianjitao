@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -155,8 +156,9 @@ namespace NJT.Core
             {
                 foreach (var item in 文件列表)
                 {
-                    var sr = new StreamReader(item, 编码);
-                    await sw.WriteAsync(await sr.ReadToEndAsync());
+                    var r2 = await 读出txt(item);
+                    if (r2.IsTrue)
+                        await sw.WriteAsync(r2.Data);
                 }
 
                 合并成功 = true;
@@ -233,10 +235,10 @@ namespace NJT.Core
             {
                 return new 运行结果(false, r.ErrorMess);
             }
+
             var 内容 = h4 + r.Data;
 
             return await 写入txt(文件名, 内容, false);
-        
         }
     }
 }

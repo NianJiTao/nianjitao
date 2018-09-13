@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NJT.Core;
 
 namespace NJT.Ext.Tests
 {
@@ -44,33 +45,34 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ToDateTimeTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(new DateTime(2020, 1, 2, 3, 4, 5), 扩展.ToDateTime(new DateTime(2020, 1, 2, 3, 4, 5)));
+            Assert.Equal(new DateTime(2020, 1, 2, 3, 4, 5),
+                扩展.ToDateTime(new DateTime(2020, 1, 2, 3, 4, 5).ToString()));
         }
 
-
-        [Fact()]
-        public void ToDateTimeTest1()
+        public class testA
         {
-            Assert.True(false, "This test needs an implementation");
+            public static string B { get; set; } = "b";
         }
 
         [Fact()]
         public void Get静态属性Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.True(typeof(testA).Get静态属性().Any());
         }
 
         [Fact()]
         public void Get静态字段Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.True(typeof(常量).Get静态字段().Any());
         }
 
 
         [Fact()]
         public void NotNullDoTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            (null as 运行结果).NotNullDo(x => x.Message = "b");
+            Assert.Equal("a", new 运行结果(true).NotNullDo(x => x.Message = "a").Message);
         }
 
         [Fact()]
@@ -84,7 +86,15 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void IfDoTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            var a = new 标识Data1() {标识 = "a", 数据 = "1"};
+
+            a.IfDo(x =>
+            {
+                x.数据 = "2";
+                return x;
+            }, x => x.标识 == "a");
+
+            Assert.Equal("2", a.数据);
         }
 
         [Fact()]
@@ -149,31 +159,41 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void AddAndMaxTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = Enumerable.Range(1, 5).ToList();
+            r.AddAndMax(6, 5);
+            Assert.Equal(2, r.First());
         }
 
         [Fact()]
         public void AddAndMaxTest1()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = Enumerable.Range(1, 5).ToObservabler();
+            r.AddAndMax(6, 5);
+            Assert.Equal(2, r.First());
         }
 
         [Fact()]
         public void ForEachDoTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = Enumerable.Range(1, 5).Select(x => new 运行结果(false)).ToList();
+            r.ForEachDo(x => x.IsTrue = true);
+            Assert.True(r.All(x => x.IsTrue));
         }
 
         [Fact()]
         public void IndexOf2Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = new List<string>() {"a", "b"};
+            Assert.Equal(-1, r.IndexOf2(x => x == "c"));
+            Assert.Equal(1, r.IndexOf2(x => x == "b"));
         }
 
         [Fact()]
         public void 分组Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = Enumerable.Range(1, 50).分组(5, 10).ToList();
+            Assert.Equal(5, r.Count);
+            Assert.True(r.All(x => x.Count == 10));
         }
 
         [Fact()]
@@ -195,21 +215,21 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void To时分秒Test()
         {
-            Assert.Equal("17点30分15秒", new DateTime(2017, 9, 10, 17, 30, 15).To时分秒());
-            Assert.Equal("0点0分0秒", DateTime.MinValue.To时分秒());
+            Assert.Equal("17:30:15", new DateTime(2017, 9, 10, 17, 30, 15).To时分秒());
+            Assert.Equal("00:00:00", DateTime.MinValue.To时分秒());
         }
 
         [Fact()]
         public void To年月日时分秒Test()
         {
-            Assert.Equal("2017年9月10日17点30分15秒", new DateTime(2017, 9, 10, 17, 30, 15).To年月日时分秒());
-            Assert.Equal("0000年1月1日0点0分0秒", DateTime.MinValue.To年月日时分秒());
+            Assert.Equal("2017-09-10T17_30_15", new DateTime(2017, 9, 10, 17, 30, 15).To年月日时分秒());
+            Assert.Equal("0001-01-01T00_00_00", DateTime.MinValue.To年月日时分秒());
         }
 
         [Fact()]
         public void To星期Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("星期三", new DateTime(2020, 1, 1).To星期());
         }
 
         [Fact()]
@@ -228,13 +248,17 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void Get顺序号Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(1, 扩展.Get顺序号(DateTime.Today));
+            Assert.Equal(2, 扩展.Get顺序号(DateTime.Today));
+            Assert.Equal(1, 扩展.Get顺序号(DateTime.Today.AddDays(1)));
+            Assert.Equal(2, 扩展.Get顺序号(DateTime.Today.AddDays(1)));
         }
 
         [Fact()]
         public void To求和Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var a = Enumerable.Range(1, 3).Select(x => new TimeSpan(0, 0, x)).ToList();
+            Assert.Equal(TimeSpan.FromSeconds(6), a.To求和());
         }
 
         [Fact()]
@@ -276,13 +300,13 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ConvertToBCDTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(32, 扩展.ConvertToBCD(20));
         }
 
         [Fact()]
         public void ConvertBCDToIntTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(20, 扩展.ConvertBCDToInt(32));
         }
 
         [Fact()]
@@ -305,7 +329,8 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ToHexStringTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("000A", new byte[] {0, 10}.ToHexString());
+            Assert.Equal("0F0F", new byte[] {15, 15}.ToHexString());
         }
 
         [Fact()]
@@ -326,38 +351,45 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void ToTimeSpanTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(TimeSpan.Zero, 扩展.ToTimeSpan(0));
+            Assert.Equal(TimeSpan.FromSeconds(1), 扩展.ToTimeSpan(1));
         }
 
 
         [Fact()]
         public void GetStringTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("年纪涛", 扩展.GetString(Encoding.UTF8.GetBytes("年纪涛")));
+            Assert.Equal("abc", 扩展.GetString(Encoding.UTF8.GetBytes("abc")));
         }
 
         [Fact()]
         public void GetFileNameTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("abc", 扩展.GetFileName("d:\\abc.txt"));
+            Assert.Equal("abc", 扩展.GetFileName("abc.txt"));
         }
 
         [Fact()]
         public void ToBoolTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.True(扩展.ToBool("true"));
+            Assert.True(扩展.ToBool("1"));
+            Assert.False(扩展.ToBool("0"));
         }
 
         [Fact()]
         public void Remove2Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("a", 扩展.Remove2("abcde", 1, 10));
+            Assert.Equal("", 扩展.Remove2("ab", 3, 10));
         }
 
         [Fact()]
         public void Substring2Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("cd", 扩展.Substring2("abcde", 2, 2));
+            Assert.Equal("cde", 扩展.Substring2("abcde", 2, 5));
         }
 
         [Fact()]
@@ -371,19 +403,19 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void Remove非文件名字符Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("abc", 扩展.Remove非文件名字符("abc\\"));
         }
 
         [Fact()]
         public void Remove非目录字符Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("abc", 扩展.Remove非目录字符("abc<>"));
         }
 
         [Fact()]
         public void Remove字符Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal("ab", 扩展.Remove字符("abc", new char[] {'c'}));
         }
 
         [Fact()]
@@ -400,20 +432,19 @@ namespace NJT.Ext.Tests
         {
             Assert.Equal(1.1f, "1.1".ToFloat());
             Assert.Equal(1f, "1".ToFloat());
- 
         }
 
         [Fact()]
         public void To目录合并Test()
         {
             Assert.Equal(@"d:\a\b", "d:\\a".To目录合并("b"));
-            Assert.Equal(@"d:\a\b", "d:\\a\\".To目录合并("\\b"));
+            Assert.Equal(@"d:\a\b", "d:\\a\\".To目录合并("b"));
         }
 
         [Fact()]
         public void To合并文件名Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(@"d:\a\b.txt", "d:\\a".To合并文件名("b.txt"));
         }
 
         [Fact()]
@@ -431,7 +462,10 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void CreatDirTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            var dir1 = "d:\\temp\\" + Guid.NewGuid().ToString().Remove(5);
+            var a = dir1.CreatDir();
+            Assert.True(a.Item1, a.Item2);
+            System.IO.Directory.Delete(dir1);
         }
 
         [Fact()]
@@ -477,25 +511,29 @@ namespace NJT.Ext.Tests
         [Fact()]
         public void GetDateTime14Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(new DateTime(2020, 1, 2, 3, 4, 5), 扩展.GetDateTime14("20200102030405"));
         }
 
         [Fact()]
         public void GetDateTime8Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(new DateTime(2020, 1, 2), 扩展.GetDateTime8("20200102"));
         }
 
         [Fact()]
         public void GetDateTimeTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            Assert.Equal(new DateTime(2018, 1, 1), 扩展.GetDateTime("2018-01-01", "yyyy-MM-dd"));
         }
 
         [Fact()]
         public void 更新Test()
         {
-            Assert.True(false, "This test needs an implementation");
+            var r = new Dictionary<string, int>() {{"a", 1}, {"b", 2}};
+            r.更新("a", 3);
+            r.更新("d", 4);
+            Assert.Equal(3, r["a"]);
+            Assert.Equal(4, r["d"]);
         }
 
         [Fact()]
@@ -515,6 +553,22 @@ namespace NJT.Ext.Tests
             Assert.Equal("a.pdf", "a.dat".更换扩展名(".pdf"));
             Assert.Equal("a.pdf", "a.b".更换扩展名(".pdf"));
             Assert.Equal("a.pdf", "a.xlsx".更换扩展名(".pdf"));
+        }
+
+        [Fact()]
+        public void 分组_正常分_Test1()
+        {
+            var r = Enumerable.Range(1, 50).分组(10).ToList();
+            Assert.Equal(5, r.Count);
+            Assert.True(r.All(x => x.Count == 10));
+        }
+
+        [Fact()]
+        public void 分组_异常分_Test1()
+        {
+            var r = Enumerable.Range(1, 10).分组(3).ToList();
+            Assert.Equal(4, r.Count);
+            Assert.True(r.Last().Count == 1);
         }
     }
 }

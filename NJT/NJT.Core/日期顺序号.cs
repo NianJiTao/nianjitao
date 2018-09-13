@@ -23,9 +23,7 @@ namespace NJT.Core
                 _日期 = obj.Date;
                 _当天序号 = 0;
             }
-
-            _当天序号++;
-            return _当天序号;
+            return ++_当天序号;
         }
     }
 }

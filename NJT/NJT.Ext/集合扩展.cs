@@ -19,7 +19,7 @@ namespace NJT.Ext
             }
 
             if (k < 0) return list.FirstOrDefault();
-            k = k.范围限制(0, list.Count-1);
+            k = k.范围限制(0, list.Count - 1);
             return list[k];
         }
 
@@ -262,14 +262,37 @@ namespace NJT.Ext
                 return new List<List<T>>();
             }
 
-            组数 = 组数.范围限制(0, short.MaxValue);
-            每组数量 = 每组数量.范围限制(0, short.MaxValue);
+            组数 = 组数.范围限制(1, short.MaxValue);
+            每组数量 = 每组数量.范围限制(1, short.MaxValue);
             var list2 = Enumerable.Range(0, 组数)
                 .Select(i => 源.Skip(每组数量 * i).Take(每组数量).ToList())
                 .ToList();
             return list2;
         }
 
+        public static List<List<T>> 分组<T>(this IEnumerable<T> 源, int 每组数量)
+        {
+            if (源.Is空())
+            {
+                return new List<List<T>>();
+            }
+
+            var r = new List<List<T>>();
+            if (每组数量 <= 1)
+            {
+                r.Add(源.ToList());
+                return r;
+            }
+
+            int skip = 0;
+            while (skip < 源.Count())
+            {
+                r.Add(源.Skip(skip).Take(每组数量).ToList());
+                skip = skip + 每组数量;
+            }
+
+            return r;
+        }
 
         /// <summary>
         /// 串联string
@@ -354,5 +377,16 @@ namespace NJT.Ext
             var find = 列表.FindItem(名称);
             return find?.值;
         }
+
+        //public static object UpValue<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
+        //{
+        //    var find = 列表.FindItem(名称);
+        //    return find?.值;
+
+        //    var find = 字段表.FindItem(属性名);
+        //    if (find != null)
+        //        find.值 = 属性值;
+        //    return 字段表;
+        //}
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace NJT.Ext
 {
-    public static partial class 扩展 
+    public static partial class 扩展
     {
         public static string GetFileName(this string cs)
         {
@@ -44,7 +44,7 @@ namespace NJT.Ext
         }
 
         /// <summary>
-        /// 验证长度,再返回,长度不够返回空字串.
+        /// 验证长度,再返回
         /// </summary>
         /// <param name="b"></param>
         /// <param name="index"></param>
@@ -56,14 +56,19 @@ namespace NJT.Ext
             {
                 return string.Empty;
             }
+
             index = index.范围限制(0, short.MaxValue);
             len = len.范围限制(0, short.MaxValue);
-            return b.Length > (index + len) ? b.Remove(index, len) : string.Empty;
+            if (b.Length > (index + len))
+                return b.Remove(index, len);
+            if (b.Length > (index))
+                return b.Remove(index);
+            return string.Empty;
         }
 
 
         /// <summary>
-        /// 返回字串内指定长度,如果长度不够,返回原字串全长.
+        /// 返回字串内指定长度,如果长度不够,有多少返回多少
         /// </summary>
         /// <param name="b"></param>
         /// <param name="index"></param>
@@ -75,9 +80,15 @@ namespace NJT.Ext
             {
                 return string.Empty;
             }
+
             index = index.范围限制(0, short.MaxValue);
             len = len.范围限制(0, short.MaxValue);
-            return b.Length <= (index + len) ? b : b.Substring(index, len);
+            if (b.Length > (index + len))
+                return b.Substring(index, len);
+            if (b.Length > (index))
+                return b.Substring(index);
+            return string.Empty;
+            //return b.Length <= (index + len) ? b : b.Substring(index, len);
         }
 
         /// <summary>
@@ -109,7 +120,7 @@ namespace NJT.Ext
         public static string Remove字符(this string obj, char[] 排除表)
         {
             if (string.IsNullOrEmpty(obj)) return obj;
-            if (排除表==null ) return obj;
+            if (排除表 == null) return obj;
             var byte2 = obj.ToCharArray().Where(x => !排除表.Contains(x)).ToArray();
             var r = new string(byte2);
             return r;
@@ -214,9 +225,10 @@ namespace NJT.Ext
             {
                 return new byte[0];
             }
+
             var returnBytes = new byte[hexString.Length / 2];
             for (var i = 0; i < returnBytes.Length; i++)
-                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);  //未验证是否有效数字
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16); //未验证是否有效数字
             return returnBytes;
         }
 
@@ -237,7 +249,8 @@ namespace NJT.Ext
             var dir = string.Empty;
             try
             {
-                dir = System.IO.Path.GetDirectoryName(fileName);
+                var f1 = System.IO.Path.GetFileName(fileName);
+                dir = f1.Contains(".") ? System.IO.Path.GetDirectoryName(fileName) : fileName;
             }
             catch (Exception e)
             {
@@ -268,6 +281,7 @@ namespace NJT.Ext
             {
                 分割符 = ";";
             }
+
             var r = new string[0];
             if (!string.IsNullOrEmpty(text))
                 r = text.Split(分割符.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -328,7 +342,7 @@ namespace NJT.Ext
             长度 = 长度.范围限制(0, byte.MaxValue);
             if (字串 == null)
             {
-                return string.Empty.PadLeft(长度,  '0');
+                return string.Empty.PadLeft(长度, '0');
             }
 
             if (字串.Length > 长度)
@@ -367,10 +381,11 @@ namespace NJT.Ext
         /// <returns></returns>
         public static bool 等于OrBool(this string a, string b)
         {
-            if (a==null || b==null)
+            if (a == null || b == null)
             {
                 return false;
             }
+
             var r = a.等于(b);
             if (r)
                 return true;
@@ -424,6 +439,7 @@ namespace NJT.Ext
             {
                 return DateTime.MinValue;
             }
+
             var r = DateTime.ParseExact(字符串, 日期格式, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces);
             return r;
         }

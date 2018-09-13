@@ -13,13 +13,13 @@ namespace NJT.Ext
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static byte ConvertToBCD(this byte b)
+        public static int ConvertToBCD(this byte b)
         {
             //高四位    
-            var b1 = (byte) (b / 10);
+            var b1 = (b / 10);
             //低四位    
-            var b2 = (byte) (b % 10);
-            return (byte) ((b1 << 4) | b2);
+            var b2 = (b % 10);
+            return ((b1 << 4) | b2);
         }
 
         /// <summary>
@@ -27,14 +27,14 @@ namespace NJT.Ext
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static byte ConvertBCDToInt(this byte b)
+        public static int ConvertBCDToInt(this byte b)
         {
             //高四位    
-            var b1 = (byte) ((b >> 4) & 0xF);
+            var b1 = ((b >> 4) & 0xF);
             //低四位    
-            var b2 = (byte) (b & 0xF);
+            var b2 = (b & 0xF);
 
-            return (byte) (b1 * 10 + b2);
+            return (b1 * 10 + b2);
         }
 
 
@@ -122,10 +122,11 @@ namespace NJT.Ext
         public static byte[] 数字长度修正(this byte[] 字串, int 长度, byte 填充 = 48)
         {
             长度 = 长度.范围限制(0, byte.MaxValue);
-            if (字串==null)
+            if (字串 == null)
             {
                 return Enumerable.Repeat(填充, 长度).ToArray();
             }
+
             if (字串.Length > 长度)
             {
                 return 字串.Take(长度).ToArray();
@@ -152,15 +153,16 @@ namespace NJT.Ext
 
         public static List<T> GetList<T>(this int 数量) where T : new()
         {
-            if (数量<=0)
+            if (数量 <= 0)
             {
                 return new List<T>();
             }
 
-            if (数量>MaxValue )
+            if (数量 > MaxValue)
             {
                 数量 = MaxValue;
             }
+
             var list2 = Enumerable.Range(0, 数量)
                 .Select(i => new T())
                 .ToList();
@@ -188,6 +190,5 @@ namespace NJT.Ext
 
             return Encoding.UTF8.GetString(m);
         }
-
     }
 }

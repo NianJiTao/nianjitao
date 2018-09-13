@@ -16,14 +16,15 @@ namespace NJT.Core.Tests
             public string Name { get; set; } = "test";
         }
 
-        string xmlFile = @"d:\test1.xml";
-        string txtFile = @"d:\test1.txt";
-        string txtFile2 = @"d:\test2.txt";
-        string txtFile3 = @"d:\test3.txt";
+        //string xmlFile = @"d:\test1.xml";
+        //string txtFile = @"d:\test1.txt";
+        //string txtFile2 = @"d:\test2.txt";
+        //string txtFile3 = @"d:\test3.txt";
 
         [Fact()]
-        public void 写入Test()
+        public void 写入xmlTest()
         {
+            string xmlFile = @"d:\"+Guid.NewGuid()+".xml";
             序列化.写入(new Test信息(), xmlFile);
             Assert.True(System.IO.File.Exists(xmlFile));
             System.IO.File.Delete(xmlFile);
@@ -32,6 +33,7 @@ namespace NJT.Core.Tests
         [Fact()]
         public void 读出Test()
         {
+            string xmlFile = @"d:\"+Guid.NewGuid()+".xml";
             序列化.写入(new Test信息(), xmlFile);
             Assert.True(序列化.读出<Test信息>(xmlFile).IsTrue);
             System.IO.File.Delete(xmlFile);
@@ -55,6 +57,7 @@ namespace NJT.Core.Tests
         [Fact()]
         public void 写入二进制Test()
         {
+            string txtFile = @"d:\"+Guid.NewGuid()+".txt";
             序列化.写入二进制(new Test信息(), txtFile);
             Assert.True(System.IO.File.Exists(txtFile));
             System.IO.File.Delete(txtFile);
@@ -63,6 +66,7 @@ namespace NJT.Core.Tests
         [Fact()]
         public void 读出二进制Test()
         {
+            string txtFile = @"d:\"+Guid.NewGuid()+".txt";
             序列化.写入二进制(new Test信息(), txtFile);
             Assert.True(序列化.读出二进制<Test信息>(txtFile).IsTrue);
             System.IO.File.Delete(txtFile);
@@ -71,6 +75,9 @@ namespace NJT.Core.Tests
         [Fact()]
         public async void 合并txtTest()
         {
+            string txtFile = @"d:\"+Guid.NewGuid()+".txt";
+            string txtFile2 = @"d:\"+Guid.NewGuid()+".txt";
+            string txtFile3 = @"d:\"+Guid.NewGuid()+".txt";
             await 序列化.写入txt(txtFile, "a");
             await 序列化.写入txt(txtFile2, "b");
             await 序列化.合并txt(new List<string>(){ txtFile,txtFile2 }, txtFile3);
@@ -85,6 +92,7 @@ namespace NJT.Core.Tests
         [Fact()]
         public async void 写入txtTest()
         {
+            string txtFile = @"d:\"+Guid.NewGuid()+".txt";
             var r = await 序列化.写入txt(txtFile, "a");
             Assert.True(r.IsTrue);
             System.IO.File.Delete(txtFile);
@@ -93,6 +101,7 @@ namespace NJT.Core.Tests
         [Fact()]
         public async void 追加txtTest()
         {
+            string txtFile = @"d:\"+Guid.NewGuid()+".txt";
             await 序列化.追加txt(txtFile, "a");
             await 序列化.追加txt(txtFile, "b");
             var r = await 序列化.读出txt(txtFile);
@@ -104,6 +113,7 @@ namespace NJT.Core.Tests
         [Fact()]
         public async void 读出txtTest()
         {
+            string txtFile = @"d:\"+Guid.NewGuid()+".txt";
             var rr = await 序列化.写入txt(txtFile, "abcdef");
             Assert.True(rr.IsTrue);
 
@@ -116,11 +126,12 @@ namespace NJT.Core.Tests
         [Fact()]
         public async void 插入首行txtTest()
         {
+            string txtFile = @"d:\"+Guid.NewGuid()+".txt";
             await 序列化.写入txt(txtFile, "a");
             await 序列化.插入首行txt(txtFile, "b");
             var r = await 序列化.读出txt(txtFile);
             Assert.True(r.IsTrue);
-            Assert.Equal("b\r\na", r.Data);
+            Assert.Equal("ba", r.Data);
             System.IO.File.Delete(txtFile);
         }
     }

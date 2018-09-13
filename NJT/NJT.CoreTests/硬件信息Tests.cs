@@ -15,8 +15,8 @@ namespace NJT.Core.Tests
         {
             var r = new 硬件信息().Get网卡();
             Assert.True(r.Count > 0);
-            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
-            Assert.Equal("", r2);
+            var r2 = string.Join("\r\n", r);
+            Assert.NotEqual("", r2);
         }
 
         [Fact()]
@@ -24,8 +24,8 @@ namespace NJT.Core.Tests
         {
             var r = new 硬件信息().GetCpu();
             Assert.True(r.Count > 0);
-            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
-            Assert. Equal("", r2);
+            var r2 = string.Join("\r\n", r);
+            Assert.NotEqual("", r2);
         }
 
         [Fact()]
@@ -33,8 +33,8 @@ namespace NJT.Core.Tests
         {
             var r = new 硬件信息().Get主板();
             Assert.True(r.Count > 0);
-            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
-            Assert.Equal("", r2);
+            var r2 = string.Join("\r\n", r);
+            Assert.NotEqual("", r2);
         }
 
         [Fact()]
@@ -42,14 +42,14 @@ namespace NJT.Core.Tests
         {
             var r = new 硬件信息().Get硬盘();
             Assert.True(r.Count > 0);
-            var r2 = r.Aggregate("", (current, s) => current + "\r\n" + s);
-            Assert.Equal("", r2);
+            var r2 = string.Join("\r\n", r);
+            Assert.NotEqual("", r2);
         }
 
         [Fact()]
         public void Get特征码Test()
         {
-            Assert. Equal("X4DPB8VMKQXT", (new 硬件信息().Get特征码()));
+            Assert.Equal("X4DPB8VMKQXT", (new 硬件信息().Get特征码()));
         }
     }
 }
