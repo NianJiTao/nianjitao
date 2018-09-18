@@ -2,16 +2,7 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.ExtTests\扩展Tests.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.CoreTests\硬件信息Tests.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.CoreTests\序列化Tests.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Ext\集合扩展.cs</string>
+      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Ext\单例.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

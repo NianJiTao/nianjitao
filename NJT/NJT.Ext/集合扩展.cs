@@ -361,7 +361,7 @@ namespace NJT.Ext
         }
 
 
-        public static T FindItem<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
+        public static T FindItem<T>(this IEnumerable<T> 列表, string 名称) where T : I名称
         {
             if (string.IsNullOrEmpty(名称))
             {
@@ -378,15 +378,6 @@ namespace NJT.Ext
             return find?.值;
         }
 
-        //public static object UpValue<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
-        //{
-        //    var find = 列表.FindItem(名称);
-        //    return find?.值;
-
-        //    var find = 字段表.FindItem(属性名);
-        //    if (find != null)
-        //        find.值 = 属性值;
-        //    return 字段表;
-        //}
+      
     }
 }

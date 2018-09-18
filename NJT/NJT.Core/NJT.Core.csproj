@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
     <Compile Include="I名称值.cs" />
+    <Compile Include="I智能模块.cs" />
     <Compile Include="查表.cs" />
     <Compile Include="I列表.cs" />
     <Compile Include="IId.cs" />
