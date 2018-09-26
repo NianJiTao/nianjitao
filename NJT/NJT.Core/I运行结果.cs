@@ -12,10 +12,10 @@ namespace NJT.Core
         /// </summary>
         bool IsTrue { get; set; }
 
-        /// <summary>
-        ///     执行错误时的信息.
-        /// </summary>
-        string ErrorMess { get; set; }
+        ///// <summary>
+        /////     执行错误时的信息.
+        ///// </summary>
+        //string ErrorMess { get; set; }
 
         string Message { get; set; }
     }

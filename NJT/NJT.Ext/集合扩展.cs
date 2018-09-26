@@ -372,12 +372,36 @@ namespace NJT.Ext
             return find;
         }
 
+        public static T FindItem<T>(this IEnumerable<T> 列表, string 名称, int skip) where T : I名称
+        {
+            if (string.IsNullOrEmpty(名称))
+            {
+                return default(T);
+            }
+
+            var find = 列表.Where(x => x.名称.等于(名称)).Skip(skip).FirstOrDefault();
+            return find;
+        }
+
         public static object FindValue<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
         {
             var find = 列表.FindItem(名称);
             return find?.值;
         }
 
-      
+        /// <summary>
+        /// 查找属性名称并更新值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="字段表"></param>
+        /// <param name="属性名"></param>
+        /// <param name="属性值"></param>
+        public static IEnumerable<T> UpValue<T>(this IEnumerable<T> 字段表, string 属性名, object 属性值) where T : I名称值
+        {
+            var find = 字段表.FindItem(属性名);
+            if (find != null)
+                find.值 = 属性值;
+            return 字段表;
+        }
     }
 }

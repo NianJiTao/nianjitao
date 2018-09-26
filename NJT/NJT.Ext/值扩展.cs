@@ -92,7 +92,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static byte[] 长度修正(this byte[] 字串, int 长度, byte 填充 = 32)
         {
-            长度 = 长度.范围限制(0, byte.MaxValue);
+            长度 = 长度.范围限制(0, short.MaxValue);
             if (字串 == null)
             {
                 return Enumerable.Repeat(填充, 长度).ToArray();
@@ -121,7 +121,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static byte[] 数字长度修正(this byte[] 字串, int 长度, byte 填充 = 48)
         {
-            长度 = 长度.范围限制(0, byte.MaxValue);
+            长度 = 长度.范围限制(0, short.MaxValue);
             if (字串 == null)
             {
                 return Enumerable.Repeat(填充, 长度).ToArray();
