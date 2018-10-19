@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace NJT.Ext
 {
@@ -457,5 +458,24 @@ namespace NJT.Ext
 
             return 源.Substring(0, index) + 新扩展名;
         }
+
+
+        /// <summary>
+        /// 提取字串内的整数数字.如第1段返回1. 只提取首次匹配
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int GetNumber(this string obj)
+        {
+            if (string.IsNullOrEmpty(obj))
+                return 0;
+
+            var find = Regex.Match(obj, "\\d+");
+            if (!find.Success)
+                return 0;
+
+            return find.Value.ToInt();
+        }
+
     }
 }

@@ -13,7 +13,7 @@ namespace NJT.Core
     /// <typeparam name="T"></typeparam>
     public class EData<T>
     {
-        public EData(T data, string name)
+        public EData(string name, T data)
         {
             Data = data;
             Name = name;
