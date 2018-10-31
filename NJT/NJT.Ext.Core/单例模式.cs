@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
     /// <summary>
     /// 返回单件实例

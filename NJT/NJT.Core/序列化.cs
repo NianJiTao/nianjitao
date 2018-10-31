@@ -233,7 +233,7 @@ namespace NJT.Core
             var r = await 序列化.读出txt(文件名);
             if (r.IsTrue == false)
             {
-                return new 运行结果(false, r.ErrorMess);
+                return new 运行结果(false, r.Message);
             }
 
             var 内容 = h4 + r.Data;

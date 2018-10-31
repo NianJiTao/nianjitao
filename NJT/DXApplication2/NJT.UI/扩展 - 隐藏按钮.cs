@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using DevExpress.Xpf.Bars;
 using NJT.Ext;
+using NJT.Ext.Core;
 using NJT.Prism;
 using Unity.Interception.Utilities;
 

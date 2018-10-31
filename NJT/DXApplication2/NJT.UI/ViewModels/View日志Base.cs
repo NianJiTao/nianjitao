@@ -8,6 +8,7 @@ using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using NJT.Core;
 using NJT.Ext;
+using NJT.Ext.Core;
 using NJT.Prism;
 using Prism.Events;
 using Unity;

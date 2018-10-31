@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
     public static partial class 扩展
     {

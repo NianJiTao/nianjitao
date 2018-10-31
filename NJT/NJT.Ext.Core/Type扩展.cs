@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
-    public static partial class 扩展 
+    public static partial class 扩展
     {
         public static IList<object> Get静态属性(this Type typex)
         {
@@ -31,6 +30,7 @@ namespace NJT.Ext
 
         /// <summary>
         /// 可给接口或者类型的属性赋值.
+        /// 如果属性的特性有"禁止克隆"将跳过此属性
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="目标"></param>
@@ -47,13 +47,28 @@ namespace NJT.Ext
                 .Where(x => x.CanRead && x.CanWrite);
 
             var 实例属性List = typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .Where(x => x.CanRead && x.CanWrite).Concat(接口属性List).ToList();
+                .Where(x => x.CanRead && x.CanWrite)
+                .ToList();
+            var 全部属性List = 实例属性List.Concat(接口属性List).ToList();
 
             var is排除 = 排除属性名 != null && 排除属性名.Any();
-            var 过滤后List = is排除 ? 实例属性List.Where(x => !排除属性名.Contains(x.Name)).ToList() : 实例属性List;
+            var list1 = is排除 ? 全部属性List.Where(x => !排除属性名.Contains(x.Name)).ToList() : 全部属性List;
 
-            foreach (var p in 过滤后List)
-                p.SetValue(目标, p.GetValue(源));
+            var list2 = list1
+                .Where(x => x.CustomAttributes.All(y => y.AttributeType.Name != "禁止克隆"))
+                .ToList();
+
+            foreach (var p in list2)
+            {
+                try
+                {
+                    p.SetValue(目标, p.GetValue(源));
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
 
             return 目标;
         }

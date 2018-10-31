@@ -56,12 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
+    <Compile Include="扩展_集合.cs" />
+    <Compile Include="禁止克隆.cs" />
     <Compile Include="I名称值.cs" />
     <Compile Include="I智能模块.cs" />
     <Compile Include="查表.cs" />
     <Compile Include="I列表.cs" />
     <Compile Include="IId.cs" />
-    <Compile Include="日期顺序号.cs" />
     <Compile Include="数据服务器.cs" />
     <Compile Include="I弹出消息.cs" />
     <Compile Include="PidController.cs" />

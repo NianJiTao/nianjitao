@@ -1,9 +1,11 @@
-﻿using System;
+﻿using NJT.Ext;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using NJT.Core;
+using NJT.Ext.Core;
 using Xunit;
 
 namespace NJT.Ext.Tests
@@ -13,6 +15,8 @@ namespace NJT.Ext.Tests
         public class testA
         {
             public static string B { get; set; } = "b";
+            public string Name { get; set; } = "";
+            [禁止克隆] public string NoClone { get; set; } = "";
         }
 
         [Fact]
@@ -34,14 +38,14 @@ namespace NJT.Ext.Tests
         [Fact]
         public void ConvertBCDToIntTest()
         {
-            Assert.Equal(20, 扩展.ConvertBCDToInt(32));
+            Assert.Equal(20, ((byte) 32).ConvertBCDToInt());
         }
 
 
         [Fact]
         public void ConvertToBCDTest()
         {
-            Assert.Equal(32, 扩展.ConvertToBCD(20));
+            Assert.Equal(32, ((byte) 20).ConvertToBCD());
         }
 
         [Fact]
@@ -145,16 +149,16 @@ namespace NJT.Ext.Tests
         [Fact]
         public void Get时间差Test()
         {
-            Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(null, null));
-            Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(DateTime.Today, null));
-            Assert.Equal(TimeSpan.Zero, 扩展.Get时间差(DateTime.Today, DateTime.Today));
-            Assert.Equal(TimeSpan.FromHours(1), 扩展.Get时间差(DateTime.Today, DateTime.Today.AddHours(1)));
+            Assert.Equal(TimeSpan.Zero, NJT.Ext.Core.扩展.Get时间差(null, null));
+            Assert.Equal(TimeSpan.Zero, NJT.Ext.Core.扩展.Get时间差(DateTime.Today, null));
+            Assert.Equal(TimeSpan.Zero, NJT.Ext.Core.扩展.Get时间差(DateTime.Today, DateTime.Today));
+            Assert.Equal(TimeSpan.FromHours(1), NJT.Ext.Core.扩展.Get时间差(DateTime.Today, DateTime.Today.AddHours(1)));
         }
 
         [Fact]
         public void Get首字母Test()
         {
-            Assert.Equal("NJT", "年纪涛".Get首字母());
+            Assert.Equal("NJT", 拼音.首字母("年纪涛"));
         }
 
         [Fact]
@@ -170,6 +174,9 @@ namespace NJT.Ext.Tests
         public void HexToByteTest()
         {
             Assert.Equal(new byte[] {21}, "15".HexToByte());
+            //Convert.ToInt64("0x"+"F", 16);
+            Assert.Equal(15,  Convert.ToInt64("0x" + "F", 16));
+            //Assert.Equal(new byte[] {15}, "F".HexToByte());
         }
 
         [Fact]
@@ -259,9 +266,9 @@ namespace NJT.Ext.Tests
         [Fact]
         public void ToDateTimeTest()
         {
-            Assert.Equal(new DateTime(2020, 1, 2, 3, 4, 5), new DateTime(2020, 1, 2, 3, 4, 5).ToDateTime());
+            Assert.Equal(new DateTime(2020, 1, 2, 3, 4, 5), new DateTime(2020, 1, 2, 3, 4, 5).ToDateTime2());
             Assert.Equal(new DateTime(2020, 1, 2, 3, 4, 5),
-                new DateTime(2020, 1, 2, 3, 4, 5).ToString().ToDateTime());
+                new DateTime(2020, 1, 2, 3, 4, 5).ToString().ToDateTime2());
         }
 
         [Fact]
@@ -589,6 +596,14 @@ namespace NJT.Ext.Tests
             Assert.Equal("ab  ", "ab".长度修正(4));
             Assert.Equal("ab", "abc".长度修正(2));
             Assert.Equal("   ", ((string) null).长度修正(3));
+        }
+
+        [Fact()]
+        public void 反射克隆值Test()
+        {
+            var a = new testA().反射克隆值(new testA() {Name = "a1", NoClone = "a2"});
+            Assert.Equal("a1", a.Name);
+            Assert.Equal("", a.NoClone);
         }
     }
 }

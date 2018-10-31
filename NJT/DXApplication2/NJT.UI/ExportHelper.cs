@@ -45,7 +45,7 @@ namespace NJT.UI
             var r = new ExportHelper(find);
             var tryRun = RunFunc.TryRun(() => r.DoExport(导出格式));
             if (!tryRun.IsTrue)
-                消息.更新状态栏(tryRun.ErrorMess);
+                消息.更新状态栏(tryRun.Message);
             return tryRun;
 
         }

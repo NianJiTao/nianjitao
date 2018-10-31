@@ -232,6 +232,10 @@
       <Project>{0e4dcda7-38d4-4e70-8ad1-9ba2875861e7}</Project>
       <Name>NJT.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\NJT.Ext.Core\NJT.Ext.Core.csproj">
+      <Project>{38782AF4-113E-4125-95A4-E9046387CFC6}</Project>
+      <Name>NJT.Ext.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\NJT.Ext\NJT.Ext.csproj">
       <Project>{748E3F91-1106-49A4-B670-5E2E8D694C40}</Project>
       <Name>NJT.Ext</Name>

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
-    public static partial class 扩展 
+    public static partial class 扩展
     {
         /// <summary>
         /// 保证返回数据为范围内的数值.

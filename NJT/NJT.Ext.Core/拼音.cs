@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
     public static class 拼音
     {
@@ -14,7 +12,7 @@ namespace NJT.Ext
             var 结果 = new StringBuilder();
             foreach (var vChar in 字符串)
             {
-                var c = (int)vChar - 19968;
+                var c = (int) vChar - 19968;
                 if ((vChar >= '0' && vChar <= '9') || (vChar >= 'a' && vChar <= 'z') || (vChar >= 'A' && vChar <= 'Z'))
                     // 若是字母和数字则直接输出
                     结果.Append(char.ToUpper(vChar));
@@ -23,6 +21,7 @@ namespace NJT.Ext
                     结果.Append(首字母表[c]);
                 }
             }
+
             return 结果.ToString();
         }
 

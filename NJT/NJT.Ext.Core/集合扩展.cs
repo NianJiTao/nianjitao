@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using NJT.Core;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
     public static partial class 扩展
     {
@@ -92,7 +88,6 @@ namespace NJT.Ext
             catch (Exception)
             {
                 return false;
-                ;
             }
         }
 
@@ -156,47 +151,17 @@ namespace NJT.Ext
         /// <param name="list"></param>
         /// <param name="item"></param>
         /// <param name="max"></param>
-        public static void AddAndMax<T>(this List<T> list, T item, int max = 100)
+        public static void AddAndMax<T>(this IList<T> list, T item, int max = 100)
         {
             if (list == null)
-            {
                 return;
-            }
-
-            if (list.Count < max)
-            {
-                list.Add(item);
-                return;
-            }
-
-            if (list.Count > 0)
+            list.Add(item);
+            while (list.Count > 0 && list.Count > max)
             {
                 list.RemoveAt(0);
             }
-
-            list.Add(item);
         }
 
-        public static void AddAndMax<T>(this Collection<T> list, T item, int max = 100)
-        {
-            if (list == null)
-            {
-                return;
-            }
-
-            if (list.Count < max)
-            {
-                list.Add(item);
-                return;
-            }
-
-            if (list.Count > 0)
-            {
-                list.RemoveAt(0);
-            }
-
-            list.Add(item);
-        }
 
         /// <summary>
         /// 遍历列表并执行方法,返回列表
@@ -231,9 +196,7 @@ namespace NJT.Ext
         public static int IndexOf2<T>(this IEnumerable<T> source, Predicate<T> predicate)
         {
             if (source == null || predicate == null)
-            {
                 return -1;
-            }
 
             var num = 0;
             foreach (var obj in source)
@@ -303,14 +266,10 @@ namespace NJT.Ext
         public static string To串联(this IEnumerable<string> lt, string 分隔符 = "")
         {
             if (lt == null)
-            {
                 return string.Empty;
-            }
 
             if (string.IsNullOrEmpty(分隔符))
-            {
                 分隔符 = string.Empty;
-            }
 
             return string.Join(分隔符, lt);
         }
@@ -323,32 +282,6 @@ namespace NJT.Ext
         }
 
 
-        public static ObservableCollection<T> ToObservabler<T>(this IEnumerable<T> list2)
-        {
-            var r = new ObservableCollection<T>();
-            if (list2 != null)
-                foreach (var k in list2)
-                    r.Add(k);
-
-            return r;
-        }
-
-        /// <summary>
-        /// 如果true,返回data的列表,否则返回空列表
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static ObservableCollection<T> ToObservabler<T>(this I运行结果<IList<T>> obj)
-        {
-            return obj.IsTrue ? obj.Data.ToObservabler() : new ObservableCollection<T>();
-        }
-
-        public static ObservableCollection<T> ToObservabler<T>(this I运行结果<IEnumerable<T>> obj)
-        {
-            return obj.IsTrue ? obj.Data.ToObservabler() : new ObservableCollection<T>();
-        }
-
         public static void 更新列表<T>(this ICollection<T> obj, IEnumerable<T> list2)
         {
             if (obj == null)
@@ -358,50 +291,6 @@ namespace NJT.Ext
                 return;
             foreach (var item in list2)
                 obj.Add(item);
-        }
-
-
-        public static T FindItem<T>(this IEnumerable<T> 列表, string 名称) where T : I名称
-        {
-            if (string.IsNullOrEmpty(名称))
-            {
-                return default(T);
-            }
-
-            var find = 列表.FirstOrDefault(x => x.名称.等于(名称));
-            return find;
-        }
-
-        public static T FindItem<T>(this IEnumerable<T> 列表, string 名称, int skip) where T : I名称
-        {
-            if (string.IsNullOrEmpty(名称))
-            {
-                return default(T);
-            }
-
-            var find = 列表.Where(x => x.名称.等于(名称)).Skip(skip).FirstOrDefault();
-            return find;
-        }
-
-        public static object FindValue<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
-        {
-            var find = 列表.FindItem(名称);
-            return find?.值;
-        }
-
-        /// <summary>
-        /// 查找属性名称并更新值
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="字段表"></param>
-        /// <param name="属性名"></param>
-        /// <param name="属性值"></param>
-        public static IEnumerable<T> UpValue<T>(this IEnumerable<T> 字段表, string 属性名, object 属性值) where T : I名称值
-        {
-            var find = 字段表.FindItem(属性名);
-            if (find != null)
-                find.值 = 属性值;
-            return 字段表;
         }
     }
 }

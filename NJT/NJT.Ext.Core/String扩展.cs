@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
     public static partial class 扩展
     {
@@ -24,25 +23,6 @@ namespace NJT.Ext
             }
         }
 
-        /// <summary>
-        /// 验证字串是否为true,或者1,
-        /// </summary>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static bool ToBool(this string b)
-        {
-            if (string.Equals("True", b, StringComparison.CurrentCultureIgnoreCase))
-            {
-                return true;
-            }
-
-            if (string.Equals("1", b, StringComparison.CurrentCultureIgnoreCase))
-            {
-                return true;
-            }
-
-            return false;
-        }
 
         /// <summary>
         /// 验证长度,再返回
@@ -172,22 +152,6 @@ namespace NJT.Ext
         }
 
 
-        static string[] 单位 = {"字节", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "BB"};
-
-
-        public static float ToFloat(this string obj)
-        {
-            var f = 0f;
-            if (string.IsNullOrEmpty(obj))
-            {
-                return f;
-            }
-
-            float.TryParse(obj, out f);
-            return f;
-        }
-
-
         public static string To目录合并(this string 目录1, string 目录2)
         {
             return System.IO.Path.Combine(目录1, 目录2);
@@ -212,11 +176,6 @@ namespace NJT.Ext
             }
 
             return 文件名;
-        }
-
-        public static string Get首字母(this string 汉字串)
-        {
-            return 拼音.首字母(汉字串);
         }
 
 
@@ -365,15 +324,6 @@ namespace NJT.Ext
         }
 
 
-        public static double ToDouble(this string obj)
-        {
-            if (string.IsNullOrEmpty(obj))
-                return 0d;
-            var b = double.TryParse(obj, out var r);
-            return b ? r : 0d;
-        }
-
-
         /// <summary>
         /// 返回是否相等,不区分大小写, true和1相等.
         /// </summary>
@@ -460,22 +410,11 @@ namespace NJT.Ext
         }
 
 
-        /// <summary>
-        /// 提取字串内的整数数字.如第1段返回1. 只提取首次匹配
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static int GetNumber(this string obj)
+        public static string Get首字母(this string str)
         {
-            if (string.IsNullOrEmpty(obj))
-                return 0;
-
-            var find = Regex.Match(obj, "\\d+");
-            if (!find.Success)
-                return 0;
-
-            return find.Value.ToInt();
+            if (string.IsNullOrEmpty(str))
+                return string.Empty;
+            return 拼音.首字母(str);
         }
-
     }
 }

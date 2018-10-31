@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
     public static partial class 扩展
     {
@@ -27,7 +25,7 @@ namespace NJT.Ext
         /// <returns></returns>
         public static float 小数位(this float obj, int len = 3)
         {
-            return (float) Math.Round(obj, len.范围限制(0, 15));
+            return (float)Math.Round(obj, len.范围限制(0, 15));
         }
 
         /// <summary>

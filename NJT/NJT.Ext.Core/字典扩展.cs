@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
-    public static partial class 扩展 
+    public static partial class 扩展
     {
         private static object 更新字典标识 = "更新字典标识";
 
@@ -16,11 +16,11 @@ namespace NJT.Ext
         /// <param name="value"></param>
         public static void 更新<TKey, TValue>(this IDictionary<TKey, TValue> obj, TKey key, TValue value)
         {
-            if (obj==null || key == null)
+            if (obj == null || key == null)
             {
                 return;
             }
-           
+
             lock (更新字典标识)
             {
                 if (obj.ContainsKey(key))

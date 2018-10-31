@@ -2,7 +2,19 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\源码\Pc2018\Git\nianjitao\NJT\NJT.Ext\泛型扩展.cs</string>
+      <string>属性</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>解决方案资源管理器</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\NJT.Ext.Core\StringToVal.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\NJT.Ext\object扩展.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\NJT.Core\SqlServer.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

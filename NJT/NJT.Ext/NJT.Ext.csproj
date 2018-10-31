@@ -38,26 +38,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="反射.cs" />
-    <Compile Include="值扩展.cs" />
     <Compile Include="object扩展.cs" />
-    <Compile Include="字典扩展.cs" />
-    <Compile Include="Type扩展.cs" />
-    <Compile Include="小数位限制.cs" />
-    <Compile Include="Enum扩展.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="单例.cs" />
-    <Compile Include="字串转换.cs" />
-    <Compile Include="拼音.cs" />
-    <Compile Include="时间扩展.cs" />
-    <Compile Include="泛型扩展.cs" />
-    <Compile Include="范围限制.cs" />
-    <Compile Include="计算耗时.cs" />
-    <Compile Include="集合扩展.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NJT.Core\NJT.Core.csproj">
       <Project>{0e4dcda7-38d4-4e70-8ad1-9ba2875861e7}</Project>
       <Name>NJT.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NJT.Ext.Core\NJT.Ext.Core.csproj">
+      <Project>{38782af4-113e-4125-95a4-e9046387cfc6}</Project>
+      <Name>NJT.Ext.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

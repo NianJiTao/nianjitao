@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using static System.Int16;
 
-namespace NJT.Ext
+namespace NJT.Ext.Core
 {
     public static partial class 扩展
     {
+        static string[] 单位 = {"字节", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "BB"};
+
         /// <summary>
         /// byte转换为BCD码  
         /// </summary>
@@ -154,15 +155,7 @@ namespace NJT.Ext
         public static List<T> GetList<T>(this int 数量) where T : new()
         {
             if (数量 <= 0)
-            {
                 return new List<T>();
-            }
-
-            if (数量 > MaxValue)
-            {
-                数量 = MaxValue;
-            }
-
             var list2 = Enumerable.Range(0, 数量)
                 .Select(i => new T())
                 .ToList();
