@@ -1,0 +1,17 @@
+﻿logtxt.exe 为命令行记录日志软件.
+双击运行会记录空消息.
+日志消息作为参数传递进来.可以有多个参数.
+
+正常记录方法:
+logtxt.exe 有事发生记录下来
+logtxt.exe  重要 关键错误
+
+
+vbs调用如下:
+Dim objShell
+Set objShell = CreateObject("Wscript.Shell")
+objShell.Run  "logtxt.exe 记录消息",0
+
+把程序复制到windows目录会更方便调用.
+logtxt.exe.config 配置文件内可以更改自定义内容.
+软件运行需要.net 4.6.1或以上

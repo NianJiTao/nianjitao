@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Code\git\nianjitao\NJT\NJT.Ext.Core\NJT.Ext.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

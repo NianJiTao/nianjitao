@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LogTxt.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="日志目录" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">d:\运行信息\LogTxt</Value>
+    </Setting>
+    <Setting Name="文件前缀" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">yyyy-MM-dd</Value>
+    </Setting>
+    <Setting Name="文件后缀" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">.Log</Value>
+    </Setting>
+    <Setting Name="内容前缀" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">yyyy-MM-dd HH:mm:ss</Value>
+    </Setting>
+    <Setting Name="文件首行" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">开始记录:</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

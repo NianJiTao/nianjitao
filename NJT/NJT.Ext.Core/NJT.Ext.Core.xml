@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NJT.Ext.Core</name>
+    </assembly>
+    <members>
+        <member name="M:NJT.Ext.Core.扩展.ToInt2(System.Object)">
+            <summary>
+            如果是int  转为int,否则b.ToString2().ToInt();
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToFloat2(System.Object)">
+            <summary>
+            如果是float 转为float,否则tostring,tofloat
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToDouble2(System.Object)">
+            <summary>
+            如果是double,直接返回,否则尝试转为double,
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToDateTime2(System.Object)">
+            <summary>
+            对象如果是时间,直接返回,否则转字串,再尝试转时间.错误返回最小时间
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToString2(System.Object)">
+            <summary>
+            返回对象的字符串表示,如果为空返回 string.Empty
+            </summary>
+            <param name="obj">The string.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToVal``1(System.Object,System.Func{System.String,``0})">
+            <summary>
+            如果是T类型,直接返回,否则转换后返回
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToBool(System.String)">
+            <summary>
+            验证字串是否为true,或者1,
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToInt(System.String)">
+            <summary>
+            字符串转int32,错误转为0;
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetNumber(System.String)">
+            <summary>
+            提取字串内的整数数字.如第1段返回1. 只提取首次匹配
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.Remove2(System.String,System.Int32,System.Int32)">
+            <summary>
+            验证长度,再返回
+            </summary>
+            <param name="b"></param>
+            <param name="index"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.Substring2(System.String,System.Int32,System.Int32)">
+            <summary>
+            返回字串内指定长度,如果长度不够,有多少返回多少
+            </summary>
+            <param name="b"></param>
+            <param name="index"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToString00N(System.Int32,System.Int32)">
+            <summary>
+             返回  i.ToString().PadLeft(len, '0'); 如1->001
+            </summary>
+            <param name="i"></param>
+            <param name="长度"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.格式化">
+            <summary>
+            字串格式化示例
+            </summary>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To分离数值(System.String)">
+            <summary>
+            "abc123" 可分离为 item1=abc, item2=123, item3=3
+            返回:字串,数字,数字位数.
+            </summary>
+            <param name="str">The STR.</param>
+            <returns>Tuple{System.StringSystem.Int32}.</returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.CreatDir(System.String)">
+            <summary>
+            item1:是否建立成功,
+            item2:错误信息.
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.等于(System.String,System.String)">
+            <summary>
+            不区分大小写,相比较.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.长度修正(System.String,System.Int32,System.Char)">
+            <summary>
+            太长截取,太短右边补填充,默认补空格
+            </summary>
+            <param name="字串"></param>
+            <param name="长度"></param>
+            <param name="填充"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.数字长度修正(System.String,System.Int32)">
+            <summary>
+            短:左边补0,如:-03,0006 ,长截取.
+            </summary>
+            <param name="字串"></param>
+            <param name="长度"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.等于OrBool(System.String,System.String)">
+            <summary>
+            返回是否相等,不区分大小写, true和1相等.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetDateTime14(System.String)">
+            <summary>
+            yyyyMMddHHmmss 格式可转换.
+            </summary>
+            <param name="str">The string.</param>
+            <returns>TimeSpan.</returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetDateTime8(System.String)">
+            <summary>
+            yyyyMMdd 格式可转换.
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.反射克隆值``1(``0,``0,System.Collections.Generic.IList{System.String})">
+            <summary>
+            可给接口或者类型的属性赋值.
+            如果属性的特性有"禁止克隆"将跳过此属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="目标"></param>
+            <param name="源"></param>
+            <param name="排除属性名"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetCommandList(System.Object)">
+            <summary>
+            从对象里面反射获取命令属性
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetCommandValueList(System.Object)">
+            <summary>
+            返回 命令名称,值,列表
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetPropertiesList(System.Object,System.String[])">
+            <summary>
+            从对象里面反射获取属性,并去除排除属性
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ConvertToBCD(System.Byte)">
+            <summary>
+            byte转换为BCD码  
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ConvertBCDToInt(System.Byte)">
+            <summary>
+            解析BCD结构的字节为十进制
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To文件大小(System.Int64)">
+            <summary>
+            如1024 --> 1 KB
+            </summary>
+            <param name="字节">The 字节.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToHexString(System.Byte[])">
+            <summary>
+            // 0xae00cf => "AE00CF "
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.长度修正(System.Byte[],System.Int32,System.Byte)">
+            <summary>
+            在后面填充的字节 空格 32
+            </summary>
+            <param name="字串"></param>
+            <param name="长度"></param>
+            <param name="填充">在后面填充的字节空格 32</param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.数字长度修正(System.Byte[],System.Int32,System.Byte)">
+            <summary>
+            在前面填充的字节 0 (ascii-48)
+            </summary>
+            <param name="字串"></param>
+            <param name="长度"></param>
+            <param name="填充"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToTimeSpan(System.Int32)">
+            <summary>
+            整数秒转换到时间.
+            </summary>
+            <param name="ss">The string.</param>
+            <returns>TimeSpan.</returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetString(System.Byte[])">
+            <summary>
+            返回字节组的字符串形式,用utf8解码
+            </summary>
+            <param name="字节组"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.更新``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
+            <summary>
+            向字典添加新值,如果存在就更新值
+            </summary>
+            <param name="obj"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.小数位(System.Double,System.Int32)">
+            <summary>
+            小数位3位后四舍五入
+            </summary>
+            <param name="obj"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.小数位(System.Single,System.Int32)">
+            <summary>
+            小数位3位后四舍五入
+            </summary>
+            <param name="obj"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.小数位(System.Decimal,System.Int32)">
+            <summary>
+            小数位3位后四舍五入
+            </summary>
+            <param name="obj"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToProgressVal(System.Double)">
+            <summary>
+            0~1转为0-100,四舍五入;
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ToProgressVal(System.Single)">
+            <summary>
+            0~1转为0-100,四舍五入;
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To时分秒(System.DateTime)">
+            <summary>
+            HH:mm:ss
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To年月日时分秒(System.DateTime)">
+            <summary>
+             长度共19; yyyy-MM-ddTHH_mm_ss
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To星期(System.DateTime)">
+            <summary>
+            dddd
+            </summary>
+            <param name="时间"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To整秒(System.TimeSpan)">
+            <summary>
+            去掉秒数小数点后面.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To整秒(System.DateTime)">
+            <summary>
+            去掉秒数小数点后面.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.Get顺序号(System.DateTime)">
+            <summary>
+            返回当前日期的顺序号,递增1
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetList``1(System.Array)">
+            <summary>
+            转换为 List 泛型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.IfDo``1(``0,System.Func{``0,``0},System.Func{``0,System.Boolean})">
+            <summary>
+            如果条件符合,则执行方法 , 如果过滤方法为空,将直接执行方法.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="执行方法"></param>
+            <param name="过滤方法"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.范围限制``1(``0,``0,``0)">
+            <summary>
+            保证返回数据为范围内的数值.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="待测值">The 待测值.</param>
+            <param name="最小">The 最小.</param>
+            <param name="最大">The 最大.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.移除``1(System.Collections.Generic.List{``0},``0)">
+            <summary>
+            移除后,返回原有序号位的对象.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="sel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.AddAndMax``1(System.Collections.Generic.IList{``0},``0,System.Int32)">
+            <summary>
+            调用add,如果超过最大长度,移除首位.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="item"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.ForEachDo``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            遍历列表并执行方法,返回列表
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="执行方法"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.IndexOf2``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            返回查找到的索引,找不到返回-1;
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.分组``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            把数组分成几组,每组一样数量.如果源数据不够长,组内容可能为空.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="源"></param>
+            <param name="组数"></param>
+            <param name="每组数量"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.To串联(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            串联string
+            </summary>
+            <param name="lt"></param>
+            <param name="分隔符"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NJT.Ext.Core.单例模式`1">
+            <summary>
+            返回单件实例
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:NJT.Ext.Core.拼音.首字母表">
+             summary>
+            汉字拼音首字母列表 本列表包含了20902个汉字 字符的Unicode编码范围为19968至40869
+             /summary>
+        </member>
+        <member name="M:NJT.Ext.Core.日期顺序号.Get记录号(System.DateTime)">
+            <summary>
+            返回当前日期的顺序记录号,1开始,递增1
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
