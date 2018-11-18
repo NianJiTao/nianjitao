@@ -15,3 +15,4 @@ objShell.Run  "logtxt.exe 记录消息",0
 把程序复制到windows目录会更方便调用.
 logtxt.exe.config 配置文件内可以更改自定义内容.
 软件运行需要.net 4.6.1或以上
+https://github.com/NianJiTao/nianjitao/tree/master/NJT/LogTxt

@@ -152,6 +152,26 @@ namespace NJT.Ext.Core
             return new TimeSpan(0, 0, 0, ss);
         }
 
+        public static TimeSpan 秒(this int obj)
+        {
+            return TimeSpan.FromSeconds(obj);
+        }
+
+        public static TimeSpan 毫秒(this int obj)
+        {
+            return TimeSpan.FromMilliseconds(obj);
+        }
+
+        public static TimeSpan 分钟(this int obj)
+        {
+            return TimeSpan.FromMinutes(obj);
+        }
+
+        public static TimeSpan 小时(this int obj)
+        {
+            return TimeSpan.FromHours(obj);
+        }
+
         public static List<T> GetList<T>(this int 数量) where T : new()
         {
             if (数量 <= 0)
