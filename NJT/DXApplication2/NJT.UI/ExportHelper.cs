@@ -33,7 +33,7 @@ namespace NJT.UI
         }
 
 
-        public static 运行结果 导出(string 表格名称, ExportFormat 导出格式)
+        public static I运行结果 导出(string 表格名称, ExportFormat 导出格式)
         {
             var find = RunUnity.Container人事部.TryResolve2<DataViewBase>(表格名称, null);
             if (find == null)

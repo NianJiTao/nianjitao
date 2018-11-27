@@ -152,6 +152,11 @@ namespace NJT.Ext.Core
             return new TimeSpan(0, 0, 0, ss);
         }
 
+        /// <summary>
+        /// 按秒转为TimeSpan
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static TimeSpan 秒(this int obj)
         {
             return TimeSpan.FromSeconds(obj);
@@ -172,6 +177,12 @@ namespace NJT.Ext.Core
             return TimeSpan.FromHours(obj);
         }
 
+        /// <summary>
+        /// 生成List,按数量
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="数量"></param>
+        /// <returns></returns>
         public static List<T> GetList<T>(this int 数量) where T : new()
         {
             if (数量 <= 0)
@@ -190,18 +201,25 @@ namespace NJT.Ext.Core
         /// <returns></returns>
         public static string GetString(this byte[] 字节组)
         {
-            if (字节组 == null || !字节组.Any())
-            {
+            return GetString(字节组, Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// 根据指定编码返回字串
+        /// </summary>
+        /// <param name="字节组"></param>
+        /// <param name="编码"></param>
+        /// <returns></returns>
+        public static string GetString(this byte[] 字节组, Encoding 编码)
+        {
+            if (字节组 == null || !字节组.Any() || 编码 == null)
                 return string.Empty;
-            }
 
             var m = 字节组.Where(x => x > 0).ToArray();
             if (!m.Any())
-            {
                 return string.Empty;
-            }
 
-            return Encoding.UTF8.GetString(m);
+            return 编码.GetString(m);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace NJT.Core
 {
     public class 新进程
     {
-        public static 运行结果 运行(string 命令)
+        public static I运行结果 运行(string 命令)
         {
             return RunFunc.TryRun(() => 运行2(命令));
         }

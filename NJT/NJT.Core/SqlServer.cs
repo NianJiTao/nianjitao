@@ -67,13 +67,13 @@ namespace NJT.Core
             return 验证2().IsTrue;
         }
 
-        public async Task<运行结果> 验证Async()
+        public async Task<I运行结果> 验证Async()
         {
             var r = await Task.Run(() => 验证2());
             return r;
         }
 
-        public 运行结果 验证2()
+        public I运行结果 验证2()
         {
             if (测试中)
             {

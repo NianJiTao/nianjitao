@@ -39,7 +39,7 @@
     </Reference>
     <Reference Include="DevExpress.Mvvm.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.5.10\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>

@@ -8,7 +8,7 @@ namespace NJT.Core
 {
     public static class RunFunc
     {
-        public static 运行结果 TryRun(Action 方法)
+        public static I运行结果 TryRun(Action 方法)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace NJT.Core
             }
         }
 
-        public static 运行结果<T> TryRun<T>(Func<T> 方法)
+        public static I运行结果<T> TryRun<T>(Func<T> 方法)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace NJT.Core
         }
 
 
-        public static async Task<运行结果> TryRunAsync(Func<Task> 方法)
+        public static async Task<I运行结果> TryRunAsync(Func<Task> 方法)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace NJT.Core
             }
         }
 
-        public static async Task<运行结果<T>> TryRunAsync<T>(Func<Task<T>> 方法)
+        public static async Task<I运行结果<T>> TryRunAsync<T>(Func<Task<T>> 方法)
         {
             try
             {
