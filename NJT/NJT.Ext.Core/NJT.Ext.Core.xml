@@ -4,6 +4,13 @@
         <name>NJT.Ext.Core</name>
     </assembly>
     <members>
+        <member name="M:NJT.Ext.Core.扩展.ToEnum列表``1">
+            <summary>
+            EnumTo列表
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
         <member name="M:NJT.Ext.Core.扩展.ToInt2(System.Object)">
             <summary>
             如果是int  转为int,否则b.ToString2().ToInt();
@@ -248,11 +255,34 @@
             <param name="ss">The string.</param>
             <returns>TimeSpan.</returns>
         </member>
+        <member name="M:NJT.Ext.Core.扩展.秒(System.Int32)">
+            <summary>
+            按秒转为TimeSpan
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetList``1(System.Int32)">
+            <summary>
+            生成List,按数量
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="数量"></param>
+            <returns></returns>
+        </member>
         <member name="M:NJT.Ext.Core.扩展.GetString(System.Byte[])">
             <summary>
             返回字节组的字符串形式,用utf8解码
             </summary>
             <param name="字节组"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetString(System.Byte[],System.Text.Encoding)">
+            <summary>
+            根据指定编码返回字串
+            </summary>
+            <param name="字节组"></param>
+            <param name="编码"></param>
             <returns></returns>
         </member>
         <member name="M:NJT.Ext.Core.扩展.更新``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">

@@ -39,15 +39,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Xpf.CodeView.v18.1" />
-    <Reference Include="DevExpress.Xpf.Core.v18.1" />
-    <Reference Include="DevExpress.Data.v18.1" />
-    <Reference Include="DevExpress.Office.v18.1.Core" />
-    <Reference Include="DevExpress.RichEdit.v18.1.Core" />
-    <Reference Include="DevExpress.RichEdit.v18.1.Export" />
-    <Reference Include="DevExpress.Printing.v18.1.Core" />
-    <Reference Include="DevExpress.Mvvm.v18.1" />
-    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v18.1" />
+    <Reference Include="DevExpress.Xpf.CodeView.v18.2" />
+    <Reference Include="DevExpress.Xpf.Core.v18.2" />
+    <Reference Include="DevExpress.Data.v18.2" />
+    <Reference Include="DevExpress.Office.v18.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Export" />
+    <Reference Include="DevExpress.Printing.v18.2.Core" />
+    <Reference Include="DevExpress.Mvvm.v18.2" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v18.2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
