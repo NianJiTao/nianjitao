@@ -2,7 +2,7 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\NJT.Ext.Core\泛型扩展.cs</string>
+      <string>D:\源码\NianPc2018\Git\nianjitao\NJT\NJT.CoreTests\逆波兰Tests.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
