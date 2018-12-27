@@ -11,15 +11,16 @@ namespace LogCsv
     {
         static void Main(string[] args)
         {
-
-            Parser.Default.ParseArguments<Options>(args)
-                .WithParsed<Options>(o =>
-                {
-                    Console.WriteLine($" 设备： {o.设备名称.First()}");
-                    Console.WriteLine($" 文件： {o.文件名称}");
-                    Console.WriteLine($" 内容： {o.内容}");
-                    Console.ReadLine();
-                });
+            try
+            {
+                Parser.Default.ParseArguments<Csv内容>(args)
+                    .WithParsed(x => { new CsvRw().写入(x); });
+            }
+            catch (Exception)
+            {
+                //Console.WriteLine(e);
+                //throw;
+            }
         }
     }
 }

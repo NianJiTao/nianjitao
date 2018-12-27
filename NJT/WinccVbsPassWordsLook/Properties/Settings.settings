@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WinccVbsPassWordsLook.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="技术支持" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">QQ:925007694</Value>
+    </Setting>
+    <Setting Name="文件格式" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">.bmo</Value>
+    </Setting>
+    <Setting Name="密钥70" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Black Door Mind: A v</Value>
+    </Setting>
+    <Setting Name="密钥73" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BakDo id  atoeno o n</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -51,7 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Options.cs" />
+    <Compile Include="CsvRw.cs" />
+    <Compile Include="Csv内容.cs" />
     <Compile Include="CommandLineArgument.cs" />
     <Compile Include="CommandLineArgumentParser.cs" />
     <Compile Include="Program.cs" />
