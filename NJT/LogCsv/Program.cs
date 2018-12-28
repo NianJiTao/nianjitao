@@ -14,7 +14,7 @@ namespace LogCsv
             try
             {
                 Parser.Default.ParseArguments<Csv内容>(args)
-                    .WithParsed(x => { new CsvRw().写入(x); });
+                    .WithParsed(x => { new CsvRw().写入(x, Properties.Settings.Default.输出目录); });
             }
             catch (Exception)
             {

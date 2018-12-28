@@ -1,0 +1,24 @@
+﻿logcsv.exe 为命令行记录csv软件.
+-t   内容前面插入时间
+-f   设备名称
+-n  文件名称
+-c  内容
+
+正常记录方法:
+logcsv.exe -f f1 -n abc -c 时间,温度1,温度2
+上面命令会建立文件:d:\运行信息\f1\2019-1-1\abc.csv
+记录的内容是"时间,温度1,温度2"
+
+logcsv.exe -f f1 -n abc -t -c 1,2
+上面命令会建立文件:d:\运行信息\f1\2019-1-1\abc.csv
+记录的内容是"2019-1-1 0:0:0,1,2"
+
+
+vbs调用如下:
+Dim objShell
+Set objShell = CreateObject("Wscript.Shell")
+objShell.Run  "logcsv.exe -f f1 -n abc -c 时间,温度1,温度2",0
+
+把程序复制到windows目录会更方便调用.
+logcsv.exe.config 配置文件内可以更改自定义内容.
+软件运行需要.net 4.6.1或以上

@@ -11,8 +11,11 @@ namespace LogCsv
     {
         [Value(0, HelpText = "其他值")] public IEnumerable<string> 其他值 { get; set; }
 
-        [Option('i', "insert", Default = "false", Required = false, HelpText = "是否插入到首行")]
+        [Option('i', "insert", Default = false, Required = false, HelpText = "是否插入到首行")]
         public bool 插入首行 { get; set; }
+
+        [Option('t', "time", Default=false, Required = false, HelpText = "是否插入时间到内容开头")]
+        public bool 插入时间 { get; set; }
 
         [Option('f', "furnace", Default = "F1", Required = true, HelpText = "设备名称")]
         public string 设备名称 { get; set; }

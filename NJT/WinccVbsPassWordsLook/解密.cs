@@ -88,10 +88,8 @@ namespace WinccVbsPassWordsLook
                 {
                     int length = readStream.Read(data, 0, data.Length);
                     if (length == 0)
-                    {
                         break;
-                    }
-                    else if (length < len2)
+                    if (length < len2)
                     {
                         list2 = list2.Concat(data.Take(length)).ToList();
                         list2 = list2.Skip(list2.Count - len2).Take(len2).ToList();

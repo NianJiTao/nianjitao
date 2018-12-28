@@ -2,16 +2,7 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\NJT.Prism\app.config</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\App.config</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\NJT.Ext\object扩展.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\NJT.Ext\反射.cs</string>
+      <string>D:\Code\git\nianjitao\NJT\LogCsvTests\CsvRwTests.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
