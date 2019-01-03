@@ -90,11 +90,9 @@ namespace WinccVbsPassWordsLook
                 if (list2[len + 3] == i && list2[len + 2] == 0 && list2[len + 1] == 0 && list2[len + 0] == 0)
                 {
                     var bb = list2.Take(len).Reverse().ToList();
-                    var up1 = 验证是否升级的脚本(bb);
+                    var up1 = bb.Skip(i).Take(i).All(x => x == 0);
                     if (up1)
-                    {
                         return bb.Take(i).ToList();
-                    }
 
                     return l6;
                 }
@@ -103,20 +101,6 @@ namespace WinccVbsPassWordsLook
             list2.Reverse();
 
             return new List<byte>();
-        }
-
-
-        private bool 验证是否升级的脚本(List<byte> bb)
-        {
-            var i = bb.Count;
-            var mid = (int) (i / 2);
-            var 全0 = true;
-            for (int j = mid; j < i; j++)
-            {
-                全0 = 全0 && (bb[j] == 0);
-            }
-
-            return 全0;
         }
 
 
