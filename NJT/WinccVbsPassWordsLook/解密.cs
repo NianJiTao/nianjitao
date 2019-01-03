@@ -15,8 +15,12 @@ namespace WinccVbsPassWordsLook
             if (!list2.Any())
                 return string.Empty;
             var list3 = 分割密码70(list2.ToList());
-
             if (list3.Count > 0) return wincc7x解密(list3, Properties.Settings.Default.密钥70);
+
+            //是否是升级过来的脚本
+            var list5 = 分割密码70to73(list2.ToList());
+            if (list5.Count > 0) return wincc7x解密(list5, Properties.Settings.Default.密钥70);
+
             var list4 = 分割密码73(list2.ToList());
             if (list4.Count > 0) return wincc7x解密(list4, Properties.Settings.Default.密钥73);
             return string.Empty;
@@ -73,6 +77,46 @@ namespace WinccVbsPassWordsLook
             list2.Reverse();
 
             return new List<byte>();
+        }
+
+
+        private List<byte> 分割密码70to73(List<byte> list2)
+        {
+            list2.Reverse();
+            List<byte> l6 = new List<byte>();
+            for (int i = 1; i < 21; i++)
+            {
+                var len = i * 2; //wincc73,每个字符密码长度2
+                if (list2[len + 3] == i && list2[len + 2] == 0 && list2[len + 1] == 0 && list2[len + 0] == 0)
+                {
+                    var bb = list2.Take(len).Reverse().ToList();
+                    var up1 = 验证是否升级的脚本(bb);
+                    if (up1)
+                    {
+                        return bb.Take(i).ToList();
+                    }
+
+                    return l6;
+                }
+            }
+
+            list2.Reverse();
+
+            return new List<byte>();
+        }
+
+
+        private bool 验证是否升级的脚本(List<byte> bb)
+        {
+            var i = bb.Count;
+            var mid = (int) (i / 2);
+            var 全0 = true;
+            for (int j = mid; j < i; j++)
+            {
+                全0 = 全0 && (bb[j] == 0);
+            }
+
+            return 全0;
         }
 
 
