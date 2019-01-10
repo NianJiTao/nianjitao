@@ -13,11 +13,11 @@ namespace NJT.Core
             try
             {
                 方法();
-                return new 运行结果(istrue: true);
+                return new 运行结果(isTrue: true);
             }
             catch (Exception exc)
             {
-                return new 运行结果(istrue: false) { Message = exc.Message };
+                return new 运行结果(isTrue: false) { Message = exc.Message };
             }
         }
 
@@ -25,11 +25,11 @@ namespace NJT.Core
         {
             try
             {
-                return new 运行结果<T>(istrue: true) { Data = 方法() };
+                return new 运行结果<T>(isTrue: true) { Data = 方法() };
             }
             catch (Exception exc)
             {
-                return new 运行结果<T>(istrue: false) { Message = exc.Message };
+                return new 运行结果<T>(isTrue: false) { Message = exc.Message };
             }
         }
 
@@ -39,11 +39,11 @@ namespace NJT.Core
             try
             {
                 await 方法();
-                return new 运行结果(istrue: true);
+                return new 运行结果(isTrue: true);
             }
             catch (Exception exc)
             {
-                return new 运行结果(istrue: false) { Message = exc.Message };
+                return new 运行结果(isTrue: false) { Message = exc.Message };
             }
         }
 
@@ -52,11 +52,11 @@ namespace NJT.Core
             try
             {
                 var r = await 方法();
-                return new 运行结果<T>(istrue: true) { Data = r };
+                return new 运行结果<T>(isTrue: true) { Data = r };
             }
             catch (Exception exc)
             {
-                return new 运行结果<T>(istrue: false) { Message = exc.Message };
+                return new 运行结果<T>(isTrue: false) { Message = exc.Message };
             }
         }
     }

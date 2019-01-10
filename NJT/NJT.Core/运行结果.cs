@@ -6,15 +6,15 @@
     /// </summary>
     public class 运行结果 : I运行结果
     {
-        public 运行结果(bool istrue)
+        public 运行结果(bool isTrue)
         {
-            IsTrue = istrue;
+            IsTrue = isTrue;
         }
 
 
-        public 运行结果(bool istrue, string errorMessage)
+        public 运行结果(bool isTrue, string errorMessage)
         {
-            IsTrue = istrue;
+            IsTrue = isTrue;
             Message = errorMessage;
         }
 
@@ -36,21 +36,31 @@
     /// </summary>
     public class 运行结果<T> : I运行结果<T>
     {
-        public 运行结果(bool istrue)
+        public 运行结果(bool isTrue)
         {
-            IsTrue = istrue;
+            IsTrue = isTrue;
         }
 
-        public 运行结果(bool istrue, string errorMessage)
+
+        public 运行结果(bool isTrue, string errorMessage)
         {
-            IsTrue = istrue;
+            IsTrue = isTrue;
             Message = errorMessage;
         }
+
+
+        public 运行结果(bool isTrue, string errorMessage, T data)
+        {
+            IsTrue = isTrue;
+            Message = errorMessage;
+            Data = data;
+        }
+
 
         /// <summary>
         ///     执行是否成功.
         /// </summary>
-        public bool IsTrue { get; set; } = true;
+        public bool IsTrue { get; set; } 
 
         /// <summary>
         ///     执行错误时的信息.
@@ -58,6 +68,6 @@
 
         public string Message { get; set; } = string.Empty;
 
-        public T Data { get; set; } = default(T);
+        public T Data { get; set; } 
     }
 }
