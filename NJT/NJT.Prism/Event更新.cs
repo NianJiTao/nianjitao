@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NJT.Core;
+﻿using NJT.Core;
 using Prism.Events;
 
 namespace NJT.Prism
@@ -41,7 +36,7 @@ namespace NJT.Prism
     }
 
     /// <summary>
-    /// 发布单行通知
+    ///     发布单行通知
     /// </summary>
     public class EventSms通知2 : PubSubEvent<string>
     {
@@ -53,7 +48,7 @@ namespace NJT.Prism
     }
 
     /// <summary>
-    /// 更新日志界面记录最大的保留长度
+    ///     更新日志界面记录最大的保留长度
     /// </summary>
     public class Event更新日志记录保留长度 : PubSubEvent<int>
     {

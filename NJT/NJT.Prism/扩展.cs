@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NJT.Core;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Unity;
 
 namespace NJT.Prism
@@ -12,7 +6,7 @@ namespace NJT.Prism
     public static partial class 扩展
     {
         /// <summary>
-        /// 注册View 调用什么vm类型,vm使用IUnityContainer解析
+        ///     注册View 调用什么vm类型,vm使用IUnityContainer解析
         /// </summary>
         /// <typeparam name="TView"></typeparam>
         /// <typeparam name="TViewModel"></typeparam>
@@ -21,7 +15,5 @@ namespace NJT.Prism
         {
             ViewModelLocationProvider.Register<TView>(() => container.Resolve<TViewModel>());
         }
-
-     
     }
 }

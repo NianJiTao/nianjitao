@@ -32,7 +32,6 @@
             regions:RegionManager.RegionName="{x:Static core:位置.上}" />
 
 
-
         <ContentControl
             Grid.Row="1"
             Grid.Column="0"

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using NJT.Core;
 using NJT.Ext;
-using NJT.Ext.Core;
 using NJT.Prism;
 using Prism.Events;
 using Unity;
@@ -19,6 +13,7 @@ namespace NJT.UI.ViewModels
     {
         private int _maxLenth = 100;
 
+
         public View日志Base()
         {
             清空Command = new DelegateCommand(清空Action);
@@ -28,6 +23,7 @@ namespace NJT.UI.ViewModels
             EventAggregator宣传部?.GetEvent<Event更新日志记录保留长度>().Subscribe(x => MaxLenth = x, true);
             EventAggregator宣传部?.GetEvent<T>().Subscribe(日志记录Action, true);
         }
+
 
         public IDelegateCommand 清空Command { get; set; }
 
@@ -60,6 +56,7 @@ namespace NJT.UI.ViewModels
         {
             列表.AddAndMax(info, MaxLenth);
         }
+
 
         private void 清空Action()
         {

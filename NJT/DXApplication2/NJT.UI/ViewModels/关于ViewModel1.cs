@@ -1,5 +1,4 @@
-﻿using System;
-using DevExpress.Mvvm.Native;
+﻿using DevExpress.Mvvm.Native;
 using NJT.Prism;
 
 namespace NJT.UI.ViewModels
@@ -13,12 +12,8 @@ namespace NJT.UI.ViewModels
             技术支持 = @"年纪涛 13913140677 NianJiTao@OutLook.com";
         }
 
-        public IDelegateCommand 双击Command => this.GetCom(nameof(双击Command), 双击Action);
 
-        private void 双击Action(object obj)
-        {
-            EventAggregator宣传部.GetEvent<Event双击关于>().Publish(obj);
-        }
+        public IDelegateCommand 双击Command => this.GetCom(nameof(双击Command), 双击Action);
 
         public string 技术支持
         {
@@ -37,6 +32,12 @@ namespace NJT.UI.ViewModels
         {
             get { return GetProperty(() => 程序名); }
             set { SetProperty(() => 程序名, value); }
+        }
+
+
+        private void 双击Action(object obj)
+        {
+            EventAggregator宣传部.GetEvent<Event双击关于>().Publish(obj);
         }
     }
 }

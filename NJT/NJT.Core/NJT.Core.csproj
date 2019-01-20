@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Base24Encoding.cs" />
     <Compile Include="扩展_集合.cs" />
+    <Compile Include="斐波纳.cs" />
     <Compile Include="禁止克隆.cs" />
     <Compile Include="I名称值.cs" />
     <Compile Include="I智能模块.cs" />

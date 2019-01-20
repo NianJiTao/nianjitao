@@ -10,7 +10,8 @@
     d:DesignWidth="600"
     mc:Ignorable="d">
     <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:NotificationService CustomNotificationPosition="BottomRight" PredefinedNotificationTemplate="ShortHeaderAndLongText" />
+        <dxmvvm:NotificationService CustomNotificationPosition="BottomRight"
+                                    PredefinedNotificationTemplate="ShortHeaderAndLongText" />
     </dxmvvm:Interaction.Behaviors>
     <UserControl.DataContext>
         <ViewModels:View通知1ViewModel />

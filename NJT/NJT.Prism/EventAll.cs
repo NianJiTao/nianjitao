@@ -4,7 +4,7 @@ using Prism.Events;
 namespace NJT.Prism
 {
     /// <summary>
-    /// 收到此事件.就打开日志视图.或者日志目录
+    ///     收到此事件.就打开日志视图.或者日志目录
     /// </summary>
     public class Event查看日志 : PubSubEvent
     {
@@ -21,7 +21,7 @@ namespace NJT.Prism
     }
 
     /// <summary>
-    /// 收到此事件.就打开系统设置视图.
+    ///     收到此事件.就打开系统设置视图.
     /// </summary>
     public class Event系统设置 : PubSubEvent
     {
@@ -49,7 +49,7 @@ namespace NJT.Prism
     }
 
     /// <summary>
-    /// 参数为返回的次数
+    ///     参数为返回的次数
     /// </summary>
     public class Event视图返回 : PubSubEvent<int>
     {
@@ -64,7 +64,7 @@ namespace NJT.Prism
     }
 
     /// <summary>
-    /// 参数为唯一视图名称
+    ///     参数为唯一视图名称
     /// </summary>
     public class Event激活视图 : PubSubEvent<string>
     {
@@ -72,7 +72,7 @@ namespace NJT.Prism
 
 
     /// <summary>
-    ///  参数为加载到的位置
+    ///     参数为加载到的位置
     /// </summary>
     public class Event加载状态栏 : PubSubEvent<string>
     {
@@ -136,7 +136,7 @@ namespace NJT.Prism
     }
 
     /// <summary>
-    /// 报告当前sql连接状态.是正常还是断开.
+    ///     报告当前sql连接状态.是正常还是断开.
     /// </summary>
     public class EventSql连接变化 : PubSubEvent<bool>
     {
@@ -145,6 +145,7 @@ namespace NJT.Prism
     public class Event双击时钟 : PubSubEvent<object>
     {
     }
+
     //public class Event双击状态栏 : PubSubEvent<object>
     //{
     //}
@@ -165,7 +166,7 @@ namespace NJT.Prism
     }
 
     /// <summary>
-    /// 收到此事件.立即清理过期数据
+    ///     收到此事件.立即清理过期数据
     /// </summary>
     public class Event过期数据清理 : PubSubEvent
     {

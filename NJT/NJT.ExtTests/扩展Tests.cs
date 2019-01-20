@@ -159,6 +159,7 @@ namespace NJT.Ext.Tests
         public void Get首字母Test()
         {
             Assert.Equal("NJT", 拼音.首字母("年纪涛"));
+            Assert.Equal("NJT",("年纪涛".Get首字母()));
         }
 
         [Fact]
@@ -604,6 +605,42 @@ namespace NJT.Ext.Tests
             var a = new testA().反射克隆值(new testA() {Name = "a1", NoClone = "a2"});
             Assert.Equal("a1", a.Name);
             Assert.Equal("", a.NoClone);
+        }
+
+      
+        [Fact]
+        public void 毫秒Test()
+        {
+            Assert.Equal(TimeSpan.Zero, 0.毫秒());
+            Assert.Equal(TimeSpan.FromMilliseconds(2),  2.毫秒());
+            Assert.Equal(TimeSpan.FromMilliseconds(-2),  -2.毫秒());
+        }
+        [Fact]
+        public void 秒Test()
+        {
+            Assert.Equal(TimeSpan.Zero, 0.秒());
+            Assert.Equal(TimeSpan.FromSeconds(2), 2.秒());
+            Assert.Equal(TimeSpan.FromSeconds(-2), -2.秒());
+        }
+        [Fact]
+        public void 分钟Test()
+        {
+            Assert.Equal(TimeSpan.Zero, 0.分钟());
+            Assert.Equal(TimeSpan.FromMinutes(2), 2.分钟());
+            Assert.Equal(TimeSpan.FromMinutes(-2), -2.分钟());
+        }
+        [Fact]
+        public void 小时Test()
+        {
+            Assert.Equal(TimeSpan.Zero, 0.小时());
+            Assert.Equal(TimeSpan.FromHours(2), 2.小时());
+            Assert.Equal(TimeSpan.FromHours(-2), -2.小时());
+        }
+        [Fact]
+        public void GetList2Test()
+        {
+            Assert.Equal(2, 2.GetList<名称1>().Count);
+            Assert.Equal(new 名称1().名称, 2.GetList<名称1>()[0].名称);
         }
     }
 }

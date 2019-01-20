@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using DevExpress.Mvvm.Native;
 using NJT.Core;
 using Prism.Events;
 using Prism.Regions;
@@ -19,6 +14,7 @@ namespace NJT.Prism
         private static IEventAggregator EventAggregator宣传部 => RunUnity.EventAggregator宣传部;
         private static IUnityContainer Container人事部 => RunUnity.Container人事部;
         private static IRegionManager RegionManager行政部 => RunUnity.RegionManager行政部;
+
 
         public static Window 解析win<T>()
         {
@@ -35,6 +31,7 @@ namespace NJT.Prism
                         EventAggregator宣传部.GetEvent<Event退出>().Publish();
                     };
                 }
+
                 return shell;
             }
             catch (Exception e)
@@ -45,9 +42,10 @@ namespace NJT.Prism
             }
         }
 
+
         public static void 加载主视图()
         {
-            var view = Container人事部.TryResolve <IView主视图>();
+            var view = Container人事部.TryResolve<IView主视图>();
             if (view != null)
             {
                 RegionManager行政部.AddToRegion("Main", view);
@@ -67,6 +65,7 @@ namespace NJT.Prism
             RegionManager行政部.RequestNavigate(区域, 视图名称x);
         }
 
+
         public static void 导航到(string 视图名称x, string 区域, Action<NavigationResult> 回调方法, NavigationParameters 参数)
         {
             if (string.IsNullOrEmpty(视图名称x) || string.IsNullOrEmpty(区域))
@@ -75,9 +74,10 @@ namespace NJT.Prism
             RegionManager行政部.RequestNavigate(区域, 视图名称x, 回调方法, 参数);
         }
 
+
         public static void ShowError(Exception eException)
         {
-            if (eException == null)return;
+            if (eException == null) return;
             if (_errorShow) return;
             _errorShow = true;
             var error = $"源:{eException.Source}\r\n消息:{eException.Message}\r\n栈:{eException.StackTrace}";
@@ -90,6 +90,5 @@ namespace NJT.Prism
         {
             导航到(视图名称x, "中", x => { }, 参数);
         }
-         
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using DevExpress.Xpf.Core;
 using Microsoft.Win32;
 using NJT.Core;
@@ -19,23 +14,21 @@ namespace NJT.UI
             //扩展名 = "Excel 文档(*.xlsx)|*.xlsx"
             var r = new 运行结果<string>(false);
 
-            var dialog = new OpenFileDialog { Filter = 扩展名 };
+            var dialog = new OpenFileDialog {Filter = 扩展名};
             var result = dialog.ShowDialog();
-            if ((result == null) || (result.Value == false))
+            if (result == null || result.Value == false)
                 return r;
 
             var filename = dialog.FileName;
-            if (string.IsNullOrEmpty(filename))
-            {
-                return r;
-            }
+            if (string.IsNullOrEmpty(filename)) return r;
             r.IsTrue = true;
             r.Data = filename;
             return r;
         }
 
+
         /// <summary>
-        /// 返回文件名全路径
+        ///     返回文件名全路径
         /// </summary>
         /// <param name="初始目录"></param>
         /// <param name="扩展名"></param>
@@ -45,14 +38,11 @@ namespace NJT.UI
             var r = new 运行结果<string>(false);
             var dialog = new SaveFileDialog
             {
-                Filter = 扩展名,
+                Filter = 扩展名
             };
-            if (string.IsNullOrEmpty(初始目录) == false)
-            {
-                dialog.InitialDirectory = 初始目录;
-            }
+            if (string.IsNullOrEmpty(初始目录) == false) dialog.InitialDirectory = 初始目录;
             var result = dialog.ShowDialog();
-            if ((result == null) || (result.Value == false))
+            if (result == null || result.Value == false)
                 return r;
 
             var filename = dialog.FileName;

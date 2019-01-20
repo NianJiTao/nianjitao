@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using NJT.Core;
 using NJT.Prism;
@@ -91,6 +89,7 @@ namespace NJT.UI.ViewModels
             //读取特征码();
         }
 
+
         private void 收到注册码Action(I授权配置 obj)
         {
             客户名称 = obj.客户名称;
@@ -100,6 +99,7 @@ namespace NJT.UI.ViewModels
             _历史注册码 = obj.注册码;
         }
 
+
         public void 读取注册码()
         {
             var 配置1 = Container人事部.TryResolve2<I授权配置>(名称);
@@ -108,12 +108,13 @@ namespace NJT.UI.ViewModels
                 收到注册码Action(配置1);
                 return;
             }
+
             配置1 = Container人事部.TryResolve<I授权配置>();
             if (配置1 != null)
             {
                 收到注册码Action(配置1);
-                return;
             }
+
             //EventAggregator宣传部.GetEvent<Event读取注册码>().Publish();
         }
 
@@ -123,12 +124,14 @@ namespace NJT.UI.ViewModels
             保存Action();
         }
 
+
         private void 取消Action()
         {
             客户名称 = _历史客户名称;
             注册码 = _历史注册码;
             EventAggregator宣传部.GetEvent<Event视图返回>().Publish(1);
         }
+
 
         private void 保存Action()
         {
@@ -140,6 +143,7 @@ namespace NJT.UI.ViewModels
                     硬件码 = 硬件码
                 });
         }
+
 
         private void 读取特征码()
         {
@@ -154,10 +158,12 @@ namespace NJT.UI.ViewModels
             RunFunc.TryRun(() => 注册码 = Clipboard.GetText());
         }
 
+
         private void 复制Action()
         {
             RunFunc.TryRun(() => Clipboard.SetText(硬件码));
         }
+
 
         private void 验证Action()
         {
@@ -173,6 +179,7 @@ namespace NJT.UI.ViewModels
                     授权结果发布(Is验证成功);
                 });
         }
+
 
         private void 授权结果发布(bool result)
         {

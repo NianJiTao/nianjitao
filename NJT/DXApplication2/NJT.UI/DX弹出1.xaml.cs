@@ -13,7 +13,7 @@ namespace NJT.UI
     {
         private DispatcherTimer _timer;
         private int _当前次数;
-        public int 自动关闭秒数 { get; set; } = 5;
+
 
         public DX弹出1()
         {
@@ -21,7 +21,11 @@ namespace NJT.UI
             Loaded += Win弹出1_Loaded;
         }
 
+
+        public int 自动关闭秒数 { get; set; } = 5;
+
         public bool Is自动关闭 { get; set; }
+
 
         private void Win弹出1_Loaded(object sender, RoutedEventArgs e)
         {
@@ -39,6 +43,7 @@ namespace NJT.UI
                 _timer.Start();
             }
         }
+
 
         private void TimerTick(object sender, EventArgs e)
         {

@@ -1,5 +1,4 @@
 ﻿using System;
-using CommonServiceLocator;
 using NJT.Core;
 using Prism.Events;
 using Prism.Ioc;
@@ -12,26 +11,15 @@ namespace NJT.Prism
 {
     public static class RunUnity
     {
-        private static IUnityContainer _人事部;
-
         private static IEventAggregator _宣传部;
 
         private static IRegionManager _行政部;
 
         public static I日志 Log { get; set; } = new NLog日志();
 
-        public static ILoggerFacade CreateLogger()
-        {
-            return new Nlog2(Log);
-        }
-
         public static IContainerRegistry Registry { get; set; }
 
-        public static IUnityContainer Container人事部
-        {
-            get => _人事部;
-            set => _人事部 = value;
-        }
+        public static IUnityContainer Container人事部 { get; set; }
 
         public static IEventAggregator EventAggregator宣传部
         {
@@ -43,6 +31,7 @@ namespace NJT.Prism
                         Container人事部.Resolve<IEventAggregator>());
                     _宣传部 = run.IsTrue ? run.Data : new EventAggregator();
                 }
+
                 return _宣传部;
             }
             set => _宣传部 = value;
@@ -58,40 +47,51 @@ namespace NJT.Prism
                         Container人事部.Resolve<IRegionManager>());
                     _行政部 = run.IsTrue ? run.Data : new RegionManager();
                 }
+
                 return _行政部;
             }
             set => _行政部 = value;
         }
 
 
+        public static ILoggerFacade CreateLogger()
+        {
+            return new Nlog2(Log);
+        }
+
 
         /// <summary>
-        /// 尝试用名称解析相关类型,失败返回 default(T);
+        ///     尝试用名称解析相关类型,失败返回 default(T);
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="name"></param>
         /// <returns></returns>
         public static T Get<T>(string name)
         {
-            var set1 = RunUnity.Container人事部.TryResolve2<T>(name);
-            if (set1==null)
+            var set1 = Container人事部.TryResolve2<T>(name);
+            if (set1 == null)
             {
-                RunUnity.Log.Error($"未用名称[{name}]注册类型[{nameof(T)}]");
+                Log.Error($"未用名称[{name}]注册类型[{nameof(T)}]");
                 return default(T);
             }
+
             return set1;
         }
 
+
         public static T Get<T>()
         {
-            var set1 = RunUnity.Container人事部.TryResolve <T>();
+            var set1 = Container人事部.TryResolve<T>();
             if (set1 == null)
             {
-                RunUnity.Log.Error($"未注册类型[{nameof(T)}]");
+                Log.Error($"未注册类型[{nameof(T)}]");
                 return default(T);
             }
+
             return set1;
         }
+
+
         public static T TryResolveReturnNull<T>(this IUnityContainer container) where T : class
         {
             if (container == null)
@@ -101,8 +101,9 @@ namespace NJT.Prism
             return container.Resolve<T>();
         }
 
+
         /// <summary>
-        ///  通过名称解析出T,如果未注册,返回默认值
+        ///     通过名称解析出T,如果未注册,返回默认值
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="container">The container.</param>
@@ -121,8 +122,10 @@ namespace NJT.Prism
 
             return container.Resolve<T>(name);
         }
+
+
         /// <summary>
-        /// 如果未注册,返回:默认返回值
+        ///     如果未注册,返回:默认返回值
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="container"></param>
@@ -143,8 +146,9 @@ namespace NJT.Prism
             return container.Resolve<T>(name);
         }
 
+
         /// <summary>
-        /// 先尝试解析名称,再尝试解析不带名称.
+        ///     先尝试解析名称,再尝试解析不带名称.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="container"></param>
@@ -166,7 +170,7 @@ namespace NJT.Prism
 
 
         /// <summary>
-        ///  return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
+        ///     return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="名称"></param>
@@ -176,8 +180,9 @@ namespace NJT.Prism
             return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
         }
 
+
         /// <summary>
-        /// 读取已经注册的值,如有方法,就运行
+        ///     读取已经注册的值,如有方法,就运行
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="值名称"></param>
@@ -189,7 +194,7 @@ namespace NJT.Prism
             if (!Container人事部.IsRegistered<T>(值名称)) return new 运行结果<T>(false, "值名称未注册");
             var r1 = Container人事部.Resolve<T>(值名称);
             action1?.Invoke(r1);
-            return new 运行结果<T>(true) { Data = r1 };
+            return new 运行结果<T>(true) {Data = r1};
         }
     }
 }

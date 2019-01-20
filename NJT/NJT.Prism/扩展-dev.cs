@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 
@@ -19,17 +16,20 @@ namespace NJT.Prism
             return com.Get(name, action);
         }
 
+
         public static IDelegateCommand GetCom(this BindableBase vmBase, string name, Action action, Func<bool> 可执行)
         {
             var com = FindGetCommand(vmBase);
             return com.Get(name, action, 可执行);
         }
 
+
         public static IDelegateCommand GetCom(this BindableBase vmBase, string name, Action<object> action)
         {
             var com = FindGetCommand(vmBase);
             return com.Get(name, action);
         }
+
 
         public static IDelegateCommand GetComF(this BindableBase vmBase, string name, Func<DelegateCommand> action)
         {
@@ -51,6 +51,7 @@ namespace NJT.Prism
                 com = new GetCommandDev();
                 List.Add(hash, com);
             }
+
             return com;
         }
     }

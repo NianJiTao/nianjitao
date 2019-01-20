@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using DevExpress.Xpf.Bars;
 using NJT.Ext;
-using NJT.Ext.Core;
 using NJT.Prism;
 using Unity.Interception.Utilities;
 
 namespace NJT.UI
 {
-    public static partial class 扩展
+    public static class 扩展
     {
         /// <summary>
-        /// 主菜单按钮列表,如参数为空,会尝试解析 "隐藏按钮"string
+        ///     主菜单按钮列表,如参数为空,会尝试解析 "隐藏按钮"string
         /// </summary>
         /// <param name="barItems"></param>
         /// <param name="隐藏"></param>
@@ -23,7 +18,7 @@ namespace NJT.UI
         {
             var 隐藏按钮 = 隐藏;
             if (string.IsNullOrEmpty(隐藏按钮))
-                隐藏按钮 = RunUnity.Container人事部.TryResolve2<string>("隐藏按钮", string.Empty);
+                隐藏按钮 = RunUnity.Container人事部.TryResolve2("隐藏按钮", string.Empty);
 
             if (string.IsNullOrEmpty(隐藏按钮))
                 return;
@@ -31,17 +26,15 @@ namespace NJT.UI
             barItems.隐藏按钮(隐藏按钮组);
         }
 
+
         /// <summary>
-        /// 主菜单按钮列表
+        ///     主菜单按钮列表
         /// </summary>
         /// <param name="barItems"></param>
         /// <param name="隐藏按钮组"></param>
         public static void 隐藏按钮(this IEnumerable<IBarItem> barItems, string[] 隐藏按钮组)
         {
-            if (barItems.Is空()  || 隐藏按钮组.Is空()  )
-            {
-                return;
-            }
+            if (barItems.Is空() || 隐藏按钮组.Is空()) return;
             barItems.OfType<BarItem>()
                 .Where(x => 隐藏按钮组.Contains(x.Content.ToString2()))
                 .ForEach(x => x.IsVisible = false);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 using NJT.Core;
 using Prism.Events;
 using Prism.Regions;
@@ -12,7 +7,7 @@ using Unity;
 namespace NJT.Prism
 {
     /// <summary>
-    /// 继承: DevExpress.Mvvm.ViewModelBase 
+    ///     继承: DevExpress.Mvvm.ViewModelBase
     /// </summary>
     public class ViewModelBase3 : ViewModelBase
     {

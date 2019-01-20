@@ -2,7 +2,19 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\WinccVbsPassWordsLook\解密.cs</string>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\启动管理.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\扩展 - 隐藏按钮.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\对话框.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\NJT.Ext.Core\Enum扩展.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\NJT.Ext.Core\object扩展.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

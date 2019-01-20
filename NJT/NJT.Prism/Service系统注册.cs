@@ -13,6 +13,7 @@ namespace NJT.Prism
         public TimeSpan 记录日志间隔 { get; set; } = 常量.D1天;
         public bool 记录日志 { get; set; } = false;
 
+
         public override void 启动()
         {
             if (Is启动) return;
@@ -23,6 +24,7 @@ namespace NJT.Prism
             验证授权();
         }
 
+
         public override void 停止()
         {
             if (Is启动)
@@ -31,6 +33,7 @@ namespace NJT.Prism
                 _授权监测Timer?.Stop();
             }
         }
+
 
         private void Init授权监测()
         {
@@ -43,10 +46,12 @@ namespace NJT.Prism
             _授权监测Timer.Start();
         }
 
+
         private void 授权监测TimerTick(object sender, EventArgs e)
         {
             验证授权();
         }
+
 
         public void 验证授权()
         {
@@ -61,15 +66,18 @@ namespace NJT.Prism
                 });
         }
 
+
         public bool 软件狗验证()
         {
             return 注册.验证注册(授权信息.公钥2018, 注册.计算特征码(), 授权信息.注册码);
         }
 
+
         public virtual bool 硬件狗验证()
         {
             return false;
         }
+
 
         private void 授权结果发布(bool result)
         {

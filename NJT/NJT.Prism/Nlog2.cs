@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NJT.Core;
 using Prism.Logging;
 
@@ -10,20 +6,18 @@ namespace NJT.Prism
 {
     public class Nlog2 : ILoggerFacade
     {
-        public I日志 日志 { get; set; }
-
         public Nlog2(I日志 日志1)
         {
             日志 = 日志1;
         }
 
+
+        public I日志 日志 { get; set; }
+
+
         public void Log(string message, Category category, Priority priority)
         {
-
-            if (日志 == null)
-            {
-                return;
-            }
+            if (日志 == null) return;
             switch (category)
             {
                 case Category.Debug:

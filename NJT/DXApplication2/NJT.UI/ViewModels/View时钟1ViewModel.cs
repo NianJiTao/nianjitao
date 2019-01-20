@@ -1,5 +1,4 @@
 ﻿using System;
-using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using NJT.Core;
 using NJT.Prism;
@@ -8,7 +7,6 @@ namespace NJT.UI.ViewModels
 {
     public class View时钟1ViewModel : ViewModelBase3
     {
-
         public View时钟1ViewModel()
         {
             if (IsInDesignMode)
@@ -17,6 +15,7 @@ namespace NJT.UI.ViewModels
             EventAggregator宣传部.GetEvent<Event更新时钟配置>().Subscribe(更新时钟配置Action, true);
             启动();
         }
+
 
         public 时钟配置 Model
         {
@@ -46,10 +45,12 @@ namespace NJT.UI.ViewModels
 
         public bool Is启动 { get; private set; }
 
+
         private void 更新时钟配置Action(时钟配置 obj)
         {
             Model = obj;
         }
+
 
         public void 启动()
         {
@@ -58,6 +59,7 @@ namespace NJT.UI.ViewModels
             Is启动 = true;
             定时器.循环运行(1000, 时间更新);
         }
+
 
         private void 时间更新()
         {
@@ -68,6 +70,7 @@ namespace NJT.UI.ViewModels
             if (Model.显示星期)
                 当前星期 = DateTime.Now.ToString(Model.星期显示格式);
         }
+
 
         private void 双击Action(object obj)
         {

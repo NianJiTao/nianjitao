@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using DevExpress.Export;
@@ -24,12 +21,13 @@ namespace NJT.UI
 {
     public class ExportHelper : ModuleExportHelper
     {
-        PrintableControlLink link;
+        private readonly PrintableControlLink link;
+
 
         public ExportHelper(DataViewBase view)
             : base(view)
         {
-            this.link = new PrintableControlLink(view);
+            link = new PrintableControlLink(view);
         }
 
 
@@ -42,13 +40,14 @@ namespace NJT.UI
                 消息.更新状态栏(info);
                 return new 运行结果(false, info);
             }
+
             var r = new ExportHelper(find);
             var tryRun = RunFunc.TryRun(() => r.DoExport(导出格式));
             if (!tryRun.IsTrue)
                 消息.更新状态栏(tryRun.Message);
             return tryRun;
-
         }
+
 
         public void DoExport(ExportFormat format)
         {
@@ -84,65 +83,76 @@ namespace NJT.UI
             }
         }
 
+
         public void ExportToHtml()
         {
-            string fileName = GetFileName(new HtmlExportOptions());
+            var fileName = GetFileName(new HtmlExportOptions());
             Export((file, options) => link.ExportToHtml(file, options), fileName, new HtmlExportOptions());
         }
 
+
         public void ExportToPdf()
         {
-            string fileName = GetFileName(new PdfExportOptions());
+            var fileName = GetFileName(new PdfExportOptions());
             Export((file, options) => link.ExportToPdf(file, options), fileName, new PdfExportOptions());
         }
 
+
         public void ExportToMht()
         {
-            string fileName = GetFileName(new MhtExportOptions());
+            var fileName = GetFileName(new MhtExportOptions());
             Export((file, options) => link.ExportToMht(file, options), fileName, new MhtExportOptions());
         }
 
+
         public void ExportToRtf()
         {
-            string fileName = GetFileName(new RtfExportOptions());
+            var fileName = GetFileName(new RtfExportOptions());
             Export((file, options) => link.ExportToRtf(file, options), fileName, new RtfExportOptions());
         }
 
+
         public void ExportToTxt()
         {
-            string fileName = GetFileName(new TextExportOptions());
+            var fileName = GetFileName(new TextExportOptions());
             Export((file, options) => link.ExportToText(file, options), fileName, new TextExportOptions());
         }
 
+
         public void ExportToImage()
         {
-            string fileName = GetFileName(new ImageExportOptions());
+            var fileName = GetFileName(new ImageExportOptions());
             Export((file, options) => link.ExportToImage(file, options), fileName, new ImageExportOptions());
         }
 
+
         public void ExportToXps()
         {
-            string fileName = GetFileName(new XpsExportOptions());
+            var fileName = GetFileName(new XpsExportOptions());
             Export((file, options) => link.ExportToXps(file, options), fileName, new XpsExportOptions());
         }
 
+
         public override void ExportToXlsx()
         {
-            string fileName = GetFileName(new XlsxExportOptions());
+            var fileName = GetFileName(new XlsxExportOptions());
             Export((file, options) => link.ExportToXlsx(file, options), fileName, new XlsxExportOptions());
         }
 
+
         public override void ExportToXls()
         {
-            string fileName = GetFileName(new XlsExportOptions());
+            var fileName = GetFileName(new XlsExportOptions());
             Export((file, options) => link.ExportToXls(file, options), fileName, new XlsExportOptions());
         }
 
+
         public override void ExportToCsv()
         {
-            string fileName = GetFileName(new CsvExportOptions());
+            var fileName = GetFileName(new CsvExportOptions());
             Export((file, options) => link.ExportToCsv(file, options), fileName, new CsvExportOptions());
         }
+
 
         protected override void SubscribeProgressEvents<T>(T options)
         {
@@ -150,15 +160,18 @@ namespace NJT.UI
             link.PrintingSystem.AfterBuildPages += OnAfterBuildPages;
         }
 
-        void OnAfterBuildPages(object sender, EventArgs e)
+
+        private void OnAfterBuildPages(object sender, EventArgs e)
         {
             DXSplashScreen.Close();
         }
 
-        void OnExportProgress(object sender, EventArgs e)
+
+        private void OnExportProgress(object sender, EventArgs e)
         {
             ExportProgress(new ProgressChangedEventArgs(link.PrintingSystem.ProgressReflector.Position, null));
         }
+
 
         protected override void UnsubscribeProgressEvents<T>(T options)
         {
@@ -171,28 +184,33 @@ namespace NJT.UI
     {
         protected readonly DataViewBase view;
 
+
         public ModuleExportHelper(DataViewBase view)
         {
             this.view = view;
         }
 
+
         public virtual void ExportToXlsx()
         {
-            string fileName = GetFileName(new XlsxExportOptions());
+            var fileName = GetFileName(new XlsxExportOptions());
             Export((file, options) => view.ExportToXlsx(file, options), fileName, new XlsxExportOptionsEx());
         }
 
+
         public virtual void ExportToXls()
         {
-            string fileName = GetFileName(new XlsExportOptions());
+            var fileName = GetFileName(new XlsExportOptions());
             Export((file, options) => view.ExportToXls(file, options), fileName, new XlsExportOptionsEx());
         }
 
+
         public virtual void ExportToCsv()
         {
-            string fileName = GetFileName(new CsvExportOptions());
+            var fileName = GetFileName(new CsvExportOptions());
             Export((file, options) => view.ExportToCsv(file, options), fileName, new CsvExportOptionsEx());
         }
+
 
         protected void Export<T>(Action<string, T> exportToFile, string fileName, T options) where T : ExportOptionsBase
         {
@@ -208,34 +226,39 @@ namespace NJT.UI
             }
         }
 
+
         protected virtual void SubscribeProgressEvents<T>(T options)
         {
-            ((IDataAwareExportOptions)options).ExportProgress += ExportProgress;
+            ((IDataAwareExportOptions) options).ExportProgress += ExportProgress;
         }
+
 
         protected virtual void UnsubscribeProgressEvents<T>(T options)
         {
-            ((IDataAwareExportOptions)options).ExportProgress -= ExportProgress;
+            ((IDataAwareExportOptions) options).ExportProgress -= ExportProgress;
         }
+
 
         protected virtual void ExportCore<T>(Action<string, T> exportToFile, string fileName, T options)
             where T : ExportOptionsBase
         {
             DXSplashScreen.Show<View导出1>();
-            SubscribeProgressEvents<T>(options);
+            SubscribeProgressEvents(options);
             try
             {
                 exportToFile(fileName, options);
             }
             finally
             {
-                UnsubscribeProgressEvents<T>(options);
+                UnsubscribeProgressEvents(options);
                 if (DXSplashScreen.IsActive)
                     DXSplashScreen.Close();
             }
+
             if (ShouldOpenExportedFile())
                 ProcessLaunchHelper.StartProcess(fileName, false);
         }
+
 
         protected void ExportProgress(ProgressChangedEventArgs ea)
         {
@@ -243,30 +266,33 @@ namespace NJT.UI
             DXSplashScreen.Progress(ea.ProgressPercentage);
         }
 
+
         protected static string GetFileName(ExportOptionsBase options)
         {
             return GetFileName(ExportOptionsControllerBase.GetControllerByOptions(options));
         }
 
-        static string GetFileName(ExportOptionsControllerBase controller)
+
+        private static string GetFileName(ExportOptionsControllerBase controller)
         {
-            SaveFileDialog dlg = CreateSaveFileDialog(controller);
+            var dlg = CreateSaveFileDialog(controller);
             if (dlg.ShowDialog() == true && !string.IsNullOrEmpty(dlg.FileName))
                 return FileHelper.SetValidExtension(dlg.FileName, controller.FileExtensions[0],
                     controller.FileExtensions);
-            else
-                return string.Empty;
+            return string.Empty;
         }
 
-        static SaveFileDialog CreateSaveFileDialog(ExportOptionsControllerBase controller)
+
+        private static SaveFileDialog CreateSaveFileDialog(ExportOptionsControllerBase controller)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
+            var dlg = new SaveFileDialog();
             dlg.Title = PreviewLocalizer.GetString(PreviewStringId.SaveDlg_Title);
             dlg.ValidateNames = true;
             dlg.FileName = PrintPreviewOptions.DefaultFileNameDefault;
             dlg.Filter = controller.Filter;
             return dlg;
         }
+
 
         protected static bool ShouldOpenExportedFile()
         {
@@ -280,18 +306,19 @@ namespace NJT.UI
 
     public class PrintingIconImageSourceConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string rawIconName = value as string;
+            var rawIconName = value as string;
             if (rawIconName == null)
                 return null;
-            string iconName = Regex.Replace(rawIconName, "[^a-zA-Z]", string.Empty);
-            string iconPath = "Images/BarItems/" + iconName + "_32x32.png";
-            return new PrintingResourceImageExtension() { ResourceName = iconPath }.ProvideValue(null);
+            var iconName = Regex.Replace(rawIconName, "[^a-zA-Z]", string.Empty);
+            var iconPath = "Images/BarItems/" + iconName + "_32x32.png";
+            return new PrintingResourceImageExtension {ResourceName = iconPath}.ProvideValue(null);
         }
 
+
         public object ConvertBack(object value, Type targetType, object parameter,
-            System.Globalization.CultureInfo culture)
+            CultureInfo culture)
         {
             throw new NotImplementedException();
         }

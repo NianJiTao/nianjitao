@@ -28,6 +28,7 @@ namespace NJT.UI.ViewModels
             }
         }
 
+
         public bool UseWin8NotificationsIfAvailable
         {
             get { return GetProperty(() => UseWin8NotificationsIfAvailable); }
@@ -42,10 +43,12 @@ namespace NJT.UI.ViewModels
 
         public I标识Data 用户 { get; set; }
 
+
         private void Sms通知Action(Sms通知 obj)
         {
             Sms通知2Action(obj?.主标题);
         }
+
 
         private void Sms通知2Action(string obj)
         {
@@ -65,10 +68,12 @@ namespace NJT.UI.ViewModels
             }
         }
 
+
         private void 更新状态栏2Action(string obj)
         {
             提示.数据 = DateTime.Now + " " + obj;
         }
+
 
         private void 状态栏更新Action(I标识Data obj)
         {

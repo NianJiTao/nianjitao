@@ -27,8 +27,7 @@ namespace NJT.Prism
 
         protected IRegionManager RegionManager行政部 => RunUnity.RegionManager行政部;
 
-        [XmlIgnore]
-        public Guid 身份证 { get; set; } = Guid.NewGuid();
+        [XmlIgnore] public Guid 身份证 { get; set; } = Guid.NewGuid();
 
         [XmlIgnore]
         public string 名称

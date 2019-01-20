@@ -10,9 +10,9 @@ namespace NJT.UI.ViewModels
             内容 = "有事发生";
             标题 = "通知";
             背景 = Brushes.Black;
-            //字体 = new FontFamily("微软雅黑");
-            //Fonts r=new FontFamily();
         }
+
+
         public string 标题
         {
             get { return GetProperty(() => 标题); }
@@ -38,8 +38,5 @@ namespace NJT.UI.ViewModels
             get { return GetProperty(() => 字体); }
             set { SetProperty(() => 字体, value); }
         }
-
-
-
     }
 }
