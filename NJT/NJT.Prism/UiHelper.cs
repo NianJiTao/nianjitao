@@ -89,12 +89,12 @@ namespace NJT.Prism
 
         public static bool? 打开弹出窗口<T>(string 标题)
         {
-            var 弹出 = Container人事部?.TryResolve<IView弹出窗口>();
+            var 弹出 = Container人事部?.TryResolve2<IView弹出窗口>("");
             if (!(弹出 is Window t))
                 return false;
             t.SizeToContent = SizeToContent.WidthAndHeight;
             t.WindowStyle = WindowStyle.ToolWindow;
-            var win2 = Container人事部.TryResolve<T>();
+            var win2 = Container人事部.TryResolve2<T>("");
             if (win2 == null)
                 return false;
             弹出.DataContext = win2;
@@ -115,9 +115,9 @@ namespace NJT.Prism
 
         public static void 弹出窗口<T>()
         {
-            if (!(Container人事部.TryResolve<IView弹出窗口>() is Window win))
+            if (!(Container人事部.TryResolve2<IView弹出窗口>("") is Window win))
                 return;
-            var view = Container人事部.TryResolve<T>();
+            var view = Container人事部.TryResolve2<T>("");
             弹出窗口(win, view, true);
         }
 
@@ -130,14 +130,14 @@ namespace NJT.Prism
         /// <param name="top">  是否置顶.</param>
         public static void 弹出窗口<T>(Point xy, bool top = true)
         {
-            var view = Container人事部.TryResolve<T>();
+            var view = Container人事部.TryResolve2<T>("");
             弹出窗口(view, xy, top);
         }
 
 
         public static void 弹出窗口(object view, Point xy, bool top = true)
         {
-            if (!(Container人事部.TryResolve<IView弹出窗口>() is Window win))
+            if (!(Container人事部.TryResolve2<IView弹出窗口>("") is Window win))
                 return;
             win.Width = xy.X;
             win.Height = xy.Y;
@@ -167,7 +167,7 @@ namespace NJT.Prism
         public static I运行结果<T> 启动服务<T>(IUnityContainer 人事部cs, I日志 log) where T : I启动
         {
             if (人事部cs == null) return new 运行结果<T>(false, "解析器为空");
-            var 解析 = 人事部cs.TryResolve<T>();
+            var 解析 = 人事部cs.TryResolve2<T>("");
             if (解析 != null)
             {
                 服务列表.Add(解析);

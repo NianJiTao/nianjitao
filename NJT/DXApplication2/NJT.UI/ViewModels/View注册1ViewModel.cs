@@ -109,7 +109,7 @@ namespace NJT.UI.ViewModels
                 return;
             }
 
-            配置1 = Container人事部.TryResolve<I授权配置>();
+            配置1 = Container人事部.TryResolve2<I授权配置>("");
             if (配置1 != null)
             {
                 收到注册码Action(配置1);

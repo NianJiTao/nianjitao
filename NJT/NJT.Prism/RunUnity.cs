@@ -81,7 +81,7 @@ namespace NJT.Prism
 
         public static T Get<T>()
         {
-            var set1 = Container人事部.TryResolve<T>();
+            var set1 = Container人事部.TryResolve2<T>("");
             if (set1 == null)
             {
                 Log.Error($"未注册类型[{nameof(T)}]");
@@ -115,7 +115,16 @@ namespace NJT.Prism
                 return default(T);
 
             if (string.IsNullOrEmpty(name))
-                return container.TryResolve<T>();
+            {
+                try
+                {
+                    return container.Resolve<T>();
+                }
+                catch (Exception)
+                {
+                    return default(T);
+                }
+            }
 
             if (!container.IsRegistered<T>(name))
                 return default(T);
@@ -160,10 +169,10 @@ namespace NJT.Prism
                 return default(T);
 
             if (string.IsNullOrEmpty(name))
-                return container.TryResolve<T>();
+                return container.TryResolve2<T>("");
 
             if (!container.IsRegistered<T>(name))
-                return container.TryResolve<T>();
+                return container.TryResolve2<T>("");
 
             return container.Resolve<T>(name);
         }

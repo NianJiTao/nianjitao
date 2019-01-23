@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DevExpress.Mvvm.Native;
 using DevExpress.Xpf.Bars;
 using NJT.Ext;
 using NJT.Prism;
-using Unity.Interception.Utilities;
 
 namespace NJT.UI
 {

@@ -3,7 +3,6 @@ using System.Windows;
 using NJT.Core;
 using Prism.Events;
 using Prism.Regions;
-using Prism.Unity;
 using Unity;
 
 namespace NJT.Prism
@@ -20,7 +19,7 @@ namespace NJT.Prism
         {
             try
             {
-                var win = Container人事部.TryResolve<T>();
+                var win = Container人事部.TryResolve2<T>("");
                 var shell = win as Window;
                 if (shell != null)
                 {
@@ -45,7 +44,7 @@ namespace NJT.Prism
 
         public static void 加载主视图()
         {
-            var view = Container人事部.TryResolve<IView主视图>();
+            var view = Container人事部.TryResolve2<IView主视图>("");
             if (view != null)
             {
                 RegionManager行政部.AddToRegion("Main", view);
