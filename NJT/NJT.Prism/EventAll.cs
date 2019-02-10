@@ -171,4 +171,8 @@ namespace NJT.Prism
     public class Event过期数据清理 : PubSubEvent
     {
     }
+
+    public class Event关闭弹出窗口 : PubSubEvent
+    {
+    }
 }
