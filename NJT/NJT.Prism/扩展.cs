@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using System;
+using Prism.Mvvm;
 using Unity;
 
 namespace NJT.Prism
@@ -14,6 +15,25 @@ namespace NJT.Prism
         public static void RegVm<TView, TViewModel>(this IUnityContainer container)
         {
             ViewModelLocationProvider.Register<TView>(() => container.Resolve<TViewModel>());
+        }
+
+        /// <summary>
+        /// 尝试解析类型,错误时返回默认值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static T TryResolve5<T>(this IUnityContainer obj)
+        {
+            if (obj == null) return default(T);
+            try
+            {
+                return obj.Resolve<T>();
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
         }
     }
 }
