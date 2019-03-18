@@ -4,12 +4,11 @@ using DevExpress.Mvvm.Native;
 using NJT.Core;
 using NJT.Ext;
 using NJT.Prism;
-using Prism.Events;
 using Unity;
 
 namespace NJT.UI.ViewModels
 {
-    public class View日志Base<T> : ViewModelBase3 where T : PubSubEvent<I日志记录>, new()
+    public class View日志Base<T> : ViewModelBase3 where T : EventArgs<I日志记录>, new()
     {
         private int _maxLenth = 100;
 
@@ -20,8 +19,8 @@ namespace NJT.UI.ViewModels
             if (IsInDesignMode) return;
             if (Container人事部.IsRegistered<int>("日志记录保留长度"))
                 MaxLenth = Container人事部.Resolve<int>("日志记录保留长度");
-            EventAggregator宣传部?.GetEvent<Event更新日志记录保留长度>().Subscribe(x => MaxLenth = x, true);
-            EventAggregator宣传部?.GetEvent<T>().Subscribe(日志记录Action, true);
+            Messenger.Default.Register<Event更新日志记录保留长度>(this, x => MaxLenth = x.Data);
+            Messenger.Default.Register<T>(this, x => 日志记录Action(x.Data));
         }
 
 

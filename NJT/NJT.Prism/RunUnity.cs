@@ -1,19 +1,20 @@
 ﻿using System;
 using NJT.Core;
-using Prism.Events;
+//using Prism.Events;
 using Prism.Ioc;
 using Prism.Logging;
+using Prism.Mvvm;
 using Prism.Regions;
-using Prism.Unity;
 using Unity;
 
 namespace NJT.Prism
 {
     public static class RunUnity
     {
-        private static IEventAggregator _宣传部;
+        //private static IEventAggregator _宣传部;
 
         private static IRegionManager _行政部;
+
 
         public static I日志 Log { get; set; } = new NLog日志();
 
@@ -21,21 +22,27 @@ namespace NJT.Prism
 
         public static IUnityContainer Container人事部 { get; set; }
 
-        public static IEventAggregator EventAggregator宣传部
+        public static IUnityContainer Container1
         {
-            get
-            {
-                if (_宣传部 == null)
-                {
-                    var run = RunFunc.TryRun(() =>
-                        Container人事部.Resolve<IEventAggregator>());
-                    _宣传部 = run.IsTrue ? run.Data : new EventAggregator();
-                }
-
-                return _宣传部;
-            }
-            set => _宣传部 = value;
+            get => Container人事部;
+            set => Container人事部 = value;
         }
+
+        //public static IEventAggregator EventAggregator宣传部
+        //{
+        //    get
+        //    {
+        //        if (_宣传部 == null)
+        //        {
+        //            var run = RunFunc.TryRun(() =>
+        //                Container人事部.Resolve<IEventAggregator>());
+        //            _宣传部 = run.IsTrue ? run.Data : new EventAggregator();
+        //        }
+
+        //        return _宣传部;
+        //    }
+        //    set => _宣传部 = value;
+        //}
 
         public static IRegionManager RegionManager行政部
         {
@@ -179,6 +186,26 @@ namespace NJT.Prism
 
 
         /// <summary>
+        /// 尝试解析类型,错误时返回默认值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static T TryResolve5<T>(this IUnityContainer obj)
+        {
+            if (obj == null) return default(T);
+            try
+            {
+                return obj.Resolve<T>();
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+        }
+
+
+        /// <summary>
         ///     return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -204,6 +231,18 @@ namespace NJT.Prism
             var r1 = Container人事部.Resolve<T>(值名称);
             action1?.Invoke(r1);
             return new 运行结果<T>(true) {Data = r1};
+        }
+
+
+        /// <summary>
+        ///     注册View 调用什么vm类型,vm使用IUnityContainer解析
+        /// </summary>
+        /// <typeparam name="TView"></typeparam>
+        /// <typeparam name="TViewModel"></typeparam>
+        /// <param name="container"></param>
+        public static void RegVm<TView, TViewModel>(this IUnityContainer container)
+        {
+            ViewModelLocationProvider.Register<TView>(() => container.Resolve<TViewModel>());
         }
     }
 }

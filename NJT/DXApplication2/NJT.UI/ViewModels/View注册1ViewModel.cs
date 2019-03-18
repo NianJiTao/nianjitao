@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using NJT.Core;
 using NJT.Prism;
-using Prism.Unity;
 
 namespace NJT.UI.ViewModels
 {
@@ -18,8 +18,10 @@ namespace NJT.UI.ViewModels
         {
             名称 = "授权配置";
             if (IsInDesignMode) return;
-            EventAggregator宣传部.GetEvent<Event发布授权配置>().Subscribe(收到注册码Action, true);
-            EventAggregator宣传部.GetEvent<Event激活视图>().Subscribe(激活视图Action, true);
+            Messenger.Default.Register<Event发布授权配置>(this, x => 收到注册码Action(x.Data));
+            Messenger.Default.Register<Event激活视图>(this, x => 激活视图Action(x.Data));
+            //EventAggregator宣传部.GetEvent<Event发布授权配置>().Subscribe(收到注册码Action, true);
+            //EventAggregator宣传部.GetEvent<Event激活视图>().Subscribe(激活视图Action, true);
             读取特征码();
             读取注册码();
         }
@@ -129,19 +131,21 @@ namespace NJT.UI.ViewModels
         {
             客户名称 = _历史客户名称;
             注册码 = _历史注册码;
-            EventAggregator宣传部.GetEvent<Event视图返回>().Publish(1);
+            Messenger.Default.Send(new Event视图返回() {Data = 1});
         }
 
 
         private void 保存Action()
         {
-            EventAggregator宣传部.GetEvent<Event保存授权配置>()
-                .Publish(new 授权配置
+            Messenger.Default.Send(new Event保存授权配置()
+            {
+                Data = new 授权配置
                 {
                     客户名称 = 客户名称,
                     注册码 = 注册码,
                     硬件码 = 硬件码
-                });
+                }
+            });
         }
 
 

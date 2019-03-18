@@ -76,5 +76,7 @@ namespace NJT.Core
                 find.值 = 属性值;
             return 字段表;
         }
+
+         
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using DevExpress.Mvvm;
 using NJT.Core;
 
 namespace NJT.Prism
@@ -37,7 +39,8 @@ namespace NJT.Prism
 
         private void Init授权监测()
         {
-            EventAggregator宣传部?.GetEvent<Event验证授权>().Subscribe(验证授权, true);
+            Messenger.Default.Register<Event验证授权>(this, x => 验证授权());
+            //EventAggregator宣传部?.GetEvent<Event验证授权>().Subscribe(验证授权, true);
             _授权监测Timer = new DispatcherTimer
             {
                 Interval = 验证间隔
@@ -90,7 +93,7 @@ namespace NJT.Prism
                     Log.Info($"软件:{str}");
             }
 
-            EventAggregator宣传部.GetEvent<Event验证授权结果>().Publish(result);
+            Messenger.Default.Send(new Event验证授权结果() {Data = result});
         }
     }
 }

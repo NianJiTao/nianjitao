@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
+using DevExpress.Mvvm;
 using NJT.Core;
-using Prism.Events;
 using Prism.Regions;
 using Unity;
 
@@ -10,7 +10,6 @@ namespace NJT.Prism
     public class 视图助手
     {
         private static bool _errorShow;
-        private static IEventAggregator EventAggregator宣传部 => RunUnity.EventAggregator宣传部;
         private static IUnityContainer Container人事部 => RunUnity.Container人事部;
         private static IRegionManager RegionManager行政部 => RunUnity.RegionManager行政部;
 
@@ -27,7 +26,8 @@ namespace NJT.Prism
                     shell.Closed += (s, e) =>
                     {
                         RunUnity.Log.Info("程序关闭,通知各单位退出.");
-                        EventAggregator宣传部.GetEvent<Event退出>().Publish();
+                        Messenger.Default.Send(new Event退出() { });
+                        //EventAggregator宣传部.GetEvent<Event退出>().Publish();
                     };
                 }
 

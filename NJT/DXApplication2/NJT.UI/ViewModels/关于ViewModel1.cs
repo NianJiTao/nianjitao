@@ -1,4 +1,5 @@
-﻿using DevExpress.Mvvm.Native;
+﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.Native;
 using NJT.Prism;
 
 namespace NJT.UI.ViewModels
@@ -37,7 +38,7 @@ namespace NJT.UI.ViewModels
 
         private void 双击Action(object obj)
         {
-            EventAggregator宣传部.GetEvent<Event双击关于>().Publish(obj);
+            Messenger.Default.Send(new Event双击关于() {Data = obj});
         }
     }
 }

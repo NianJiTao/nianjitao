@@ -4,9 +4,6 @@ using System.IO;
 using System.Windows;
 using System.Windows.Threading;
 using NJT.Core;
-using Prism.Events;
-using Prism.Regions;
-using Prism.Unity;
 using Unity;
 
 namespace NJT.Prism
@@ -16,8 +13,7 @@ namespace NJT.Prism
         private static Dispatcher _ui线程;
         private static I日志 Log => RunUnity.Log;
         private static IUnityContainer Container人事部 => RunUnity.Container人事部;
-        private static IEventAggregator EventAggregator宣传部 => RunUnity.EventAggregator宣传部;
-        private static IRegionManager RegionManager行政部 => RunUnity.RegionManager行政部;
+        private static IUnityContainer Container1 => RunUnity.Container人事部;
 
 
         public static Window Win => Application.Current.MainWindow;

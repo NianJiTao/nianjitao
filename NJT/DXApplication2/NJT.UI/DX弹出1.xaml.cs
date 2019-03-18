@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Threading;
+using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
 using NJT.Core;
 using NJT.Prism;
@@ -31,7 +32,8 @@ namespace NJT.UI
         private void Win弹出1_Loaded(object sender, RoutedEventArgs e)
         {
             启动自动关闭();
-            RunUnity.EventAggregator宣传部?.GetEvent<Event关闭弹出窗口>().Subscribe(Close, true);
+            Messenger.Default.Register<Event关闭弹出窗口>(this,x=> Close());
+            //RunUnity.EventAggregator宣传部?.GetEvent<Event关闭弹出窗口>().Subscribe(Close, true);
         }
 
 

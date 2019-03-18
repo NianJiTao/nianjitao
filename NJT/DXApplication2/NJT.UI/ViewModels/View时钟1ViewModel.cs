@@ -1,4 +1,5 @@
 ﻿using System;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using NJT.Core;
 using NJT.Prism;
@@ -12,7 +13,7 @@ namespace NJT.UI.ViewModels
             if (IsInDesignMode)
                 return;
             Model = new 时钟配置();
-            EventAggregator宣传部.GetEvent<Event更新时钟配置>().Subscribe(更新时钟配置Action, true);
+            Messenger.Default.Register<Event更新时钟配置>(this, x => 更新时钟配置Action(x.Data));
             启动();
         }
 
@@ -74,7 +75,8 @@ namespace NJT.UI.ViewModels
 
         private void 双击Action(object obj)
         {
-            EventAggregator宣传部.GetEvent<Event双击时钟>().Publish(obj);
+            Messenger.Default.Send(new Event双击时钟() {Data = obj});
+            //EventAggregator宣传部.GetEvent<Event双击时钟>().Publish(obj);
         }
     }
 }

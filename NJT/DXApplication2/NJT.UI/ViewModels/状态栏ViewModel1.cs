@@ -21,10 +21,10 @@ namespace NJT.UI.ViewModels
             DataList.Add(提示.标识, 提示);
             if (!IsInDesignMode)
             {
-                EventAggregator宣传部?.GetEvent<Event更新状态栏>().Subscribe(状态栏更新Action, true);
-                EventAggregator宣传部?.GetEvent<Event更新状态栏2>().Subscribe(更新状态栏2Action, true);
-                EventAggregator宣传部?.GetEvent<EventSms通知>().Subscribe(Sms通知Action, true);
-                EventAggregator宣传部?.GetEvent<EventSms通知2>().Subscribe(Sms通知2Action, true);
+                Messenger.Default.Register<Event更新状态栏>(this, x => 状态栏更新Action(x.Data));
+                Messenger.Default.Register<Event更新状态栏2>(this, x => 更新状态栏2Action(x.Data));
+                Messenger.Default.Register<EventSms通知>(this, x => Sms通知Action(x.Data));
+                Messenger.Default.Register<EventSms通知2>(this, x => Sms通知2Action(x.Data));
             }
         }
 

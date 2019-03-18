@@ -1,11 +1,10 @@
-﻿using NJT.Core;
-using Prism.Events;
+﻿using DevExpress.Mvvm;
+using NJT.Core;
 
 namespace NJT.Prism
 {
     public static class 消息
     {
-        private static IEventAggregator EventAggregator宣传部 => RunUnity.EventAggregator宣传部;
         private static I日志 Log1 => RunUnity.Log;
 
 
@@ -15,7 +14,7 @@ namespace NJT.Prism
         /// <param name="消息内容">The 消息内容.</param>
         public static void 更新状态栏(string 消息内容)
         {
-            EventAggregator宣传部?.GetEvent<Event更新状态栏2>().Publish(消息内容);
+            Messenger.Default.Send(new Event更新状态栏2() {Data = 消息内容});
         }
 
 
@@ -26,19 +25,19 @@ namespace NJT.Prism
         /// <param name="类别">The 类别.</param>
         public static void 更新状态栏(string 消息内容, string 类别)
         {
-            EventAggregator宣传部?.GetEvent<Event更新状态栏>().Publish(new 状态栏Data2(消息内容, 类别));
+            Messenger.Default.Send(new Event更新状态栏() {Data = new 状态栏Data2(消息内容, 类别)});
         }
 
 
         public static void 发布消息(string 消息内容)
         {
-            EventAggregator宣传部?.GetEvent<EventSms通知2>().Publish(消息内容);
+            Messenger.Default.Send(new EventSms通知2() {Data = 消息内容});
         }
 
 
         public static void 发布消息(string 消息内容, string 标题)
         {
-            EventAggregator宣传部?.GetEvent<EventSms通知>().Publish(new Sms通知(标题, 消息内容));
+            Messenger.Default.Send(new EventSms通知() {Data = new Sms通知(标题, 消息内容)});
         }
 
 
@@ -48,7 +47,7 @@ namespace NJT.Prism
         /// <param name="消息内容"></param>
         public static void Sms(string 消息内容)
         {
-            EventAggregator宣传部?.GetEvent<EventSms通知2>().Publish(消息内容);
+            Messenger.Default.Send(new EventSms通知2() {Data = 消息内容});
         }
 
 
@@ -59,7 +58,7 @@ namespace NJT.Prism
         /// <param name="标题"></param>
         public static void Sms(string 消息内容, string 标题)
         {
-            EventAggregator宣传部?.GetEvent<EventSms通知>().Publish(new Sms通知(标题, 消息内容));
+            Messenger.Default.Send(new EventSms通知() {Data = new Sms通知(标题, 消息内容)});
         }
 
 
