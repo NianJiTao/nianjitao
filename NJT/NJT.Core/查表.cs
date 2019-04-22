@@ -8,27 +8,30 @@ namespace NJT.Core
 {
     public class 查表
     {
-
         public static HashSet<string> hash数值类型表 = new HashSet<string>
         {
-            "int32",
-            "int",
             "byte",
+            "int32",
             "int16",
-            "short",
-            "long",
             "int64",
-            "float",
             "single",
             "double",
-            "ushort",
             "uint16",
-            "uint",
             "uint32",
             "uint64",
             "ulong",
+
+            "int",
+            "short",
+            "float",
+            "real",
+            "uint",
+            "long",
+            "ushort",
+            "decimal",
             //"char",
         };
+
 
         /// <summary>
         /// 返回是否是数值类型
@@ -46,13 +49,14 @@ namespace NJT.Core
             var name = typeName.StartsWith("System.") ? typeName : "System." + typeName;
             try
             {
-              return   Type.GetType(name);
+                return Type.GetType(name);
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return typeof(object);
             }
         }
+
 
         public static Type GetType兼容(string typeName)
         {
@@ -77,15 +81,17 @@ namespace NJT.Core
                 case "int": return typeof(int);
                 case "uint": return typeof(uint);
                 case "float": return typeof(float);
+                case "real": return typeof(float);
                 case "long": return typeof(long);
                 case "ulong": return typeof(ulong);
                 case "string": return typeof(string);
                 case "datetime": return typeof(DateTime);
-                    //case "object": return typeof(object);
+                //case "object": return typeof(object);
             }
 
             return null;
         }
+
 
         public static I运行结果<object> Get默认值(string typeName)
         {
@@ -185,14 +191,13 @@ namespace NJT.Core
                     break;
             }
 
-            return new 运行结果<object>(z) { Data = r };
+            return new 运行结果<object>(z) {Data = r};
         }
+
 
         //static string[] 假值 = new string[]
         //{
         //    "false", "0", "", "unchecked", "关", "假", "-1", "未选中"
         //};
-
-   
     }
 }

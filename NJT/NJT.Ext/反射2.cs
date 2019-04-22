@@ -16,6 +16,7 @@ namespace NJT.Ext
             return r;
         }
 
+
         /// <summary>
         /// 把list内的值按名称赋值给对象的属性.
         /// </summary>
@@ -29,21 +30,44 @@ namespace NJT.Ext
             if (valList2 == null)
                 return;
             var list2 = obj.GetPropertiesList(排除属性);
-            var list3 = list2.Where(x => x.CanWrite).ToList();
+            var list3 = list2.Where(x =>
+                x.CanWrite
+                && x.CustomAttributes.All(y => y.AttributeType.Name != "禁止克隆")
+            ).ToList();
+
+
             var valList3 = valList2.ToList();
             foreach (var info in list3)
             {
                 var propertyTypeName = info.PropertyType.Name;
                 Func<object, object> 转换Func = null;
-
-                if (propertyTypeName == typeof(string).Name)
-                    转换Func = x => x.ToString2();
-                else if (propertyTypeName == typeof(int).Name)
-                    转换Func = x => x.ToString2().ToInt();
-                else if (propertyTypeName == typeof(double).Name)
-                    转换Func = x => x.ToDouble2();
-                else if (propertyTypeName == typeof(DateTime).Name)
-                    转换Func = x => x.ToDateTime2();
+                switch (propertyTypeName)
+                {
+                    case "String":
+                        转换Func = x => x.ToString2();
+                        break;
+                    case "Byte":
+                        转换Func = x => (byte) x.ToString2().ToInt();
+                        break;
+                    case "Boolean":
+                        转换Func = x => x.ToString2().ToBool();
+                        break;
+                    case "Int32":
+                        转换Func = x => x.ToString2().ToInt();
+                        break;
+                    case "Int16":
+                        转换Func = x => (short)x.ToString2().ToInt();
+                        break;
+                    case "Double":
+                        转换Func = x => x.ToDouble2();
+                        break;
+                    case "Single":
+                        转换Func = x => x.ToFloat2();
+                        break;
+                    case "DateTime":
+                        转换Func = x => x.ToDateTime2();
+                        break;
+                }
 
                 var val3 = valList3.FindItem(info.Name);
                 if (val3 != null && 转换Func != null)

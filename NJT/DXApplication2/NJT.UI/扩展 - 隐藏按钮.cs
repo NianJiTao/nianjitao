@@ -18,7 +18,7 @@ namespace NJT.UI
         {
             var 隐藏按钮 = 隐藏;
             if (string.IsNullOrEmpty(隐藏按钮))
-                隐藏按钮 = RunUnity.Container人事部.TryResolve2("隐藏按钮", string.Empty);
+                隐藏按钮 = RunUnity.Container1.TryResolve2("隐藏按钮", string.Empty);
 
             if (string.IsNullOrEmpty(隐藏按钮))
                 return;

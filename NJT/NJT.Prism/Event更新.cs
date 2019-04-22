@@ -1,5 +1,5 @@
 ﻿using NJT.Core;
- 
+
 
 namespace NJT.Prism
 {

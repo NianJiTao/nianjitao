@@ -1,6 +1,5 @@
 ﻿using System;
 using NJT.Core;
-//using Prism.Events;
 using Prism.Ioc;
 using Prism.Logging;
 using Prism.Mvvm;
@@ -11,8 +10,6 @@ namespace NJT.Prism
 {
     public static class RunUnity
     {
-        //private static IEventAggregator _宣传部;
-
         private static IRegionManager _行政部;
 
 
@@ -20,29 +17,13 @@ namespace NJT.Prism
 
         public static IContainerRegistry Registry { get; set; }
 
-        public static IUnityContainer Container人事部 { get; set; }
+        public static IUnityContainer Container1 { get; set; }
 
-        public static IUnityContainer Container1
+        public static IUnityContainer Container人事部
         {
-            get => Container人事部;
-            set => Container人事部 = value;
+            get => Container1;
+            set => Container1 = value;
         }
-
-        //public static IEventAggregator EventAggregator宣传部
-        //{
-        //    get
-        //    {
-        //        if (_宣传部 == null)
-        //        {
-        //            var run = RunFunc.TryRun(() =>
-        //                Container人事部.Resolve<IEventAggregator>());
-        //            _宣传部 = run.IsTrue ? run.Data : new EventAggregator();
-        //        }
-
-        //        return _宣传部;
-        //    }
-        //    set => _宣传部 = value;
-        //}
 
         public static IRegionManager RegionManager行政部
         {
@@ -51,7 +32,7 @@ namespace NJT.Prism
                 if (_行政部 == null)
                 {
                     var run = RunFunc.TryRun(() =>
-                        Container人事部.Resolve<IRegionManager>());
+                        Container1.Resolve<IRegionManager>());
                     _行政部 = run.IsTrue ? run.Data : new RegionManager();
                 }
 
@@ -75,7 +56,7 @@ namespace NJT.Prism
         /// <returns></returns>
         public static T Get<T>(string name)
         {
-            var set1 = Container人事部.TryResolve2<T>(name);
+            var set1 = Container1.TryResolve2<T>(name);
             if (set1 == null)
             {
                 Log.Error($"未用名称[{name}]注册类型[{nameof(T)}]");
@@ -88,7 +69,7 @@ namespace NJT.Prism
 
         public static T Get<T>()
         {
-            var set1 = Container人事部.TryResolve2<T>("");
+            var set1 = Container1.TryResolve2<T>("");
             if (set1 == null)
             {
                 Log.Error($"未注册类型[{nameof(T)}]");
@@ -213,7 +194,7 @@ namespace NJT.Prism
         /// <returns></returns>
         public static Lazy<T> GetLazy延迟解析<T>(string 名称)
         {
-            return new Lazy<T>(() => Container人事部.TryResolve2<T>(名称));
+            return new Lazy<T>(() => Container1.TryResolve2<T>(名称));
         }
 
 
@@ -226,9 +207,9 @@ namespace NJT.Prism
         /// <returns></returns>
         public static I运行结果<T> 读取配置值<T>(string 值名称, Action<T> action1)
         {
-            if (Container人事部 == null) return new 运行结果<T>(false, "解析器为空");
-            if (!Container人事部.IsRegistered<T>(值名称)) return new 运行结果<T>(false, "值名称未注册");
-            var r1 = Container人事部.Resolve<T>(值名称);
+            if (Container1 == null) return new 运行结果<T>(false, "解析器为空");
+            if (!Container1.IsRegistered<T>(值名称)) return new 运行结果<T>(false, "值名称未注册");
+            var r1 = Container1.Resolve<T>(值名称);
             action1?.Invoke(r1);
             return new 运行结果<T>(true) {Data = r1};
         }
@@ -243,6 +224,39 @@ namespace NJT.Prism
         public static void RegVm<TView, TViewModel>(this IUnityContainer container)
         {
             ViewModelLocationProvider.Register<TView>(() => container.Resolve<TViewModel>());
+        }
+
+
+        /// <summary>
+        /// 解析类型,如果没有就注册为初始化值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="container1"></param>
+        /// <param name="标识名"></param>
+        /// <returns></returns>
+        public static T ResolveOrInit<T>(this IUnityContainer container1, string 标识名) where T : new()
+        {
+            var reg = container1.IsRegistered<T>(标识名);
+            if (!reg) container1.RegisterInstance<T>(标识名, new T());
+
+            return container1.Resolve<T>(标识名);
+        }
+
+
+        /// <summary>
+        /// 解析类型,如果没有就注册为 initFunc值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="container1"></param>
+        /// <param name="标识名"></param>
+        /// <param name="initFunc"></param>
+        /// <returns></returns>
+        public static T ResolveOrInit<T>(this IUnityContainer container1, string 标识名, Func<T> initFunc)
+        {
+            var reg = container1.IsRegistered<T>(标识名);
+            if (!reg) container1.RegisterInstance<T>(标识名, initFunc());
+
+            return container1.Resolve<T>(标识名);
         }
     }
 }

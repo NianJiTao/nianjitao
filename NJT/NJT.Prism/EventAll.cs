@@ -1,13 +1,13 @@
 ﻿using System;
 using NJT.Core;
- 
+
 
 namespace NJT.Prism
 {
     /// <summary>
     ///     收到此事件.就打开日志视图.或者日志目录
     /// </summary>
-    public class Event查看日志:EventArgs
+    public class Event查看日志 : EventArgs
     {
     }
 

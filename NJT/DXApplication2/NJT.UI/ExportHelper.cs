@@ -33,7 +33,7 @@ namespace NJT.UI
 
         public static I运行结果 导出(string 表格名称, ExportFormat 导出格式)
         {
-            var find = RunUnity.Container人事部.TryResolve2<DataViewBase>(表格名称, null);
+            var find = RunUnity.Container1.TryResolve2<DataViewBase>(表格名称, null);
             if (find == null)
             {
                 var info = $"{表格名称}:表格未找到";

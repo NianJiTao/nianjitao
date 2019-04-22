@@ -17,6 +17,7 @@ namespace NJT.Core
             return r;
         }
 
+
         /// <summary>
         /// 如果true,返回data的列表,否则返回空列表
         /// </summary>
@@ -27,6 +28,7 @@ namespace NJT.Core
         {
             return obj.IsTrue ? obj.Data.ToObservabler() : new ObservableCollection<T>();
         }
+
 
         public static ObservableCollection<T> ToObservabler<T>(this I运行结果<IEnumerable<T>> obj)
         {
@@ -45,6 +47,7 @@ namespace NJT.Core
             return find;
         }
 
+
         public static T FindItem<T>(this IEnumerable<T> 列表, string 名称, int skip) where T : I名称
         {
             if (string.IsNullOrEmpty(名称))
@@ -56,11 +59,13 @@ namespace NJT.Core
             return find;
         }
 
+
         public static object FindValue<T>(this IEnumerable<T> 列表, string 名称) where T : I名称值
         {
             var find = 列表.FindItem(名称);
             return find?.值;
         }
+
 
         /// <summary>
         /// 查找属性名称并更新值
@@ -77,6 +82,44 @@ namespace NJT.Core
             return 字段表;
         }
 
-         
+
+        /// <summary>
+        /// 验证数组长度是否符合最低要求. start + len 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="数组"></param>
+        /// <param name="start"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        public static bool 长度合格<T>(this IList<T> 数组, int start, int len)
+        {
+            return 数组 != null && 数组.Count >= start + len && start >= 0;
+        }
+
+
+        public static ushort GetUInt16(this byte[] 字节组, int start)
+        {
+            return 字节组.长度合格(start, 2) ? BitConverter.ToUInt16(字节组, start) : (ushort) 0;
+        }
+
+
+        public static uint GetUInt32(this byte[] 字节组, int start)
+        {
+            return 字节组.长度合格(start, 4) ? BitConverter.ToUInt32(字节组, start) : 0;
+        }
+
+
+        public static float GetFloat(this byte[] 字节组, int start)
+        {
+            return 字节组.长度合格(start, 4) ? BitConverter.ToSingle(字节组, start) : 0;
+        }
+
+
+        public static double GetDouble(this byte[] 字节组, int start)
+        {
+            return 字节组.长度合格(start, 8) ? BitConverter.ToDouble(字节组, start) : 0;
+        }
+
+
     }
 }

@@ -10,7 +10,7 @@ namespace NJT.Prism
     public class 视图助手
     {
         private static bool _errorShow;
-        private static IUnityContainer Container人事部 => RunUnity.Container人事部;
+        private static IUnityContainer Container1 => RunUnity.Container1;
         private static IRegionManager RegionManager行政部 => RunUnity.RegionManager行政部;
 
 
@@ -18,7 +18,7 @@ namespace NJT.Prism
         {
             try
             {
-                var win = Container人事部.TryResolve2<T>("");
+                var win = Container1.TryResolve2<T>("");
                 var shell = win as Window;
                 if (shell != null)
                 {
@@ -44,7 +44,7 @@ namespace NJT.Prism
 
         public static void 加载主视图()
         {
-            var view = Container人事部.TryResolve2<IView主视图>("");
+            var view = Container1.TryResolve2<IView主视图>("");
             if (view != null)
             {
                 RegionManager行政部.AddToRegion("Main", view);

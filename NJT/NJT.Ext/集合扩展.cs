@@ -2,11 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NJT.Core;
 
 namespace NJT.Ext
 {
     public static partial class 扩展
     {
+        /// <summary>
+        /// 把数组按指定长度分解开.
+        /// 如[1~9]按{1,2,4,1}可分解为锯齿数组.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <param name="长度组"></param>
+        /// <returns></returns>
+        public static T[][] 分解<T>(this IList<T> bytes, IList<int> 长度组)
+        {
+            var m = 0;
+            var r = new T[长度组.Count][];
+            for (var i = 0; i < r.Length; i++)
+            {
+                r[i] = bytes.Skip(m).Take(长度组[i]).ToArray();
+                m += 长度组[i];
+            }
+
+            return r;
+        }
+
+
+        /// <summary>
+        /// 把只读列表的值按顺序赋给 目标
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="目标"></param>
+        /// <param name="新值列表"></param>
+        /// <returns></returns>
+        public static IEnumerable<T1> 赋值<T1, T2>(this IEnumerable<T1> 目标, IReadOnlyList<T2> 新值列表) where T1 : class, I名称值
+        {
+            var index = 0;
+            // ReSharper disable once PossibleMultipleEnumeration
+            foreach (var 名称值 in 目标)
+            {
+                if (新值列表.Count > index) 名称值.值 = 新值列表[index];
+                index++;
+            }
+
+            // ReSharper disable once PossibleMultipleEnumeration
+            return 目标;
+        }
+
         public static T 选择<T>(this IList<T> list, int k)
         {
             if (list == null)
@@ -18,6 +62,7 @@ namespace NJT.Ext
             k = k.范围限制(0, list.Count - 1);
             return list[k];
         }
+
 
         /// <summary>
         /// 移除后,返回原有序号位的对象.
@@ -37,6 +82,7 @@ namespace NJT.Ext
             list.Remove(sel);
             return list.选择(k);
         }
+
 
         public static T 移除<T>(this List<T> list, IList<T> sel)
         {
@@ -59,6 +105,7 @@ namespace NJT.Ext
         {
             return bindingList.交换(id, id - 位数);
         }
+
 
         public static bool 下移<T>(this IList<T> bindingList, int id, int 位数 = 1)
         {
@@ -112,6 +159,7 @@ namespace NJT.Ext
             return l;
         }
 
+
         public static void 洗牌<T>(this IList<T> r, int 次数)
         {
             if (r == null || r.Count == 0 || 次数 <= 0)
@@ -128,6 +176,7 @@ namespace NJT.Ext
             }
         }
 
+
         public static List<T> To定长<T>(this List<T> r, int 长度)
         {
             if (r.Is空() || 长度 < 0)
@@ -143,6 +192,7 @@ namespace NJT.Ext
 
             return r;
         }
+
 
         /// <summary>
         /// 调用add,如果超过最大长度,移除首位.
@@ -172,15 +222,10 @@ namespace NJT.Ext
         /// <returns></returns>
         public static IEnumerable<T> ForEachDo<T>(this IEnumerable<T> obj, Action<T> 执行方法)
         {
-            if (obj == null)
-            {
-                return new List<T>();
-            }
+            if (obj == null) return obj;
+            if (执行方法 == null) return obj;
 
-            foreach (var item in obj)
-            {
-                执行方法?.Invoke(item);
-            }
+            foreach (var item in obj) 执行方法.Invoke(item);
 
             return obj;
         }
@@ -233,6 +278,7 @@ namespace NJT.Ext
             return list2;
         }
 
+
         public static List<List<T>> 分组<T>(this IEnumerable<T> 源, int 每组数量)
         {
             if (源.Is空())
@@ -257,6 +303,7 @@ namespace NJT.Ext
             return r;
         }
 
+
         /// <summary>
         /// 串联string
         /// </summary>
@@ -274,11 +321,10 @@ namespace NJT.Ext
             return string.Join(分隔符, lt);
         }
 
+
         public static bool Is空<T>(this IEnumerable<T> list)
         {
-            if (list == null)
-                return true;
-            return !list.Any();
+            return (list == null) || !list.Any();
         }
 
 

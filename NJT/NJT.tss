@@ -2,14 +2,22 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\NJT.Prism\EventAll.cs</string>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\对话框.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\DX弹出消息1.xaml</string>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\启动管理.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\DX弹出1.xaml</string>
-      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\DX弹出1.xaml.cs</string>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\通知配置.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\runset.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\选中状态.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Code\git\nianjitao\NJT\DXApplication2\NJT.UI\主题助手.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

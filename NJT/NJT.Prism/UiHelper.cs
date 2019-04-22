@@ -12,9 +12,7 @@ namespace NJT.Prism
     {
         private static Dispatcher _ui线程;
         private static I日志 Log => RunUnity.Log;
-        private static IUnityContainer Container人事部 => RunUnity.Container人事部;
-        private static IUnityContainer Container1 => RunUnity.Container人事部;
-
+        private static IUnityContainer Container1 => RunUnity.Container1;
 
         public static Window Win => Application.Current.MainWindow;
 
@@ -60,18 +58,18 @@ namespace NJT.Prism
 
         public static I运行结果<T> 启动服务<T>() where T : I启动
         {
-            return 启动服务<T>(Container人事部, RunUnity.Log);
+            return 启动服务<T>(Container1, RunUnity.Log);
         }
 
 
         public static I运行结果<T> 启动服务<T>(string 名称) where T : I启动
         {
-            if (Container人事部 == null) return new 运行结果<T>(false, "解析器为空");
-            if (string.IsNullOrEmpty(名称)) return 启动服务<T>(Container人事部, RunUnity.Log);
+            if (Container1 == null) return new 运行结果<T>(false, "解析器为空");
+            if (string.IsNullOrEmpty(名称)) return 启动服务<T>(Container1, RunUnity.Log);
 
-            if (Container人事部.IsRegistered<T>(名称) == false) return new 运行结果<T>(false);
+            if (Container1.IsRegistered<T>(名称) == false) return new 运行结果<T>(false);
 
-            var 解析 = Container人事部.Resolve<T>(名称);
+            var 解析 = Container1.Resolve<T>(名称);
             if (解析 != null)
             {
                 服务列表.Add(解析);
@@ -85,12 +83,12 @@ namespace NJT.Prism
 
         public static bool? 打开弹出窗口<T>(string 标题)
         {
-            var 弹出 = Container人事部?.TryResolve2<IView弹出窗口>("");
+            var 弹出 = Container1?.TryResolve2<IView弹出窗口>("");
             if (!(弹出 is Window t))
                 return false;
             t.SizeToContent = SizeToContent.WidthAndHeight;
             t.WindowStyle = WindowStyle.ToolWindow;
-            var win2 = Container人事部.TryResolve2<T>("");
+            var win2 = Container1.TryResolve2<T>("");
             if (win2 == null)
                 return false;
             弹出.DataContext = win2;
@@ -111,9 +109,9 @@ namespace NJT.Prism
 
         public static void 弹出窗口<T>()
         {
-            if (!(Container人事部.TryResolve2<IView弹出窗口>("") is Window win))
+            if (!(Container1.TryResolve2<IView弹出窗口>("") is Window win))
                 return;
-            var view = Container人事部.TryResolve2<T>("");
+            var view = Container1.TryResolve2<T>("");
             弹出窗口(win, view, true);
         }
 
@@ -126,14 +124,14 @@ namespace NJT.Prism
         /// <param name="top">  是否置顶.</param>
         public static void 弹出窗口<T>(Point xy, bool top = true)
         {
-            var view = Container人事部.TryResolve2<T>("");
+            var view = Container1.TryResolve2<T>("");
             弹出窗口(view, xy, top);
         }
 
 
         public static void 弹出窗口(object view, Point xy, bool top = true)
         {
-            if (!(Container人事部.TryResolve2<IView弹出窗口>("") is Window win))
+            if (!(Container1.TryResolve2<IView弹出窗口>("") is Window win))
                 return;
             win.Width = xy.X;
             win.Height = xy.Y;
