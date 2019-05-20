@@ -18,6 +18,7 @@ namespace NJT.Ext.Core
             return r;
         }
 
+
         public static IList<object> Get静态字段(this Type typex)
         {
             if (typex == null)
@@ -87,6 +88,7 @@ namespace NJT.Ext.Core
             return r2;
         }
 
+
         /// <summary>
         /// 返回 命令名称,值,列表
         /// </summary>
@@ -102,13 +104,33 @@ namespace NJT.Ext.Core
         /// 从对象里面反射获取属性,并去除排除属性
         /// </summary>
         /// <param name="obj"></param>
+        /// <param name="排除"></param>
         /// <returns></returns>
         public static List<PropertyInfo> GetPropertiesList(this object obj, params string[] 排除)
         {
             if (obj == null) return new List<PropertyInfo>();
             var r = obj.GetType().GetProperties().ToList();
-            var r2 = r.Where(x => x.CanRead && !排除.Contains(x.Name)).ToList();
+            var r2 = r.Where(x => x.CanRead
+                                  && (排除 == null || !排除.Contains(x.Name))
+            ).ToList();
             return r2;
+        }
+
+
+        /// <summary>
+        /// 提取多层的错误信息
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="深度"></param>
+        /// <returns></returns>
+        public static string GetMessage(this Exception e, int 深度 = 1)
+        {
+            if (e == null)
+                return string.Empty;
+            if (深度 <= 1)
+                return e.Message;
+            --深度;
+            return e.Message + GetMessage(e.InnerException, 深度);
         }
     }
 }
