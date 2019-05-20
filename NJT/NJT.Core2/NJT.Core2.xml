@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NJT.Core2</name>
+    </assembly>
+    <members>
+        <member name="T:NJT.Core.EData`1">
+            <summary>
+            泛型 数据和名称的组合.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:NJT.Core.F1">
+            <summary>
+            帮助类
+            </summary>
+        </member>
+        <member name="M:NJT.Core.F1.打开文件(System.String)">
+            <summary>
+             新进程打开文件 ,调用默认关联程序
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:NJT.Core.F1.打开目录(System.String)">
+             <summary>
+            新进程打开目录 ,调用默认关联程序
+             </summary>
+             <param name="dir"></param>
+        </member>
+        <member name="T:NJT.Core.I图表值">
+            <summary>
+            名称,时间,数据double
+            </summary>
+        </member>
+        <member name="M:NJT.Core.I日志.Info(System.String)">
+            <summary>
+                正常记录信息.
+            </summary>
+            <param name="信息"></param>
+        </member>
+        <member name="M:NJT.Core.I日志.Debug(System.String)">
+            <summary>
+                记录调试需要的信息.
+            </summary>
+            <param name="信息"></param>
+        </member>
+        <member name="M:NJT.Core.I日志.Error(System.String)">
+            <summary>
+                记录出错信息
+            </summary>
+            <param name="信息"></param>
+        </member>
+        <member name="T:NJT.Core.Log1">
+            <summary>
+            空日志实现
+            </summary>
+        </member>
+        <member name="P:NJT.Core.I日志记录.标识">
+            <summary>
+            通过标识来分类,可以订阅事件时候过滤记录
+            </summary>
+            <value>The 标识.</value>
+        </member>
+        <member name="P:NJT.Core.I标识Data`1.标签">
+            <summary>
+            显示的标签
+            </summary>
+            <value>The 标签.</value>
+        </member>
+        <member name="P:NJT.Core.I标识Data`1.显示">
+            <summary>
+            是否显示
+            </summary>
+            <value><c>true</c> if 显示; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:NJT.Core.标识Data1">
+            <summary>
+            简易版,不带数据变化自动通知
+            </summary>
+        </member>
+        <member name="T:NJT.Core.I身份证">
+            <summary>
+                Interface 包含有唯一Guid的接口
+            </summary>
+        </member>
+        <member name="T:NJT.Core.I运行结果">
+            <summary>
+                表示方法运行的结果.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.I运行结果.IsTrue">
+            <summary>
+                执行是否成功.
+            </summary>
+        </member>
+        <member name="M:NJT.Core.I配置服务`1.读取">
+            <summary>
+                读取 默认的系统配置.
+                路径为 程序目录下 "配置.xml"
+                为全局单例.
+            </summary>
+            <returns>T.</returns>
+        </member>
+        <member name="M:NJT.Core.I配置服务`1.写入">
+            <summary>
+                写入 默认的系统配置.
+                路径为 程序目录下 "配置.xml"
+            </summary>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:NJT.Core.配置读写`1.读取(System.Func{`0})">
+            <summary>
+            如果读取失败,返回默认值
+            </summary>
+            <param name="默认值"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.PidController.ControlVariable(System.TimeSpan)">
+            <summary>
+            The controller output
+            </summary>
+            <param name="timeSinceLastUpdate">timespan of the elapsed time
+            since the previous time that ControlVariable was called</param>
+            <returns>Value of the variable that needs to be controlled</returns>
+        </member>
+        <member name="P:NJT.Core.PidController.GainDerivative">
+            <summary>
+            The derivative term is proportional to the rate of
+            change of the error
+            </summary>
+        </member>
+        <member name="P:NJT.Core.PidController.GainIntegral">
+            <summary>
+            The integral term is proportional to both the magnitude
+            of the error and the duration of the error
+            </summary>
+        </member>
+        <member name="P:NJT.Core.PidController.GainProportional">
+            <summary>
+            The proportional term produces an output value that
+            is proportional to the current error value
+            </summary>
+            <remarks>
+            Tuning theory and industrial practice indicate that the
+            proportional term should contribute the bulk of the output change.
+            </remarks>
+        </member>
+        <member name="P:NJT.Core.PidController.OutputMax">
+            <summary>
+            The max output value the control device can accept.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.PidController.OutputMin">
+            <summary>
+            The minimum ouput value the control device can accept.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.PidController.IntegralTerm">
+            <summary>
+            Adjustment made by considering the accumulated error over time
+            </summary>
+            <remarks>
+            An alternative formulation of the integral action, is the
+            proportional-summation-difference used in discrete-time systems
+            </remarks>
+        </member>
+        <member name="P:NJT.Core.PidController.ProcessVariable">
+            <summary>
+            当前值
+            </summary>
+        </member>
+        <member name="P:NJT.Core.PidController.ProcessVariableLast">
+            <summary>
+             最后一次当前值
+            </summary>
+        </member>
+        <member name="P:NJT.Core.PidController.SetPoint">
+            <summary>
+            请求值
+            </summary>
+        </member>
+        <member name="M:NJT.Core.PidController.范围限制(System.Double)">
+            <summary>
+            Limit a variable to the set OutputMax and OutputMin properties
+            </summary>
+            <returns>
+            A value that is between the OutputMax and OutputMin properties
+            </returns>
+            <remarks>
+            Inspiration from http://stackoverflow.com/questions/3176602/how-to-force-a-number-to-be-in-a-range-in-c
+            </remarks>
+        </member>
+        <member name="P:NJT.Core.SqlServer.Is系统账户登录">
+            <summary>
+            如果true, 直接使用连接字符串.
+            </summary>
+        </member>
+        <member name="M:NJT.Core.SqlServer.GetUseConn">
+            <summary>
+            根据是否系统用户登录,返回sql的连接字串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:NJT.Core.位置.上">
+            上
+            左  中  右
+            下
+        </member>
+        <member name="F:NJT.Core.位置.九宫1">
+            1 2 3
+            4 5 6
+            7 8 9
+        </member>
+        <member name="M:NJT.Core.命令行参数.提取(System.String[],System.String,System.Int32)">
+            <summary>
+            -消息 内容 标题
+            </summary>
+            <param name="源"></param>
+            <param name="标识"></param>
+            <param name="长度"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NJT.Core.定长哈希`1">
+            <summary>
+                Class 哈希.有限长度
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NJT.Core.序列化.写入``1(``0,System.String)">
+            <summary>
+                在当前程序目录下写入名为"配置"的XML文件
+            </summary>
+        </member>
+        <member name="M:NJT.Core.序列化.读出``1(System.String)">
+            <summary>
+                读出当前目录下名为"配置"的文件
+            </summary>
+        </member>
+        <member name="M:NJT.Core.序列化.To二进制(System.Object)">
+            <summary>
+                序列化
+            </summary>
+            <param name="data">要序列化的对象</param>
+            <returns>返回存放序列化后的数据缓冲区</returns>
+        </member>
+        <member name="M:NJT.Core.序列化.From二进制(System.Byte[])">
+            <summary>
+                反序列化
+            </summary>
+            <param name="data">数据缓冲区</param>
+            <returns>对象</returns>
+        </member>
+        <member name="M:NJT.Core.扩展.ToObservabler``1(NJT.Core.I运行结果{System.Collections.Generic.IList{``0}})">
+            <summary>
+            如果true,返回data的列表,否则返回空列表
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.扩展.UpValue``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Object)">
+            <summary>
+            查找属性名称并更新值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="字段表"></param>
+            <param name="属性名"></param>
+            <param name="属性值"></param>
+        </member>
+        <member name="M:NJT.Core.扩展.长度合格``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+            <summary>
+            验证数组长度是否符合最低要求. start + len 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="数组"></param>
+            <param name="start"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NJT.Core.数值限制.组">
+            <summary>
+            合金工艺名称
+            </summary>
+        </member>
+        <member name="P:NJT.Core.数值限制组.名称">
+            <summary>
+            消息类型名称
+            </summary>
+        </member>
+        <member name="P:NJT.Core.数值限制组.组字段名">
+            <summary>
+            可用来定位合金编号的字段
+            </summary>
+        </member>
+        <member name="P:NJT.Core.数据服务器.CurServer">
+            <summary>
+            当前使用的Server ,自动切换启用,正常的Server,如果都不正常,返回Server1
+            </summary>
+        </member>
+        <member name="M:NJT.Core.数据服务器.Get连接字符串(System.String)">
+            <summary>
+            返回本机sql,可用户名登录的连接字串
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.斐波纳.Get通用解(System.Int32)">
+            <summary>
+            通用解法
+            </summary>
+            <param name="n"></param>
+            <returns></returns>
+        </member>
+        <member name="F:NJT.Core.星期转换.星期显示组">
+            <summary>
+                The 星期显示组 如 1, "星期一", DayOfWeek.Monday,false
+            </summary>
+        </member>
+        <member name="M:NJT.Core.星期转换.ToWeek中文(System.Int32)">
+            <summary>
+                如 1 转换为 "星期一"
+            </summary>
+            <param name="k">The k.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:NJT.Core.星期转换.ToWeekInt(System.String)">
+            <summary>
+                如 "星期一" 转换为 1
+            </summary>
+            <param name="k">The k.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:NJT.Core.查表.Is数值类型(System.String)">
+            <summary>
+            返回是否是数值类型
+            </summary>
+            <param name="值类型"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.目录文件.所有目录(System.String,System.Int32)">
+            <summary>
+            所有子目录s the specified 根目录.
+            0层为搜索本目录下面的.
+            -1 为只有本根目录.
+            </summary>
+            <param name="根目录">The 根目录.</param>
+            <param name="搜索层">The 搜索层.</param>
+            <returns>List{System.String}.</returns>
+        </member>
+        <member name="M:NJT.Core.目录文件.所有文件(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IList{System.String})">
+            <summary>
+            所有文件s the specified 目录列表.
+            根据扩展名过滤文件. 如 .mp3 ; 
+            </summary>
+            <param name="目录列表">The 目录列表.</param>
+            <param name="扩展名cs">The 扩展名CS.</param>
+            <returns>List{System.String}.</returns>
+        </member>
+        <member name="T:NJT.Core.禁止克隆">
+            <summary>
+            有此特性的属性.不调用克隆赋值功能.
+            </summary>
+        </member>
+        <member name="T:NJT.Core.超频检测">
+            <summary>
+            检测事件发生的频率是否过高.
+            </summary>
+        </member>
+        <member name="M:NJT.Core.超频检测.Is超频(System.String,System.TimeSpan)">
+            <summary>
+            发生频率过高.返回true
+            </summary>
+            <param name="事件名"></param>
+            <param name="最短间隔"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NJT.Core.运行结果">
+            <summary>
+                表示方法运行的结果.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果.IsTrue">
+            <summary>
+                执行是否成功.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果.Message">
+            <summary>
+                执行错误时的信息.
+            </summary>
+        </member>
+        <member name="T:NJT.Core.运行结果`1">
+            <summary>
+                表示方法运行的结果.T为携带数据
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果`1.IsTrue">
+            <summary>
+                执行是否成功.
+            </summary>
+        </member>
+        <member name="P:NJT.Core.运行结果`1.Message">
+            <summary>
+                执行错误时的信息.
+            </summary>
+        </member>
+        <member name="M:NJT.Core.逆波兰.计算(System.String)">
+            <summary>
+                算术逆波兰表达式计算.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.逆波兰.逆波兰表达式转换(System.String)">
+            <summary>
+                Reverse Polish Notation
+                算术逆波兰表达式.生成.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.逆波兰.Power(System.Char)">
+            <summary>
+                优先级别测试函数.
+            </summary>
+            <param name="opr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.逆波兰.FormatSpace(System.String)">
+            <summary>
+                规范化逆波兰表达式.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

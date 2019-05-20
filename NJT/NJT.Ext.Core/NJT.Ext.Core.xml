@@ -200,6 +200,15 @@
             从对象里面反射获取属性,并去除排除属性
             </summary>
             <param name="obj"></param>
+            <param name="排除"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.GetMessage(System.Exception,System.Int32)">
+            <summary>
+            提取多层的错误信息
+            </summary>
+            <param name="e"></param>
+            <param name="深度"></param>
             <returns></returns>
         </member>
         <member name="M:NJT.Ext.Core.扩展.ConvertToBCD(System.Byte)">
@@ -400,6 +409,15 @@
             <param name="最小">The 最小.</param>
             <param name="最大">The 最大.</param>
             <returns>T.</returns>
+        </member>
+        <member name="M:NJT.Ext.Core.扩展.分解``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            把数组按指定长度分解开.
+            如[1~9]按{1,2,4,1}可分解为锯齿数组.
+            </summary>
+            <param name="bytes"></param>
+            <param name="长度组"></param>
+            <returns></returns>
         </member>
         <member name="M:NJT.Ext.Core.扩展.移除``1(System.Collections.Generic.List{``0},``0)">
             <summary>
