@@ -61,6 +61,21 @@
             </summary>
             <value>The 标识.</value>
         </member>
+        <member name="T:NJT.Core.I时间">
+            <summary>
+            包含有时间的类,方便清理过期数据
+            </summary>
+        </member>
+        <member name="T:NJT.Core.I时间值">
+            <summary>
+            时间和值
+            </summary>
+        </member>
+        <member name="T:NJT.Core.时间值1">
+            <summary>
+            简单实现,无通知
+            </summary>
+        </member>
         <member name="P:NJT.Core.I标识Data`1.标签">
             <summary>
             显示的标签
@@ -250,7 +265,7 @@
             <param name="data">数据缓冲区</param>
             <returns>对象</returns>
         </member>
-        <member name="M:NJT.Core.扩展.ToObservabler``1(NJT.Core.I运行结果{System.Collections.Generic.IList{``0}})">
+        <member name="M:NJT.Core.Core扩展.ToObservabler``1(NJT.Core.I运行结果{System.Collections.Generic.IList{``0}})">
             <summary>
             如果true,返回data的列表,否则返回空列表
             </summary>
@@ -258,7 +273,7 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
-        <member name="M:NJT.Core.扩展.UpValue``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Object)">
+        <member name="M:NJT.Core.Core扩展.UpValue``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Object)">
             <summary>
             查找属性名称并更新值
             </summary>
@@ -267,7 +282,7 @@
             <param name="属性名"></param>
             <param name="属性值"></param>
         </member>
-        <member name="M:NJT.Core.扩展.长度合格``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+        <member name="M:NJT.Core.Core扩展.长度合格``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
             <summary>
             验证数组长度是否符合最低要求. start + len 
             </summary>
@@ -275,6 +290,25 @@
             <param name="数组"></param>
             <param name="start"></param>
             <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.Core扩展.分解``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            把数组按指定长度分解开.
+            如[1~9]按{1,2,4,1}可分解为锯齿数组.
+            </summary>
+            <param name="bytes"></param>
+            <param name="长度组"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NJT.Core.Core扩展.赋值``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IReadOnlyList{``1})">
+            <summary>
+            把只读列表的值按顺序赋给 目标
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="目标"></param>
+            <param name="新值列表"></param>
             <returns></returns>
         </member>
         <member name="P:NJT.Core.数值限制.组">
@@ -432,6 +466,11 @@
             </summary>
             <param name="s"></param>
             <returns></returns>
+        </member>
+        <member name="P:NJT.Core2.I图表字段值.字段名称">
+            <summary>
+            记录的当前字段名
+            </summary>
         </member>
     </members>
 </doc>

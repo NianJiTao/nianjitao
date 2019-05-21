@@ -41,7 +41,7 @@ namespace NJT.UI
         {
             if (Is自动关闭)
             {
-                _timer = F1.Get定时器();
+                _timer = new DispatcherTimer();
                 _timer.Interval = TimeSpan.FromSeconds(1);
                 _timer.Tick += TimerTick;
                 _timer.Start();

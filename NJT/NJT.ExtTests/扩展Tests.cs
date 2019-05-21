@@ -125,14 +125,14 @@ namespace NJT.Ext.Tests
             Assert.Equal("abc", Encoding.UTF8.GetBytes("abc").GetString());
         }
 
-        [Fact]
-        public void Get参数值Test()
-        {
-            var a = new EData<EData<string>>("a1", new EData<string>("a2", "v2"));
-            Assert.Equal("v2", a.Get参数值("Data.Data").Data);
-            Assert.Equal("a2", a.Get参数值("Data.Name").Data);
-            Assert.Equal("a1", a.Get参数值("Name").Data);
-        }
+        //[Fact]
+        //public void Get参数值Test()
+        //{
+        //    var a = new EData<EData<string>>("a1", new EData<string>("a2", "v2"));
+        //    Assert.Equal("v2", a.Get参数值("Data.Data").Data);
+        //    Assert.Equal("a2", a.Get参数值("Data.Name").Data);
+        //    Assert.Equal("a1", a.Get参数值("Name").Data);
+        //}
 
         [Fact]
         public void Get静态属性Test()

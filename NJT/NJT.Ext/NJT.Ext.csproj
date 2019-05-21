@@ -55,12 +55,6 @@
     <Compile Include="范围限制.cs" />
     <Compile Include="集合扩展.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NJT.Core\NJT.Core.csproj">
-      <Project>{0e4dcda7-38d4-4e70-8ad1-9ba2875861e7}</Project>
-      <Name>NJT.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -50,9 +50,9 @@
     <Reference Include="DevExpress.Data.v18.2" />
     <Reference Include="DevExpress.Printing.v18.2.Core" />
     <Reference Include="DevExpress.Mvvm.v18.2" />
-    <Reference Include="DevExpress.Xpf.Printing.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Grid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Grid.v18.2.Core, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Printing.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v18.2.Core, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -224,13 +224,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NJT.Core\NJT.Core.csproj">
-      <Project>{0e4dcda7-38d4-4e70-8ad1-9ba2875861e7}</Project>
-      <Name>NJT.Core</Name>
+    <ProjectReference Include="..\..\NJT.Core2\NJT.Core2.csproj">
+      <Project>{5881b6f1-ece4-4dc8-bc57-bd4d84bbe588}</Project>
+      <Name>NJT.Core2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\NJT.Ext\NJT.Ext.csproj">
-      <Project>{748e3f91-1106-49a4-b670-5e2e8d694c40}</Project>
-      <Name>NJT.Ext</Name>
+    <ProjectReference Include="..\..\NJT.Ext.Core\NJT.Ext.Core.csproj">
+      <Project>{38782af4-113e-4125-95a4-e9046387cfc6}</Project>
+      <Name>NJT.Ext.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\NJT.Prism\NJT.Prism.csproj">
       <Project>{d0994ffb-a311-4a97-b027-7e75dcc83726}</Project>

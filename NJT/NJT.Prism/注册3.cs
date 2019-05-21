@@ -5,12 +5,13 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using NJT.Core;
 
-namespace NJT.Core
+namespace NJT.Prism
 {
-    public static class 注册
+    public static class 注册3
     {
-        public static string 本机特征码 { get;   set; }
+        public static string 本机特征码 { get; set; }
 
 
         public static string[] 版权
@@ -30,11 +31,13 @@ namespace NJT.Core
 
         private static I硬件信息 _硬件 = new 硬件信息();
 
+
         public static string 计算特征码()
         {
             本机特征码 = _硬件.Get特征码();
             return 本机特征码;
         }
+
 
         public static bool 验证注册(string 公钥, string 特征码, string 注册码)
         {
@@ -53,6 +56,7 @@ namespace NJT.Core
             {
                 结果 = false;
             }
+
             return 结果;
         }
 
@@ -90,6 +94,7 @@ namespace NJT.Core
                 {
                     return true;
                 }
+
                 return false;
             }
             catch
@@ -115,7 +120,7 @@ namespace NJT.Core
         {
             var bytes = Encoding.GetEncoding("GB2312").GetBytes(源数据);
             var inArray = HashAlgorithm.Create("SHA1")?.ComputeHash(bytes);
-            return Convert.ToBase64String(inArray??new byte[]{30});
+            return Convert.ToBase64String(inArray ?? new byte[] {30});
         }
 
 

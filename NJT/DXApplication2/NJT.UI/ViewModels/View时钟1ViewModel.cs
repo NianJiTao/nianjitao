@@ -58,7 +58,7 @@ namespace NJT.UI.ViewModels
             if (Is启动)
                 return;
             Is启动 = true;
-            定时器.循环运行(1000, 时间更新);
+            定时器2.循环运行(1000, 时间更新);
         }
 
 

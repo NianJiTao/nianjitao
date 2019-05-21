@@ -10,7 +10,7 @@ namespace NJT.Core
 {
     public static class 注册
     {
-        public static string 本机特征码 { get; private set; }
+        public static string 本机特征码 { get;   set; }
 
 
         public static string[] 版权

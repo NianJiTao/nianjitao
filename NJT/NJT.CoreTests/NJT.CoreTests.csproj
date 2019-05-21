@@ -80,9 +80,9 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NJT.Core\NJT.Core.csproj">
-      <Project>{0E4DCDA7-38D4-4E70-8AD1-9BA2875861E7}</Project>
-      <Name>NJT.Core</Name>
+    <ProjectReference Include="..\NJT.Core2\NJT.Core2.csproj">
+      <Project>{5881B6F1-ECE4-4DC8-BC57-BD4D84BBE588}</Project>
+      <Name>NJT.Core2</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

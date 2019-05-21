@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace NJT.Core
 {
-    public static partial class 扩展
+    public static partial class Core扩展
     {
         public static ObservableCollection<T> ToObservabler<T>(this IEnumerable<T> list2)
         {
@@ -13,7 +13,6 @@ namespace NJT.Core
             if (list2 != null)
                 foreach (var k in list2)
                     r.Add(k);
-
             return r;
         }
 
@@ -119,7 +118,48 @@ namespace NJT.Core
         {
             return 字节组.长度合格(start, 8) ? BitConverter.ToDouble(字节组, start) : 0;
         }
+        /// <summary>
+        /// 把数组按指定长度分解开.
+        /// 如[1~9]按{1,2,4,1}可分解为锯齿数组.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <param name="长度组"></param>
+        /// <returns></returns>
+        public static T[][] 分解<T>(this IList<T> bytes, IList<int> 长度组)
+        {
+            var m = 0;
+            var r = new T[长度组.Count][];
+            for (var i = 0; i < r.Length; i++)
+            {
+                r[i] = bytes.Skip(m).Take(长度组[i]).ToArray();
+                m += 长度组[i];
+            }
 
+            return r;
+        }
+
+
+        /// <summary>
+        /// 把只读列表的值按顺序赋给 目标
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="目标"></param>
+        /// <param name="新值列表"></param>
+        /// <returns></returns>
+        public static IEnumerable<T1> 赋值<T1, T2>(this IEnumerable<T1> 目标, IReadOnlyList<T2> 新值列表) where T1 : class, I名称值
+        {
+            var index = 0;
+            // ReSharper disable once PossibleMultipleEnumeration
+            foreach (var 名称值 in 目标)
+            {
+                if (新值列表.Count > index) 名称值.值 = 新值列表[index];
+                index++;
+            }
+
+            // ReSharper disable once PossibleMultipleEnumeration
+            return 目标;
+        }
 
     }
 }

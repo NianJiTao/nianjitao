@@ -3,6 +3,7 @@ using System.Linq;
 using DevExpress.Mvvm.Native;
 using DevExpress.Xpf.Bars;
 using NJT.Ext;
+using NJT.Ext.Core;
 using NJT.Prism;
 
 namespace NJT.UI

@@ -151,7 +151,7 @@ namespace NJT.UI.ViewModels
 
         private void 读取特征码()
         {
-            Task.Factory.StartNew(注册.计算特征码)
+            Task.Factory.StartNew(注册3.计算特征码)
                 .ContinueWith(x => { 硬件码 = x.Result; })
                 .ContinueWith(x => 验证Action());
         }
@@ -174,7 +174,7 @@ namespace NJT.UI.ViewModels
             if (Is验证中)
                 return;
             Is验证中 = true;
-            Task.Factory.StartNew(() => 注册.验证注册(授权信息.公钥2018, 注册.计算特征码(), 注册码))
+            Task.Factory.StartNew(() => 注册3.验证注册(授权信息.公钥2018, 注册3.计算特征码(), 注册码))
                 .ContinueWith(x =>
                 {
                     Is验证成功 = x.Result;

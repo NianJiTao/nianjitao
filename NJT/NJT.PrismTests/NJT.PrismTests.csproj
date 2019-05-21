@@ -63,16 +63,23 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="硬件信息Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunUnityTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NJT.Core2\NJT.Core2.csproj">
+      <Project>{5881B6F1-ECE4-4DC8-BC57-BD4D84BBE588}</Project>
+      <Name>NJT.Core2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NJT.Prism\NJT.Prism.csproj">
       <Project>{D0994FFB-A311-4A97-B027-7E75DCC83726}</Project>
       <Name>NJT.Prism</Name>

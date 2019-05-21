@@ -7,6 +7,20 @@ namespace NJT.Prism
 {
     public static partial class 扩展
     {
+        public static void 更新命令状态(this IDelegateCommand command, string 提示消息, Action func)
+        {
+            func?.Invoke();
+            更新命令状态(command, 提示消息);
+        }
+
+
+        public static void 更新命令状态(this IDelegateCommand command, string 提示消息)
+        {
+            command?.RaiseCanExecuteChanged();
+            消息.更新状态栏(提示消息);
+        }
+
+
         public static Dictionary<int, GetCommandDev> List { get; } = new Dictionary<int, GetCommandDev>();
 
 
